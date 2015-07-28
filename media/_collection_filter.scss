@@ -1,0 +1,37 @@
+/* filter */
+
+.filter{
+  &-title{}
+
+  &-option{}
+
+  &-option_title{}
+
+  &-option_clear{}
+
+  &-value_list{}
+
+  &-value{
+    &--current{}
+
+    &--selected{}
+  }
+
+  &-value_link{
+    &--active{}
+  }
+
+  &-value_input{}
+
+  &-value_disable{
+    &:hover{}
+  }
+
+  &-toggler{
+    &:hover{}
+  }
+
+  &-clear_all{}
+
+  &-submit{}
+}

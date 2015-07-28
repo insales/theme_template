@@ -1,0 +1,11 @@
+/* базовые стили*/
+//= require normolize
+//= require core
+//= require grid
+
+/* библиотеки */
+//= require magiczoomplus
+//= require owl.carousel
+
+/* шаблон */
+//= require style

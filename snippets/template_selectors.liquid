@@ -1,0 +1,165 @@
+{% comment %}
+  шаблоны для селектора модификаций
+{% endcomment %}
+
+{% comment %}
+  шаблон блоков со значениями
+{% endcomment %}
+<script type="text/template" hidden class="selectors" id="span">
+
+  <% for variant in @variants : %>
+    <span data-option-id="<%- variant.id %>"
+          data-option-position="<%- variant.position %>"
+          data-option-index="<%- @options.index %>"
+
+          class="variant-span
+                variant-span--<%- @options.name %>
+                <% if !variant.available : %>
+                  variant-span--unavailable
+                <% end %>
+                <% if variant.position == @options.selected && !@options.is_disabled : %>
+                  variant-span--active
+                <% end %>"
+    >
+      <%- variant.title %>
+    </span>
+  <% end %>
+</script>
+
+{% comment %}
+  шаблон переключателей
+{% endcomment %}
+<script type="text/template" hidden class="selectors" id="radio">
+  <% for variant in @variants : %>
+    <div class="variant-radio
+                <% if !variant.available : %>
+                  variant-radio--unavailable
+                <% end %>"
+    >
+      <label class="variant-radio_label">
+      <input  type="radio"
+              name="radio-options-<%- @options.index %>"
+
+              data-option-id="<%- variant.id %>"
+              data-option-position="<%- variant.position %>"
+              data-option-index="<%- @options.index %>"
+
+              class="variant-radio_switch"
+
+              <% if !variant.available && @settings.disable : %>
+                disabled="disabled"
+              <% end %>
+              <% if variant.position == @options.selected && !@options.is_disabled : %>
+                checked="checked"
+              <% end %>
+      />
+        <%- variant.title %>
+      </label>
+    </div>
+  <% end %>
+</script>
+
+{% comment %}
+  шаблон селектора
+{% endcomment %}
+<script type="text/template" hidden class="selectors" id="select">
+
+  <div class="styled_select-wrapper">
+    <select data-option-index="<%- @options.index %>"
+
+            value="<%- @options.selected %>"
+
+            class="variant-select
+                  variant-select--<%- @options.name %>"
+    >
+      <% for variant in @variants : %>
+        <% if @start_disable.disable : %>
+          <option value="">
+            <%- @start_disable.disable_text %>
+          </option>;
+        <% end %>
+
+        <option value="<%- variant.position %>"
+                data-option-id="<%- variant.id %>"
+
+                <% if !variant.available && @settings.disable : %>
+                  disabled="disabled"
+                <% end %>
+
+                <% if variant.position == @options.selected && !@options.is_disabled : %>
+                  selected="selected"
+                <% end %>
+        >
+          <%- variant.title %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+</script>
+
+{% comment %}
+  шаблон для блока с цветами
+{% endcomment %}
+<script type="text/template" hidden class="selectors" id="color">
+  <% for variant in @variants : %>
+    <span data-option-id="<%- variant.id %>"
+          data-option-position="<%- variant.position %>"
+          data-option-index="<% @options.index %>"
+
+          data-image-id="<%- @getImageId variant.title %>"
+          data-image-original="<%- @getGalleryOriginal variant.title %>"
+          data-image-preview="<%- @getGalleryPreview variant.title %>"
+
+          class="variant-color
+                variant-color--<%- @options.name %>
+                <% if !variant.available : %>
+                  variant-color--unavailable
+                <% end %>
+                <% if variant.position == @options.selected && !@options.is_disabled : %>
+                  variant-color--active
+                <% end %>"
+    >
+      <img  src="<%- @getColor variant.title %>"
+            title="<%- variant.title %>"
+            alt="<%- variant.title %>"
+            class="variant-color_image"
+      />
+    </span>
+  <% end %>
+</script>
+
+{% comment %}
+  шаблон блоков с превьюшками картинок
+{% endcomment %}
+<script type="text/template" hidden class="selectors" id="image">
+  <% for variant in @variants : %>
+    <span data-option-id="<%- variant.id %>"
+          data-option-position="<%- variant.position %>"
+          data-option-index="<%- @options.index %>"
+
+          data-image-id="<%- @getImageId variant.title %>"
+          data-image-original="<%- @getGalleryOriginal variant.title %>"
+          data-image-preview="<%- @getGalleryPreview variant.title %>"
+
+          class="variant-image
+                variant-image--<% $options.name %>
+                <% if !variant.available : %>
+                  variant-image--unavailable
+                <% end %>
+                <% if variant.position == @options.selected && !@options.is_disabled : %>
+                  variant-image--active
+                <% end %>"
+    >
+      <img  src="<%- @getBlockImage variant.title %>"
+            title="<%- variant.title %>"
+            alt="<%- variant.title %>"
+
+            class="variant-image_image"
+      />
+    </span>
+  <% end %>
+</script>
+
+<script type="text/javascript">
+  InSales.Template( 'selectors' );
+</script>

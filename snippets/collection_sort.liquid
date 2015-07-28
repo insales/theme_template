@@ -1,0 +1,63 @@
+{% comment %}
+  сниппет сортировки
+{% endcomment %}
+
+<form class="sort_by" action="{{ collection.url }}" method="get">
+  {% comment %}
+    сортировка вывода
+  {% endcomment %}
+  <span class="sort_by-option">
+    <label  for="order" class="sort_by-label">
+      Сортировать по:
+    </label>
+
+    <select id="order" name="order" value="{{ order }}"
+            class="sort_by-select js-sort_by"
+    >
+      {{ ""                 | select_option: order, "Сортировать по" }}
+      {{ "price"            | select_option: order, "По возрастанию цены" }}
+      {{ "descending_price" | select_option: order, "По убыванию цены" }}
+      {{ "title"            | select_option: order, "Алфавиту А-Я" }}
+      {{ "descending_title" | select_option: order, "Алфавиту Я-А" }}
+      {{ "age"              | select_option: order, "Новые-Старые" }}
+      {{ "descending_age"   | select_option: order, "Старые-Новые" }}
+    </select>
+  </span>
+
+  {% comment %}
+    изменение кол-ва выводимых товаров
+  {% endcomment %}
+  <span class="sort_by-option">
+    <label  for="page_size" class="sort_by-label">
+      Показывать по:
+    </label>
+    <select id="page_size" name="page_size" value="{{ page_size }}"
+            class="sort_by-select js-sort_by"
+    >
+      {{ "15"   | select_option: page_size, "15" }}
+      {{ "24"   | select_option: page_size, "24" }}
+      {{ "33"   | select_option: page_size, "33" }}
+      {{ "90"   | select_option: page_size, "90" }}
+    </select>
+  </span>
+
+  {% comment %}
+    вытаскиваем выбранные параметры, опции товаров,
+    строку поиска и язык
+  {% endcomment %}
+  {% for prop in collection.current_characteristics %}
+    <input type="hidden" name="characteristics[]" value="{{ prop.id }}"/>
+  {% endfor %}
+
+  {% for val in collection.current_option_values %}
+    <input type="hidden" name="options[{{ val.option_name.id }}][]" value="{{ val.id }}"/>
+  {% endfor %}
+
+  {% if search.query != '' %}
+    <input type="hidden" name="q" value="{{ search.query }}" />
+  {% endif %}
+
+  {% if language.not_default? %}
+    <input type="hidden" name="lang" value="{{ language.locale }}" />
+  {% endif %}
+</form>

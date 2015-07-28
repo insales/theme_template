@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if gt IE 8]>
+  html class="ie-9">
+<![endif]-->
+<!--[if !IE]>-->
+  <html >
+<!--<![endif]-->
+
+{% comment %}
+  подключаем все объявления в <head>
+  head.liquid - обявления, подключение ресурсов
+  init_js.liquid - подцепление необходимых для работы значений, из Liquid вчастности
+{% endcomment %}
+  <head>
+    {% include "head" %}
+  </head>
+
+<body>
+  {% include "header" %}
+
+  {% unless template == 'index' %}
+    <section class="row section--breadcrumbs">
+      <div class="wrap padded-inner">
+        {% include "breadcrumbs" %}
+      </div>
+    </section>
+  {% endunless %}
+
+  {% if template == 'index' %}
+    <section class="row">
+      {% include "index_slider" %}
+    </section>
+  {% endif %}
+
+  <section class="section--content">
+    <div class="wrap row">
+
+        {% if template == 'collection' %}
+          {% assign is_sided = true %}
+        {% else %}
+          {% assign is_sided = false %}
+        {% endif %}
+
+        {% if is_sided %}
+          <div class="lg-grid-3 md-grid-3
+                      sm-hidden xs-hidden
+                      padded-inner"
+          >
+            {% include "sidebar" %}
+          </div>
+        {% endif %}
+
+        <div class="{{ template }} row
+                    {% if is_sided %}lg-grid-9 md-grid-9 sm-grid-12 xs-grid-12{% else %}grid-12{% endif %}
+                    padded-inner"
+        >
+          {{ content_for_layout }}
+        </div>
+
+    </div>
+  </section>
+
+  {% include "footer" %}
+
+  {% comment %}
+  {% include "mobile_panel" %}
+  {% endcomment %}
+
+  <script type="text/javascript" src="{{ 'template.js' | asset_url }}"></script>
+  {% include "init_js" %}
+
+  {% include "template_cart" %}
+  {% include "template_modal" %}
+  {% include "template_product" %}
+  {% include "template_selectors" %}
+</body>
+</html>

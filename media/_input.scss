@@ -1,0 +1,38 @@
+/* input */
+
+.input{
+  &-label{}
+
+  &-field{}
+
+  &-notice{}
+
+  &--inline{}
+
+  &--error{
+    > .input-label{}
+
+    > .input-field{}
+
+    > .input-notice{}
+  }
+
+  &--captcha{}
+}
+
+.notice{
+  &--error{}
+}
+
+input[type="text"],
+select{}
+
+.captcha{
+  &-challenge{}
+}
+
+.select_wrapper{
+  &:after{}
+
+  select{}
+}

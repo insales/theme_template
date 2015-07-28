@@ -1,0 +1,68 @@
+/* reviews */ 
+
+.reviews{
+  &-list{}
+
+  &-link{}
+
+  &-total_count{}
+}
+
+.review{
+  &-name{}
+
+  &-details{}
+
+  &-date{}
+
+  &-content{}
+}
+
+.review_form{
+  &-toggle{}
+
+  &-input{}
+
+  &-submit{}
+
+  .rating_wrapper{}
+
+  .notice{}
+}
+
+.br{
+  &-wrapper{
+    display: inline-block;
+  }
+
+  &-widget{
+
+    a{
+      display: inline-block;
+
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transform: translate(0, 0);
+      margin: 0 2px;
+
+      &:before{
+        content: "\f006";
+      }
+
+      &.br-selected,
+      &.br-current,
+      &.br-active{
+        &:before {
+            content: "\f005";
+          }
+      }
+    }
+  }
+
+  &-current-rating{
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+<h1 class="blog-title content-title">{{ blog.title }}</h1>
+
+{% paginate articles by 8 %}
+  {% if paginate.parts.size > 1 %}
+    <div class="row padded-inner">
+      {% include "pagination" %}
+    </div>
+  {% endif %}
+
+  <div class="blog-article_list grid-row-inner">
+    {% for article in articles %}
+      <div class="article_preview
+                  grid-12
+                  padded-inner-sides"
+      >
+        {% include "article_preview" %}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if paginate.parts.size > 1 %}
+    <div class="row padded-inner">
+      {% include "pagination" %}
+    </div>
+  {% endif %}
+{% endpaginate %}

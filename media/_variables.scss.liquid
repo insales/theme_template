@@ -1,0 +1,88 @@
+//
+// TEMPLATE VARIABLES
+// --------------------------------
+
+//default variables
+$grey-light: #{'#f1f1f1'};
+$grey:       #{'#e5e5e5'};
+$grey-dark:  #{'#999'};
+
+$font-size-base: 14px;
+
+$green: #{'#00a161'};
+
+//$font-color:     #{'#777777'};
+
+//$font-color-normal: $font-color;
+//$font-color-dark:   #{'#333333'};
+//$font-color-light:  #{'#999999'};
+
+$border-color:   $grey;
+
+$trans-duration:  #{'0.5s'};
+
+/* новые настройки согласно требованиям */
+// верхняя панель
+$top_panel-bg:            #{'{{ settings.top_panel_bg }}'};
+$top_panel-font:          #{'{{ settings.top_panel_font }}'};
+$top_panel-font-hover:    #{'{{ settings.top_panel_font_hover }}'};
+$top_panel-link_bg-hover: #{'{{ settings.top_panel_link_bg_hover }}'};
+$top_panel-dropdown_bg:   #{'{{ settings.top_panel_dropdown_bg }}'};
+$top_panel-border:        #{'{{ settings.top_panel_border }}'};
+
+// header
+$header_bg-color: #{'{{ settings.header_bg-color }}'};
+
+{% if settings.header_bg-use == 'image' %}
+  $header_bg-image: #{'{{ settings.header_bg-image }}'};
+{% else %}
+  $header_bg-image: #{''};
+{% endif %}
+
+$header_font:     #{'{{ settings.header_font }}'};
+
+// basket
+$basket-color:        $top_panel-bg;
+$basket_bg:           $grey-light;
+$basket_bg-hover:     $top_panel-bg;
+$basket-border-color: $grey;
+
+// search
+$search-submit-color: $top_panel-bg;
+$search-submit-bg:    $grey-light;
+
+// main
+$main_bg-color: #{'{{ settings.main_bg-color }}'};
+
+{% if settings.main_bg-use == 'image' %}
+  $main_bg-image: #{'{{ settings.main_bg-image }}'};
+{% else %}
+  $main_bg-image: #{''};
+{% endif %}
+
+$content_bg:        #{'#fff'};
+
+$font-color:        #{'{{ settings.font_color }}'};
+$link_color-hover:  #{'{{ settings.link_color-hover }}'};
+
+// footer
+$footer_bg-image:   #{'{{ settings.footer_bg-color }}'};
+$footer_font-color: #{'{{ settings.footer_font-color }}'};
+
+// breadcrumbs
+
+$breadcrumbs-bg:      #{'#f9f9f9'};
+
+// pagination
+$paginate-current-bg: #{'#f6f6f6'};
+
+// collection_filter
+$col_filter-title-color: #{'#333333'};
+
+//prices
+$prices-current-color: #{'{{ settings.prices_color-current }}'};
+$prices-old-color:     #{'{{ settings.prices_color-old }}'};
+
+// buttons
+$button_bg-hover:   #{'{{ settings.button_bg-hover }}'};
+$buy_button_bg:     #{'{{ settings.buy_button_bg }}'};

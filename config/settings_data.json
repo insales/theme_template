@@ -1,0 +1,44 @@
+{
+  "presets": {
+    "transformer":{
+      "top_panel_bg": "#00a161",
+      "top_panel_font": "#D8F6E6",
+      "top_panel_font_hover": "#D8F6E6",
+      "top_panel_dropdown_bg": "#ffffff",
+      "top_panel_border": "#3AB47B",
+
+      "header_bg-color": "#ffffff",
+      "header_font": "#404040",
+
+      "main_bg-color": "#ffffff",
+      "font_color": "#303030",
+      "link_color-hover": "#00A161",
+      "footer_bg-color": "#525252",
+      "footer_font-color": "#ffffff",
+
+      "prices_color-current": "#00a161",
+      "prices_color-old": "#7A7A7A",
+
+      "button_bg-hover": "#00a161",
+      "buy_button_bg": "#00a161",
+
+      "show_index_slider": "true",
+      "main_image_1_link": "/",
+      "show_main_image_1": "true",
+      "loaded_main_image_1": "loaded_main_image_1.jpg",
+      "show_main_image_2": "true",
+      "main_image_2_link": "/",
+      "loaded_main_image_2": "loaded_main_image_2.jpg",
+      "show_main_image_3": "true",
+      "main_image_3_link": "/",
+      "loaded_main_image_3": "loaded_main_image_3.jpg",
+      "main_image_slider_autoplay": "true",
+      "main_image_timeout": "4000",
+
+      "filter-show_empty": "false",
+
+      "show_socials_links": "false"
+    }
+  },
+  "current": "transformer"
+}

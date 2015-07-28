@@ -1,0 +1,119 @@
+<header>
+  {% comment %}верхнее меню{% endcomment %}
+  <div class="section--top_line">
+    <div class="wrap padded-inner-sides">
+      <div class="language fl">
+        {% include "language_switch" %}
+      </div>
+
+      <div class="top_menu
+                  fr
+                  sm-hidden xs-hidden"
+      >
+        <ul class="menu menu--top menu--horizontal">
+          {% assign main = linklists.main-menu %}
+          {% for link in main.links %}
+            <li class="menu-node menu-node--top">
+              <a href="{{ link.url }}" class="menu-link">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="top_menu
+                  fr
+                  lg-hidden md-hidden"
+      >
+        <ul class="menu menu--top menu--horizontal">
+          {% assign main = linklists.main-menu %}
+          <li class="menu-node menu-node--top">
+            <a href="#" class="menu-link">
+              <i class="fa fa-bars"></i>
+            </a>
+
+            <ul class="menu menu--top_dropdown
+                      menu--vertical menu--dropdown"
+            >
+              {% for link in main.links %}
+                <li class="menu-node menu-node--top_dropdown">
+                  <a href="{{ link.url }}" class="menu-link">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% comment %}основной блок шапки{% endcomment %}
+  <div class="section--header">
+    <div class="wrap row">
+
+      <div class="logo
+                  lg-grid-5 md-grid-5 sm-grid-12 xs-grid-12
+                  sm-center xs-center
+                  lg-padded-inner md-padded-inner sm-padded xs-padded"
+      >
+          <a href="/">
+            {% if settings.use_logo_image %}
+              <img src="{{ 'loaded_logo.png' | asset_url }}" alt="logo" />
+            {% else %}
+              <img src="{{ 'logo.png' | asset_url }}" alt="logo" />
+            {% endif %}
+          </a>
+      </div>
+
+      <div class="lg-grid-7 md-grid-7 sm-grid-12 xs-grid-12
+                  lg-right md-right sm-center xs-center
+                  lg-padded-inner md-padded-inner"
+      >
+        <div class="contacts padded-vertical">
+          {{ account.phone }}
+        </div>
+
+        {% comment %}
+          форма поиска
+        {% endcomment %}
+        <form action="/search"
+              method="get"
+              class="search_widget search_widget--header
+                    mc-grid-12
+                    sm-padded-vertical xs-padded-vertical mc-padded-vertical"
+        >
+          {% if language.not_default? %}
+            <input type="hidden" name="lang" value="{{ language.locale }}">
+          {% endif %}
+
+          <input  type="text"
+                  name="q"
+                  class="search_widget-field js-ajax_search-input"
+                  value=""
+                  placeholder="Поиск"
+          />
+
+          <button type="submit" class="search_widget-submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+
+        {% comment %}
+          вcтавляем блок с версткой виджета корзины
+        {% endcomment %}
+        {% include "basket" %}
+      </div>
+    </div>
+  </div>
+
+  <div class="section--main_menu row">
+    <div class="wrap padded-inner-sides">
+      {% include "menu_main" %}
+
+      {% include "menu_main_mobile" %}
+    </div>
+  </div>
+</header>

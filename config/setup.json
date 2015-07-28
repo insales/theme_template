@@ -1,0 +1,36 @@
+{
+  "collections": {
+    "frontpage": "Товары на главной",
+    "popular": "Популярные товары"
+  },
+  "blocks": {
+    "copyright": {
+      "title": "Copyright",
+      "content": "Работает на <a href='http://insales.ru'>InSales</a>"
+    }
+  },
+  "block_lists": {
+    "news": "Новости"
+  },
+  "menus": {
+    "main-menu": "Верхнее меню",
+    "footer-menu-1": "О нас",
+    "footer-menu-2": "Сервис",
+    "footer-menu-3": "Информация",
+    "footer-menu-4": "Связь с нами"
+  },
+  "menu_items": {
+    "footer-menu-1": {
+      "Новости": "/blogs/blog"
+    },
+    "footer-menu-2": {
+      "Личный кабинет": "/client_account/login"
+    },
+    "footer-menu-3": {
+      "Доставка": "/page/delivery"
+    },
+    "footer-menu-4": {
+      "Обратная связь": "/page/feedback"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+  <meta content='noindex, nofollow' name='robots'>
+  <title>{% yield 'title' %}</title>
+
+  {{ 'checkout' | global_stylesheet_tag }}
+  {% assign customer_checkout_css = 'custom_checkout.css' | asset_url %}
+  {% if customer_checkout_css %}
+    <link href='{{ customer_checkout_css }}' rel='stylesheet'>
+  {% endif %}
+  {{ 'checkout' | global_javascript_tag }}
+
+  <!-- CDN -->
+  {% comment %}
+  тащим CDN из основного шаблона
+  {% endcomment %}
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- CDN end -->
+
+  <link type="text/css" rel="stylesheet" media="all" href="{{ 'template.css' | asset_url }}" />
+</head>
+<body>
+
+  <header>
+    {% comment %}верхнее меню{% endcomment %}
+    <div class="row row--top_line">
+      <div class="wrap padded-inner-sides">
+        <div class="language fl">
+          {% include "language_switch" %}
+        </div>
+
+        <div class="top_menu fr">
+          <ul class="menu menu--top menu--horizontal">
+            <li class="menu-node menu-node--top">
+              {% assign help = linklists.help %}
+              <a href="#" class="menu-link">
+                {{ help.title }}
+
+                <span class="menu-toggler menu-toggler--top js-menu-toggler--top">
+                  <i class="fa fa-caret-down"></i>
+                </span>
+              </a>
+
+              <ul class="menu menu--top_dropdown menu--vertical menu--dropdown">
+                {% for link in help.links %}
+                  <li class="menu-node menu-node--top_dropdown">
+                    <a href="{{ link.url }}" class="menu-link">
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="l-flow-opposite m-flow-opposite"
+        >
+          <ul class="menu menu--top menu--horizontal">
+          {% assign main = linklists.main-menu %}
+            {% for link in main.links %}
+              <li class="menu-node menu-node--top">
+                <a href="{{ link.url }}" class="menu-link">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {% comment %}основной блок шапки{% endcomment %}
+    <div class="wrap row row--header
+                m-padded s-padded"
+    >
+
+      <div class="l-grid-5 m-grid-12 s-grid-12
+                  m-center s-center
+                  l-padded-inner m-padded s-padded"
+      >
+        <div class="logo">
+          <a href="/">
+          {% if settings.use_logo_image %}
+            <img src="{{ 'loaded_logo.png' | asset_url }}" alt="logo" />
+          {% else %}
+            <img src="{{ 'logo.png' | asset_url }}" alt="logo" />
+          {% endif %}
+          </a>
+        </div>
+      </div>
+
+      <div class="l-grid-7 m-grid-12 s-grid-12
+                  l-right m-center s-center
+                  l-padded-inner"
+      >
+        <div class="contacts padded-vertical">
+          {{ account.phone }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row row--main_menu">
+      {% include "menu_main" %}
+
+      {% include "menu_main_mobile" %}
+    </div>
+  </header>
+
+    <div class='wrap body fc'>
+    {% if client %}
+    <div class='userbar fc'>
+    <div class='links fl'>
+    {% if linklists.account-menu %}
+     {% for link in linklists.account-menu.links %}<a href='{{ link.url }}'>
+    {{ link.title }}
+    </a>|{% endfor %}
+    {% else %}<a href='/'>
+    <span class='b'>Вернуться в магазин</span>
+    </a>|<a href='/client_account/contacts'>
+    <span>Контактные данные</span>
+    </a>|<a href='/client_account/addresses'>
+    <span>Адрес доставки</span>
+    </a>|<a href='/client_account/orders'>
+    <span class='b'>Заказы и скидки</span>
+    </a>|<a href='/client_account/feedback'>
+    <span>Обратная связь</span>
+    </a>{% endif %}
+    </div>
+    <div class='profile fr'>
+    {{ client.full_name }}
+    <b></b>
+    (<a href='/client_account/exit'>Выход</a>)
+    </div>
+    </div>
+    {% endif %}
+    <div class='page-title'>{% yield 'title' %}</div>
+    {% yield 'flash_messages' %}
+    <div id='top_info'>{% yield 'top_info' %}</div>
+    {% yield %}
+    {% yield 'sidebar' %}
+    </div>
+
+  <footer>
+    <div class="row row--footer_copyright">
+      <div class="wrap">
+
+        {% if blocks.copyright.content %}
+          <div class="copyright
+                      grid-4 l-grid-4 m-grid-12 s-grid-12
+                      m-center s-center
+                      padded-inner"
+          >
+            {{ blocks.copyright.content }}
+          </div>
+        {% endif %}
+
+        {% if settings.show_socials_links %}
+          <div class="grid-8 l-grid-8 m-grid-12 s-grid-12 right l-right m-center s-center padded-inner">
+            {% include "social_links" %}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

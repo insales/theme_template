@@ -1,0 +1,59 @@
+{% comment %}
+  этот сниппет собирает всю необходимую для js информацию о сайте и складывает в объекты и переменные
+{% endcomment %}
+
+<script type="text/javascript">
+  var
+    modal = new modal();
+
+  cv_currency_format = '{{ money_with_currency_format }}';
+
+  // цепляем необходимые переменные из liquid, которые другим образом не перебрасываются в js
+  Site.template = '{{ template }}';
+  Site.locale   = '{{ language.locale }}';
+
+  Site.account = {
+    id: '{{ account.id }}',
+    hide_items: '{{ account.hide_items_out_of_stock }}',
+  };
+
+  Site.product = {
+    id: '{{ product.id }}',
+  };
+
+  Site.client_group = {{ client_group.id }}
+
+  // разбираем цены для слайдера по цене
+  {% assign coll_handler = collection.handle %}
+  {% assign coll_price_min = collections[coll_handler].products_price_min | round: 0 %}
+  {% assign coll_price_max = collections[coll_handler].products_price_max | round: 0 %}
+
+  {% if price_min %}
+    {% assign start_price_min = price_min | round: 0 %}
+  {% else %}
+    {% assign start_price_min = coll_price_min %}
+  {% endif %}
+
+  {% if price_max %}
+    {% assign start_price_max = price_max | round: 0  %}
+  {% else %}
+    {% assign start_price_max = coll_price_max %}
+  {% endif %}
+
+  {% if coll_price_min < start_price_min or start_price_max < coll_price_max %}
+    {% assign disabled = false %}
+  {% else %}
+    {% assign disabled = true %}
+  {% endif %}
+
+  Site.filter = {
+    price_min: parseInt( {{ start_price_min }} ),
+    price_max: parseInt( {{ start_price_max }} ),
+    disabled:  {{ disabled }},
+  };
+
+  Site.collection = {
+    price_min: parseInt( {{ coll_price_min }} ),
+    price_max: parseInt( {{ coll_price_max }} ),
+  };
+</script>

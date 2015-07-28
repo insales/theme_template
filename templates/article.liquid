@@ -1,0 +1,24 @@
+<h1 class="article-title content-title">{{ article.title | editable }}</h1>
+
+<div class="row">
+  {% unless article.image.large_url contains "no_image" %}
+    <div class="article-image_container
+                lg-grid-2 md-grid-3 sm-grid-4 xs-grid-12
+                sx-hidden"
+    >
+      <span class="article-image">
+        <img src="{{ article.image.medium_url }}" title="{{ article.title }}">
+      </span>
+    </div>
+  {% endunless %}
+
+  <div class="article-note">
+    Опубликовано: {{ article.created_at | date: "%d.%m.%Y" }}
+  </div>
+
+  <div class="article-content editor">
+    {{ article.content | editable }}
+  </div>
+</div>
+
+{% include "article_reviews" %}

@@ -1,0 +1,27 @@
+{% comment %}
+  сниппет переключения языков
+{% endcomment %}
+
+{% if languages.size > 1 %}
+  <ul class="languages">
+    <li class="languages-node languages-node--current">
+      <span class="languages-link languages-link--current">
+        {{ languages.first.title }}
+
+        <span class="languages-toggler js-languages-toggler">
+          <i class="fa fa-caret-down"></i>
+        </span>
+      </span>
+
+      <ul class="languages-list languages-list--dropdown">
+        {% for language in languages offset: 1 %}
+          <li class="languages-node">
+            <a href="{{ language.switch_url }}" class="languages-link">
+              {{ language.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
+{% endif %}

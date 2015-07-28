@@ -1,0 +1,142 @@
+<form id="characteristics" class="{{ collection_filter }}" action="{{ collection.url }}" method="get">
+
+  {% if language.not_default? %}
+    <input type="hidden" name="lang" value="{{ language.locale }}"/>
+  {% endif %}
+
+  <input type="hidden" name="page_size" value="{{ page_size }}" {% unless page_size %} disabled="disabled" {% endunless %}/>
+
+  <input type="hidden" name="order" value="{{ order }}" {% unless order %} disabled="disabled" {% endunless %}/>
+
+  <ul class="filter filter--vertical">
+
+    <li class="filter-section">
+      <label class="filter-section_title">
+        <span>
+          Цена
+        </span>
+      </label>
+
+      <div class="">
+
+        <div class="filter-value--range js-filter-valie_range"></div>
+
+        <div class="row">
+          <div class="grid-6 left">
+            от <span class="js-min_price-text"></span>
+          </div>
+
+          <div class="grid-6 right">
+            до <span class="js-max_price-text"></span>
+          </div>
+        </div>
+
+        <input type="hidden"
+                name="price_min"
+                value="{{ price_min }}"
+                class="js-min_price"
+        />
+        <input type="hidden"
+                name="price_max"
+                value="{{ price_max }}"
+                class="js-max_price"
+        />
+
+        <script type="text/javascript">
+          $(function(){
+            var
+              start_price_min = Site.filter.price_min,
+              start_price_max = Site.filter.price_max,
+              coll_price_min  = Site.collection.price_min,
+              coll_price_max  = Site.collection.price_max;
+
+            $( '.js-filter-valie_range' )
+              .noUiSlider({
+                start: [ start_price_min, start_price_max ],
+                connect: true,
+                range: {
+                  'min': coll_price_min,
+                  'max': coll_price_max
+                },
+                step: 200,
+                format: wNumb({
+                  decimals: 0,
+                })
+              })
+              .on({
+                set: function(){
+                  $( '.js-min_price, .js-max_price' )
+                    .removeAttr( 'disabled' );
+                  $(this).parents( 'form:first' ).submit();
+                }
+              })
+
+            // связываем значения слайдера с полями ввода и вывода инфы в верстку
+            $( '.js-filter-valie_range' ).Link( 'lower' ).to( $( '.js-min_price' ) );
+            $( '.js-filter-valie_range' ).Link( 'lower' ).to( $( '.js-min_price-text' ) );
+            $( '.js-filter-valie_range' ).Link( 'upper' ).to( $( '.js-max_price' ) );
+            $( '.js-filter-valie_range' ).Link( 'upper' ).to( $( '.js-max_price-text' ) );
+
+            // дизейблим поля цен, если не задан диапазон
+            if( Site.filter.disabled ){
+              $( '.js-min_price, .js-max_price' ).attr( 'disabled', true );
+            }
+          });
+          </script>
+      </div>
+    </li>
+
+  {% for property in collection.properties %}
+
+    <li class="filter-section">
+      <label class="filter-section_title">
+        <span>
+          {{ property.name }}
+        </span>
+      </label>
+
+      <ul class="filter-value_list">
+      {% for characteristic in property.characteristics %}
+
+        {% assign show_filter = true %}
+        {% if settings.filter-show_empty and characteristic.products_count == 0 %}
+          {% assign show_filter = false %}
+        {% endif %}
+        {% if characteristic.current? %}
+          {% assign show_filter = true %}
+        {% endif %}
+
+        {% if show_filter %}
+          <li class="filter-value {% if characteristic.current? %}filter-value--current{% endif %}">
+            <input  type="checkbox"
+                    {% if characteristic.current? %} checked="checked"{% endif %}
+                    class="filter-value_input"
+            />
+            <a  href='{{ characteristic.url }}'
+                class="filter-value_link {% if characteristic.current? %}filter-value_link--active{% endif %}"
+            >
+              {{ characteristic.title }} ({{ characteristic.products_count }})
+            </a>
+            <input  type="hidden"
+                    name="characteristics[]"
+                    value="{{ characteristic.id }}"
+                    {% unless characteristic.current? %}disabled="disabled"{% endunless %}
+                    class="js-filter-value_input"
+            />
+          </li>
+        {% endif %}
+
+      {% endfor %}
+      </ul>
+    </li>
+
+  {% endfor %}
+  </ul>
+
+  {% if collection_filter %}
+    <button class="filter-submit button">
+      <i></i>
+      применить
+    </button>
+  {% endif %}
+</form>
