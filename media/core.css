@@ -22,6 +22,7 @@
 }
 .input-label {
   display: block;
+  margin-bottom: 0.5em;
 }
 .input-field {
   display: block;
@@ -43,6 +44,7 @@
   line-height: inherit;
   border: 1px solid initial;
   vertical-align: middle;
+  margin-bottom: 0;
 }
 .input--inline > .input-field {
   display: inline-block;
@@ -276,6 +278,40 @@ body {
   -moz-border-radius: 50%;
   border-radius: 50%;
   overflow: hidden;
+}
+.languages {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.languages:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.languages-node {
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+}
+.languages-link {
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+}
+.languages-toggler {
+  cursor: pointer;
+}
+.languages--dropdown {
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  display: none;
+}
+.languages-node:hover > .languages--dropdown {
+  display: block;
 }
 .menu {
   list-style-type: none;
@@ -547,6 +583,9 @@ body {
 }
 .quantity--side .quantity-button {
   position: absolute;
+}
+.quantity--side .quantity-input {
+  display: block;
 }
 .prices:after {
   clear: both;
