@@ -21,7 +21,7 @@ $(function(){
     $('.js-basket-items_count')
       .html( basket.items_count );
     $('.js-basket-total_price')
-      .html( InSales.formatMoney( basket.items_price ) );
+      .html( InSales.formatMoney( basket.total_price ) );
   });
 
   // обновляем общую стоимость заказа на странице корзины
