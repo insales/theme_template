@@ -60,3 +60,5 @@
 #= require reviews
 #= require ui
 #= require modal
+
+#= require z.InSales.range
