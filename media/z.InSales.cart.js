@@ -104,7 +104,7 @@ InSales.Cart = function( options ){
       Events( 'onCart_Update' ).publish( $data );
 
       if( callback ){
-        callback();
+        callback( $data );
       }
     } else {
       $.getJSON( '/cart_items.json', function( order ){
@@ -114,7 +114,7 @@ InSales.Cart = function( options ){
         Events( 'onCart_Update' ).publish( $data );
 
         if( callback ){
-          callback();
+          callback( $data );
         };
       });
     };
@@ -151,8 +151,17 @@ InSales.Cart = function( options ){
 
     $.post( path, fields )
       .done( function() {
-        Events( 'onCart_Delete' ).publish( $data );
-        self.reloadCart();
+        // дергаем событие ДО обновления корзины
+        Events( 'onCart_BeforeDelete' ).publish( $data );
+
+        // дергаем событие ПОСЛЕ полного удаления товара из списка
+        self.reloadCart( function( $data ){
+          // добавляем нужные данные
+          $data.removed = variant_id;
+          $data.jqObj   = $link;
+
+          Events( 'onCart_Delete' ).publish( $data );
+        });
       })
       .fail( function( response ){
         // снимаем флаг, что мы обрабатывали эту ссылку и лочили
@@ -202,7 +211,11 @@ InSales.Cart = function( options ){
 
         Events( 'onCart_Add' ).publish( $data );
 
-        self.reloadCart();
+        // обновляем состав корзины, и дергаем событие
+        // куда передаем состав корзины ПОСЛЕ добавления и обновления состава
+        self.reloadCart( function( $data ){
+          Events( 'onCart_AfterAdd' ).publish( $data );
+        });
       })
       .fail( function( response ){
         console.log( 'Произошла ошибка при удалении!! Ответ платформы: ', response );
