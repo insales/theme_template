@@ -93,6 +93,7 @@ modal = function(){
       $data.confirmCbk = modalHelper.confirmForm;
       $data.readyCbk   = modalHelper.readyForm;
 
+      // проходим по поляем и приводим их к единому виду
       $.each( $data.fields, function( index, field ){
         field.type = field.type || 'text';
 
@@ -109,7 +110,9 @@ modal = function(){
   };
 };
 
-// ----------------------------------------------------------------------------------
+//  =================================================================================
+//                                    MODAL UI
+// ==================================================================================
 
 // показываем модалку по клику
 $( document ).on( 'click', '.js-modal-link', function( e ){
@@ -166,10 +169,12 @@ var modalHelper = {
       content  = '',
       $message = {};
 
+    // проверяем на ошибки
     if( errors.length > 0 ){
       return;
     };
 
+    // собираем наше сообщение из формы в вид, которым оперирует платформа
     $.each( $data.fields, function( index, field ){
       var
         $input = $form.find( '[name="'+ field.name +'"]' );
@@ -178,6 +183,7 @@ var modalHelper = {
         field.title +': '+ $input.val() +'\n';
     });
 
+    // собираем сообщение для платформы с правильными полями
     $message[ 'feedback[content]' ] = content;
 
     if( $data.from ){
@@ -188,11 +194,14 @@ var modalHelper = {
       $message[ 'feedback[subject]' ] = $data.subject;
     };
 
+    // отправка и красивости
     InSales.sendMessage( $message )
       .done( function( response ){
         console.log( response );
         if( response.status == 'ok' ){
-          console.log( 'ok' );
+
+          modal.close();
+          showMessage( response.notice );
         };
       });
   },
