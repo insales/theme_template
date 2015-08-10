@@ -1,0 +1,19 @@
+<form action="/search"
+      method="get"
+      class="search_widget search_widget--{{ search_widget }}"
+>
+  <input type="text"
+          name="q"
+          class="search_widget-field js-ajax_search-input"
+          value="{{ search.query | escape }}"
+          placeholder="Поиск"
+  />
+
+  <button type="submit" class="search_widget-submit">
+    <i class="fa fa-search"></i>
+  </button>
+
+  {% if language.not_default? %}
+    <input type="hidden" name="lang" value="{{ language.locale }}">
+  {% endif %}
+</form>
