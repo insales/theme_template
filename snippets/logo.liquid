@@ -1,0 +1,11 @@
+<div class="logo">
+  <a href="/{% if language.not_default? %}?lang={{ language.locale }}{% endif %}">
+    {% if settings.logo-use_image %}
+      <img src="{{ 'loaded_logo.png' | asset_url }}" alt="{{ account.title }}" />
+    {% else %}
+      <span>
+        {{ account.title }}
+      </span>
+    {% endif %}
+  </a>
+</div>
