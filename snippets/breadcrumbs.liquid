@@ -3,7 +3,9 @@
 
 <div class="breadcrumbs">
 
-  <a href="/" class="breadcrumbs-page breadcrumbs-page--home">
+  <a href="/{% if language.not_default? %}?lang={{ language.locale }}{% endif %}"
+      class="breadcrumbs-page breadcrumbs-page--home"
+  >
     {{ home_sign }}
   </a>
 
