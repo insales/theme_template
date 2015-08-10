@@ -3,35 +3,42 @@
 .filter{
   &-title{}
 
-  &-option{}
+  &-section{}
 
-  &-option_title{}
+  &-clear_all{}
 
-  &-option_clear{}
+  &-section_toggler{}
 
-  &-value_list{}
+  &-submit{}
+}
+
+.filter_section{
+
+  &-title{}
+
+  &-toggler{}
+
+  &-values{}
 
   &-value{
-    &--current{}
 
-    &--selected{}
+    &--range{}
+
+    &--current{}
   }
 
   &-value_link{
     &--active{}
   }
 
-  &-value_input{}
-
   &-value_disable{
     &:hover{}
   }
 
-  &-toggler{
-    &:hover{}
-  }
+  &-clear{}
 
-  &-clear_all{}
+  &-range_input{}
 
-  &-submit{}
+  /* mod */
+  &--range{}
 }
