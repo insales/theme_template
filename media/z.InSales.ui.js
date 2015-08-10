@@ -2,94 +2,150 @@
 //                                UI
 // =======================================================================
 
-/* дефолтное переключение схлопнутых менюх */
-$(document).on( 'click', '.js-menu-toggler', function( e ){
-  e.preventDefault();
-  var
-    params = prepareJSON( $(this).data( 'params' ) ),
-    method = params.animate || 'toggle',
-    time   = parseInt( params.time ) || 0;
+// здесь расписан дефолтный функционал для блоков и всякие UI штуки.
+// всякие переключалки - вынесены в отдельные файлы шаблонов/блоков
 
-  $(this)
-    .parents( '.js-menu-wrapper:first' )
-      .find( '.menu--collapse:first' )[method]( time );
+// подключаем функционал переключаемых блоков и их плагинов плагин
+var
+  // менюшки
+  menuToggler = new InSales.CollapseBlock({
+    togglerClass: 'js-menu-toggler',
+    wrapperClass: 'js-menu-wrapper',
+    targetClass:  'menu',
+    blockType:    'Menu',
+  }),
+
+  // секции фильтра
+  filterSectionToggler = new InSales.CollapseBlock({
+    togglerClass: 'js-filter_section-toggler',
+    wrapperClass: 'js-filter_section-wrapper',
+    targetClass:  'filter_section-values',
+  }),
+
+  // скрытие группы секций фильтра
+  filterToggler = new InSales.CollapseBlock({
+    togglerClass: 'js-filter-sections_toggler',
+    wrapperClass: 'js-filter-sections_wrapper',
+    targetClass:  'filter-hidden_sections',
+  }),
+
+  accordionToggler = new InSales.CollapseBlock({
+    togglerClass: 'js-accordion-toggler',
+    wrapperClass: 'js-accordion-wrapper',
+    targetClass:  'accordion-content',
+    blockType:    'Accordion',
+  });
+
+// =======================================================================
+//                       COMMON TOGGLERS FUNCTION
+// =======================================================================
+
+triggerClass = function( obj, from_class, to_class, target_tag ){
+  target_tag = target_tag || 'i';
+
+  obj
+    .find( target_tag )
+      .toggleClass( from_class )
+      .toggleClass( to_class );
+};
+
+// =======================================================================
+//                          COLLECTION FILTER
+// =======================================================================
+
+// перехватваем нажатия на варианты значений
+$( document ).on( 'click', '.js-filter_section-value_input, .js-filter_section-value_link, .js-filter_section-value_disable', function(e){
+  var
+    $section_value = $(this).parents( '.filter_section-value:first' ),
+    $checkbox      = $section_value.find( '.js-filter_section-value_input' ),
+    $input         = $section_value.find( '.js-filter_section-characteristic' );
+
+  if( !$(this).hasClass( 'js-filter_section-value_input' ) ){
+    e.preventDefault();
+
+    $checkbox
+      .prop( 'checked', function( i, val ){
+        return !val;
+      });
+  };
+
+  $input
+    .trigger( 'change' );
 });
 
-/* переключение менюшки в сложенный при переходе брейка */
-(function ( $, window, document ){
-  // объявляем логику
-  var collapseMenu ={
-    init: function( options, el ){
-      var
-        self = this;
+// ловим изменение значения в скрытых полях фильтра
+$( document ).on( 'change', '.js-filter_section-characteristic', function(){
+  var
+    $section_value = $(this).parents( '.filter_section-value:first' ),
+    $form          = $(this).parents( 'form:first' ),
+    params         = getParams( $form );
 
-      options = options || {};
-
-      // выставляем начальные значения
-      self.wrapperClass     = options.wrapper    || '.menu-node';
-      self.breakPoint       = options.breakpoint || 800;
-      self.collapseEnabled  = false;
-      self.collapseDisabled = true;
-
-      // подтягиваем элементы
-      self.toggler        = $(el);
-      self.wrapperElement = self.toggler.parents( self.wrapperClass );
-      self.menu           = self.wrapperElement.find( '.menu:first' );
-
-      // вешаем обработку события "resize"
-      $( window )
-        .on( 'resize', function(){
-          if( $(window).width() <= self.breakPoint ){
-            if( !self.collapseEnabled ){
-              self.collapseEnabled = true;
-              self.collapseDisabled = false;
-              self.changeState();
-            };
-          }else{
-            if( !self.collapseDisabled ){
-              self.collapseDisabled = true;
-              self.collapseEnabled = false;
-              self.changeState();
-            };
-          };
-        })
-        .trigger('resize');
-    },
-    changeState: function(){
-      var
-        self = this;
-
-      // переключаем опорные классы
-      self.wrapperElement
-        .toggleClass('js-menu-wrapper');
-      self.toggler
-        .toggleClass('js-menu-toggler');
-
-      self.menu
-        .toggleClass('menu--collapse')
-        .removeAttr( 'style', false );
-    },
-  };
-
-  // навешиваем все это на каждый объект
-  $.fn.collapseMenu = function( options ){
-    this.each( function(){
-      var
-        prices = Object.create( collapseMenu );
-
-      prices.init( options, this );
-      $.data( this, "collapseMenu", prices );
+  $(this)
+    .prop( 'disabled', function( i, val ){
+      return !val;
     });
 
-    return this;
+  $section_value
+    .toggleClass( 'filter_section-value--current' );
+
+  if( params.submit ){
+    $form.submit();
   };
+});
 
-}( jQuery, window, document ));
+// =======================================================================
+//                          COLLECTION SORT
+// =======================================================================
 
-/* дефолтное поведение для переключателя в сравнении */
+  $('.js-sort_by').change( function(){
+    $(this).parents( 'form:first' ).submit();
+  });
+
+// =======================================================================
+//                              COMPARE
+// =======================================================================
+
+// дефолтное поведение для переключателя в сравнении
 $( document ).on( 'click', '.js-compare-toggle_same', function( e ){
   e.preventDefault();
 
   $( '.js-compare_row--same' )
     .toggle();
 });
+
+// =======================================================================
+//                              TUBS
+// =======================================================================
+
+$( '.tubs-node' ).on( 'click', function(){
+  var
+    $unit    = $(this),
+    $content = $unit.parents( '.tubs:first' ).find( '.tubs-content' ),
+    tub_id   = $unit.data( 'target' );
+
+  $unit
+    .siblings( '.tubs-node--active' )
+      .removeClass( 'tubs-node--active' )
+      .end()
+    .addClass( 'tubs-node--active' );
+
+  $content
+    .removeClass( 'tubs-content--active' )
+    .siblings( tub_id )
+      .addClass( 'tubs-content--active' );
+});
+
+// =======================================================================
+//                              STYLE SELECT
+// =======================================================================
+
+styleSelect = function( selector ){
+  $( selector ).each( function(){
+    var
+      parent = $(this).parent();
+
+    if( !parent.hasClass( 'styled_select-wrapper' ) ){
+      $(this).wrap( '<div class="styled_select-wrapper" />' );
+    };
+  });
+}

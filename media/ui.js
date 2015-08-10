@@ -15,9 +15,7 @@ $(function(){
     $( 'body' ).css( 'overflow', 'initial' );
   });
 
-  $( 'select.js-styled' ).each( function(){
-    $(this).wrap( '<div class="styled_select-wrapper"></div>' );
-  });
+  styleSelect( 'select' );
 
   $( '.js-scroll_to_top' ).on( 'click', function(){
     $( 'body' ).animate({

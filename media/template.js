@@ -32,12 +32,13 @@
 #= require z.InSales.modal
 #= require z.InSales.preloader
 
+#= require z.InSales.collapseBlock
 #= require z.InSales.ui
 
 // библиотеки
 // -- плагины
 #= require jquery.maskedinput.min
-#= require jquery.nouislider.all.min
+#= require nouislider.min
 #= require jquery.barrating.min
 #= require jquery.cookies
 
@@ -56,9 +57,8 @@
 
 #= require menu
 #= require slider
-#= require tubs
 #= require reviews
 #= require ui
 #= require modal
 
-#= require z.InSales.range
+#= require z.InSales.range_filter

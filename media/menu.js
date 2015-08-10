@@ -7,10 +7,7 @@ $(function(){
   $(document).on( 'click', '.js-menu-toggler', function( e ){
     e.preventDefault();
 
-    $(this)
-      .find( 'i' )
-        .toggleClass( 'fa-plus' )
-        .toggleClass( 'fa-minus' );
+    triggerClass( $(this), 'fa-plus', 'fa-minus' );
   });
 
   // прикручиваем плагин, которые переключает вид меню с брейкпоинта
