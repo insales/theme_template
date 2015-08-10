@@ -37,6 +37,6 @@ InSales.Render = function( $data, class_name, view ){
   if( TemplateList[ class_name ] ){
     return TemplateList[ class_name ].render( view, $data );
   }else{
-    console.log( 'Вы не подключили шаблон ', class_name );
+    console.log( 'Вы не подключили шаблон', class_name );
   };
 }
