@@ -13,25 +13,7 @@
     {% endif %}
   </span>
 
-  <form action="/search"
-        method="get"
-        class="search_widget search_widget--search"
-  >
-    {% if language.not_default? %}
-      <input type="hidden" name="lang" value="{{ language.locale }}">
-    {% endif %}
-
-    <input  type="text"
-            name="q"
-            class="search_widget-field"
-            value="{{ search.query | escape }}"
-            placeholder="Поиск"
-    />
-
-    <button type="submit" class="search_widget-submit">
-      <i class="fa fa-search"></i>
-    </button>
-  </form>
+  {% include "search_widget" with "search" %}
 </div>
 
 {% if search.performed? %}
@@ -55,8 +37,8 @@
             {% include 'product_preview' %}
           </div>
 
-          {% cycle 'l-grid': '', '', '<div class="lg-grid-12 md-grid-12 sm-hidden xs-hidden"><div class="collection-seporator"></div></div>' %}
-          {% cycle  'm-grid': '', '<div class="sm-grid-12 lg-hidden md-hidden xs-hidden"><div class="collection-seporator"></div></div>' %}
+          {% cycle 'l-grid': '', '', '<div class="lg-grid-12 md-grid-12 sm-hidden xs-hidden"><div class="collection-separator"></div></div>' %}
+          {% cycle  'm-grid': '', '<div class="sm-grid-12 lg-hidden md-hidden xs-hidden"><div class="collection-separator"></div></div>' %}
         {% endfor %}
       </div>
 
