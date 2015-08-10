@@ -42,12 +42,7 @@
       self.inputElement = self.container.find( options.inputSelector );
 
       // тянем параметры счетчика
-      params = self.inputElement.data( 'params' );
-      if( params ){
-        params = prepareJSON( params  );
-      }else{
-        params = {};
-      };
+      params = getParams( self.inputElement );
 
       // настройки упаковок товара
       self.packSize = parseInt( params.pack ) || 1;

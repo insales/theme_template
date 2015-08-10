@@ -10,6 +10,8 @@
   readyCbk: function name   - что делаем после полной отрисовки окна
 */
 
+
+
 modal = function(){
   var
     self = this;
@@ -114,12 +116,15 @@ modal = function(){
 //                                    MODAL UI
 // ==================================================================================
 
+  var
+    modal = new modal();
+
 // показываем модалку по клику
 $( document ).on( 'click', '.js-modal-link', function( e ){
   e.preventDefault();
 
   var
-    params = prepareJSON( $(this).data( 'params' ) );
+    params = getParams( $this );
 
   // тянем title
   params.title = params.title || $(this).attr( 'title' );
