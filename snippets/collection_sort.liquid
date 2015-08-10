@@ -8,7 +8,7 @@
   {% endcomment %}
   <span class="sort_by-option">
     <label  for="order" class="sort_by-label">
-      Сортировать по:
+      Сортировать
     </label>
 
     <select id="order" name="order" value="{{ order }}"
@@ -29,7 +29,7 @@
   {% endcomment %}
   <span class="sort_by-option">
     <label  for="page_size" class="sort_by-label">
-      Показывать по:
+      Показывать
     </label>
     <select id="page_size" name="page_size" value="{{ page_size }}"
             class="sort_by-select js-sort_by"
@@ -42,11 +42,17 @@
   </span>
 
   {% comment %}
-    вытаскиваем выбранные параметры, опции товаров,
-    строку поиска и язык
+    вытаскиваем выбранные параметры, опции товаров и язык
   {% endcomment %}
   {% for prop in collection.current_characteristics %}
     <input type="hidden" name="characteristics[]" value="{{ prop.id }}"/>
+  {% endfor %}
+
+  {% for property in collection.properties %}
+    {% if property.is_numeric? and property.gt_value and property.lt_value %}
+      <input type="hidden" name="properties_gt[{{ property.id }}]" value="{{ property.gt_value }}"/>
+      <input type="hidden" name="properties_lt[{{ property.id }}]" value="{{ property.lt_value }}"/>
+    {% endif %}
   {% endfor %}
 
   {% for val in collection.current_option_values %}
@@ -60,4 +66,8 @@
   {% if language.not_default? %}
     <input type="hidden" name="lang" value="{{ language.locale }}" />
   {% endif %}
+
+  <input type="hidden" name="price_min" value="{{ price_min }}" {% unless price_min %}disabled="disabled"{% endunless %}>
+
+  <input type="hidden" name="price_max" value="{{ price_max }}" {% unless price_max %}disabled="disabled"{% endunless %}>
 </form>
