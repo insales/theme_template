@@ -54,18 +54,11 @@
   <div class="section--header">
     <div class="wrap row">
 
-      <div class="logo
-                  lg-grid-5 md-grid-5 sm-grid-12 xs-grid-12
+      <div class="lg-grid-5 md-grid-5 sm-grid-12 xs-grid-12
                   sm-center xs-center
                   lg-padded-inner md-padded-inner sm-padded xs-padded"
       >
-          <a href="/">
-            {% if settings.use_logo_image %}
-              <img src="{{ 'loaded_logo.png' | asset_url }}" alt="logo" />
-            {% else %}
-              <img src="{{ 'logo.png' | asset_url }}" alt="logo" />
-            {% endif %}
-          </a>
+        {% include "logo" %}
       </div>
 
       <div class="lg-grid-7 md-grid-7 sm-grid-12 xs-grid-12
@@ -79,27 +72,11 @@
         {% comment %}
           форма поиска
         {% endcomment %}
-        <form action="/search"
-              method="get"
-              class="search_widget search_widget--header
-                    mc-grid-12
+        <span class="mc-grid-12
                     sm-padded-vertical xs-padded-vertical mc-padded-vertical"
         >
-          {% if language.not_default? %}
-            <input type="hidden" name="lang" value="{{ language.locale }}">
-          {% endif %}
-
-          <input  type="text"
-                  name="q"
-                  class="search_widget-field js-ajax_search-input"
-                  value=""
-                  placeholder="Поиск"
-          />
-
-          <button type="submit" class="search_widget-submit">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
+          {% include "search_widget" with "header" %}
+        </span>
 
         {% comment %}
           вcтавляем блок с версткой виджета корзины
