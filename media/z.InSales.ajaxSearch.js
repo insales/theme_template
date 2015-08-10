@@ -6,34 +6,37 @@ InSales.Search = function( options ){
   var
     self = this;
 
+  // приводим все в порядок
   init = function(){
+    options             = options || {};
+    self.searchSelector = options.searchSelector || '.js-ajax_search-input';
+
+    self.path = '/search_suggestions';
+
+    self.data = {
+      account_id: Site.account.id,
+      locale:     Site.language.locale,
+      fields:     [ 'price_min', 'price_min_available' ],
+      hide_items_out_of_stock: Site.account.hide_items,
+    };
+  };
+
+  self.binding = function(){
     var
       keyupTimeoutID = '',
-      path           = '/search_suggestions',
-
-      data = {
-        account_id: Site.account.id,
-        locale:     Site.locale,
-        fields:     [ 'price_min', 'price_min_available' ],
-        hide_items_out_of_stock: Site.account.hide_items,
-      };
-
-    options        = options || {};
-    options.searchSelector = options.searchSelector|| '.js-ajax_search-input';
-
-    $search = $( options.searchSelector ),
+      $search = $( self.searchSelector );
 
     $search.on( 'keyup', function(){
       var
         $data = {};
 
-      data.query = $search.val();
+      self.data.query = $search.val();
 
-      clearTimeout( keyupTimeoutID );
+      clearTimeout( self.keyupTimeoutID );
 
-      if( data.query != '' && data.query.length >= 3 ){
+      if( self.data.query != '' && self.data.query.length >= 3 ){
         keyupTimeoutID = setTimeout( function(){
-          $.getJSON( path, data,
+          $.getJSON( self.path, self.data,
             function( response ){
               $data = self.makeData( response, $search.val() );
 
@@ -42,7 +45,7 @@ InSales.Search = function( options ){
         }, 300 );
       }else{
         // возвращаем пустой объект, чтобы спрятать результат поиска
-        Events( 'onAjaxSearch' ).publish( $data );
+        Events( 'onAjaxSearch_Empty' ).publish( $data );
       };
     });
   };
