@@ -22,6 +22,11 @@ InSales.OrderLine = function( options ) {
 
   line.url = '/product_by_id/' + options.product_id;
 
+  // добавляем язык, если не дефолт
+  if( Site.language.not_default ){
+    line.url += '?lang='+ Site.locale;
+  };
+
   // разворачиваем изображения товара для шаблонизатора
   line.image = {};
   line.image.small  = line.image_url.replace( 'thumb', 'micro' );
