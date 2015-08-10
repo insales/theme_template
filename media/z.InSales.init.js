@@ -15,7 +15,6 @@
 
 var
   cv_currency_format = '',
-  Site               = {},
   Cart               = {},
   Compare            = {},
   InSales            = {},
@@ -23,6 +22,10 @@ var
   EventsList         = {},
   TemplateList       = {};
 
+if( !Site ){
+  var
+    Site = {};
+};
 
 // =====================================================================================
 //                                UTILITY FUNCTIONS 
@@ -89,6 +92,26 @@ prepareJSON = function( string ){
   };
 
   return $.parseJSON( '{'+ result.join(',') +'}' );
+}
+
+// забираем data-params DOM элемента
+getParams = function( $obj ){
+  var
+    readyParams = $obj.data( 'readyParams' ),
+    params;
+
+  // есть ли у нас разобранный объект?
+  if( !$.isEmptyObject( readyParams ) ){
+    return readyParams;
+  };
+
+  // если нет, то
+  // разбираем строку и сохраняем готовый объект
+  params = prepareJSON( $obj.attr( 'data-params' ) );
+  $obj
+    .data( 'readyParams', params );
+
+  return params;
 }
 
 // производим транслитерацию строки
