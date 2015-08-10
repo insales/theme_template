@@ -30,8 +30,8 @@
       self.prices     = [];
 
       self.group = false;
-      if( options.group || Site.client_group ){
-        self.group = options.group || Site.client_group;
+      if( options.group || Site.client_group.id ){
+        self.group = options.group || Site.client_group.id;
       };
 
       // пересобираем варианты для быстрой работы
