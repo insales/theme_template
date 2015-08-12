@@ -51,7 +51,7 @@ checkForm = function( $form ){
         });
       }
       // или капча и вбито не число
-      else if( is_captcha && $.isNumeric( $(this).val() ) ){
+      else if( is_captcha && !$.isNumeric( $(this).val() ) ){
         errors.push({
           title: $(this).attr('title'),
           jqObj: $(this),
