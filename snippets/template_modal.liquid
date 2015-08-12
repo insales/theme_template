@@ -31,14 +31,14 @@
                      name="<%- field.name %>"
                      title="<%- field.title %>"
                      placeholder="<%- field.placeholder %>"
+                     value="<%- field.value %>"
               >
             <% else : %>
               <textarea class="input-field <%- field.filed_class %>"
-                         type="<%- field.type %>"
                          name="<%- field.name %>"
                          title="<%- field.title %>"
                          placeholder="<%- field.placeholder %>"
-              ></textarea>
+              ><%- field.value %></textarea>
             <% end %>
 
             <% if field.error : %>
