@@ -238,14 +238,14 @@
 
 <div class="tubs grid-12">
   <ul class="tubs-controls tubs-controls--horizontal">
-    <li class="tubs-node tubs-node--active" data-target="#tub1">
+    <li class="tubs-node tubs-node--active" data-params="target: '#tub1'">
       Описание
     </li>
-    <li class="tubs-node" data-target="#tub2">
+    <li class="tubs-node" data-params="target: '#tub2'">
       Характеристики
     </li>
     {% if account.reviews_enabled? %}
-      <li class="tubs-node js-tub-review" data-target="#tub3">
+      <li class="tubs-node js-tub-review" data-params="target: '#tub3'">
         Отзывы
       </li>
     {% endif %}
