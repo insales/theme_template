@@ -121,7 +121,7 @@ $( '.tubs-node' ).on( 'click', function(){
   var
     $unit    = $(this),
     $content = $unit.parents( '.tubs:first' ).find( '.tubs-content' ),
-    tub_id   = $unit.data( 'target' );
+    params   = getParams( $unit );
 
   $unit
     .siblings( '.tubs-node--active' )
@@ -131,7 +131,7 @@ $( '.tubs-node' ).on( 'click', function(){
 
   $content
     .removeClass( 'tubs-content--active' )
-    .siblings( tub_id )
+    .siblings( params.target )
       .addClass( 'tubs-content--active' );
 });
 
