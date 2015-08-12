@@ -39,6 +39,8 @@
   border: 1px solid;
   padding-top: 0;
   padding-bottom: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   box-sizing: border-box;
 }
 .input-notice {
