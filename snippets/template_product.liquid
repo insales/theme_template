@@ -10,15 +10,17 @@
     <% for product in @products : %>
       <% if product : %>
         <div class="product_preview-preview">
-          <a  href="<%- product.url %>"
-              class="product_preview-image"
-              title="<%- product.title %>"
-          >
-            <img  src="<%- product.first_image.medium_url %>"
-                  class=""
-                  title="<%- product.title %>"
-            />
-          </a>
+          <div class="image-wrapper">
+            <a  href="<%- product.url %>"
+                class="product_preview-image image-square"
+                title="<%- product.title %>"
+            >
+              <img  src="<%- product.first_image.medium_url %>"
+                    class=""
+                    title="<%- product.title %>"
+              />
+            </a>
+          </div>
         </div>
 
         <div class="padded">
