@@ -15,25 +15,49 @@ checkForm = function( $form ){
 
   $inputs.each( function() {
     var
-      is_required = false;
+      $input      = $(this).parents( '.input:first' ),
+      is_required = false,
+      is_captcha  = false,
+      is_email    = false;
 
-    if( $(this).parent().hasClass('input--required') || $(this).attr('required') ){
+    // поле обязательно?
+    if( $input.hasClass( 'input--required' ) || $(this).attr('required') ){
       is_required = true;
     };
 
-    if( $(this).val() == '' && is_required ){
-      errors.push({
-        title: $(this).attr('title'),
-        jqObj: $(this),
-      });
-    }else{
-      if( ( $(this).attr('type') == ('email') ) && !email_reg.test( $(this).val() ) ){
+    // является капчей?
+    if( $input.hasClass( 'input--captcha' ) ){
+      is_captcha = true;
+    };
+
+    if( $(this).attr('type') == ('email') ){
+      is_email = true;
+    };
+
+    // если поле обязательно
+    if( is_required ){
+      // и поле незаполнено
+      if( $(this).val() == '' ){
+        errors.push({
+          title: $(this).attr('title'),
+          jqObj: $(this),
+        });
+      }
+      // или поле является почтой и там введена фигня
+      else if( is_email && !email_reg.test( $(this).val() ) ){
+        errors.push({
+          title: $(this).attr('title'),
+          jqObj: $(this),
+        });
+      }
+      // или капча и вбито не число
+      else if( is_captcha && $.isNumeric( $(this).val() ) ){
         errors.push({
           title: $(this).attr('title'),
           jqObj: $(this),
         });
       };
-    }
+    };
   });
 
   markFormErrors( errors );
