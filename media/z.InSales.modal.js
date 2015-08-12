@@ -133,7 +133,7 @@ $( document ).on( 'click', '.js-modal-link', function( e ){
 });
 
 // закрытие модалки
-$( document ).on( 'click', '.js-modal-close, .overlay', function( e ){
+$( document ).on( 'click touchstart', '.js-modal-close, .overlay', function( e ){
   e.preventDefault();
   var
     closeCbk = $(this).data( 'params' ).closeCbk;

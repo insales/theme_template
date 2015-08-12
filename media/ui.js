@@ -3,13 +3,13 @@
 // ===========================================================
 
 $(function(){
-  $( '.js-panel-link' ).on( 'click', function(){
+  $( document ).on( 'click touchstart', '.js-panel-link', function(){
     $( 'body' ).css( 'overflow', 'hidden' );
     $( '.js-mobile_panel' ).show();
     $( '.overlay' ).show();
   });
 
-  $( '.js-panel-close, .overlay' ).on( 'click', function(){
+  $( document ).on( 'click touchstart', '.js-panel-close, .overlay', function(){
     $( '.js-mobile_panel' ).hide();
     $( '.overlay' ).hide();
     $( 'body' ).css( 'overflow', 'initial' );
