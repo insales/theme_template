@@ -8,7 +8,7 @@
 // проверка формы, получает jQuery-объект формы
 checkForm = function( $form ){
   var
-    $inputs = $form.find('input, textarea'),
+    $inputs = $form.find( '.input-field' ),
     errors  = [],
 
     email_reg = /^[\w-\.]+@[\w-]+\.[a-z]{2,3}$/i;
