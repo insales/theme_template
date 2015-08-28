@@ -46,6 +46,11 @@ showMessage = function( message, time ){
 
   if ( !preloader.attr( 'id' ) ) return;
 
+  message = 
+    '<div class="system_message">'+
+      message +
+    '<div>';
+
   preloader.html( message );
   changeCss( preloader );
 
