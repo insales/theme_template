@@ -21,6 +21,10 @@
     {% for review in product.reviews %}
 
       <li class="review">
+        <div class="review-details">
+          <span class="review-name">{{ review.author }}</span> {{ review.created_at | date: "%d.%m.%Y %H:%M" }}
+        </div>
+
         <div class="review-content">
           {{ review.content | newline_to_br }}
         </div>
@@ -37,10 +41,6 @@
             </select>
           </div>
         {% endif %}
-
-        <div class="review-details">
-          Добавил(а) {{ review.author }}, {{ review.created_at | date: "%d.%m.%Y %H:%M" }}
-        </div>
       </li>
 
     {% endfor %}
@@ -162,7 +162,7 @@
         />
 
         <span class="input-notice notice notice--warning">
-          Вы не ввели текст с картинки
+          Вы неправильно ввели текст с картинки
         </span>
       </div>
     {% endif %}

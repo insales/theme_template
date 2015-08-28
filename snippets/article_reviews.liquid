@@ -34,12 +34,12 @@
     {% for comment in article.comments %}
 
       <li class="review">
-        <div class="review-content">
-          {{ comment.content | newline_to_br }}
+        <div class="review-details">
+          <span class="review-name">{{ comment.author }}</span> {{ comment.created_at | date: "%d.%m.%Y %H:%M" }}
         </div>
 
-        <div class="review-details">
-          Добавил(а) {{ comment.author }}, {{ comment.created_at | date: "%d.%m.%Y %H:%M" }}
+        <div class="review-content">
+          {{ comment.content | newline_to_br }}
         </div>
       </li>
 
@@ -143,7 +143,7 @@
         />
 
         <span class="input-notice notice notice--warning">
-          Вы не ввели текст с картинки
+          Вы неправильно ввели текст с картинки
         </span>
       </div>
     {% endif %}
