@@ -18,7 +18,7 @@
 
 {% if search.performed? %}
   {% if search.results == empty %}
-    <div class="notice notice--warning">
+    <div class="search-notice notice notice--warning">
       По запросу "{{ search.query | escape }}" ничего не найдено.
     </div>
   {% else %}
@@ -52,7 +52,7 @@
 
 {% else %}
 
-  <div class="notice notice--info">
+  <div class="search-notice notice notice--info">
     Введите ключевые слова для поиска.
   </div>
 
