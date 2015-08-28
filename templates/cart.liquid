@@ -1,12 +1,16 @@
 <h1 class="cart-title content-title">Корзина</h1>
 
 {% if cart.items.size > 0 %}
-  <div class="notice notice--empty" style="display:none">
+  <div class="notice notice--warning js-cart-notice" style="display:none">
     В вашей корзине нет товаров
   </div>
 
-  <form id="cartform" class="cart-table_container" action="{{ cart_url }}" method="post">
-    <input type="hidden" value="put" name="_method">
+  <form id="cartform"
+        action="{{ cart_url }}"
+        method="post"
+        class="cart-table_container"
+  >
+    <input type="hidden" name="_method" value="put">
 
     <div class="cart-items_list">
       {% for item in cart.items %}
@@ -241,7 +245,7 @@
     $(function(){
       var
         $pricetype = $( '.js-price_type-{{ item.id }}'),
-        count      = $pricetype.parents( '.cart_item:first' ).find( '.js-quantity-input' ).val()
+        count      = $pricetype.parents( '.cart_item:first' ).find( '.js-quantity-input' ).val();
 
       $pricetype
         .priceType({
