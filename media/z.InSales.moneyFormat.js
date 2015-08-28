@@ -14,16 +14,16 @@ InSales.initMoney = function( params ) {
   moneyParams[ 'unit' ]     = temp.unit;
   moneyParams[ 'separator'] = temp.separator;
 
-  if ( temp.delimiter !== undefined ) {
+  if ( temp.delimiter ) {
     moneyParams[ 'delimiter' ] = temp.delimiter ;
   } else {
-    moneyParams[ 'delimiter' ] = ' ';
+    moneyParams[ 'delimiter' ] = '';
   };
 
   if ( temp[ 'show_price_without_cents' ] == 1 ) { 
-    moneyParams[ 'show_price_without_cents' ] = true;
-  } else {
     moneyParams[ 'show_price_without_cents' ] = false;
+  } else {
+    moneyParams[ 'show_price_without_cents' ] = true;
   };
 
   return moneyParams;
