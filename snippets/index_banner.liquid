@@ -1,0 +1,30 @@
+{% if settings.main_banner-show %}
+  <div class="index_banner">
+    {% for i in (1..2) %}
+      {% capture is_show %}main_banner_{{ i }}-show{% endcapture %}
+      {% capture banner_small %}main_banner_{{ i }}-image-small.jpg{% endcapture %}
+      {% capture banner_big %}main_banner_{{ i }}-image-big.jpg{% endcapture %}
+      {% capture link %}main_banner_{{ i }}-link{% endcapture %}
+      {% capture title %}main_banner_{{ i }}-title{% endcapture %}
+
+      {% if settings[is_show] == '1' %}
+        {% if settings[link] != '' %}
+          <a href="{{ settings[link] }}{% if language.not_default? %}?lang={{ language.locale }}{% endif %}"
+              class="index_banner-image"
+          >
+        {% else %}
+          <span class="index_banner-image">
+        {% endif %}
+          <img src="{{ banner_small | asset_url }}"
+                srcset="{{ banner_small | asset_url }} 640w, {{ banner_big | asset_url }}"
+          >
+
+        {% if settings[link] != '' %}
+          </a>
+        {% else %}
+          </span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
