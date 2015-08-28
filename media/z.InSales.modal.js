@@ -10,8 +10,6 @@
   readyCbk: function name   - что делаем после полной отрисовки окна
 */
 
-
-
 modal = function(){
   var
     self = this;
@@ -43,9 +41,10 @@ modal = function(){
     };
 
     // навешиваем параметры на элементы
-    $modal.data( 'params', $data );
-    $( '.overlay, .js-modal-close' ).data( 'params', $data );
-    $( '.js-modal-confirm' ).data( 'params', $data );
+    setParams( $modal, $data );
+    setParams( $( '.overlay' ), $data );
+    setParams( $( '.js-modal-close' ), $data );
+    setParams( $( '.js-modal-confirm' ), $data );
 
     changeCss( $modal );
 
@@ -124,7 +123,7 @@ $( document ).on( 'click', '.js-modal-link', function( e ){
   e.preventDefault();
 
   var
-    params = getParams( $this );
+    params = getParams( $(this) );
 
   // тянем title
   params.title = params.title || $(this).attr( 'title' );
@@ -136,16 +135,19 @@ $( document ).on( 'click', '.js-modal-link', function( e ){
 $( document ).on( 'click touchstart', '.js-modal-close, .overlay', function( e ){
   e.preventDefault();
   var
-    closeCbk = $(this).data( 'params' ).closeCbk;
+    params = getParams( $(this) );
 
-  // проверяем, есть ли у нас какие-то действия на закрытие окна?
-  if( closeCbk ){
-    // если да, то запускаем callback и после этого закрываем окно
-    $.when( closeCbk( $( '.modal' ) ) )
-      .done( closeModal() );
-  }else{
-    // либо просто закрываем окно
-    modal.close();
+  //closeCbk = $(this).data( 'params' ).closeCbk;
+  if( params.template ){
+    // проверяем, есть ли у нас какие-то действия на закрытие окна?
+    if( params && params.closeCbk ){
+      // если да, то запускаем callback и после этого закрываем окно
+      $.when( params.closeCbk( $( '.modal' ) ) )
+        .done( closeModal() );
+    }else{
+      // либо просто закрываем окно
+      modal.close();
+    };
   };
 });
 
@@ -153,7 +155,7 @@ $( document ).on( 'click touchstart', '.js-modal-close, .overlay', function( e )
 $( document ).on( 'click', '.js-modal-confirm', function( e ){
   e.preventDefault();
   var
-    $data  = $(this).data( 'params' );
+    $data  = getParams( $(this) );
 
   console.log( $data );
 
