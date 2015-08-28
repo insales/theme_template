@@ -17,8 +17,6 @@ $(function(){
     $( '.basket_list' )
       .html( InSales.Render( basket, 'cart', 'dropdown' ) );
 
-
-
     // пересчет кол-ва товаров в basket
     $('.js-basket-items_count')
       .html( basket.items_count );
@@ -61,7 +59,7 @@ $(function(){
     if( Site.template == 'cart' ){
       if ( $data.total_price == 0 ){
         $('.cart-table_container').hide();
-        $('.notice--empty').show();
+        $('.js-cart-notice').show();
 
         return;
       };
