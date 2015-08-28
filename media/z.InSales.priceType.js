@@ -105,9 +105,11 @@
           jqObj: this.elem,
         };
 
+      /*
       if( !self.group.disabled ){
         return false;
       };
+      */
 
       if( $options.variant_id ){
         self.setPrices( $options.variant_id );
