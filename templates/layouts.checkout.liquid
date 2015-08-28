@@ -144,7 +144,8 @@
 
       $input
         .find( '.field-content input:not(.button, [type="checkbox"])' )
-          .addClass( 'input-field' );
+          .addClass( 'input-field' )
+          .removeAttr( 'style' );
       $input
         .find( '.field-content textarea' )
           .addClass( 'input-field' )
@@ -163,8 +164,30 @@
       styleSelect( 'select' );
 
       window.setTimeout( function(){
-        style_select( '#shipping_address_state' );
+        styleSelect( 'select#shipping_address_state' );
       }, 500 );
+
+      $( '#shipping_address_country' )
+        .on( 'change', function(){
+          window.setTimeout( function(){
+            var
+              $state = $( '#shipping_address_state' );
+
+            if( $state.is( 'input' ) ){
+              console.log( 'input' );
+              $state
+                .parent()
+                  .removeClass( 'styled_select-wrapper' );
+
+              $state
+                .addClass( 'input-field' )
+            }
+            else if( $state.is( 'select' ) ){
+              console.log( 'select' );
+              styleSelect( 'select#shipping_address_state' );
+            }
+          }, 100 );
+        })
 
       // цены
       $( 'td.price' )
@@ -184,7 +207,7 @@
         .wrap( '<div class="center" />' );
 
       // messages
-      $( '.message .error, .red' )
+      $( '.error, .red' )
         .addClass( 'notice notice--danger' );
 
       $( '.green' )
@@ -201,8 +224,36 @@
       $( '.back_to_shop' )
         .addClass( 'button' );
 
-      $( '#shipping_address_phone' )
+      $( '#shipping_address_phone, #client_phone' )
         .mask('+7(999)999-99-99');
+
+      // общие кнопки
+      $( 'input[type="submit"]' )
+        .addClass( 'mc-grid-12' );
+
+      // кнопки "действия"
+      $( '#create_order, [name="commit"], .back_to_shop' )
+        .addClass( 'button--action mc-grid-12' );
+
+      // разлогиниться
+      $( 'a[data-method="delete"]' )
+        .addClass( 'button' )
+        .parent()
+          .siblings('#regular_client')
+            .css({
+              'line-height': '35px',
+              'margin-right': '0.5em'
+            });
+
+      var
+        text = $( '.set-title.content-title:first' ).text();
+      if( text.indexOf( 'Состав заказа' ) > -1 ){
+        $( '.input' )
+          .addClass( 'input--titled' );
+
+        $( '.field-content' )
+          .addClass( 'input-value' );
+      }
     });
   </script>
 </body>
