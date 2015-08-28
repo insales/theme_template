@@ -1,13 +1,16 @@
-// ==============================================================================================
+// ======================================================================================
 //                                              COMMENTS 
-// ==============================================================================================
+// ======================================================================================
 
 $(function(){
   var anchor = document.location.hash;
 
   if( anchor == '#comments' || anchor == '#comment_form' || anchor == '#review_form' || anchor == '#reviewes' ){
-    $( '.js-tub-review' ).trigger( 'click' );
-    $(window).scrollTo( '.review', 400 );
+    $( '.js-tub-review' )
+      .trigger( 'click' );
+    $( '.js-accordion-review' )
+      .trigger( 'click' );
+    $( window ).scrollTo( '.review_form', 400 );
   };
 
   $( '.js-review-toggle' ).click( function(e){
