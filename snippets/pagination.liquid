@@ -1,6 +1,6 @@
 {% if paginate.parts.size > 1 %}
 
-  <div class="m-center s-center">
+  <div class="sm-center xs-center">
     <ul class="pagination pagination--horizontal _flow-opposite l-flow-opposite">
   
     {% if paginate.previous %}
@@ -78,8 +78,10 @@
   </div>
 {% endif %}
 
-{% if settings.pagination_show_hint %}
-  <div class="pagination-counter m-hidden s-hidden">
+{% if settings.pagination-show_hint %}
+  <div class="pagination-counter
+              sm-hidden xs-hidden"
+  >
     {% assign from = paginate.current_offset %}
 
     {% if paginate['current_page'] == paginate.parts.last.title %}
