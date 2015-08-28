@@ -5,7 +5,7 @@
 // здесь расписан дефолтный функционал для блоков и всякие UI штуки.
 // всякие переключалки - вынесены в отдельные файлы шаблонов/блоков
 
-// подключаем функционал переключаемых блоков и их плагинов плагин
+// подключаем функционал переключаемых блоков и их плагинов
 var
   // менюшки
   menuToggler = new InSales.CollapseBlock({
@@ -29,6 +29,7 @@ var
     targetClass:  'filter-hidden_sections',
   }),
 
+  // сворачивающиеся блоки
   accordionToggler = new InSales.CollapseBlock({
     togglerClass: 'js-accordion-toggler',
     wrapperClass: 'js-accordion-wrapper',
@@ -73,6 +74,28 @@ $( document ).on( 'click', '.js-filter_section-value_input, .js-filter_section-v
     .trigger( 'change' );
 });
 
+// сброс фильтра
+$( document ).on( 'click', '.js-filter-clear_all', function( e ){
+  e.preventDefault();
+
+  $( '.js-filter_section-value_input:checked' ).each( function(){
+    $(this)
+      .trigger( 'click' );
+  });
+
+  $( '.filter_section-value--range' ).each( function(){
+    var
+      params = getParams( $(this) );
+
+    $(this).get( 0 )
+      .noUiSlider.set([ params.min, params.max ]);
+  });
+
+  $(this)
+    .parents( 'form:first' )
+      .submit();
+});
+
 // ловим изменение значения в скрытых полях фильтра
 $( document ).on( 'change', '.js-filter_section-characteristic', function(){
   var
@@ -114,7 +137,7 @@ $( document ).on( 'click', '.js-compare-toggle_same', function( e ){
 });
 
 // =======================================================================
-//                              TUBS
+//                              TABS
 // =======================================================================
 
 $( '.tubs-node' ).on( 'click', function(){
@@ -125,8 +148,9 @@ $( '.tubs-node' ).on( 'click', function(){
 
   $unit
     .siblings( '.tubs-node--active' )
-      .removeClass( 'tubs-node--active' )
-      .end()
+      .removeClass( 'tubs-node--active' );
+
+  $unit
     .addClass( 'tubs-node--active' );
 
   $content
@@ -148,4 +172,4 @@ styleSelect = function( selector ){
       $(this).wrap( '<div class="styled_select-wrapper" />' );
     };
   });
-}
+};
