@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if gt IE 8]>
-  html class="ie-9">
-<![endif]-->
+<!--[if gt IE 8]-->
+  <html class="ie-9">
+<!--[endif]-->
 <!--[if !IE]>-->
   <html >
 <!--<![endif]-->
@@ -9,11 +9,11 @@
   <title>{{ title }}</title>
   <meta name="robots" content="index,follow" />
 
-{% comment %}
-  подключаем все объявления в <head>
-  head.liquid - обявления, подключение ресурсов
-  init_js.liquid - подцепление необходимых для работы значений, из Liquid вчастности
-{% endcomment %}
+  {% comment %}
+    подключаем все объявления в <head>
+    head.liquid - обявления, подключение ресурсов
+    init_js.liquid - подцепление необходимых для работы значений, из Liquid вчастности
+  {% endcomment %}
   <head>
     {% include "head" %}
   </head>
@@ -68,13 +68,5 @@
   {% comment %}
   {% include "mobile_panel" %}
   {% endcomment %}
-
-  <script type="text/javascript" src="{{ 'template.js' | asset_url }}"></script>
-  {% include "init_js" %}
-
-  {% include "template_cart" %}
-  {% include "template_modal" %}
-  {% include "template_product" %}
-  {% include "template_selectors" %}
 </body>
 </html>
