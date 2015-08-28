@@ -14,11 +14,11 @@ ajaxBuyButton = function( buttonSelector ){
         jqObj: $(this),
       };
 
-    if( !$(this).is( '.button--disabled' ) || $(this).attr( 'disabled' ) != 'disabled' ){
+    if( !$(this).hasClass( 'button--disabled' ) || $(this).attr( 'disabled' ) != 'disabled' ){
       Events( 'onBuyButton_Active' ).publish( $data );
 
       Cart.addItem( $(this).parents( 'form:first') );
-    } else {
+    }else{
       Events( 'onBuyButton_Inactive' ).publish( $data );
     };
   });
