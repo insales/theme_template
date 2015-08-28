@@ -17,6 +17,8 @@ Events = function( id, flags ){
     method,
     Event = id && EventsList[ id ];
 
+  flags = flags || 'memory';
+
   if( !Event ){
     callbacks = jQuery.Callbacks( flags );
     Event = {
