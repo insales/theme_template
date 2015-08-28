@@ -52,8 +52,8 @@ $(function(){
       $js_buy           = $( '.product-buy' ),
       $js_sku           = $( '.js-product-sku' ),
       $js_sku_text      = $( '.js-product-sku_field' ),
-      $js_price_current = $( '.js-price-current' ),
-      $js_price_old     = $( '.js-price-old' ),
+      $js_price_current = $( '.js-prices-current' ),
+      $js_price_old     = $( '.js-prices-old' ),
       $js_presence      = $( '.js-product-presence' );
 
     if( variant ){
