@@ -114,6 +114,11 @@ getParams = function( $obj ){
   return params;
 }
 
+setParams = function( $obj, params ){
+  $obj
+    .data( 'readyParams', params );
+};
+
 // производим транслитерацию строки
 translit = function( string ){
   var 
