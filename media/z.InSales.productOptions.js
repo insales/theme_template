@@ -102,7 +102,8 @@ InSales.productOptions = function( $product, Base ){
       };
 
       if( is_finded ){
-      Base.options[ option_index ].selected = $variant.position;
+        Base.options[ option_index ].selected = $variant.position;
+        return false;
       };
     });
 
