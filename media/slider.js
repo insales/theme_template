@@ -12,16 +12,16 @@ $(function(){
     slideBy: 'page',
   });
 
-  $( '.js-slider-left' ).click( function(){
+  $( '.js-slider-left' ).on( 'click', function(){
     $(this)
-      .parents( '.slider' )
+      .parents( '.slider:first' )
         .find( '.slider-container' )
           .trigger( 'prev.owl.carousel' );
   });
 
-  $( '.js-slider-right' ).click( function(){
+  $( '.js-slider-right' ).on( 'click', function(){
     $(this)
-      .parents( '.slider' )
+      .parents( '.slider:first' )
         .find( '.slider-container' )
           .trigger( 'next.owl.carousel' );
   });
