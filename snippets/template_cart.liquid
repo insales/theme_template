@@ -43,6 +43,7 @@
               x
             <span class="basket_item-price prices">
               <span class="prices-current">
+                <%- @formatMoney order_line.sale_price %>
               </span>
             </span>
 
@@ -63,6 +64,7 @@
       </span>
       <div class="basket_list-total prices right">
         <div class="prices-current">
+          <%- @formatMoney @total_price  %>
         </div>
       </div>
       <a href="/cart_items/" class="basket_list-submit button button--buy">
@@ -88,7 +90,9 @@
                   lg-grid-4 md-grid-4 sm-grid-5 xs-grid-4
                   right"
       >
-        <%- @formatMoney discount.amount %>
+        <span class="prices-current">
+          <%- @formatMoney discount.amount %>
+        </span>
       </div>
     </div>
   <% end %>
