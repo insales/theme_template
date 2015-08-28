@@ -30,7 +30,7 @@ checkForm = function( $form ){
       is_captcha = true;
     };
 
-    if( $(this).attr('type') == ('email') ){
+    if( $(this).attr('type') == 'email' ){
       is_email = true;
     };
 
