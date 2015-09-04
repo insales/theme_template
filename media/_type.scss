@@ -6,6 +6,14 @@
 .editor{
   text-align: justify;
 
+  a{
+    color: $link-color;
+
+    &:hover{
+      
+    }
+  }
+
   // Headings
   // -------------------------
 
@@ -27,7 +35,7 @@
   h1, .h1,
   h2, .h2,
   h3, .h3 {
-    margin-top: $line-height-computed;
+    margin-top: 0; //$line-height-computed;
     margin-bottom: ($line-height-computed / 2);
 
     small,
@@ -60,6 +68,10 @@
 
   p {
     margin: 0 0 ($line-height-computed / 2);
+
+    &:last-child{
+      margin-bottom: 0;
+    }
   }
 
   // Lists
@@ -81,5 +93,24 @@
     margin-bottom: $line-height-computed;
     font-style: normal;
     line-height: $line-height-base;
+  }
+
+  table{
+    display: block;
+    overflow-x: auto;
+  }
+
+  #feedback_form table{
+    display: table;
+    text-align: left;
+    width: 100%;
+
+    p:last-child{
+      text-align: center;
+    }
+  }
+
+  img{
+    height: auto;
   }
 }

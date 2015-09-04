@@ -17,7 +17,9 @@
     > .input-notice{}
   }
 
-  &--captcha{}
+  &--captcha{
+    .input-field{}
+  }
 }
 
 .notice{

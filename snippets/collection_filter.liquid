@@ -1,8 +1,4 @@
-{% comment %}
-  если hide_after = 0, то не будут скрываться поля
-{% endcomment %}
-
-{% assign hide_after = 2 %}
+{% assign hide_after = 100 %}
 {% assign is_collapse = true %}
 {% assign collapse_range = false %}
 
@@ -25,11 +21,18 @@
   >
     <label id="filter_section-price"
             class="filter_section-title
-                  filter_section-toggler
+                  
                   {% if is_collapse %}js-filter_section-toggler{% endif %}"
     >
       <span>
         Цена
+      </span>
+
+      <span class="button-marker
+                  button
+                  filter_section-toggler"
+      >
+        <i class="fa fa-minus"></i>
       </span>
     </label>
 
@@ -92,141 +95,175 @@
 
   {% for property in collection.properties %}
 
-    {% if hide_after != 0 and forloop.index == hide_after %}
+    {% comment %}
+      проверяем, будем мы выводить эту секцию фильтра или нет
+    {% endcomment %}
+    {% if settings.filter-hide_empty == '1' %}
+      {% assign show_section = false %}
+      {% for characteristic in property.characteristics %}
+        {% if characteristic.products_count != 0 or characteristic.current? %}
+          {% assign show_section = true %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign show_section = true %}
+    {% endif %}
+
+    {% assign is_selected = false %}
+    {% for characteristic in property.characteristics %}
+      {% if characteristic.current? %}
+        {% assign is_selected = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if forloop.index == hide_after %}
       <div class="filter-hidden_sections">
     {% endif %}
 
-    <div class="filter-section
-                filter_section
-                js-filter_section-wrapper"
-    >
-      <label id="filter_section-{{ property.id }}"
-              class="filter_section-title
-                    filter_section-toggler
-                    {% if is_collapse %}js-filter_section-toggler{% endif %}"
+    {% if show_section %}
+      <div class="filter-section
+                  js-filter_section-wrapper"
       >
-        <span>
-          {{ property.name }}
+        <label id="filter_section-{{ property.id }}"
+                class="filter_section-title
+                      
+                      {% if is_collapse %}js-filter_section-toggler{% endif %}"
+        >
+          {% if is_selected %}
+            <span class="fa fa-thumb-tack">
+            </span>
+          {% endif %}
+          <span>
+            {{ property.name }}
+          </span>
+
+          <span class="button-marker
+                      button
+                      filter_section-toggler"
+          >
+          <i class="fa fa-plus"></i>
         </span>
-      </label>
+        </label>
 
-      {% unless property.is_numeric? %}
-        <ul class="filter_section-values
-                  {% if is_collapse %}filter_section-values--collapse{% endif %}
-                  js-filter_section-values"
-        >
-          {% for characteristic in property.characteristics %}
-
-            {% assign show_filter = true %}
-            {% if settings.filter-show_empty and characteristic.products_count == 0 %}
-              {% assign show_filter = false %}
-            {% endif %}
-            {% if characteristic.current? %}
-              {% assign show_filter = true %}
-            {% endif %}
-
-            {% if show_filter %}
-              <li class="filter_section-value
-                        {% if characteristic.current? %}filter_section-value--current{% endif %}"
-              >
-                <input  type="checkbox"
-                        {% if characteristic.current? %} checked="checked"{% endif %}
-                        class="filter_section-value_input
-                              js-filter_section-value_input"
-                />
-
-                <a  href='{{ characteristic.url }}'
-                    class="filter_section-value_link
-                          {% if characteristic.current? %}filter_section-value_link--active{% endif %}
-                          js-filter_section-value_link"
-                >
-                  {{ characteristic.title }} ({{ characteristic.products_count }})
-                </a>
-
-                <input  type="hidden"
-                        name="characteristics[]"
-                        value="{{ characteristic.id }}"
-                        {% unless characteristic.current? %}disabled="disabled"{% endunless %}
-                        class="js-filter_section-characteristic"
-                />
-              </li>
-            {% endif %}
-
-          {% endfor %}
-        </ul>
-      {% else %}
-
-        {% comment %}
-          делаем верстку для слайдера по параметрам
-        {% endcomment %}
-        {% assign min_val = property.characteristics.first.name | round: 0 %}
-        {% assign max_val = property.characteristics.first.name | round: 0 %}
-
-        {% for characteristic in property.characteristics %}
-          {% assign val = characteristic.name | round: 0 %}
-          {% if val < min_val %}
-            {% assign min_val = val %}
-          {% endif %}
-
-          {% if val > max_val %}
-            {% assign max_val = val %}
-          {% endif %}
-        {% endfor %}
-
-        {% if property.gt_value %}
-          {% assign start = property.gt_value %}
-        {% else %}
-          {% assign start = min_val %}
-        {% endif %}
-
-        {% if property.lt_value %}
-          {% assign end = property.lt_value %}
-        {% else %}
-          {% assign end = max_val %}
-        {% endif %}
-        <div class="filter_section-values filter_section-values--range
+        {% unless property.is_numeric? %}
+          <ul class="filter_section-values
                     {% if is_collapse %}filter_section-values--collapse{% endif %}
-                    js-section-range
-                    js-filter_section-values"
-        >
+                    js-filter_section-values
+                    padded"
+          >
+            {% for characteristic in property.characteristics %}
 
-          <div class="filter_section-value--range
-                      js-range"
-                data-params="start: {{ start }}; end: {{ end }}; min: {{ min_val }}; max: {{ max_val }}"
-          ></div>
+              {% assign show_filter = true %}
+              {% if settings.filter-hide_empty and characteristic.products_count == 0 %}
+                {% assign show_filter = false %}
+              {% endif %}
+              {% if characteristic.current? %}
+                {% assign show_filter = true %}
+              {% endif %}
 
-          <div class="row">
-            <div class="grid-6 left">
-              от
-              <input class="filter_section-range_input
-                            js-range-min_text">
+              {% if show_filter %}
+                <li class="filter_section-value
+                          {% if characteristic.current? %}filter_section-value--current{% endif %}"
+                >
+                  <input  type="checkbox"
+                          {% if characteristic.current? %} checked="checked"{% endif %}
+                          class="filter_section-value_input
+                                js-filter_section-value_input"
+                  />
+
+                  <a  href='{{ characteristic.url }}'
+                      class="filter_section-value_link
+                            {% if characteristic.current? %}filter_section-value_link--active{% endif %}
+                            js-filter_section-value_link"
+                  >
+                    {{ characteristic.title }} ({{ characteristic.products_count }})
+                  </a>
+
+                  <input  type="hidden"
+                          name="characteristics[]"
+                          value="{{ characteristic.id }}"
+                          {% unless characteristic.current? %}disabled="disabled"{% endunless %}
+                          class="js-filter_section-characteristic"
+                  />
+                </li>
+              {% endif %}
+
+            {% endfor %}
+          </ul>
+        {% else %}
+
+          {% comment %}
+            делаем верстку для слайдера по параметрам
+          {% endcomment %}
+          {% assign min_val = property.characteristics.first.name | round: 0 %}
+          {% assign max_val = property.characteristics.first.name | round: 0 %}
+
+          {% for characteristic in property.characteristics %}
+            {% assign val = characteristic.name | round: 0 %}
+            {% if val < min_val %}
+              {% assign min_val = val %}
+            {% endif %}
+
+            {% if val > max_val %}
+              {% assign max_val = val %}
+            {% endif %}
+          {% endfor %}
+
+          {% if property.gt_value %}
+            {% assign start = property.gt_value %}
+          {% else %}
+            {% assign start = min_val %}
+          {% endif %}
+
+          {% if property.lt_value %}
+            {% assign end = property.lt_value %}
+          {% else %}
+            {% assign end = max_val %}
+          {% endif %}
+          <div class="filter_section-values filter_section-values--range
+                      {% if is_collapse %}filter_section-values--collapse{% endif %}
+                      js-section-range
+                      js-filter_section-values"
+          >
+
+            <div class="filter_section-value--range
+                        js-range"
+                  data-params="start: {{ start }}; end: {{ end }}; min: {{ min_val }}; max: {{ max_val }}"
+            ></div>
+
+            <div class="row">
+              <div class="grid-6 left">
+                от
+                <input class="filter_section-range_input
+                              js-range-min_text">
+              </div>
+
+              <div class="grid-6 right">
+                до
+                <input class="filter_section-range_input
+                              js-range-max_text"
+                >
+              </div>
             </div>
 
-            <div class="grid-6 right">
-              до
-              <input class="filter_section-range_input
-                            js-range-max_text"
-              >
-            </div>
+            <input type="hidden"
+                    name="properties_gt[{{ property.id }}]"
+                    value="{{ start }}"
+                    class="js-range-min_input"
+            />
+            <input type="hidden"
+                    name="properties_lt[{{ property.id }}]"
+                    value="{{ end }}"
+                    class="js-range-max_input"
+            />
           </div>
-
-          <input type="hidden"
-                  name="properties_gt[{{ property.id }}]"
-                  value="{{ start }}"
-                  class="js-range-min_input"
-          />
-          <input type="hidden"
-                  name="properties_lt[{{ property.id }}]"
-                  value="{{ end }}"
-                  class="js-range-max_input"
-          />
-        </div>
-      {% endunless %}
-    </div>
+        {% endunless %}
+      </div>
+    {% endif %}
 
   {% endfor %}
 
-  {% if hide_after != 0 %}
+  {% if hide_after < collection.properties.size %}
     </div>
     <div class="filter-sections_toggler button
                 js-filter-sections_toggler"
@@ -238,12 +275,21 @@
   {% comment %}
     случай, когда нам нужна кнопка
   {% endcomment %}
-  {% if collection_filter %}
-    <button class="filter-submit button">
-      <i></i>
-      применить
-    </button>
-  {% endif %}
+  <button class="filter-submit
+                button button--action
+                grid-12"
+  >
+    <i></i>
+    Применить
+  </button>
+
+  <button class="filter-clear_all button
+                grid-12
+                js-filter-clear_all"
+  >
+    <i></i>
+    Сбросить фильтр
+  </button>
 
   {% comment %}
     общие поля, которые не надо трогать

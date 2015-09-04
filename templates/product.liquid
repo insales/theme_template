@@ -36,39 +36,39 @@
           <div class="slider-left--gallery js-slider-left">
             <i class="fa fa-chevron-left"></i>
           </div>
-          <div class="slider-right--gallery js-slider-right">
+          <div class="slider-right slider-right--gallery
+                      button
+                      js-slider-right"
+          >
             <i class="fa fa-chevron-right"></i>
           </div>
         </div>
       {% endif %}
 
-      <ul class="gallery-preview_list gallery-preview_list--horizontal
-                js-slider--gallery"
-      >
-        {% for image in product.images %}
+    <ul class="gallery-preview_list gallery-preview_list--horizontal
+              slider-container
+              {% if product.images.size > 1 %}js-slider-gallery{% endif %}"
+    >
+      {% for image in product.images %}
 
-          <li class="gallery-preview image-wrapper">
-            <a  href="{{ image.original_url }}"
+        <li class="gallery-preview padded">
+          <div class="image-wrapper">
+            <span alt="{{ product.title }}"
+                  title="{{ product.title }}"
 
-                alt="{{ product.title }}"
-                title="{{ product.title }}"
-
-                class="gallery-image
-                      {% if forloop.first %} gallery-image--current {% endif %}
-                      image-square
-                      js-image--preview"
-                data-large-image="{{ image.large_url }}"
-
-                rel="zoom-id:MagicZoom"
+                  class="gallery-image
+                        {% if forloop.first %} gallery-image--current {% endif %}
+                        image-square
+                        js-image--preview"
+                  data-large-image="{{ image.large_url }}"
             >
               <img src="{{ image.compact_url }}" />
             </a>
           </li>
 
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
 
 </div>
 
@@ -155,7 +155,10 @@
       {% endcomment %}
       <div class="product-quantity quantity quantity--inline">
 
-        <div class="quantity-button quantity-button--minus js-quantity-minus">
+        <div class="quantity-button quantity-button--minus
+                    button
+                    js-quantity-minus"
+        >
           <i class="fa fa-minus"></i>
         </div>
 
@@ -165,7 +168,10 @@
                 class="quantity-input js-quantity-input"
         />
 
-        <div class="quantity-button quantity-button--plus js-quantity-plus">
+        <div class="quantity-button quantity-button--plus
+                    button
+                    js-quantity-plus"
+        >
           <i class="fa fa-plus"></i>
         </div>
 
@@ -238,30 +244,38 @@
 
 <div class="tubs grid-12">
   <ul class="tubs-controls tubs-controls--horizontal">
-    <li class="tubs-node tubs-node--active" data-params="target: '#tub1'">
-      Описание
-    </li>
-    <li class="tubs-node" data-params="target: '#tub2'">
-      Характеристики
-    </li>
+    {% if product.description %}
+      <li class="tubs-node tubs-node--active" data-target="#tub1">
+        Описание
+      </li>
+    {% endif %}
+
+    {% if product.properties.size > 0 %}
+      <li class="tubs-node" data-target="#tub2">
+        Характеристики
+      </li>
+    {% endif %}
+
     {% if account.reviews_enabled? %}
-      <li class="tubs-node js-tub-review" data-params="target: '#tub3'">
-        Отзывы
+      <li class="tubs-node js-tub-review" data-target="#tub3">
+        Отзывы ({{ product.reviews.size }})
       </li>
     {% endif %}
   </ul>
 
-  <div id="tub1" class="tubs-content tubs-content--active">
-    {% comment %}
-      описание
-    {% endcomment %}
-    <div class="product-description editor">
-      {{ product.description | editable }}
+  {% if product.description %}
+    <div id="tub1" class="tubs-content tubs-content--active">
+      {% comment %}
+        описание
+      {% endcomment %}
+      <div class="product-description editor">
+        {{ product.description | editable }}
+      </div>
     </div>
-  </div>
+  {% endif %}
 
-  <div id="tub2" class="tubs-content">
-    {% if product.properties.size > 0 %}
+  {% if product.properties.size > 0 %}
+    <div id="tub2" class="tubs-content">
       <!-- <p>Параметры:</p>-->
       <table class="product-properties">
         {% for property in product.properties %}
@@ -276,78 +290,34 @@
           </tr>
         {% endfor %}
       </table>
-    {% endif %}
-  </div>
+    </div>
+  {% endif %}
 
-  <div id="tub3" class="tubs-content">
-    {% if account.reviews_enabled? %}
+  {% if account.reviews_enabled? %}
+    <div id="tub3" class="tubs-content">
       {% comment %}
         вывод отзывов
       {% endcomment %}
       {% include "product_reviews" %}
-    {% endif %}
-  </div>
+    </div>
+  {% endif %}
 </div>
 
 <div class="grid-12">
   {% comment %}
     вывод сопутка
   {% endcomment %}
-  {% assign related = product.related_products %}
-  {% if related.size > 0 %}
-    <div class="slider slider--product">
-      <div class="slider-title">
-        Cопутствующие
-      </div>
 
-      {% if related.size > 4 %}
-        <div class="slider-control">
-          <div class="slider-left js-slider-left">
-            <i class="fa fa-chevron-left"></i>
-          </div>
-          <div class="slider-right js-slider-right">
-            <i class="fa fa-chevron-right"></i>
-          </div>
-        </div>
-      {% endif %}
-
-      <div class="js-slider-container owl-carousel">
-        {% for product in related %}
-          {% include "product_preview" %}
-        {% endfor %}
-      </div>
-
-    </div>
-  {% endif %}
+  {% assign slider-products = product.related_products %}
+  {% assign slider-title = "Cопутствующие" %}
+  {% include "slider_product" %}
 
   {% comment %}
     вывод аналогичных
   {% endcomment %}
-  {% assign similar = product.similar_products %}
-  {% if similar.size > 0 %}
-    <div class="slider slider--product">
-      <div class="slider-title">
-        Аналогичные
-      </div>
-
-      {% if similar.size > 4 %}
-        <div class="slider-control">
-          <div class="slider-left js-slider-left">
-            <i class="fa fa-chevron-left"></i>
-          </div>
-          <div class="slider-right js-slider-right">
-            <i class="fa fa-chevron-right"></i>
-          </div>
-        </div>
-      {% endif %}
-
-      <div class="js-slider-container owl-carousel">
-        {% for product in similar %}
-          {% include "product_preview" %}
-        {% endfor %}
-      </div>
-    </div>
-  {% endif %}
+  {% assign slider-products = product.similar_products %}
+  {% assign slider-title = "Аналогичные" %}
+  {% include "slider_product" %}
 
 </div>
 

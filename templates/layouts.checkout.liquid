@@ -21,61 +21,75 @@
 
   {% include "header" %}
 
-  <section class="section--breadcrumbs">
-    <div class="wrap row">
-      {% if client %}
-          <ul class='links menu menu--personal_cabinet menu--horizontal padded-inner-vertical'>
-            {% if linklists.account-menu %}
-              {% for link in linklists.account-menu.links %}
-                <li class="menu-node menu-node--personal_cabinet">
-                  <a href='{{ link.url }}' class="menu-link">
-                    {{ link.title }}
-                  </a>
-                </li>
-              {% endfor %}
-            {% else %}
-              <li class="menu-node menu-node--personal_cabinet">
-                <a href='/' class="menu-link">
-                  Вернуться в магазин
-                </a>
-              </li>
-              <li class="menu-node menu-node--personal_cabinet">
-                <a href='/client_account/contacts' class="menu-link">
-                  Контактные данные
-                </a>
-              </li>
-              <li class="menu-node menu-node--personal_cabinet">
-                <a href='/client_account/addresses' class="menu-link">
-                  Адрес доставки
-                </a>
-              </li>
-              <li class="menu-node menu-node--personal_cabinet">
-                <a href='/client_account/orders' class="menu-link">
-                  Заказы и скидки
-                </a>
-              </li>
-              <li class="menu-node menu-node--personal_cabinet">
-                <a href='/client_account/feedback' class="menu-link">
-                  Обратная связь
-                </a>
-              </li>
-            {% endif %}
-            <li class="menu-node menu-node--personal_cabinet">
-              <a href="/client_account/exit" class="menu-link">
-                {{ client.full_name }}
-                (Выход)
-              </a>
-            </li>
-          </ul>
-      {% endif %}
-    </div>
-  </section>
-
   <section class="section--content">
     <div class="wrap row padded-inner">
 
       <div class='body fc'>
-        
+
+        <div class="accordion
+                    padded-bottom
+                    js-accordion-wrapper"
+        >
+          {% if client %}
+            <div class="accordion-title
+                        js-accordion-toggler"
+            >
+              <span class="fa fa-user"></span>
+              Личный кабинет
+              <span class="accordion-toggler button button--toggler">
+                <i class="fa fa-plus"></i>
+              </span>
+            </div>
+
+              <ul class="links
+                        menu _menu--personal_cabinet menu--vertical
+                        accordion-content accordion-content--collapse
+                        padded-sides"
+              >
+                {% if linklists.account-menu %}
+                  {% for link in linklists.account-menu.links %}
+                    <li class="menu-node menu-node--personal_cabinet">
+                      <a href='{{ link.url }}' class="menu-link">
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                {% else %}
+                  <li class="menu-node menu-node--personal_cabinet">
+                    <a href='/' class="menu-link">
+                      Вернуться в магазин
+                    </a>
+                  </li>
+                  <li class="menu-node menu-node--personal_cabinet">
+                    <a href='/client_account/contacts' class="menu-link">
+                      Контактные данные
+                    </a>
+                  </li>
+                  <li class="menu-node menu-node--personal_cabinet">
+                    <a href='/client_account/addresses' class="menu-link">
+                      Адрес доставки
+                    </a>
+                  </li>
+                  <li class="menu-node menu-node--personal_cabinet">
+                    <a href='/client_account/orders' class="menu-link">
+                      Заказы и скидки
+                    </a>
+                  </li>
+                  <li class="menu-node menu-node--personal_cabinet">
+                    <a href='/client_account/feedback' class="menu-link">
+                      Обратная связь
+                    </a>
+                  </li>
+                {% endif %}
+                <li class="menu-node menu-node--personal_cabinet">
+                  <a href="/client_account/exit" class="menu-link">
+                    {{ client.full_name }}
+                    (Выход)
+                  </a>
+                </li>
+              </ul>
+          {% endif %}
+        </div>
 
         <div class='content-title page-title'>{% yield 'title' %}</div>
         {% yield 'flash_messages' %}

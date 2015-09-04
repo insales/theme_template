@@ -19,3 +19,11 @@ a{
 #own_preloader{}
 
 .mobile_panel{}
+
+.lock_scroll{
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+  position: fixed;
+  //top: 0;
+  width: 100%;
+}
