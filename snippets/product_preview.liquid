@@ -32,13 +32,13 @@
     {% if product.variants.size == 1 %}
       <input type="hidden" name="variant_id" value="{{ product.variants.first.id }}">
 
-      <submit title="{{ product.title }}"
+      <button title="{{ product.title }}"
               class="product_preview-button button button--buy
                     js-buy"
       >
         <i class="fa fa-shopping-cart"></i>
         Купить
-      </submit>
+      </button>
     {% else %}
       <a  href="{{ product.url }}"
           class="product_preview-button button button--buy"

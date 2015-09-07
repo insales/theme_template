@@ -45,15 +45,16 @@
         </div>
       {% endif %}
 
-    <ul class="gallery-preview_list gallery-preview_list--horizontal
-              slider-container
-              {% if product.images.size > 1 %}js-slider-gallery{% endif %}"
-    >
-      {% for image in product.images %}
+      <ul class="gallery-preview_list gallery-preview_list--horizontal
+                slider-container
+                {% if product.images.size > 1 %}js-slider-gallery{% endif %}"
+      >
+        {% for image in product.images %}
 
-        <li class="gallery-preview padded">
-          <div class="image-wrapper">
-            <span alt="{{ product.title }}"
+          <li class="gallery-preview padded">
+            <div class="image-wrapper">
+              <a href="{{ image.original_url }}"
+                  alt="{{ product.title }}"
                   title="{{ product.title }}"
 
                   class="gallery-image
@@ -61,15 +62,16 @@
                         image-square
                         js-image--preview"
                   data-large-image="{{ image.large_url }}"
-            >
-              <img src="{{ image.compact_url }}" />
-            </a>
+              >
+                <img src="{{ image.compact_url }}" />
+              </a>
+            </div>
           </li>
 
-      {% endfor %}
-    </ul>
-  </div>
-
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
 </div>
 
 {% comment %}
