@@ -1,0 +1,24 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "article_reviews.liquid",
+      "product_reviews.liquid"
+    ],
+
+    "core.css": [
+      "reviews.less"
+    ],
+
+    "style.css.scss": [
+      "_reviews.scss"
+    ],
+
+    "template.js": [
+      "reviews.js"
+    ]
+  }
+}

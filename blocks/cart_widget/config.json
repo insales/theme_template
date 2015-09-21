@@ -1,0 +1,23 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "cart_widget.liquid"
+    ],
+
+    "core.css": [
+      "cart_widget.less"
+    ],
+
+    "style.css.scss": [
+      "_cart_widget.scss"
+    ],
+
+    "template_cart.liquid": [
+      "cart_widget.template"
+    ]
+  }
+}

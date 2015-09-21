@@ -1,0 +1,9 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets":  [ "head.liquid" ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "product.liquid"
+    ],
+
+    "core.css": [
+      "product.less",
+      "option_selectors.less"
+    ],
+
+    "style.css.scss": [
+      "_product.scss",
+      "_option_selectors.scss"
+    ],
+
+    "media": [
+      "product.js"
+    ],
+
+    "z.InSales.optionSelectors.js": [
+      "js/z.InSales.optionSelectors.js",
+      "js/z.InSales.productOptions.js",
+      "js/z.InSales.selectorSettings.js",
+      "js/z.InSales.singleOption.js",
+      "js/z.InSales.variantsTree.js"
+    ],
+
+    "template.js": [
+      "z.InSales.optionSelectors.js",
+      "product.js",
+
+      "js/z.InSales.moneyFormat.js",
+      "js/z.InSales.priceType.js"
+    ],
+
+    "template_selectors.liquid": [
+      "template_selectors.liquid"
+    ]
+  }
+}

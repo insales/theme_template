@@ -1,0 +1,15 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "prices.less"
+    ],
+
+    "style.css.scss": [
+      "_prices.scss"
+    ]
+  }
+}

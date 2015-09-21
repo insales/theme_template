@@ -1,0 +1,90 @@
+{
+  // настройки для тестового шаблона
+  "test": {},
+
+  // настройки для чистого шаблона
+  "dist": {},
+
+  // настройки для всех шаблонов
+  "core": {
+    // склейка необходимых плагинов
+    "z.InSales.plugins.js": [
+      "plugins/jquery.cookies.js",
+      "plugins/jquery.barrating.min.js",
+      "plugins/jquery.maskedinput.min.js",
+      "plugins/nouislider.min.js",
+      "plugins/jquery.scrollTo.min.js"
+    ],
+
+    // склейка скриптов для ECT-шаблонов
+    "z.InSales.templates.js": [
+      "ect/z.coffee-script.js",
+      "ect/z.ect.min.js",
+      "ect/z.templates.js"
+    ],
+
+    // склеиваем дефолтные UI скрипты
+    "z.InSales.ui.js": [
+      "collapse/z.collapseBlock.js",
+      "ui/z.uiFunctions.js",
+      "ui/z.defaultFeedback.js"
+    ],
+
+    // подключаем файлы сброса, сетки, опорных стилей
+    "template.css": [
+      "core_css/normalize.css",
+      "core_css/grid.css",
+      "core.css"
+    ],
+
+    // подключение необходимых скриптов
+    "template.js": [
+      // подключаем плагины
+      "z.InSales.plugins.js",
+
+      // подключаем дефолтные переменные, окружение
+      // события, обертки json
+      // обработчик ECT-шаблонов
+      "InSales/z.InSales.init.js",
+
+      "ect/z.InSales.templates.js",
+
+      "InSales/z.InSales.events.js",
+      "InSales/z.InSales.jsonWrappers.js",
+      "InSales/z.InSales.preloader.js",
+
+      // подключаем описание переключаемых блоков
+      "collapse/z.InSales.collapseBlock.js",
+      "z.InSales.ui.js"
+    ],
+
+    // копируем дефолтные иконки и скрипта проверки
+    "media": [
+      "media/favicon.ico",
+      "media/favicon.png",
+      "plugins/modernizr.js",
+      "scss/_variables.scss.liquid"
+    ],
+
+    // склейка опорных стилей
+    "core.css": [
+      "less/init.core.less",
+      "less/image.less"
+    ],
+
+    "_variables.scss.liquid": [
+      "scss/_variables.scss.liquid"
+    ],
+
+    // подключаем каркасные стили
+    "style.css.scss": [
+      "_variables.scss",
+      "scss/_variables_default.scss",
+      "scss/_type.scss"
+    ],
+
+    "snippets": [
+      "init_js/init_js.liquid"
+    ]
+  }
+}

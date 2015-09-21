@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "collection.liquid"
+    ],
+
+    "style.css.scss": [
+      "_collection.scss"
+    ],
+
+    "core.css": [
+      "collection.less"
+    ]
+  }
+}

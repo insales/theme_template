@@ -1,0 +1,23 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "collection_sort.liquid"
+    ],
+
+    "core.css": [
+      "collection_sort.less"
+    ],
+
+    "style.css.scss": [
+      "_collection_sort.scss"
+    ],
+
+    "z.InSales.ui.js": [
+      "z.collectionSort.js"
+    ]
+  }
+}

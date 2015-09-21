@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "tabs.less"
+    ],
+
+    "style.css.scss": [
+      "_tabs.scss"
+    ],
+
+    "z.InSales.ui.js": [
+      "z.tabs.js"
+    ]
+  }
+}

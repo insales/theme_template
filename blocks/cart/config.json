@@ -1,0 +1,34 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "cart.liquid"
+    ],
+
+    "snippets": [
+      "cart_discounts.liquid",
+      "cart_item.liquid"
+    ],
+
+    "core.css": [
+      "cart.less",
+      "discounts.less"
+    ],
+
+    "style.css.scss": [
+      "_cart.scss"
+    ],
+
+    "template.js": [
+      "z.InSales.cart.js",
+      "cart.js"
+    ],
+
+    "template_cart.liquid": [
+      "cart_discounts.template"
+    ]
+  }
+}

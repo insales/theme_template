@@ -1,0 +1,49 @@
+.slider{
+  .rel;
+
+  &-container{
+    .row;
+  }
+  &-link{}
+
+  &-control{
+    .rel;
+  }
+  &-left{
+    //.abs;
+    left: 0;
+    cursor: pointer;
+  }
+  &-right{
+    //.abs;
+    right: 0;
+    cursor: pointer;
+  }
+  &-up{
+    .abs;
+
+    top: 0;
+    cursor: pointer;
+  }
+  &-down{
+    .abs;
+
+    bottom: 0;
+    cursor: pointer;
+  }
+
+  &--index{
+    .slider-image{
+      display: block;
+      width: 100%;
+
+      img{
+        width: 100%;
+      }
+
+      & + .slider-image{
+        display: none;
+      }
+    }
+  }
+}

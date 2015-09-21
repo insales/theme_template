@@ -1,0 +1,19 @@
+{
+  "test": {
+    "snippets": [
+      "payments.liquid"
+    ]
+  },
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "payments.less"
+    ],
+
+    "style.css.scss": [
+      "_payments.scss"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+.cart{
+  &-title{}
+
+  &-table_container{
+    .row;
+  }
+
+  &-items_list{
+    .row;
+  }
+}
+
+.cart_item{
+  .row;
+  &-image{}
+
+  &-title{}
+
+  &-quantity{}
+
+  &-prices{
+    &--stock{}
+
+    &--total{}
+  }
+
+  &-delete{
+    cursor: pointer;
+  }
+}
+
+.cart_total{
+  .row;
+
+  &-title{}
+
+  &-price{}
+}

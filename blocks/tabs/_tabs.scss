@@ -1,0 +1,13 @@
+/* tubs */
+
+.tubs{
+  &-controls{}
+
+  &-node{
+    &--active{}
+  }
+
+  &-content{
+    &--active{}
+  }
+}

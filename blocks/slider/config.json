@@ -1,0 +1,34 @@
+{
+  "test": {
+    "snippets": [
+      "slider_index.liquid",
+      "slider_product.liquid"
+    ]
+  },
+
+  "dist": {
+    "snippets": [
+      "slider_index.liquid",
+      "slider_product.liquid"
+    ]
+  },
+
+  "core": {
+    "core.css": [
+      "slider.less"
+    ],
+
+    "style.css.scss": [
+      "_slider.scss"
+    ],
+
+    "template.css": [
+      "owl.carousel.css"
+    ],
+
+    "template.js": [
+      "owl.carousel.min.js",
+      "slider.js"
+    ]
+  }
+}

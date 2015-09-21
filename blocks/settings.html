@@ -1,0 +1,519 @@
+<fieldset>
+  <legend>Favicon( иконка сайта )</legend>
+
+  <table>
+    
+    <tr>
+      <td><label for="favicon">Своя иконка</label></td>
+      <td><input name="favicon.png" id="favicon" type="file" data-max-width="32" data-max-height="32"></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Логотип</legend>
+
+  <table>
+    
+    <tr>
+      <td><label for="logo">Логотип ( 470x88px )</label></td>
+      <td><input name="logo.png" id="logo" type="file" data-max-width="470" data-max-height="88"></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Настройка цветов </legend>
+
+  <!-- top panel -->
+  <table>
+    <tr>
+      <td colspan="2"><h2>Верхняя панель</h2></td>
+    </tr>
+
+    <tr>
+      <td><label for="top_panel_bg">Фон панели</label></td>
+      <td><input name="top_panel_bg" id="top_panel_bg" class="color" value="#00a161"></td>
+    </tr>
+
+    <tr>
+      <td><label for="top_panel_font">Цвет шрифта</label></td>
+      <td><input name="top_panel_font" id="top_panel_font" class="color" value="#D8F6E6"></td>
+    </tr>
+
+    <tr>
+      <td><label for="top_panel_font_hover">Цвет шрифта при наведении</label></td>
+      <td><input name="top_panel_font_hover" id="top_panel_font_hover" class="color" value="#00a161"></td>
+    </tr>
+
+    <tr>
+      <td><label for="top_panel_link_bg_hover">Фон пунктов меню при наведении</label></td>
+      <td><input name="top_panel_link_bg_hover" id="top_panel_link_bg_hover" class="color" value="#D8F6E6"></td>
+    </tr>
+
+    <tr>
+      <td><label for="top_panel_dropdown_bg">Фон выпадающих списков</label></td>
+      <td><input name="top_panel_dropdown_bg" id="top_panel_dropdown_bg" class="color" value="#ffffff"></td>
+    </tr>
+
+    <tr>
+      <td><label for="top_panel_border">Цвет разделителей</label></td>
+      <td><input name="top_panel_border" id="top_panel_border" class="color" value="#3AB47B"></td>
+    </tr>
+  </table>
+
+  <!-- header -->
+  <table>
+    <tr>
+      <td colspan="2"><h2>Шапка</h2></td>
+    </tr>
+
+    <tr>
+      <td><label for="header_bg-color">Фон шапки</label></td>
+      <td><input name="header_bg-color" id="header_bg-color" class="color" value="#ffffff"></td>
+    </tr>
+    <tr>
+      <td><label for="header_bg-image">Картинка фона</label></td>
+      <td><input name="header_bg.png" id="header_bg-image" type="file" data-max-width="100" data-max-height="100"></td>
+    </tr>
+    <tr>
+      <td><label for="header_bg-use">что используем?</label></td>
+      <td>
+        <select name="header_bg-use" id="header_bg-use">
+          <option value="color" selected="selected">цвет</option>
+          <option value="image">изображение</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="header_font">цвет шрифта</label></td>
+      <td><input name="header_font" id="header_font" class="color" value="#404040"></td>
+    </tr>
+  </table>
+
+  <!-- main -->
+  <table>
+    <tr>
+      <td colspan="2"><h2>Основной фон</h2></td>
+    </tr>
+    <tr>
+      <td><label for="main_bg-color">цвет фона</label></td>
+      <td><input name="main_bg-color" id="main_bg-color" class="color" value="#ffffff"></td>
+    </tr>
+    <tr>
+      <td><label for="main_bg-image">картинка фона</label></td>
+      <td><input name="main_bg.png" id="main_bg-image" type="file" data-max-width="100" data-max-height="100"></td>
+    </tr>
+    <tr>
+      <td><label for="main_bg-use">что используем?</label></td>
+      <td>
+        <select name="main_bg-use" id="main_bg-use">
+          <option value="color">цвет</option>
+          <option value="image">изображение</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><h2>Основной текст</h2></td>
+    </tr>
+
+    <tr>
+      <td><label for="font_color">основной цвет шрифта</label></td>
+      <td><input name="font_color" id="font_color" class="color" value="#303030"></td>
+    </tr>
+
+    <tr>
+      <td><label for="link_color-hover">цвет сслык при наведении</label></td>
+      <td><input name="link_color-hover" id="link_color-hover" class="color" value="#00A161" /></td>
+    </tr>
+  </table>
+
+  <!-- footer -->
+  <table>
+    <tr>
+      <td colspan="2"><h2>Подвал</h2></td>
+    </tr>
+
+    <tr>
+      <td><label for="footer_bg-color">фон подвала</label></td>
+      <td><input name="footer_bg-color" id="footer_bg-color" class="color" value="#525252" /></td>
+    </tr>
+
+    <tr>
+      <td><label for="footer_font-color">цвет шрифта</label></td>
+      <td><input name="footer_font-color" id="footer_font-color" class="color" value="#ffffff" /></td>
+    </tr>
+  </table>
+
+  <!-- prices -->
+  <table>
+    <tr>
+      <td colspan="2"><h2>Цены</h2></td>
+    </tr>
+    <tr>
+      <td><label for="prices_color-current">основной цвет</label></td>
+      <td><input name="prices_color-current" id="prices_color-current" class="color" value="#00a161"></td>
+    </tr>
+    <tr>
+      <td><label for="prices_color-old">цвет старой цены</label></td>
+      <td><input name="prices_color-old" id="prices_color-old" class="color" value="#7A7A7A"></td>
+    </tr>
+  </table>
+
+  <!-- buttons -->
+  <table>
+    <tr>
+      <td colspan="2"><h2>Кнопки</h2></td>
+    </tr>
+
+    <tr>
+      <td><label for="button_bg-hover">фон при наведении</label></td>
+      <td><input name="button_bg-hover" id="button_bg-hover" class="color" value="#00a161"></td>
+    </tr>
+    <tr>
+      <td><label for="buy_button_bg">фон кнопки "Купить"</label></td>
+      <td><input name="buy_button_bg" id="buy_button_bg" class="color" value="#00a161"></td>
+    </tr>
+  </table>
+
+</fieldset>
+
+<!--
+<fieldset>
+  <legend>Коллекции на главной</legend>
+
+  <table>
+    <tr>
+      <td colspan="2"><h3>Первая коллекция</h3></td>
+    </tr>
+    <tr>
+      <td><label for="index_collection_1_show">Показывать коллекцию?</label></td>
+      <td><input name="index_collection_1_show" id="index_collection_1_show" type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td><label for="index_collection_1_handle">Пермалинк коллекции</label></td>
+      <td><input name="index_collection_1_handle" id="index_collection_1_handle" type="text" value=""></td>
+    </tr>
+    <tr>
+      <td><label for="index_collection_1_count">Количество товаров</label></td>
+      <td><input name="index_collection_1_count" id="index_collection_1_count" type="text" value=""></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><h3>Вторая коллекция</h3></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="index_collection_2_show">Показывать коллекцию?</label>
+      </td>
+      <td>
+        <input name="index_collection_2_show" id="index_collection_2_show" type="checkbox" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="index_collection_2_handle">Пермалинк коллекции</label>
+      </td>
+      <td>
+        <input name="index_collection_2_handle" id="index_collection_2_handle" type="text" value="">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="index_collection_2_count">Количество товаров</label>
+      </td>
+      <td>
+        <input name="index_collection_2_count" id="index_collection_2_count" type="text" value="">
+      </td>
+    </tr>
+
+  </table>
+</fieldset>
+-->
+
+<fieldset>
+  <legend>Слайдер</legend>
+  <table>
+
+    <tr>
+      <td colspan="2"><h2>Размер слайдов - 1600х400px</h2></td>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="show_index_slider">Показывать слайдер на главной?</label>
+      </td>
+      <td>
+        <input name="show_index_slider" id="show_index_slider" value="true" type="checkbox" checked/>
+      </td>
+    </tr>
+
+    <!-- 1 -->
+    <tr>
+      <td colspan="2"><h2>Первое изображение</h2></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_1-show">Показывать изображение?</label>
+      </td>
+      <td>
+        <input name="main_image_1-show" id="main_image_1-show" value="true" type="checkbox" checked/>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="main_image_1-link">Ссылка с изображения</label></td>
+      <td><input name="main_image_1-link" id="main_image_1-link" value="" /></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_1-loaded">Загрузить своё изображение</label>
+      </td>
+      <td>
+        <input name="main_image_1-loaded.jpg" id="main_image_1-loaded" type="file" data-max-width="1600" data-max-height="400" />
+      </td>
+    </tr>
+
+    <!-- 2 -->
+    <tr>
+      <td colspan="2"><h2>Второе изображение</h2></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_2-show">Показывать изображение?</label>
+      </td>
+      <td>
+        <input name="main_image_2-show" id="main_image_2-show" value="true" type="checkbox" checked/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_2-link">Ссылка со изображения</label>
+      </td>
+      <td>
+        <input name="main_image_2-link" id="main_image_2-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_2-loaded">Загрузить своё изображение</label>
+      </td>
+      <td>
+      <input name="main_image_2-loaded.jpg" id="main_image_2-loaded" type="file" data-max-width="1600" data-max-height="400" />
+      </td>
+    </tr>
+
+    <!-- 3 -->
+    <tr>
+      <td colspan="2"><h2>Третье изображение</h2></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_3-show">Показывать изображение?</label>
+      </td>
+      <td>
+        <input name="main_image_3-show" id="main_image_3-show" value="true" type="checkbox" checked/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_3-link">Ссылка с изображения</label>
+      </td>
+      <td>
+        <input name="main_image_3-link" id="main_image_3-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_3-loaded">Загрузить своё изображение</label>
+      </td>
+      <td>
+        <input name="main_image_3-loaded.jpg" id="main_image_3-loaded" type="file" data-max-width="1600" data-max-height="400" />
+      </td>
+    </tr>
+
+    <!-- 4 -->
+    <tr>
+      <td colspan="2"><h2>Четвертое изображение</h2></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_4-show">Показывать изображение?</label>
+      </td>
+      <td>
+        <input name="main_image_4-show" id="main_image_4-show" type="checkbox" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_4-link">Ссылка с изображения</label>
+      </td>
+      <td>
+        <input name="main_image_4-link" id="main_image_4-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_4-loaded">Загрузить своё изображение</label>
+      </td>
+      <td>
+        <input name="main_image_4-loaded.jpg" id="main_image_4-loaded" type="file" data-max-width="1600" data-max-height="400" />
+      </td>
+    </tr>
+
+    <!-- 5 -->
+    <tr>
+      <td colspan="2"><h2>Пятое изображение</h2></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_5-show">Показывать изображение?</label>
+      </td>
+      <td>
+        <input name="main_image_5-show" id="main_image_5-show" type="checkbox" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_5-link">Ссылка с изображения</label>
+      </td>
+      <td>
+        <input name="main_image_5-link" id="main_image_5-link" value="" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_5-loaded">Загрузить своё изображение</label>
+      </td>
+      <td>
+        <input name="main_image_5-loaded.jpg" id="main_image_5-loaded" type="file" data-max-width="1600" data-max-height="400" />
+      </td>
+    </tr>
+
+    <!-- настройки -->
+    <tr>
+      <td colspan="2"><h2>Настройки автоматической смены изображений</h2></td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_slider_autoplay">Включить?</label>
+      </td>
+      <td>
+        <input name="main_image_slider_autoplay" id="main_image_slider_autoplay" value="true" type="checkbox" checked/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="main_image_timeout">Время показа изображения (в милисекундах)</label>
+      </td>
+      <td>
+        <input name="main_image_timeout" id="main_image_timeout" value="4000" />
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Настройка фильтра</legend>
+
+  <table>
+    <tr>
+      <td><label for="filter-show_empty">скрывать параметры, у которых 0 продуктов?</label></td>
+      <td><input name="filter-show_empty" id="filter-show_empty" type="checkbox"/></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Пагинация</legend>
+
+  <table>
+    <tr>
+      <td><label for="pagination_show_hint">Показывать подсказку?</label></td>
+      <td><input name="pagination_show_hint" id="pagination_show_hint" type="checkbox"></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset>
+  <legend>Соцсети</legend>
+  <table>
+    <tr>
+      <td colspan="2"><h3>Ссылки на группы и каналы</h3></td>
+    </tr>
+
+    <tr>
+      <td><label for="show_socials_links">Показывать блок каналов?</label></td>
+      <td><input name="show_socials_links" id="show_socials_links" value="1" type="checkbox" /></td>
+    </tr>
+
+    <tr>
+      <td><h2>YouTube</h2></td>
+    </tr>
+    <tr>
+      <td><label for="show_youtube_link">Показывать ссылку?</label></td>
+      <td><input name="show_youtube_link" id="show_youtube_link" value="1" type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td><label for="youtube_link">Ссылка</label></td>
+      <td><input name="youtube_link" id="youtube_link" /></td>
+    </tr>
+
+    <tr>
+      <td><h2>Google+</h2></td>
+    </tr>
+    <tr>
+      <td><label for="show_googleplus_link">Показывать ссылку?</label></td>
+      <td><input name="show_googleplus_link" id="show_googleplus_link" value="1" type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td><label for="googleplus_link">Ссылка</label></td>
+      <td><input name="googleplus_link" id="googleplus_link" /></td>
+    </tr>
+
+    <tr>
+      <td><h2>Вконтакте</h2></td>
+    </tr>
+    <tr>
+      <td><label for="show_vk_link">Показывать ссылку?</label></td>
+      <td><input name="show_vk_link" id="show_vk_link" value="1" type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td><label for="vk_link">Ссылка</label></td>
+      <td><input name="vk_link" id="vk_link" /></td>
+    </tr>
+
+    <tr>
+      <td><h2>Facebook</h2></td>
+    </tr>
+    <tr>
+      <td><label for="show_facebook_link">Показывать ссылку?</label></td>
+      <td><input name="show_facebook_link" id="show_facebook_link" value="1" type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td><label for="facebook_link">Ссылка</label></td>
+      <td><input name="facebook_link" id="facebook_link" /></td>
+    </tr>
+
+    <tr>
+      <td><h2>Twitter</h2></td>
+    </tr>
+    <tr>
+      <td><label for="show_twitter_link">Показывать ссылку?</label></td>
+      <td><input name="show_twitter_link" id="show_twitter_link" value="1" type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td><label for="twitter_link">Ссылка</label></td>
+      <td><input name="twitter_link" id="twitter_link" /></td>
+    </tr>
+
+    <tr>
+      <td><h2>Pinterest</h2></td>
+    </tr>
+    <tr>
+      <td><label for="show_pinterest_link">Показывать ссылку?</label></td>
+      <td><input name="show_pinterest_link" id="show_pinterest_link" value="1" type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td><label for="pinterest_link">Ссылка</label></td>
+      <td><input name="pinterest_link" id="pinterest_link" /></td>
+    </tr>
+
+  </table>
+</fieldset>

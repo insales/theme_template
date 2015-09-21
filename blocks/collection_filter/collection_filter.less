@@ -1,0 +1,103 @@
+.filter{
+  .row;
+  .ul-clear();
+
+  // mod
+  &--vertical{
+    .filter-section{
+      display: block;
+    }
+  }
+
+  &-title{}
+
+  // секция вариантов
+  &-section{
+    position: relative;
+    margin-bottom: 1em;
+
+    &:last-of-type{
+      margin-bottom: 0;
+    }
+  }
+
+  &-clear_all{
+    cursor: pointer;
+  }
+
+  &-section_toggler{
+    cursor: pointer;
+  }
+
+  &--hidden_sections{
+    display: none;
+  }
+
+  &-submit{
+    cursor: pointer;
+  }
+}
+
+.filter_section{
+  .rel;
+
+  &-title{
+    display: block;
+    position: relative;
+  }
+
+  &-toggler{
+    cursor: pointer;
+  }
+
+  &-values{
+    .ul-clear();
+
+    &--vertical{}
+
+    &--horizontal{
+      .filter-value{
+        display: inline-block;
+      }
+    }
+
+    &--collapse{
+      display: none;
+    }
+  }
+
+  &-value{
+    display: block;
+
+    &--range{
+      margin: 1em 0.5em;
+    }
+
+    &--current{}
+  }
+
+  &-value_link{
+    &--active{}
+  }
+
+  &-value_disable{
+    &:hover{}
+  }
+
+  &-clear{
+    cursor: pointer;
+  }
+
+  &-range_value{
+  }
+
+  &-range_input{
+    padding: 0;
+    width: 60px;
+    text-align: center;
+    line-height: inherit;
+  }
+
+  /* mod */
+  &--range{}
+}

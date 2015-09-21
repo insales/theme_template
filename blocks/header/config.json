@@ -1,0 +1,15 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "header.liquid"
+    ],
+
+    "style.css.scss": [
+      "_header.scss"
+    ]
+  }
+}

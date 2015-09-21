@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "layouts.layout.liquid"
+    ],
+
+    "style.css.scss": [
+      "_layouts.layout.scss"
+    ],
+
+    "core.css" :[
+      "layouts.layout.less"
+    ]
+  }
+}

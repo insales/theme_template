@@ -1,0 +1,15 @@
+/* search module */
+
+.search_widget{
+
+  &--header{}
+
+  &-label{}
+
+  &-field{}
+
+  &-submit{
+    .search--active &,
+    &:hover{}
+  }
+}

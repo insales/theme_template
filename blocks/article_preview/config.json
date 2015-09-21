@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "article_preview.liquid"
+    ],
+
+    "core.css": [
+      "article_preview.less"
+    ],
+
+    "style.css.scss": [
+      "_article_preview.scss"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{% comment %}
+  мобильная панель.
+  повторяет функционал sidebar для мобильных устройств
+{% endcomment %}
+
+<div class="panel panel--menu panel--side
+            grid-4 sm-grid-6 xs-grid-10
+            padded
+            js-panel-menu"
+>
+  {% include "menu_collection" %}
+
+  {% include "menu_main" %}
+</div>

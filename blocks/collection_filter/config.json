@@ -1,0 +1,32 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "collection_filter.liquid"
+    ],
+
+    "core.css": [
+      "collection_filter.less"
+    ],
+
+    "style.css.scss": [
+      "_collection_filter.scss",
+      "_slider_noui.scss"
+    ],
+
+    "template.js": [
+      "z.InSales.rangeFilter.js"
+    ],
+
+    "ui.js": [
+      "collection_filter.js"
+    ],
+
+    "z.InSales.ui.js": [
+      "z.collectionFilter.js"
+    ]
+  }
+}

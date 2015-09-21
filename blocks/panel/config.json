@@ -1,0 +1,15 @@
+{
+  "test": {
+    "style.css.scss": [
+      "_panel.scss"
+    ]
+  },
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "panel.less"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "blog.liquid"
+    ],
+
+    "core.css": [
+      "blog.less"
+    ],
+
+    "style.css.scss": [
+      "_blog.scss"
+    ]
+  }
+}

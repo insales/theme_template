@@ -1,0 +1,34 @@
+.languages{
+  .ul-clear();
+  .row;
+  box-sizing: border-box;
+
+  &-node{
+    .rel;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  &-link{
+    .rel;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+  }
+
+  &-toggler{
+    cursor: pointer;
+  }
+
+  &--dropdown{
+    .abs;
+    top: 100%;
+    z-index: @zindex-dropdown;
+
+    display: none;
+
+    .languages-node:hover > &{
+      display: block;
+    }
+  }
+}

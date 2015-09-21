@@ -1,0 +1,29 @@
+.tubs{
+  .row;
+
+  &-controls{
+    .row;
+    .ul-clear();
+
+    &--horizontal{
+      > .tubs-node{
+        .fl;
+      }
+    }
+  }
+
+  &-node{
+    display: block;
+    cursor: pointer;
+
+    &--active{}
+  }
+
+  &-content{
+    display: none;
+
+    &--active{
+      display: block;
+    }
+  }
+}

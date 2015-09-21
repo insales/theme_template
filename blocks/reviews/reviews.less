@@ -1,0 +1,57 @@
+.reviews{
+
+  &-list{
+    .ul-clear();
+  }
+
+  &-link{
+    cursor: pointer;
+  }
+
+  &-total_count{}
+}
+
+.review{
+  display: block;
+  margin-bottom: 1em;
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+
+  &-name{}
+
+  &-details{
+    .row;
+    margin-bottom: 0.5em;
+  }
+
+  &-rating{
+    margin-bottom: 0.5em;
+  }
+
+  &-date{}
+
+  &-content{
+    margin-bottom: 0.5em;
+  }
+}
+
+.review_form{
+
+  &-toggle{
+    cursor: pointer;
+  }
+
+  &-input{
+    margin-bottom: 1em;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  &-submit{
+    cursor: pointer;
+  }
+}

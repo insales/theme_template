@@ -1,0 +1,23 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "quiantity.liquid"
+    ],
+
+    "core.css": [
+      "quantity.less"
+    ],
+
+    "style.css.scss": [
+      "_quantity.scss"
+    ],
+
+    "template.js": [
+      "z.InSales.quantity.js"
+    ]
+  }
+}

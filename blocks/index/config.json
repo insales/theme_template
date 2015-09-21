@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "index.liquid"
+    ],
+
+    "core.css": [
+      "index.less"
+    ],
+
+    "style.css.scss": [
+      "_index.scss"
+    ]
+  }
+}

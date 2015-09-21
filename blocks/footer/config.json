@@ -1,0 +1,15 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "footer.liquid"
+    ],
+
+    "style.css.scss": [
+      "_footer.scss"
+    ]
+  }
+}

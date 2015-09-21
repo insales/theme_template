@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "layouts.checkout.liquid"
+    ],
+
+    "media": [
+      "custom_checkout.css.liquid"
+    ],
+
+    "style.css.scss": [
+      "_layouts.checkout.scss"
+    ]
+  }
+}

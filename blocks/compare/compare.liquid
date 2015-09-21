@@ -1,0 +1,116 @@
+<h1 class="compare-title content-title">Сравнение</h1>
+
+{% if products.size == 0 %}
+  <div class="notice notice--info">Товары для сравнение не выбраны.</div>
+{% else %}
+  <div class="compare-notice notice notice--info">Товары для сравнение не выбраны.</div>
+
+  <div class="compare-wrapper">
+
+    <div class="compare-table">
+      {% comment %}шапка{% endcomment %}
+      <div class="compare_row compare_row--header">
+
+        <div class="compare_row-title xs-hidden">
+          <span class="compare-toggle_same js-compare-toggle_same">
+            Скрыть похожие свойства
+          </span>
+        </div>
+
+        {% for product in products %}
+          <div class="compare_row-item js-compare_item-{{ product.id }}">
+            <div class="image-wrapper">
+              <a href="{{ product.url }}" class="image-square">
+                <img src="{{ product.first_image.compact_url }}">
+              </a>
+            </div>
+
+            <a href="{{ product.url }}">{{ product.title }}</a>
+
+            <span class="compare-remove js-compare-remove" data-product_id="{{ product.id }}">
+              <i class="fa fa-times"></i>
+            </span>
+          </div>
+        {% endfor %}
+
+      </div>
+
+      {% comment %}шапка{% endcomment %}
+
+      {% for property in properties %}
+        <div class="compare_row compare_row--body
+                    {% unless property.differ? %}compare_row--same js-compare_row--same{% endunless %}"
+        >
+
+          <div class="compare_row-title xs-hidden">
+            {{ property.title }}
+          </div>
+
+          {% for product in products %}
+            <div class="compare_row-item js-compare_item-{{ product.id }}">
+              {% for characteristic in product.properties[property.handle].characteristics %}
+                {{ characteristic.name }}
+                {% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            </div>
+          {% endfor %}
+
+        </div>
+      {% endfor %}
+
+      {% comment %}шапка{% endcomment %}
+      <div class="compare_row compare_row--footer">
+        <div class="compare_row-title xs-hidden">
+          <span class="compare-toggle_same js-compare-toggle_same">
+            Скрыть похожие свойства
+          </span>
+        </div>
+        {% for product in products %}
+          <div class="compare_row-item js-compare_item-{{ product.id }}">
+            <div class="prices">
+              <span class="prices--current">
+                {% if product.price_varies? %}
+                  {{ product.price_min | money }} - {{ product.price_max | money }}
+                {% else %}
+                  {{ product.sale_price | money }}
+                {% endif %}
+              </span>
+            </div>
+
+            <form action="{{ cart_url }}"
+                  method="post"
+                  class="compare_row-form"
+            >
+              <input type="hidden" name="variant_id" value="{{ product.variants.first.id }}">
+              {% if product.variants.size == 1 %}
+                {% if product.available %}
+                  <submit type="submit"
+                          class="button button--buy js-buy"
+                  >
+                    Купить
+                  </submit>
+                {% else %}
+                  <submit type="submit"
+                          class="button button--buy js-buy"
+                          disabled
+                  >
+                    Под заказ
+                  </submit>
+                {% endif %}
+              {% else %}
+                <a class="button button--buy" href="{{ product.url }}">
+                  Подробнее
+                </a>
+              {% endif %}
+            </form>
+
+            <span class="compare-remove js-compare-remove" data-product_id="{{ product.id }}">
+              <i class="fa fa-times"></i>
+            </span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+{% endif %}

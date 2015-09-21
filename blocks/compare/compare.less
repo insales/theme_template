@@ -1,0 +1,42 @@
+.compare{
+  &-title{}
+
+  &-wrapper{
+    overflow-x: auto;
+  }
+
+  &-table{}
+
+  &-toggle_same{
+    cursor: pointer;
+  }
+
+  &-remove{
+    cursor: pointer;
+  }
+
+  &-notice{
+    display: none;
+  }
+}
+
+.compare_row{
+  .row;
+  display: table-row;
+
+  &-title{
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  &-item{
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  &--header{}
+
+  &--body{}
+
+  &--footer{}
+}

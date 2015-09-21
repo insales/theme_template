@@ -1,0 +1,12 @@
+{
+  "test": {
+    "template.js": [
+      "z.InSales.recentlyView.js",
+      "recently_view.js"
+    ]
+  },
+
+  "dist": {},
+
+  "core": {}
+}

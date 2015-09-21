@@ -1,0 +1,10 @@
+// header
+$header_bg-color: #{'{{ settings.header_bg-color }}'};
+
+{% if settings.header_bg-use == 'image' %}
+  $header_bg-image: #{'{{ settings.header_bg-image }}'};
+{% else %}
+  $header_bg-image: #{''};
+{% endif %}
+
+$header_font:     #{'{{ settings.header_font }}'};

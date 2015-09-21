@@ -1,0 +1,22 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "page.liquid",
+      "page_404.liquid"
+    ],
+
+    "core.css": [
+      "page.less",
+      "page_404.less"
+    ],
+
+    "style.css.scss": [
+      "_page.scss",
+      "_page_404.scss"
+    ]
+  }
+}

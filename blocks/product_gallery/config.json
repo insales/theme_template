@@ -1,0 +1,34 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "product_gallery.liquid"
+    ],
+
+    "core.css": [
+      "product_gallery.less"
+    ],
+
+    "style.css.scss": [
+      "_product_gallery.scss"
+    ],
+
+    "media": [
+      "buttons1.png",
+      "zoomin.cur",
+      "zoomout.cur",
+      "hint.gif"
+    ],
+
+    "template.js": [
+      "magiczoomplus.js"
+    ],
+
+    "template.css": [
+      "magiczoomplus.css"
+    ]
+  }
+}

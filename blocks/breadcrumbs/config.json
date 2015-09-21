@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "breadcrumbs.liquid"
+    ],
+
+    "style.css.scss": [
+      "_breadcrumbs.scss"
+    ],
+
+    "core.css": [
+      "breadcrumbs.less"
+    ]
+  }
+}

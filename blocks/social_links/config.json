@@ -1,0 +1,19 @@
+{
+  "test": {
+    "snippets": [
+      "social_links.liquid"
+    ]
+  },
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "social_links.less"
+    ],
+
+    "style.css.scss": [
+      "_social_links.scss"
+    ]
+  }
+}

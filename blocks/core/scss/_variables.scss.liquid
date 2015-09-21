@@ -1,0 +1,53 @@
+//
+// TEMPLATE VARIABLES
+// --------------------------------
+
+// gray
+
+$gray-darker:   #333333;
+$gray-dark:     #666666;
+$gray:          #555555;
+$gray-light:    #cccccc;
+$gray-lighter:  #e6e6e6;
+
+$brand-primary: #337ab7;
+$brand-success: #5cb85c;
+$brand-info:    #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger:  #d9534f;
+
+// compas variables
+
+$default-transition-duration: 0.3s;
+
+//default variables
+$font-size-base: 14px;
+
+$border-color:   $gray-light;
+
+/* новые настройки согласно требованиям */
+
+$ui-size: 25px;
+// верхняя панель
+$top_panel-bg:            #{'{{ settings.top_panel_bg }}'};
+$top_panel-font:          #{'{{ settings.top_panel_font }}'};
+$top_panel-font-hover:    #{'{{ settings.top_panel_font_hover }}'};
+$top_panel-link_bg-hover: #{'{{ settings.top_panel_link_bg_hover }}'};
+$top_panel-dropdown_bg:   #{'{{ settings.top_panel_dropdown_bg }}'};
+$top_panel-border:        #{'{{ settings.top_panel_border }}'};
+
+
+// main
+$main_bg-color: #{'{{ settings.main_bg-color }}'};
+
+{% if settings.main_bg-use == 'image' %}
+  $main_bg-image: #{'{{ settings.main_bg-image }}'};
+{% else %}
+  $main_bg-image: #{''};
+{% endif %}
+
+$content_bg:        #{'#fff'};
+
+$font-color:        #{'{{ settings.font_color }}'};
+$link_color-hover:  #{'{{ settings.link_color-hover }}'};
+$link_color:        #{'red'};

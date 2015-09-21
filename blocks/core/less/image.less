@@ -1,0 +1,41 @@
+.image{
+  &-wrapper{
+    position: relative;
+
+    &:before{
+      content: '';
+      display: block;
+      padding: 100% 100% 0 0;
+    }
+
+    .cart_item &,
+    .article_preview-preview &,
+    .product_preview-preview &{
+      overflow: hidden;
+      max-height: 240px;
+    }
+  }
+
+  &-square,
+  &-circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    text-align: center;
+
+    img{
+      display: inline-block !important;
+      width: auto !important;
+    }
+  }
+
+  &-circle{
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+            border-radius: 50%;
+    overflow: hidden;
+  }
+}
