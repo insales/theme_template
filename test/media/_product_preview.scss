@@ -1,0 +1,23 @@
+/* product_preview */
+
+.product_preview{
+  &-preview{}
+  
+  &-image{}
+
+  &-tip{}
+
+  &-link{
+    &:hover{}
+  }
+
+  &-title{}
+
+  &-short_description{}
+
+  &-prices{}
+
+  &-form{}
+
+  &-button{}
+}

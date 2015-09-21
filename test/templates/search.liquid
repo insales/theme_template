@@ -1,0 +1,59 @@
+<h1 class="search-title content-title">Поиск</h1>
+
+<div class="row">
+  <span>
+    {% if search.performed? %}
+      {% if search.results == empty %}
+        Измените ключевые слова для поиска:
+      {% else %}
+        Вы искали:
+      {% endif %}
+    {% else %}
+      Введите ключевые слова для поиска:
+    {% endif %}
+  </span>
+
+  {% include "search_widget" with "search" %}
+</div>
+
+{% if search.performed? %}
+  {% if search.results == empty %}
+    <div class="search-notice notice notice--warning">
+      По запросу "{{ search.query | escape }}" ничего не найдено.
+    </div>
+  {% else %}
+
+    {% paginate results by 15 %}
+
+      <div class="row padded-inner">
+        {% include "pagination" %}
+      </div>
+
+      <div class="search-products_list grid-row-inner">
+        {% for product in results %}
+          <div class="product_preview
+                      lg-grid-4 md-grid-4 sm-grid-6 xs-grid-12 padded-inner"
+          >
+            {% include 'product_preview' %}
+          </div>
+
+          {% cycle 'l-grid': '', '', '<div class="lg-grid-12 md-grid-12 sm-hidden xs-hidden"><div class="collection-separator"></div></div>' %}
+          {% cycle  'm-grid': '', '<div class="sm-grid-12 lg-hidden md-hidden xs-hidden"><div class="collection-separator"></div></div>' %}
+        {% endfor %}
+      </div>
+
+      <div class="row padded-inner">
+        {% include "pagination" %}
+      </div>
+
+    {% endpaginate %}
+
+  {% endif %}
+
+{% else %}
+
+  <div class="search-notice notice notice--info">
+    Введите ключевые слова для поиска.
+  </div>
+
+{% endif %}

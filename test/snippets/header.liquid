@@ -1,0 +1,48 @@
+<header>
+  {% comment %}
+    основной блок шапки
+  {% endcomment %}
+  <div class="section--header">
+    <div class="wrap row">
+
+      <div class="lg-grid-5 md-grid-5 sm-grid-12 xs-grid-12
+                  sm-center xs-center
+                  lg-padded-inner md-padded-inner sm-padded xs-padded"
+      >
+        {% include "logo" %}
+      </div>
+
+      <div class="lg-grid-7 md-grid-7 sm-grid-12 xs-grid-12
+                  lg-right md-right sm-center xs-center
+                  lg-padded-inner md-padded-inner"
+      >
+        <div class="contacts padded-vertical">
+          {{ account.phone }}
+        </div>
+
+        {% comment %}
+          форма поиска
+        {% endcomment %}
+        <span class="mc-grid-12
+                    sm-padded-vertical xs-padded-vertical mc-padded-vertical"
+        >
+          {% include "search_widget" with "header" %}
+        </span>
+
+        {% comment %}
+          вcтавляем блок с версткой виджета корзины
+        {% endcomment %}
+        <span class="mc-grid-12
+                    sm-padded-vertical xs-padded-vertical">
+          {% include "cart_widget" %}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section--main_menu row">
+    <div class="wrap padded-inner-sides">
+      {% include "menu_main" %}
+    </div>
+  </div>
+</header>
