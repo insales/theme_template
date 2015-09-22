@@ -1,0 +1,31 @@
+/* menu */
+
+.menu{
+
+  // node
+  &-node{}
+
+  // link
+  &-link{
+    &:hover{}
+  }
+
+  // marker
+
+  &-marker{
+    &:hover{}
+
+    &--top{}
+  }
+
+  &-toggler{}
+
+  // modificator
+  &--main{}
+
+  &--mobile{}
+
+  &--top{}
+
+  &--top_dropdown{}
+}

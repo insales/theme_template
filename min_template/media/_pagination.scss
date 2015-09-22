@@ -1,0 +1,20 @@
+/* pagination */
+
+.pagination{
+  &-page{
+    &:first-child{}
+
+    &:last-child{}
+  }
+
+  &-node{
+    &--link{}
+
+    &--block{}
+
+    &:hover,
+    &--current{}
+  }
+
+  &-counter{}
+}

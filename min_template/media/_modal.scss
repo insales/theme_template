@@ -1,0 +1,18 @@
+/* modal */
+
+.modal{
+
+  &-wrapper{}
+
+  &-header{}
+
+  &-close{
+    &:hover{}
+  }
+
+  &-content{}
+
+  &--mobile_panel{}
+}
+
+.overlay{}

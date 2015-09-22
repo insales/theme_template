@@ -1,0 +1,40 @@
+/* input */
+
+.input{
+  &-label{}
+
+  &-field{}
+
+  &-notice{}
+
+  &--inline{}
+
+  &--error{
+    > .input-label{}
+
+    > .input-field{}
+
+    > .input-notice{}
+  }
+
+  &--captcha{
+    .input-field{}
+  }
+}
+
+.notice{
+  &--error{}
+}
+
+input[type="text"],
+select{}
+
+.captcha{
+  &-challenge{}
+}
+
+.styled_select-wrapper{
+  &:after{}
+
+  select{}
+}

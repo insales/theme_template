@@ -1,0 +1,42 @@
+<h1 class="article-title content-title">{{ article.title | editable }}</h1>
+
+<div class="row">
+  {% unless article.image.large_url contains "no_image" %}
+    <div class="article-image_container"
+    >
+      <span class="article-image">
+        <img src="{{ article.image.medium_url }}" title="{{ article.title }}">
+      </span>
+    </div>
+  {% endunless %}
+
+  <div class="article-note">
+    Опубликовано: {{ article.created_at | date: "%d.%m.%Y" }}
+  </div>
+
+  <div class="article-content editor">
+    {{ article.content | editable }}
+  </div>
+</div>
+
+{% comment %}
+  вывод отзывов
+{% endcomment %}
+{% if blog.comments_enabled? %}
+  <div class="accordion
+              js-accordion-wrapper"
+  >
+    <div class="accordion-title
+                js-accordion-toggler js-accordion-review"
+    >
+      Комментарии ({{ article.comments_count }})
+      <span class="accordion-toggler button button--toggler">
+        <i class="fa fa-plus"></i>
+      </span>
+    </div>
+
+    <div class="accordion-content accordion-content--collapse">
+      {% include "article_reviews" %}
+    </div>
+  </div>
+{% endif %}
