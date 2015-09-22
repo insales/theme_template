@@ -2,6 +2,10 @@
   "test": {
     "snippets": [
       "payments.liquid"
+    ],
+
+    "style.css.scss": [
+      "_payments.scss"
     ]
   },
 
@@ -10,10 +14,6 @@
   "core": {
     "core.css": [
       "payments.less"
-    ],
-
-    "style.css.scss": [
-      "_payments.scss"
     ]
   }
 }

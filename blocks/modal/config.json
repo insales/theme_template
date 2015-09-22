@@ -12,7 +12,7 @@
       "_modal.scss"
     ],
 
-    "media": [
+    "template.js": [
       "z.InSales.modal.js",
       "modal.js"
     ],

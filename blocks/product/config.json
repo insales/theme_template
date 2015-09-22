@@ -18,10 +18,6 @@
       "_option_selectors.scss"
     ],
 
-    "media": [
-      "product.js"
-    ],
-
     "z.InSales.optionSelectors.js": [
       "js/z.InSales.optionSelectors.js",
       "js/z.InSales.productOptions.js",

@@ -33,7 +33,7 @@
     // подключаем файлы сброса, сетки, опорных стилей
     "template.css": [
       "core_css/normalize.css",
-      "core_css/grid.css",
+      //"core_css/grid.css",
       "core.css"
     ],
 
@@ -80,7 +80,7 @@
 
     // подключаем каркасные стили
     "style.css.scss": [
-      "_variables.scss",
+      "scss/_variables.scss",
       "scss/_variables_default.scss",
       "scss/_type.scss"
     ],

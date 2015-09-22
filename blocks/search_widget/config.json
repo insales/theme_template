@@ -2,6 +2,14 @@
   "test": {
     "ui.js": [
       "ui.ajax_search.js"
+    ],
+
+    "template_search.liquid": [
+      "search_widget.template"
+    ],
+
+    "template.js": [
+      "z.InSales.ajaxSearch.js"
     ]
   },
 
@@ -18,14 +26,6 @@
 
     "style.css.scss": [
       "_search_widget.scss"
-    ],
-
-    "template_search.liquid": [
-      "search_widget.template"
-    ],
-
-    "template.js": [
-      "z.InSales.ajaxSearch.js"
     ]
   }
 }

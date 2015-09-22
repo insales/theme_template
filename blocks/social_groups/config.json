@@ -2,6 +2,10 @@
   "test": {
     "snippets": [
       "social_groups.liquid"
+    ],
+
+    "style.css.scss": [
+      "_social_groups.scss"
     ]
   },
 
@@ -10,10 +14,6 @@
   "core": {
     "core.css": [
       "social_groups.less"
-    ],
-
-    "style.css.scss": [
-      "_social_groups.scss"
     ]
   }
 }

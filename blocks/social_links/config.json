@@ -2,6 +2,10 @@
   "test": {
     "snippets": [
       "social_links.liquid"
+    ],
+
+    "style.css.scss": [
+      "_social_links.scss"
     ]
   },
 
@@ -10,10 +14,6 @@
   "core": {
     "core.css": [
       "social_links.less"
-    ],
-
-    "style.css.scss": [
-      "_social_links.scss"
     ]
   }
 }

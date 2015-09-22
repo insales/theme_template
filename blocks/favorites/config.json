@@ -3,6 +3,10 @@
     "template.js": [
       "z.InSales.favorites.js",
       "favorites.js"
+    ],
+
+    "style.css.scss": [
+      "_favorites.scss"
     ]
   },
 
@@ -11,10 +15,6 @@
   "core": {
     "core.css": [
       "favorites.less"
-    ],
-
-    "style.css.scss": [
-      "_favorites.scss"
     ]
   }
 }

@@ -14,7 +14,6 @@
 Events = function( id, flags ){
   var
     callbacks,
-    method,
     Event = id && EventsList[ id ];
 
   flags = flags || 'memory';
@@ -28,8 +27,8 @@ Events = function( id, flags ){
     };
     if( id ){
       EventsList[ id ] = Event;
-    };
-  };
+    }
+  }
 
   return Event;
 };
