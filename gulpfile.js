@@ -8,10 +8,11 @@ var
   path     = require( 'path' ),
   colors   = require( 'colors' ),
   gutil    = require( 'gulp-util' ),
+  sass     = require('gulp-sass'),
 
   // папки
   test_dir = 'test/',
-  dist_dir = 'template/',
+  dist_dir = 'min_template/',
 
   // списки блоков
   List = {
@@ -29,7 +30,8 @@ blocks_set = file.blocks;
 
 //=============================================
 // собираем чистый тестовый шаблон
-gulp.task( 'build:test', [ 'core' ], function(){
+gulp.task( 'build:test', function(){
+  makeList( 'core' );
   makeList( 'test' );
 
   for( task in List ){
@@ -38,18 +40,23 @@ gulp.task( 'build:test', [ 'core' ], function(){
 });
 
 // собираем чистый релизный шаблон
-gulp.task( 'build:dist', [ 'core' ], function(){
+gulp.task( 'build:min_dist', function(){
+  makeList( 'core' );
   makeList( 'dist' );
 
   for( task in List ){
-    job( task, dist_dir );
+    job( task, 'min_template/' );
   }
 });
 
-// собираем объязательные куски фрейма
-gulp.task( 'core', function(){
+gulp.task( 'build:max_dist', function(){
   makeList( 'core' );
-});
+  makeList( 'test' );
+
+  for( task in List ){
+    job( task, 'max_template/' );
+  }
+})
 
 // таск для наблюдения за базовыми задачами
 gulp.task( 'watch:test', function(){
@@ -120,8 +127,20 @@ gulp.task( 'watch:js',  function(){
 // ничего личного, только тест
 gulp.task( 'test', function(){
   var
-    res = strToSrc( 'test.json', '{\n' );
-  console.log( res );
+    style = List[ 'style.css.scss' ];
+
+  makeList( 'core' );
+  makeList( 'test ');
+
+  style[ 0 ] = 'blocks/core/scss/_variables.scss.liquid';
+
+  console.log( style );
+
+  gulp.src( style )
+    .pipe( concat( 'check/style.css.scss' ) )
+    .pipe( gulp.dest( 'check/style_1.css' ) )
+    .pipe( sass() )
+    .on( 'error', log );
 });
 
 //=============================================
