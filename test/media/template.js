@@ -11,6 +11,8 @@
 #= require owl.carousel.min
 #= require slider
 #= require z.InSales.quantity
+#= require z.InSales.modal
+#= require modal
 #= require reviews
 #= require owl.carousel.min
 #= require slider
@@ -22,9 +24,9 @@
 #= require magiczoomplus
 #= require z.InSales.cart
 #= require cart
-#= require z.InSales.ajaxSearch
 #= require z.InSales.compare
 #= require compare
+#= require z.InSales.ajaxSearch
 #= require z.InSales.favorites
 #= require favorites
 #= require z.InSales.recentlyView
