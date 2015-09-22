@@ -1,0 +1,12 @@
+/* search */
+
+.search{
+
+  &-help{}
+
+  &-notice{}
+
+  &-product_list{
+    & .product_preview{}
+  }
+}

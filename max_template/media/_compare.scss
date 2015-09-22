@@ -1,0 +1,56 @@
+/* comapre */
+.compare{
+  &-title{}
+
+  &-wrapper{
+  }
+
+  &-table{}
+
+  &-delete{
+  }
+
+  &-trigger{
+
+    .compare-add{
+      display: block;
+    }
+
+    .compare-added{
+      display: none;
+    }
+
+    &--added{
+      .compare-add{
+        display: none;
+      }
+
+      .compare-added{
+        display: block;
+      }
+    }
+  }
+}
+
+.compare_row{
+
+  &-title{
+    max-width: 200px;
+    min-width: 200px;
+
+    padding: 0.5em 0.5em 0.5em 0;
+  }
+
+  &-item{
+    min-width: 200px;
+    max-width: 200px;
+
+    padding: 0.5em;
+  }
+
+  &--header{}
+
+  &--body{}
+
+  &--footer{}
+}

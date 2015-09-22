@@ -1,0 +1,97 @@
+{% comment %}
+  выводим слайдер на главной странице
+
+  так как изменен способ построения слайдера, делаем несколкьо проходоов по нстройкам,
+  чтобы исключить ошибки и невнимательность пользователя
+
+  NOTE!!!! если изменяете количество картинок в слайдере, здесь нужно поменять толко slide_count
+{% endcomment %}
+
+{% assign slide_count = 5 %}
+{% assign total = 0 %}
+{% assign show_index_slider = false %}
+{% for i in (1..slide_count) %}
+  {% capture is_show %}main_image_{{ i }}-show{% endcapture %}
+  {% if settings[is_show] == '1' %}
+    {% assign show_index_slider = true %}
+    {% assign total = total | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if settings.show_index_slider == '1' and show_index_slider %}
+
+  <div class="slider slider--index">
+    <div class="slider-container js-slider-index">
+      {% for i in (1..slide_count) %}
+
+        {% comment %}
+          генерим поля, которые надо вытащит из settings
+        {% endcomment %}
+
+        {% capture is_show %}main_image_{{ i }}-show{% endcapture %}
+        {% capture image %}main_image_{{ i }}-loaded.jpg{% endcapture %}
+        {% capture link %}main_image_{{ i }}-link{% endcapture %}
+        {% capture title %}main_image_{{ i }}-title{% endcapture %}
+
+        {% comment %}
+          генерим верстку
+        {% endcomment %}
+        {% if settings[is_show] == '1' %}
+          <a href="{{ settings[link] }}{% if language.not_default? %}?lang={{ language.locale }}{% endif %}"
+              class="slider-image"
+          >
+            <img src="{{ image | asset_url }}">
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% comment %}
+      учитывая практику, слайдер для главной сильно отличается по верстке 
+      от остальных слайдеров. Поэтому желательно все элементы снабдить своими модификациями
+    {% endcomment %}
+    {% if total != 1 %}
+      <div class="slider-control slider-control--index
+                  sm-hidden xs-hidden"
+      >
+        <span class="slider-left slider-left--index
+                    js-slider-left"
+        >
+          <i class="fa fa-chevron-left"></i>
+        </span>
+        <span class="slider-right slider-right--index
+                    js-slider-right"
+        >
+          <i class="fa fa-chevron-right"></i>
+        </span>
+      </div>
+    {% endif %}
+  </div>
+
+{% endif %}
+
+{% if total != 1 %}
+  <script type="text/javascript">
+    {% if settings.main_image_slider_autoplay == '1' %}
+      {% assign is_autoplay = true %}
+    {% else %}
+      {% assign is_autoplay = false %}
+    {% endif %}
+
+    {% if settings.main_image_timeout != '' %}
+      {% assign timeout = settings.main_image_timeout %}
+    {% else %}
+      {% assign timeout = 5000 %}
+    {% endif %}
+
+    $(function(){
+      $( '.js-slider-index' ).owlCarousel({
+        items: 1,
+        loop: true,
+        dots: false,
+        autoplay: {{ is_autoplay }},
+        autoplayTimeout: {{ timeout }},
+      });
+    });
+  </script>
+{% endif %}

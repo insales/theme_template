@@ -1,0 +1,76 @@
+/* cart */
+
+.cart{
+  &-table_container{}
+
+  &-items_list{}
+
+  &-discount{}
+
+  &-duscount_coupon{}
+
+  &-total{}
+
+  &-submit{}
+
+  &-button{}
+}
+
+.cart_list{
+  &-heder{}
+
+  &-item{}
+
+  &-footer{}
+}
+
+.cart_item{
+
+  @media (min-width: 1100px){
+    line-height: 110px;
+  }
+  @media (min-width: 800px) and (max-width: 1100px){
+    line-height: 85px;
+  }
+  &-image{}
+
+  &-link{}
+
+  &-title{}
+
+  &-sku{}
+
+  &-prices{}
+
+  &-prices_total{}
+
+  &-delete{}
+
+  &-quantity{}
+
+  &-wrapper{
+    @media (min-width: 800px){
+      line-height: 20px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.discounts{
+  &-input{}
+
+  &-title{}
+
+  &-submit{}
+}
+
+.discount{
+  &-description{}
+
+  &-title{}
+}
+
+.cart_itog{
+  &-title{}
+}
