@@ -1,0 +1,150 @@
+// вспомогательные классы для сетки
+.default-grid(){
+  margin: 0;
+  clear:  none;
+  float:  left;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+// 
+.generate-columns( @prefix ){
+
+  .loop(@n, @i: 1) when (@i =< @n) {
+
+    .@{prefix}grid-@{i} {
+      width: percentage(@i / @n);
+      &:extend( .grid-1 );
+      &:extend( .lg-grid-1 );
+      &:extend( .md-grid-1 );
+      &:extend( .sm-grid-1 );
+      &:extend( .xs-grid-1 );
+      &:extend( .mc-grid-1 );
+    }
+    .@{prefix}offset-@{i} {
+      margin-left: percentage(@i / @n);
+    }
+    .loop(@n, (@i + 1));
+  }
+
+  .loop( 12 );
+}
+
+//
+.generate-padded( @prefix ){
+  .@{prefix}padded{
+    padding: .5rem;
+  }
+  .@{prefix}padded-left{
+    padding-left: .5rem;
+  }
+  .@{prefix}padded-right{
+    padding-right: .5rem;
+  }
+  .@{prefix}padded-top{
+    padding-top: .5rem;
+  }
+  .@{prefix}padded-bottom{
+    padding-bottom: .5rem;
+  }
+  .@{prefix}padded-sides{
+    padding-left:  .5rem;
+    padding-right: .5rem;
+  }
+  .@{prefix}padded-vertical{
+    padding-top:    .5rem;
+    padding-bottom: .5rem;
+  }
+
+  .@{prefix}padded-inner{
+    padding: 1rem;
+  }
+  .@{prefix}padded-inner-left{
+    padding-left: 1rem;
+  }
+  .@{prefix}padded-inner-right{
+    padding-right: 1rem;
+  }
+  .@{prefix}padded-inner-top{
+    padding-top: 1rem;
+  }
+  .@{prefix}padded-inner-bottom{
+    padding-bottom: 1rem;
+  }
+  .@{prefix}padded-inner-sides{
+    padding-left:  1rem;
+    padding-right: 1rem;
+  }
+  .@{prefix}padded-inner-vertical{
+    padding-top:    1rem;
+    padding-bottom: 1rem;
+  }
+
+  .@{prefix}padded-reverse{
+    margin-left:  -.5rem;
+    margin-right: -.5rem;
+    width:        auto;
+    box-sizing:   content-box;
+    float:        none;
+  }
+  .@{prefix}padded-reverse-all{
+    margin:     -.5rem;
+    width:      auto;
+    box-sizing: content-box;
+    float:      none;
+  }
+}
+
+.generate-flow( @prefix ){
+  .@{prefix}fl,
+  .@{prefix}flow{
+    float: left;
+  }
+  .@{prefix}fr,
+  .@{prefix}flow-opposite{
+    float: right;
+  }
+}
+
+.generate-text( @prefix ){
+  .@{prefix}center{
+    text-align: center;
+  }
+  .@{prefix}left{
+    text-align: left;
+  }
+  .@{prefix}right{
+    text-align: right;
+  }
+}
+
+.generate-utils( @prefix ){
+  .@{prefix}hidden{
+    display: none !important;
+  }
+
+  .@{prefix}visible{
+    display: block !important;
+  }
+}
+
+.generate-grid( @prefix ){
+  .generate-columns( @prefix );
+  .generate-padded( @prefix );
+  .generate-flow( @prefix );
+  .generate-text( @prefix );
+}
+
+.generate-media( @prefix, @min-width, @max-width ){
+  @media ( max-width: @max-width ){
+    .generate-columns( @prefix );
+    .generate-padded( @prefix );
+    .generate-flow( @prefix );
+  }
+
+  @media ( min-width: @min-width ) and ( max-width: @max-width ){
+    .generate-utils( @prefix );
+  }
+}

@@ -69,6 +69,8 @@
     // склейка опорных стилей
     "core.css": [
       "less/init.core.less",
+      "less/grid_helpers.less",
+      "less/grid.less",
       "less/image.less"
     ],
 

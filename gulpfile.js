@@ -158,7 +158,7 @@ job = function( task, path ){
         .pipe( concat( task ) )
         .on( 'error', log )
         .pipe( less({
-          paths: [ 'blocks/core/less' ]
+          paths: [ 'blocks/core/less/mixins' ]
         }) )
         .on( 'error', log )
         .pipe( gulp.dest( path +'media/' ) );

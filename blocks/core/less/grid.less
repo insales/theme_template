@@ -1,0 +1,88 @@
+// сборка сетки
+.row:after,
+.grid-row:after,
+.grid-row-inner:after{
+  content: '';
+  display: block;
+  width:   100%;
+  clear:   both;
+}
+.grid-row{
+  margin-left:  -.5rem;
+  margin-right: -.5rem;
+}
+.grid-row-inner{
+  margin-left:  -1rem;
+  margin-right: -1rem;
+}
+
+.wrap{
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+// @media all - небольшой хак, для отделения стилей для каждого шага сетки
+// default grid
+@media all{
+  .grid-1{
+    .default-grid();
+  }
+  .generate-grid( {} );
+  .generate-utils( {} );
+}
+
+// lg-grid
+@media all{
+  .lg-grid-1{
+    .default-grid();
+  }
+  .generate-grid( lg- );
+  @media ( min-width: 1101px ){
+    .generate-utils( lg- );
+  }
+}
+
+// md-grid
+@media ( max-width: 1100px ){
+  .md-grid-1{
+    .default-grid();
+  }
+  .generate-grid( md- );
+}
+@media ( min-width: 801px ) and ( max-width: 1100px ){
+  .generate-utils( md- );
+}
+
+// sm-gride
+@media ( max-width: 800px ){
+  .sm-grid-1{
+    .default-grid();
+  }
+  .generate-grid( sm- );
+}
+@media ( min-width: 641px ) and ( max-width: 800px ){
+  .generate-utils( sm- );
+}
+
+// xs-grid
+@media ( max-width: 640px ){
+  .xs-grid-1{
+    .default-grid();
+  }
+  .generate-grid( xs- );
+}
+@media ( max-width: 640px ){
+  .generate-utils( xs- );
+}
+
+// mc-grid
+@media ( max-width: 480px ){
+  .mc-grid-1{
+    .default-grid();
+  }
+  .generate-grid( mc- );
+}
+@media ( max-width: 480px ){
+  .generate-utils( mc- );
+}
+/**/

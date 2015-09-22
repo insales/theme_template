@@ -181,8 +181,8 @@
 .row,
 .grid-row,
 .grid-row-inner{
-  width: auto;
-  box-sizing: content-box;
+  /*width: auto;*/
+  /*box-sizing: content-box;*/
   float: none;
 }
 .row:after,
