@@ -1,0 +1,45 @@
+<div class="sidebar">
+
+  {% if template == 'collection' and collection.subcollections.size > 0 %}
+    <div class="sidebar_block">
+      <div class="sidebar_block-title">
+        Каталог
+      </div>
+      {% include "menu_collection" %}
+    </div>
+  {% endif %}
+
+  {% if template == 'collection' and collection.properties.size > 0 %}
+    <div class="sidebar_block">
+      <div class="sidebar_block-title">
+        Фильтр
+      </div>
+      {% include "collection_filter" %}
+    </div>
+  {% endif %}
+
+  {% if template == 'blog' %}
+    <div class="sidebar_block">
+      <div class="sidebar_block-title">
+      </div>
+    </div>
+  {% endif %}
+
+  {% assign sidebar = block_lists.news.blocks %}
+  {% if sidebar.size > 0 %}
+    {% for block in sidebar %}
+      <div class="sidebar_block">
+        <div class="sidebar_block-title">{{ block.title }}</div>
+        <div class="sidebar_block-content">
+          {{ block.content }}
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <div class="sidebar_block">
+    <div class="sidebar_block-title js-recently_view">
+    </div>
+  </div>
+
+</div>

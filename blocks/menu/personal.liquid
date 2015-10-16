@@ -1,0 +1,29 @@
+{% if client? %}
+  <ul class="menu menu--personal">
+    <li class="menu-node menu-node--personal">
+      <a href="/client_account/login" class="menu-link">
+        Вход
+      </a>
+    </li>
+
+    <li class="menu-node menu-node--personal">
+      <a href="/client_account/contacts/new" class="menu-link">
+        Регистрация
+      </a>
+    </li>
+  </ul>
+{% else %}
+  <ul class="menu menu--personal">
+    <li class="menu-node menu-node--personal">
+      <a href="/client_account/login" class="menu-link">
+        Личный кабинет
+      </a>
+    </li>
+
+    <li class="menu-node menu-node--personal">
+      <a href="/client_account/exit" class="menu-link">
+        Выход
+      </a>
+    </li>
+  </ul>
+{% endif %}

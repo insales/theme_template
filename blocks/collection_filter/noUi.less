@@ -1,0 +1,91 @@
+/* noUI slider */
+
+.noUi{
+  &-target,
+  &-target *{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &-target{
+    position: relative;
+    direction: ltr;
+  }
+
+  &-base{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* Painting and performance;
+     * Browsers can paint handles in their own layer.
+     */
+     -webkit-transform: translate3d(0,0,0);
+     transform: translate3d(0,0,0);
+  }
+
+  &-origin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  &-handle {
+    position: relative;
+    z-index: 1;
+    cursor: default;
+  }
+
+  &-stacking{
+    .noUi-handle {
+      /* This class is applied to the lower origin when
+       * its values is > 50%.
+       */
+      z-index: 10;
+    }
+
+    + .noUi-origin {
+      /* Fix stacking order in IE7, which incorrectly
+       * creates a new context for the origins.
+       */
+      *z-index: -1;
+    }
+  }
+
+  &-state-tap{
+    .noUi-origin {
+      -webkit-transition: left 0.3s, top 0.3s;
+      transition: left 0.3s, top 0.3s;
+    }
+  }
+
+  &-state-drag * {
+    cursor: inherit !important;
+  }
+
+  /* Handles and cursors;
+   */
+  &-dragable{
+    cursor: w-resize;
+
+    .noUi-vertical &{
+      cursor: n-resize;
+    }
+  }
+
+  /* Disabled state;
+   */
+  [disabled].noUi-connect,
+  [disabled] .noUi-connect {
+    background: #B8B8B8;
+  }
+  [disabled] .noUi-handle {
+    cursor: not-allowed;
+  }
+}
