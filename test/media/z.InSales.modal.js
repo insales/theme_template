@@ -4,18 +4,18 @@
 
 /*
   все function name тащим из modalHelper'a
-  
+
   closeCbk: function name   - что делаем при закрытии окна
   confirmCbk: function name - что делаем при подтверждении
   readyCbk: function name   - что делаем после полной отрисовки окна
 */
 
-modal = function(){
+modal = function () {
   var
     self = this;
 
   // вывод модалки
-  self.show = function( $data ){
+  self.show = function ($data) {
     // добавляем данные в параметры
     $data = self.makeData( $data );
 
@@ -38,7 +38,7 @@ modal = function(){
       $( 'body' ).append( '<div class="overlay"></div>' );
     }else{
       $( 'body' ).append( '<div class="overlay overlay--opacity"></div>' );
-    };
+    }
 
     // навешиваем параметры на элементы
     setParams( $modal, $data );
@@ -53,7 +53,7 @@ modal = function(){
     // дергаем функцию после отрисовки.
     if( $data.readyCbk ){
       $data.readyCbk( $data );
-    };
+    }
   };
 
   // закрытие модалки
@@ -73,20 +73,20 @@ modal = function(){
     // тянем верстку из целевого блока
     if( $data.target ){
       $data.content = $( $data.target ).html();
-    };
+    }
 
     // надо собрать статичтику по задачам и решениям, и найти красивое решение
     if( $data.readyCbk && typeof( $data.readyCbk ) != 'function' ){
       $data.readyCbk = modalHelper[ $data.readyCbk ];
-    };
+    }
 
     if( $data.confirmCbk && typeof( $data.confirmCbk ) != 'function' ){
       $data.confirmCbk = modalHelper[ $data.confirmCbk ];
-    };
+    }
 
     if( $data.closeCbk && typeof( $data.closeCbk ) != 'function' ){
       $data.closeCbk = modalHelper[ $data.closeCbk ];
-    };
+    }
 
     // если требуется показать шаблон формы
     // прикручиваем колбек проверки и отправки
@@ -100,12 +100,12 @@ modal = function(){
 
         if( field.name == 'email' ){
           field.type = 'email';
-          field.error = 'не верно введен e-mail'
-        };
+          field.error = 'не верно введен e-mail';
+        }
 
         field.error = field.error || 'поле не заполнено';
       });
-    };
+    }
 
     return $data;
   };
@@ -147,8 +147,8 @@ $( document ).on( 'click touchstart', '.js-modal-close, .overlay', function( e )
     }else{
       // либо просто закрываем окно
       modal.close();
-    };
-  };
+    }
+  }
 });
 
 // кнопка подтверждения
@@ -161,7 +161,7 @@ $( document ).on( 'click', '.js-modal-confirm', function( e ){
 
   if( $data.confirmCbk ){
     $data.confirmCbk( $data );
-  };
+  }
 });
 
 // ====================================================================================
@@ -179,7 +179,7 @@ var modalHelper = {
     // проверяем на ошибки
     if( errors.length > 0 ){
       return;
-    };
+    }
 
     // собираем наше сообщение из формы в вид, которым оперирует платформа
     $.each( $data.fields, function( index, field ){
@@ -195,11 +195,11 @@ var modalHelper = {
 
     if( $data.from ){
       $message[ 'feedback[from]' ] = $data.from;
-    };
+    }
 
     if( $data.subject ){
       $message[ 'feedback[subject]' ] = $data.subject;
-    };
+    }
 
     // отправка и красивости
     InSales.sendMessage( $message )
@@ -209,7 +209,7 @@ var modalHelper = {
 
           modal.close();
           showMessage( response.notice );
-        };
+        }
       });
   },
 
@@ -232,4 +232,3 @@ var modalHelper = {
     return dfd.promise();
   },
 };
-

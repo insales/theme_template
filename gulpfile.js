@@ -4,6 +4,7 @@ var
   concat   = require( 'gulp-concat' ),
   less     = require( 'gulp-less' ),
   sequence = require( 'gulp-run-sequence' ),
+  es       = require( 'event-stream' ),
 
   path     = require( 'path' ),
   colors   = require( 'colors' ),
@@ -78,8 +79,8 @@ gulp.task( 'watch:less', function(){
 });
 
 // таск для правки базовых скриптов
-gulp.task( 'watch:js',  function(){
-  gulp.watch( 'blocks/**/*.js', function( event ){
+gulp.task( 'watch:js',  function() {
+  gulp.watch( 'blocks/**/*.js', function( event ) {
     console.log(
       'File ' + event.path + ' was ' + event.type + ', running tasks...'
     );
@@ -97,7 +98,7 @@ gulp.task( 'watch:js',  function(){
       }
     }
 
-    for( task_name in block.core ){
+    for( task_name in block.core ) {
       var
         i = 0,
         list   = block.core[ task_name ],
@@ -124,30 +125,10 @@ gulp.task( 'watch:js',  function(){
   });
 });
 
-// ничего личного, только тест
-gulp.task( 'test', function(){
-  var
-    style = List[ 'style.css.scss' ];
-
-  makeList( 'core' );
-  makeList( 'test ');
-
-  style[ 0 ] = 'blocks/core/scss/_variables.scss.liquid';
-
-  console.log( style );
-
-  gulp.src( style )
-    .pipe( concat( 'check/style.css.scss' ) )
-    .pipe( gulp.dest( 'check/style_1.css' ) )
-    .pipe( sass() )
-    .on( 'error', log );
-});
-
 //=============================================
 
 job = function( task, path ){
   var
-    
     source    = gulp.src( List[ task ] );
 
   // если мы склеиваем шаблоны ect, то делаем отдельный таск
@@ -185,7 +166,6 @@ job = function( task, path ){
 
     // сборка настроек темы
     case 'settings.html':
-    case 'settings_form.json':
       source
         .pipe( concat( task ) )
         .on( 'error', log )
@@ -193,7 +173,21 @@ job = function( task, path ){
         .on( 'error', log );
       break;
 
-    // сборка файлов подключения стилей и 
+    case 'settings_form.json':
+      source = es.merge(
+        strToSrc( 'intro', '{' ),
+        source,
+        strToSrc( 'outro', '}' )
+      );
+
+      source
+        .pipe( concat( task ) )
+        .on( 'error', log )
+        .pipe( gulp.dest( path +'config/' ) )
+        .on( 'error', log );
+      break;
+
+    // сборка файлов подключения стилей и скриптов
     case 'style.css.scss':
     case 'template.css':
     case 'template.js':
@@ -246,12 +240,6 @@ makeList = function( mode ){
           List[ key ].push( path + file );
         })
       }
-
-      if( mode != 'core' ){
-        List[ 'settings.html' ].push( path +'settings.html' );
-        List[ 'settings_form.json' ].push( path +'settings_form.json' );
-        List[ '_variables.scss.liquid' ].push( path +'_var.scss');
-      }
     }
   }
 };
@@ -269,18 +257,25 @@ function log(error) {
   this.end();
 }
 
+// makeFile
+makeFile = function( filename, string ){
+  var File = new gutil.File({
+    cwd: '',
+    base: '',
+    path: filename,
+    contents: new Buffer( string )
+  });
+
+  return File;
+};
+
 // динамическое создание данных в поток
 function strToSrc( filename, string ){
   var
     src = require( 'stream' ).Readable( { objectMode: true } );
 
   src._read = function () {
-    this.push( new gutil.File({
-      cwd: '',
-      base: '',
-      path: filename,
-      contents: new Buffer( string )
-    }));
+    this.push( makeFile( filename, string ) );
     this.push(null);
   };
 

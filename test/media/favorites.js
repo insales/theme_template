@@ -9,7 +9,7 @@ $(function(){
   Events( 'onFavorite_Update' ).subscribe( function( $data ){
     //console.log( 'onFavorite_Update: ', $data );
 
-    if( $data.products.length == 0 ){
+    if( $data.products.length === 0 ){
       $( '.js-favorite-notice' ).show();
     }else{
       $( '.js-favorite-notice' ).hide();
@@ -22,7 +22,7 @@ $(function(){
   Events( 'onFavorite_Add' ).subscribe( function( $data ){
     //console.log( 'onFavorite_Add: ', $data );
 
-    
+
   });
 
   Events( 'onFavorite_Remove' ).subscribe( function( $data ){

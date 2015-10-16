@@ -20,23 +20,23 @@ $(function(){
     showMessage( $data.text.repeatItem, 3000 );
   });
 
+  if( Site.template == 'compare' ){
   // удаляем товар в сравнении
-  Events( 'onCompare_Remove' ).subscribe( function( $data ){
-    //console.log( 'onCompare_Remove: ', $data );
+    Events( 'onCompare_Remove' ).subscribe( function( $data ){
+      //console.log( 'onCompare_Remove: ', $data );
 
-    if( Site.template == 'compare' ){
       if( $data.products.length == 0 ){
         $( '.compare-notice' ).show();
         $( '.compare-wrapper' ).hide();
-      };
+      }
 
       var
         $item = $( '.js-compare_item-'+ $data.removed );
 
       $item
         .remove();
-    };
-  });
+    });
+  }
 
   // выводим сообщение, когда удалили товар из сравнения
   Events( 'onCompare_Remove' ).subscribe( function( $data ){
@@ -46,7 +46,7 @@ $(function(){
   // мы достигли максимума товаров в списке
   Events( 'onCompare_maxItem' ).subscribe( function( $data ){
     showMessage( $data.text.maxItem, 2000 );
-  })
+  });
 
   // переключение стилей
   $( '.js-compare-toggle_same' ).on( 'click', function( e ){

@@ -2,24 +2,23 @@
 
 {% paginate articles by 8 %}
   {% if paginate.parts.size > 1 %}
-    <div class="row padded-inner">
+    <div class="row">
       {% include "pagination" %}
     </div>
   {% endif %}
 
   <div class="blog-article_list">
     {% for article in articles %}
-      <div class="article_preview
-                  grid-12
-                  padded-inner-bottom"
+      <div class="lg-grid-12
+                  padded-bottom"
       >
-        {% include "article_preview" %}
+        {% include "article_preview" with "blog" %}
       </div>
     {% endfor %}
   </div>
 
   {% if paginate.parts.size > 1 %}
-    <div class="row padded-inner">
+    <div class="row">
       {% include "pagination" %}
     </div>
   {% endif %}

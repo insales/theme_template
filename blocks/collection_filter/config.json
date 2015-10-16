@@ -13,8 +13,7 @@
     ],
 
     "style.css.scss": [
-      "_collection_filter.scss",
-      "_slider_noui.scss"
+      "_collection_filter.scss"
     ],
 
     "template.js": [

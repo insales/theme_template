@@ -1,16 +1,8 @@
 {
   "test": {
-    "snippets": [
-      "slider_index.liquid",
-      "slider_product.liquid"
-    ]
   },
 
   "dist": {
-    "snippets": [
-      "slider_index.liquid",
-      "slider_product.liquid"
-    ]
   },
 
   "core": {
@@ -29,6 +21,11 @@
     "template.js": [
       "owl.carousel.min.js",
       "slider.js"
+    ],
+
+    "snippets": [
+      "slider_index.liquid",
+      "slider_product.liquid"
     ]
   }
 }

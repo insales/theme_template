@@ -24,8 +24,8 @@ InSales.OrderLine = function( options ) {
 
   // добавляем язык, если не дефолт
   if( Site.language.not_default ){
-    line.url += '?lang='+ Site.locale;
-  };
+    line.url += '?lang='+ Site.language.locale;
+  }
 
   // разворачиваем изображения товара для шаблонизатора
   line.image = {};
@@ -39,7 +39,8 @@ InSales.OrderLine = function( options ) {
 // основной объект корзины
 // занимется всеми взаимодействиями с корзиной
 // на входе - объект с настройками:
-// removeSelector - селектор, кнопки "удаления" товара из корзины, например, '.js-cart_item-delete'.
+// removeSelector - селектор, кнопки "удаления" товара из корзины,
+// например, '.js-cart_item-delete'.
 //
 // self
 // cart - объект списка корзины
@@ -49,7 +50,7 @@ InSales.Cart = function( options ){
     //cart = {};
 
   // обновление списка корзины
-  setCart = function( order ){
+  this.setCart = function( order ){
     var
       items_count = 0,
       order_lines = [];
@@ -61,7 +62,7 @@ InSales.Cart = function( options ){
       self.order_lines = [];
       self.discounts   = [];
       return;
-    };
+    }
 
     self.items_price = order.items_price;
     self.total_price = order.total_price;
@@ -101,9 +102,9 @@ InSales.Cart = function( options ){
         var order = $.parseJSON( $.cookie('cart') );
       } catch( e ) {
         var order = null;
-      };
+      }
 
-      setCart( order );
+      self.setCart( order );
       $data = makeData( self );
 
       Events( 'onCart_Update' ).publish( $data );
@@ -113,16 +114,16 @@ InSales.Cart = function( options ){
       }
     } else {
       $.getJSON( '/cart_items.json', function( order ){
-        setCart( order );
+        self.setCart( order );
         $data = makeData( self );
 
         Events( 'onCart_Update' ).publish( $data );
 
         if( callback ){
           callback( $data );
-        };
+        }
       });
-    };
+    }
   };
 
   // триггер удаления товара из корзины
@@ -133,7 +134,7 @@ InSales.Cart = function( options ){
       // предовращает повторный клик
       if( $(this).data( 'processed' ) ){
         return;
-      };
+      }
 
       $(this).data( 'processed', true );
 
@@ -144,14 +145,14 @@ InSales.Cart = function( options ){
   // удаление товара
   this.removeItem = function( variant_id, $link ){
     var
-      fields = new Object,
+      fields = {},
       path   = '/cart_items/' + variant_id + '.json',
       $data  = makeData( self );
 
     $data.removed = variant_id;
     $data.jqObj   = $link;
 
-    fields[ '_method' ] = 'delete';
+    fields._method = 'delete';
     showPreloader();
 
     $.post( path, fields )
@@ -175,7 +176,7 @@ InSales.Cart = function( options ){
         console.log( 'Произошла ошибка при удалении!! Ответ платформы: ', response );
       })
       .always( function(){
-        hidePreloader()
+        hidePreloader();
       });
   };
 
@@ -201,11 +202,11 @@ InSales.Cart = function( options ){
         break;
       case( 'jQuery' ):
         fields = $obj.serialize();
-        path   = getFormAction( $obj );
+        path   = self.getFormAction( $obj );
 
         $data.jqObj = $obj;
         break;
-    };
+    }
 
     showPreloader();
     $.post( path.path , fields )
@@ -226,7 +227,7 @@ InSales.Cart = function( options ){
         console.log( 'Произошла ошибка при удалении!! Ответ платформы: ', response );
       })
       .always( function(){
-        hidePreloader()
+        hidePreloader();
       });
   };
 
@@ -244,8 +245,8 @@ InSales.Cart = function( options ){
     });
 
     if( items_count == self.items_count ){
-      return false
-    };
+      return false;
+    }
 
     showPreloader();
 
@@ -262,7 +263,7 @@ InSales.Cart = function( options ){
   };
 
   // делаем нормальный путь у формы
-  getFormAction = function( $form ){
+  self.getFormAction = function( $form ){
     var
       temp   = $form.attr( 'action' ).split( '?' ),
       action = {};

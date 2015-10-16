@@ -1,5 +1,11 @@
+{% comment %}
+  hide_after - после какой секции фильтра прятать их под кнопку "показать больше"?
+  is_collapse - сворачиваются ли отдельные секции фильтра?
+  collapse_range - сворачиваются ли при этом диапазоны цен и числовых параметров?
+{% endcomment %}
+
 {% assign hide_after = 100 %}
-{% assign is_collapse = true %}
+{% assign is_collapse = false %}
 {% assign collapse_range = false %}
 
 {% assign hide_after = hide_after | plus: 1 %}
@@ -7,21 +13,26 @@
 <form action="{{ collection.url }}"
       method="get"
       id="characteristics"
-      class="filter filter--vertical filter--{{ collection_filter }}
+      class="filter filter--vertical
+              {% if collection_filter %} filter--{{ collection_filter }} {% endif %}
               js-filter-sections_wrapper"
 
+      {% comment %}
+        тут мы можем указать, что данная копия сниппета
+        будет автоматически отправляться при изменении параметров или нет
+      {% endcomment %}
       data-params="submit: false"
 >
 
   {% comment %}
-    цена
+    диапазон по цене
   {% endcomment %}
   <div class="filter-section
               js-filter_section-wrapper"
   >
     <label id="filter_section-price"
             class="filter_section-title
-                  
+
                   {% if is_collapse %}js-filter_section-toggler{% endif %}"
     >
       <span>

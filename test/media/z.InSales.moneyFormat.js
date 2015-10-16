@@ -4,7 +4,7 @@
 
 // правильно формируем объект цены
 InSales.initMoney = function( params ) {
-  var 
+  var
     moneyParams = {},
     temp        = {};
 
@@ -20,7 +20,7 @@ InSales.initMoney = function( params ) {
     moneyParams[ 'delimiter' ] = '';
   }
 
-  if( temp[ 'show_price_without_cents' ] == 1 ){ 
+  if( temp[ 'show_price_without_cents' ] == 1 ){
     moneyParams[ 'show_price_without_cents' ] = false;
   }else{
     moneyParams[ 'show_price_without_cents' ] = true;
@@ -48,7 +48,7 @@ InSales.formatMoney = function( amount ) {
     value  = parseFloat( amount ).toFixed( 2 ) || 0,
     split  = value.toString().split( '.' ),
     format = CurrencyFormat.format;
-  
+
   split[ 0 ] = split[ 0 ].replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1'+ CurrencyFormat.delimiter );
 
   if( CurrencyFormat.show_price_without_cents ){

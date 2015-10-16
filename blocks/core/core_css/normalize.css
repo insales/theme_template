@@ -223,14 +223,19 @@ td,
 th {
   padding: 0;
 }
-:focus{ outline: 0; }
+:focus{
+  outline: 0;
+}
 
 div,
 input,
 button,
 .button,
-form{
+form,
+ul{
   box-sizing: border-box;
 }
 
-p{ margin: 0px; }
+p{
+  margin: 0;
+}

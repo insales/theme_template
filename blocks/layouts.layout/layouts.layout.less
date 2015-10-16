@@ -3,27 +3,26 @@ script[type="text/template"]{
   display: none;
 }
 
-// fix img
-img{
-  vertical-align: middle;
-  max-width: 100%;
-  max-height: 100%;
-}
-
 body{
   min-width: 320px;
 }
 
-#own_preloader{
-  position: fixed;
-  z-index:  @zindex-tooltip;
-}
-
 // блокируем прокрутку боди
-.lock_scroll{
+body.lock_scroll{
   left: 0;
   -webkit-overflow-scrolling: touch;
   position: fixed;
   //top: 0;
   width: 100%;
+}
+
+// sidebar
+.sidebar_block{
+  &-title{}
+
+  &-content{}
+
+  &:last-child{
+    margin-bottom: 0;
+  }
 }

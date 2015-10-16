@@ -8,16 +8,8 @@
 
 {% if slider-products.size > 0 %}
   <div class="slider slider--product">
-    <div class="slider-title">
-      <div class="slider-control slider-control--product fr">
-        <div class="slider-left button js-slider-left">
-          <i class="fa fa-chevron-left"></i>
-        </div>
-        <div class="slider-right button js-slider-right">
-          <i class="fa fa-chevron-right"></i>
-        </div>
-      </div>
 
+    <div class="slider-title">
       {% if slider-link %}
         <a href="{{ slider-link }}">
           {{ slider-title }}
@@ -29,9 +21,27 @@
       {% endif %}
     </div>
 
+    <div class="slider-control slider-control--product
+                fr"
+    >
+      <div class="slider-left
+                  button
+                  js-slider-left"
+      >
+        <i class="fa fa-chevron-left"></i>
+      </div>
+
+      <div class="slider-right
+                  button
+                  js-slider-right"
+      >
+        <i class="fa fa-chevron-right"></i>
+      </div>
+    </div>
+
     <div class="slider-container js-slider">
       {% for product in slider-products %}
-        <div class="product_preview padded-inner">
+        <div class="padded">
           {% include "product_preview" %}
         </div>
       {% endfor %}

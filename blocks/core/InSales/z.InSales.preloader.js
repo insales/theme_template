@@ -13,7 +13,7 @@ showPreloader = function() {
   if ( !preloader.attr( "id" ) ) {
     $('body').append( '<div id="own_preloader"><img src="/served_assets/loading.gif"/></div>' );
     preloader = $('#own_preloader');
-  };
+  }
 
   preloader.show();
   changeCss( preloader );
@@ -34,19 +34,20 @@ hidePreloader = function() {
 
 resizePreloader = function(){
   changeCss( $( '#own_preloader' ) );
-}
+};
 
 // показываем сообщение
 showMessage = function( message, time ){
   showPreloader();
 
   var
-    preloader = $( '#own_preloader' ),
-    time      = time || 2000;
+    preloader = $( '#own_preloader' );
+
+  time = time || 2000;
 
   if ( !preloader.attr( 'id' ) ) return;
 
-  message = 
+  message =
     '<div class="system_message">'+
       message +
     '<div>';

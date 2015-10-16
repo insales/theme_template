@@ -1,38 +1,27 @@
-/* layouts */
+// layouts
 
 html{}
 
 body{}
 
 a{
-  &:hover{}
+  &:hover{
+    $link-color-hover;
+  }
 }
 
-/* common class */
-
+// common class
 .wrap{
   max-width: 1200px;
 }
 
-.content-title{}
-
-/* данные классы используются для стилизации крупных блоков. */
+// данные классы используются для стилизации крупных блоков.
 .section{
+  // modificator
   &--top_line{}
-
-  &--header{}
-
-  &--breadcrumbs{}
-
-  &--content{}
-
-  &--footer_menus{}
-
-  &--footer_copyright{}
 }
 
-/* sidebar */
-
+// sidebar
 .sidebar{}
 
 .sidebar_block{
@@ -40,3 +29,6 @@ a{
 
   &-content{}
 }
+
+// content
+.content-title{}

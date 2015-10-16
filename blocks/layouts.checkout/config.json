@@ -8,12 +8,12 @@
       "layouts.checkout.liquid"
     ],
 
-    "media": [
-      "custom_checkout.css.liquid"
-    ],
-
     "style.css.scss": [
       "_layouts.checkout.scss"
+    ],
+
+    "core.css": [
+      "layouts.checkout.less"
     ]
   }
 }

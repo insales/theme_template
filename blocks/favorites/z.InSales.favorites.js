@@ -35,7 +35,7 @@ InSales.Favorites = function( options ){
       self.favorites = $.parseJSON( $.cookie( 'favorites' ) );
     }catch( e ){
       self.favorites = null;
-    };
+    }
 
     // проверяем на пустоту
     if( !self.favorites ){
@@ -43,7 +43,7 @@ InSales.Favorites = function( options ){
       self.favorites = [];
 
       return;
-    };
+    }
 
     // забираем данные по товарам
     InSales.getProductList( self.favorites )
@@ -69,7 +69,7 @@ InSales.Favorites = function( options ){
         $link
           .parent()
             .addClass( self.triggerClass );
-      };
+      }
 
       $data.added = product_id;
       $data.jqObj = $link;
@@ -85,7 +85,7 @@ InSales.Favorites = function( options ){
       Events( 'onFavorite_Add' ).publish( $data );
 
       self.update();
-    };
+    }
   };
 
   addItemTrigger = function(){
@@ -111,12 +111,12 @@ InSales.Favorites = function( options ){
     $.each( self.favorites, function( index, id ){
       if( id == product_id ){
         position = index;
-      };
+      }
     });
 
     if( typeof( position ) == 'number' ){
       self.favorites.splice( position, 1 );
-    };
+    }
 
     // сохраняем куку
     $.cookie( 'favorites', JSON.stringify( self.favorites ), {
@@ -132,7 +132,7 @@ InSales.Favorites = function( options ){
           .removeClass( self.triggerClass );
 
       $data.jqObj = $link;
-    };
+    }
 
     Events( 'onFavorite_Remove' ).publish( $data );
 
@@ -146,7 +146,7 @@ InSales.Favorites = function( options ){
       // блокируем повторный клик
       if( $(this).data( 'processed') ){
         return;
-      };
+      }
 
       $(this).data( 'processed', true );
 
@@ -172,9 +172,9 @@ InSales.Favorites = function( options ){
         if( id == product_id ) {
           result = true;
           return false;
-        };
+        }
       });
-    };
+    }
 
     return result;
   };
@@ -188,7 +188,7 @@ InSales.Favorites = function( options ){
     $.each( self.favorites, function( index, id ){
       if( id ){
         self.products.push( products[ id ] );
-      };
+      }
     });
 
     $.each( self.products, function( index, product ){
@@ -208,7 +208,7 @@ InSales.Favorites = function( options ){
         $(this)
           .parent()
             .addClass( self.triggerClass );
-      };
+      }
     });
   };
 

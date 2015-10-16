@@ -5,13 +5,13 @@
   <% for discount in @discounts : %>
     <div class="discount">
       <div class="discount-title
-                  lg-grid-8 md-grid-8 sm-grid-7 xs-grid-8
+                  lg-grid-8
                   lg-right md-right"
       >
         <%- discount.description %>
       </div>
       <div class="prices prices--discount
-                  lg-grid-4 md-grid-4 sm-grid-5 xs-grid-4
+                  lg-grid-4
                   right"
       >
         <span class="prices-current">

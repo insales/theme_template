@@ -56,7 +56,7 @@ InSales.RecentlyView = function( options ){
       return;
     }else{
       // не превысили мы лимит?
-      if( self.recently.length = self.maxItems ){
+      if( self.recently.length == self.maxItems ){
         self.recently.shift();
       };
 

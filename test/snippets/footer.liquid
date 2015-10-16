@@ -1,21 +1,20 @@
 <footer>
 
   <div class="section--footer_menus">
-    <div class="wrap row">
+    <div class="wrap row grid-list">
 
       {% for i in (1..4) %}
         {% capture handle %}footer-menu-{{ i }}{% endcapture %}
         {% assign menu = linklists[handle] %}
         {% if menu.links.size > 0 %}
           <div class="footer_block
-                      lg-grid-3 md-grid-3 sm-grid-6 xs-grid-6 mc-grid-12
-                      padded-inner"
+                      lg-grid-3 sm-grid-6 mc-grid-12
+                      padded"
           >
             <div class="footer_block-title">
               {{ menu.title }}
               <span class="menu-toggler menu-toggler--footer">
-                <i class="
-                          fa fa-plus
+                <i class="fa fa-plus
                           lg-hidden md-hidden"
                 ></i>
               </span>
@@ -31,8 +30,6 @@
               {% endfor %}
             </ul>
           </div>
-
-          {% cycle 'footer_menu': '', '<div class="sm-grid-12 xs-grid-12 lg-hidden md-hidden"></div>' %}
         {% endif %}
       {% endfor %}
 
@@ -54,7 +51,7 @@
 
       {% if settings.show_socials_links %}
         <div class="lg-grid-8 md-grid-7 sm-grid-6 xs-grid-12
-                    lg-right md-right sm-center xs-center
+                    lg-right sm-center
                     padded-inner"
         >
           {% include "social_groups" %}

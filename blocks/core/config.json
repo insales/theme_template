@@ -33,7 +33,6 @@
     // подключаем файлы сброса, сетки, опорных стилей
     "template.css": [
       "core_css/normalize.css",
-      //"core_css/grid.css",
       "core.css"
     ],
 
@@ -55,7 +54,8 @@
 
       // подключаем описание переключаемых блоков
       "collapse/z.InSales.collapseBlock.js",
-      "z.InSales.ui.js"
+      "z.InSales.ui.js",
+      "ui.js"
     ],
 
     // копируем дефолтные иконки и скрипта проверки
@@ -71,7 +71,8 @@
       "less/init.core.less",
       "less/grid_helpers.less",
       "less/grid.less",
-      "less/image.less"
+      "less/image.less",
+      "less/preloader.less"
     ],
 
     "_variables.scss.liquid": [

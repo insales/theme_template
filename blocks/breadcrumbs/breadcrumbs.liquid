@@ -78,11 +78,11 @@
         {% endif %}
 
       {% endif %}
-   
+
     {% when 'product' %}
 
       {% if current_collections.size > 0 and collection.handle != 'frontpage' %}
-      
+
         {% for collection in current_collections %}
           {% if collection.level > 0 %}
             {% if forloop.last %}
@@ -105,14 +105,15 @@
         {% endfor %}
 
       {% else %}
-     
+
         {% if product.collections.size > 0 %}
           {% assign deep_collection = product.collections.first %}
           {% for collection in product.collections %}
             {% if deep_collection.level < collection.level %}
-            {% assign deep_collection = collection %}
+              {% assign deep_collection = collection %}
             {% endif %}
           {% endfor %}
+
           {% for collection in deep_collection.current_collections %}
             {% if collection.level > 0 %}
               {% if forloop.last %}
@@ -128,10 +129,10 @@
                 </span>
               {% endif %}
             {% endif %}
-           {% endfor %}
-          {% endif %}
+          {% endfor %}
         {% endif %}
+      {% endif %}
 
-      {% else %}
+    {% else %}
   {% endcase %}
 </div>

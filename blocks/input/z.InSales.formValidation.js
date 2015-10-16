@@ -23,21 +23,21 @@ checkForm = function( $form ){
     // поле обязательно?
     if( $input.hasClass( 'input--required' ) || $(this).attr('required') ){
       is_required = true;
-    };
+    }
 
     // является капчей?
     if( $input.hasClass( 'input--captcha' ) ){
       is_captcha = true;
-    };
+    }
 
     if( $(this).attr('type') == 'email' ){
       is_email = true;
-    };
+    }
 
     // если поле обязательно
     if( is_required ){
       // и поле незаполнено
-      if( $(this).val() == '' ){
+      if( $(this).val() === '' ){
         errors.push({
           title: $(this).attr('title'),
           jqObj: $(this),
@@ -56,8 +56,8 @@ checkForm = function( $form ){
           title: $(this).attr('title'),
           jqObj: $(this),
         });
-      };
-    };
+      }
+    }
   });
 
   markFormErrors( errors );
@@ -84,3 +84,47 @@ $(function(){
     }
   });
 });
+
+// принимает jQuery-объект формы
+sendForm = function( $form, from, subject ){
+  var
+    errors   = checkForm( $form ),
+    content  = '',
+    $message = {},
+    $inputs  = $form.find( '.input-fields' );
+
+  // проверяем на ошибки
+  if( errors.length > 0 ){
+    return;
+  }
+
+  // собираем наше сообщение из формы в вид, которым оперирует платформа
+  $inputs.each( function( index, field ){
+    content +=
+      $(this).title +': '+ $(this).val() +'\n';
+  });
+
+  // собираем сообщение для платформы с правильными полями
+  $message[ 'feedback[content]' ] = content;
+
+  if( from ){
+    $message[ 'feedback[from]' ] = from;
+  }
+
+  if( subject ){
+    $message[ 'feedback[subject]' ] = subject;
+  }
+
+  // возвращаем Deferred объект
+  return InSales.sendMessage( $message );
+  /*
+    .done( function( response ){
+      console.log( response );
+      if( response.status == 'ok' ){
+
+        modal.close();
+        showMessage( response.notice );
+      }
+    });
+    */
+};

@@ -4,14 +4,14 @@
 
 $(function(){
   // gallery
-  var 
+  var
     $large  = $( '.js-image--large img' ),
     $thumbs = $( '.js-image--preview' );
 
   // сразу заготавливаем данные и сохраняем в самом объекте,
   // чтобы не делать каждый раз медленный разбор атрибутов
   $thumbs.each(function(){
-    this.params                = this.params || {}
+    this.params                = this.params || {};
     this.params.large_image    = $(this).data( 'large-image' );
     this.params.original_image = $(this).attr( 'href' );
   });

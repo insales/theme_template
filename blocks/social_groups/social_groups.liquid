@@ -4,49 +4,46 @@
 
 {% if settings.social_groups-show %}
 
-  <div class="grid-4 xs-grid-12
-              right xs-center
-              padded xs-padded-inner-bottom"
+  <div class="social_groups
+              padded"
   >
-    <div class="social_groups">
 
-      {% if settings.social_group-vk-show == '1' and settings.social_group-vk-link != '' %}
-        <a href="{{ settings.social_group-vk-link }}"
-            target="_blank"
-            class="social_groups-link social_groups-link--vk"
-        >
-          <i class="fa fa-vk"></i>
-        </a>
-      {% endif %}
+    {% if settings.social_group-vk-show == '1' and settings.social_group-vk-link != '' %}
+      <a href="{{ settings.social_group-vk-link }}"
+          target="_blank"
+          class="social_groups-link social_groups-link--vk"
+      >
+        <i class="fa fa-vk"></i>
+      </a>
+    {% endif %}
 
-      {% if settings.social_group-facebook-show == '1' and settings.social_group-facebook-link != '' %}
-        <a href="{{ settings.social_group-facebook-link }}"
-            target="_blank"
-            class="social_groups-link social_groups-link--facebook"
-        >
-          <i class="fa fa-facebook"></i>
-        </a>
-      {% endif %}
+    {% if settings.social_group-facebook-show == '1' and settings.social_group-facebook-link != '' %}
+      <a href="{{ settings.social_group-facebook-link }}"
+          target="_blank"
+          class="social_groups-link social_groups-link--facebook"
+      >
+        <i class="fa fa-facebook"></i>
+      </a>
+    {% endif %}
 
-      {% if settings.social_group-twitter-show == '1' and settings.social_group-twitter-link != '' %}
-        <a href="{{ settings.social_group-twitter-link }}"
-            target="_blank"
-            class="social_groups-link social_groups-link--twitter"
-        >
-          <i class="fa fa-twitter"></i>
-        </a>
-      {% endif %}
+    {% if settings.social_group-twitter-show == '1' and settings.social_group-twitter-link != '' %}
+      <a href="{{ settings.social_group-twitter-link }}"
+          target="_blank"
+          class="social_groups-link social_groups-link--twitter"
+      >
+        <i class="fa fa-twitter"></i>
+      </a>
+    {% endif %}
 
-      {% if settings.social_group-youtube-show == '1' and settings.social_group-youtube-link != '' %}
-        <a href="{{ settings.social_group-youtube-link }}"
-            target="_blank"
-            class="social_groups-link social_groups-link--youtube"
-        >
-          <i class="fa fa-youtube"></i>
-        </a>
-      {% endif %}
-
-    </div>
+    {% if settings.social_group-youtube-show == '1' and settings.social_group-youtube-link != '' %}
+      <a href="{{ settings.social_group-youtube-link }}"
+          target="_blank"
+          class="social_groups-link social_groups-link--youtube"
+      >
+        <i class="fa fa-youtube"></i>
+      </a>
+    {% endif %}
 
   </div>
+
 {% endif %}

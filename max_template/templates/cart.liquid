@@ -10,8 +10,6 @@
         method="post"
         class="cart-table_container"
   >
-    <input type="hidden" name="_method" value="put">
-
     <div class="cart-items_list">
       {% for item in cart.items %}
         {% include "cart_item" %}
@@ -58,12 +56,13 @@
         <input  type="submit"
                 class="cart-button
                       button button--checkout"
-                name="make_order"
                 value="Оформить"
         />
       </div>
     </div>
 
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="make_order" value="">
   </form>
 
 {% else %}

@@ -1,8 +1,5 @@
 {
   "test": {
-    "style.css.scss": [
-      "_tabs.scss"
-    ]
   },
 
   "dist": {},
@@ -14,6 +11,10 @@
 
     "z.InSales.ui.js": [
       "z.tabs.js"
+    ],
+
+    "style.css.scss": [
+      "_tabs.scss"
     ]
   }
 }

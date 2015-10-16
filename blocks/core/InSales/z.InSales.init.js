@@ -25,15 +25,15 @@ var
 if( !Site ){
   var
     Site = {};
-};
+}
 
 // =====================================================================================
-//                                UTILITY FUNCTIONS 
+//                                UTILITY FUNCTIONS
 // =====================================================================================
 
 // дополнительный метод, упрощает сборку плагинов для jQuery
 Object.create = function( obj ){
-  function F() {};
+  function F() {}
   F.prototype = obj;
   return new F();
 };
@@ -43,11 +43,11 @@ ProductsCount = function( items_count ){
   var
     str = 'товар';
 
-  if ( items_count > 4 || items_count == 0 ){
+  if ( items_count > 4 || items_count === 0 ){
     str = 'товаров';
   } else if( items_count != 1 ){
     str = 'товара';
-  };
+  }
 
   return str;
 };
@@ -55,7 +55,7 @@ ProductsCount = function( items_count ){
 // вспомогательная функция, точно определяет тип переменной, исходя из ее прототипа
 // свой маленький велосипедик для упрощения работы некоторых кусков кода
 type_of = function( $obj ){
-  var 
+  var
     string = Object.prototype.toString.call( $obj ),
     temp   = string.split( ' ' ),
     type   = '';
@@ -64,35 +64,36 @@ type_of = function( $obj ){
     type = 'jQuery';
   } else {
     type = temp[ 1 ].replace( ']', '' );
-  };
+  }
 
   return type;
 };
 
 // подготовка для json
-// 
+//
 // делает валидный? Json из строки data-params DOM элемента
 
 prepareJSON = function( string ){
   if( !string ){
     return {};
-  };
+  }
 
   var
-    string = string.replace(/\s+/g, '').split(';'),
     temp   = [],
     result = [];
 
+  string = string.replace(/\s+/g, '').split(';');
+
   for( var i = 0; i < string.length; i++ ){
-    if( string[i] != '' ){
+    if( string[i] !== '' ){
       temp = string[i].split( ':' );
 
       result.push( '"'+ temp[0] +'":'+ temp[1].replace( /\'/g, '"' ) );
-    };
-  };
+    }
+  }
 
   return $.parseJSON( '{'+ result.join(',') +'}' );
-}
+};
 
 // забираем data-params DOM элемента
 getParams = function( $obj ){
@@ -103,7 +104,7 @@ getParams = function( $obj ){
   // есть ли у нас разобранный объект?
   if( !$.isEmptyObject( readyParams ) ){
     return readyParams;
-  };
+  }
 
   // если нет, то
   // разбираем строку и сохраняем готовый объект
@@ -112,7 +113,7 @@ getParams = function( $obj ){
     .data( 'readyParams', params );
 
   return params;
-}
+};
 
 setParams = function( $obj, params ){
   $obj
@@ -121,16 +122,16 @@ setParams = function( $obj, params ){
 
 // производим транслитерацию строки
 translit = function( string ){
-  var 
+  var
     space     = '_',
     $translit = {
-      'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh', 
+      'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh',
       'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
       'о': 'o', 'п': 'p', 'р': 'r','с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h',
       'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh','ъ': space, 'ы': 'y', 'ь': space, 'э': 'e', 'ю': 'yu', 'я': 'ya',
       ' ': space, '_': space, '`': space, '~': space, '!': space, '@': space,
-      '#': space, '$': space, '%': space, '^': space, '&': space, '*': space, 
-      '(': space, ')': space,'-': space, '\=': space, '+': space, '[': space, 
+      '#': space, '$': space, '%': space, '^': space, '&': space, '*': space,
+      '(': space, ')': space,'-': space, '\=': space, '+': space, '[': space,
       ']': space, '\\': space, '|': space, '/': space,'.': space, ',': space,
       '{': space, '}': space, '\'': space, '"': space, ';': space, ':': space,
       '?': space, '<': space, '>': space, '№':space
@@ -141,12 +142,12 @@ translit = function( string ){
   string = string.toLowerCase();
 
   for( i = 0; i < string.length; i++ ){
-    if( $translit[ string[ i ] ] != undefined ){
+    if( $translit[ string[ i ] ] !== undefined ){
       result += $translit[ string[i] ];
     }else{
       result += string[ i ];
-    };
-  };
+    }
+  }
 
   return result;
 };
@@ -173,13 +174,13 @@ if( !Site.urlKeys ){
     search = window.location.search.replace( '?', '' ).split( '&' );
 
   $.each( search, function( index, part ){
-    if( part != '' ){
+    if( part !== '' ){
       part = part.split( '=' );
 
       Site.urlKeys[ part[ 0 ] ] = part[ 1 ];
-    };
+    }
   });
-};
+}
 
 // забираем значение по ключу
 getUrlValuy = function( key ){
@@ -187,7 +188,7 @@ getUrlValuy = function( key ){
     return Site.urlKeys[ key ];
   }else{
     return false;
-  };
+  }
 };
 
 // разворачиваем массив продуктов в объект для более прозрачного доступа к информации
@@ -204,15 +205,14 @@ convertProducts = function( array ){
 
 // формируем объект ответа
 makeData = function( $input, $data ){
-  var
-    $data = $data || {};
+  $data = $data || {};
 
   // выкидываем из ответа функции и прочее, нам нужна просто голая информация
   $.each( $input, function( key, value ){
     if( typeof( value ) !== 'function' ){
       $data[ key ] = value;
-    };
+    }
   });
 
   return $data;
-}
+};

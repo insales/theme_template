@@ -8,6 +8,10 @@
       "layouts.layout.liquid"
     ],
 
+    "snippets": [
+      "sidebar.liquid"
+    ],
+
     "style.css.scss": [
       "_layouts.layout.scss"
     ],

@@ -10,7 +10,7 @@
     color: $link-color;
 
     &:hover{
-      
+      $link-color-hover;
     }
   }
 
@@ -35,7 +35,7 @@
   h1, .h1,
   h2, .h2,
   h3, .h3 {
-    margin-top: 0; //$line-height-computed;
+    margin-top: 0;
     margin-bottom: ($line-height-computed / 2);
 
     small,
@@ -46,7 +46,7 @@
   h4, .h4,
   h5, .h5,
   h6, .h6 {
-    margin-top: ($line-height-computed / 2);
+    margin-top: 0;
     margin-bottom: ($line-height-computed / 2);
 
     small,
@@ -95,11 +95,13 @@
     line-height: $line-height-base;
   }
 
+  // хкаи для таблиц
   table{
     display: block;
     overflow-x: auto;
   }
 
+  // хак для /page/feedbak
   #feedback_form table{
     display: table;
     text-align: left;
@@ -110,6 +112,8 @@
     }
   }
 
+  // ломаем картники в текстах для правильного адаптива
+  // обычно при вставке картинки, реадктор выставляет ей родные линейные размеры.
   img{
     height: auto;
   }

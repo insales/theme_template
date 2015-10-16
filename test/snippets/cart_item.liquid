@@ -1,38 +1,29 @@
-{% assign image_size  = 'compact_url' %}
-{% assign image_class = 'grid-2 xs-grid-3' %}
-{% assign content_class = 'grid-10 xs-grid-9' %}
-
-{% if settings.product_preview-image-mc_size == 'full' %}
-  {% assign image_class = 'grid-3 mc-grid-12 mc-padded-sides' %}
-  {% assign content_class = 'grid-9 mc-grid-12' %}
-  {% assign image_size = 'medium_url' %}
-{% endif %}
-
 <div id="cart_order_line_{{ item.id }}"
       class="cart_item"
       data-item-id="{{ item.id }}"
+      data-params="item_id: {{ item.id }}"
 >
   {% comment %}
     картинка
   {% endcomment %}
   <div class="cart_item-image
-              {{ image_class }}
+              lg-grid-1 sm-grid-3 mc-grid-12
               padded-right xs-padded-bottom"
   >
-    <div class="image-wrapper">
-      <a href="{{ item.product.url }}" class="image-square">
-        <img src="{{ item.product.first_image[image_size] }}" />
-      </a>
-    </div>
+    <a href="{{ item.product.url }}" class="image-square">
+      <img src="{{ item.product.first_image.medium_url }}" />
+    </a>
   </div>
 
   {% comment %}
     название
   {% endcomment %}
   <div class="cart_item-title
-              {{ content_class }}"
+              lg-grid-5 md-grid-4 xs-grid-9"
   >
-    <a href="{{ item.product.url }}" class="cart_item-link">
+    <a href="{{ item.product.url }}"
+        class="cart_item-link"
+    >
       {{ item.title }}
     </a>
     {% if item.sku %}
@@ -40,24 +31,21 @@
     {% endif %}
   </div>
 
-  <div class="{{ content_class }} xs-grid-12
-              padded-top"
+  {% comment %}
+    кол-во
+  {% endcomment %}
+  <div class="cart_item-quantity
+              lg-grid-1 md-grid-2 mc-grid-3"
   >
-    {% comment %}
-      кол-во
-    {% endcomment %}
-    <div class="cart_item-quantity
-                grid-3 xs-grid-4 mc-grid-6"
-    >
-      {% include "quantity" with "cart_item" %}
-    </div>
+    {% include "quantity" with "cart_item" %}
+  </div>
 
-    {% comment %}
-      цена
+  {% comment %}
+    цена
     {% endcomment %}
     <div class="cart_item-prices cart_item-prices--stock
                 prices-current
-                grid-4 xs-grid-3
+                lg-grid-2 mc-grid-3
                 mc-hidden
                 center"
     >
@@ -79,7 +67,7 @@
     {% endcomment %}
     <div class="cart_item-prices cart_item-prices--total
                 prices-current
-                grid-4
+                lg-grid-2 sm-grid-4 xs-grid-6 mc-grid-8
                 js-cart_item-total
                 js-price_type-{{ item.id }}
                 center"
@@ -91,16 +79,16 @@
       удаление
     {% endcomment %}
     <div class="cart_item-delete
-                grid-1 mc-grid-2
+                lg-grid-1
                 right"
     >
       <a  href="{{ item.url }}"
           class="button
                 js-cart_item-delete"
           data-item-id="{{ item.id }}"
+          data-params="item_id: {{ item.id }}"
       >
         <i class="fa fa-times"></i>
       </a>
     </div>
-  </div>
 </div>

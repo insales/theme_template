@@ -3,7 +3,10 @@
 // =======================================================================
 
 // перехватваем нажатия на варианты значений
-$( document ).on( 'click', '.js-filter_section-value_input, .js-filter_section-value_link, .js-filter_section-value_disable', function(e){
+var
+  targets = '.js-filter_section-value_input, .js-filter_section-value_link, .js-filter_section-value_disable';
+
+$( document ).on( 'click touchstart', targets, function(e){
   var
     $section_value = $(this).parents( '.filter_section-value:first' ),
     $checkbox      = $section_value.find( '.js-filter_section-value_input' ),
@@ -16,14 +19,14 @@ $( document ).on( 'click', '.js-filter_section-value_input, .js-filter_section-v
       .prop( 'checked', function( i, val ){
         return !val;
       });
-  };
+  }
 
   $input
     .trigger( 'change' );
 });
 
 // сброс фильтра
-$( document ).on( 'click', '.js-filter-clear_all', function( e ){
+$( document ).on( 'click touchstart', '.js-filter-clear_all', function( e ){
   e.preventDefault();
 
   $( '.js-filter_section-value_input:checked' ).each( function(){
@@ -61,5 +64,5 @@ $( document ).on( 'change', '.js-filter_section-characteristic', function(){
 
   if( params.submit ){
     $form.submit();
-  };
+  }
 });

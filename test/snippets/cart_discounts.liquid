@@ -4,7 +4,7 @@
 {% if cart.enable_coupon? or cart.discounts.size > 0 %}
   <div class="discounts">
     <div class="discounts-kupon
-                lg-grid-6 md-grid-6 sm-grid-6 xs-grid-12"
+                lg-grid-6 xs-grid-12"
     >
       {% if cart.enable_coupon? %}
         <div class="discounts-input
@@ -12,7 +12,7 @@
         >
           <label for="kupon-number"
                   class="input-label
-                        grid-2"
+                        lg-grid-2"
           >
             Купон
           </label>
@@ -20,7 +20,7 @@
           <input  type="text"
                   id="kupon-number"
                   class="discounts-field input-field
-                        grid-6"
+                        lg-grid-6"
                   name="cart[coupon]"
                   value="{{ cart.coupon }}"
           />
@@ -28,7 +28,7 @@
           <input type="button"
                   class="discounts-submit
                         input-button button
-                        grid-4
+                        lg-grid-4
                         js-discounts-submit"
                   value="Применить"
           />
@@ -43,20 +43,20 @@
     </div>
 
     <div class="discounts-list
-                lg-grid-6 md-grid-6 sm-grid-6 xs-grid-12
+                lg-grid-6 xs-grid-12
                 js-discounts-list"
     >
       {% if cart.discounts.size > 0 %}
         {% for discount in cart.discounts %}
           <div class="discount">
             <div class="discount-title
-                        grid-8
+                        lg-grid-8
                         lg-right md-right"
             >
               {{ discount.description }}
             </div>
             <div class="discount-prices prices
-                        grid-4
+                        lg-grid-4
                         right"
             >
               <span class="prices-current">

@@ -1,14 +1,8 @@
-// Variables 
+// Variables
 // --------------------------------------------------
 // НЕ ИЗМЕНЯТЬ!!!!ЗДЕСЬ НАХОДЯТСЯ УМОЛЧАНИЯ, КОТОРЫЕ ПРИМЕНЯЮТСЯ
-// ЕСЛИ НУЖНЫЕ ДЛЯ ШАБЛОНА ПЕРЕМЕННЫЕ НЕ ЗАДАНЫ В ФАЙЛЕ 
+// ЕСЛИ НУЖНЫЕ ДЛЯ ШАБЛОНА ПЕРЕМЕННЫЕ НЕ ЗАДАНЫ В ФАЙЛЕ
 // _variables
-
-$brand-primary:         #337ab7 !default; //darken(#428bca, 6.5%) !default; // 
-$brand-success:         #5cb85c !default;
-$brand-info:            #5bc0de !default;
-$brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
 
 //== Typography
 //
@@ -43,6 +37,7 @@ $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          inherit !default;
 
+$headings-small-color:    $gray-light !default;
 
 //-- Z-index master list
 //
@@ -79,28 +74,3 @@ $state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) 
 $state-danger-text:              #a94442 !default;
 $state-danger-bg:                #f2dede !default;
 $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
-
-//== Type
-//
-//##
-
-//** Horizontal offset for forms and lists.
-$component-offset-horizontal: 180px !default;
-//** Text muted color
-$text-muted:                  $gray-light !default;
-//** Abbreviations and acronyms border color
-$abbr-border-color:           $gray-light !default;
-//** Headings small color
-$headings-small-color:        $gray-light !default;
-//** Blockquote small color
-$blockquote-small-color:      $gray-light !default;
-//** Blockquote font size
-$blockquote-font-size:        ($font-size-base * 1.25) !default;
-//** Blockquote border color
-$blockquote-border-color:     $gray-lighter !default;
-//** Page header border color
-$page-header-border-color:    $gray-lighter !default;
-//** Width of horizontal description list titles
-$dl-horizontal-offset:        $component-offset-horizontal !default;
-//** Horizontal line color.
-$hr-border:                   $gray-lighter !default;

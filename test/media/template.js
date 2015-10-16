@@ -6,6 +6,7 @@
 #= require z.InSales.preloader
 #= require z.InSales.collapseBlock
 #= require z.InSales.ui
+#= require ui
 #= require z.InSales.ajaxAdd
 #= require z.InSales.formValidation
 #= require owl.carousel.min
@@ -14,8 +15,6 @@
 #= require z.InSales.modal
 #= require modal
 #= require reviews
-#= require owl.carousel.min
-#= require slider
 #= require z.InSales.rangeFilter
 #= require z.InSales.optionSelectors
 #= require product
@@ -24,9 +23,9 @@
 #= require magiczoomplus
 #= require z.InSales.cart
 #= require cart
+#= require z.InSales.ajaxSearch
 #= require z.InSales.compare
 #= require compare
-#= require z.InSales.ajaxSearch
 #= require z.InSales.favorites
 #= require favorites
 #= require z.InSales.recentlyView

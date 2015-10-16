@@ -11,8 +11,12 @@
       Сортировать
     </label>
 
-    <select id="order" name="order" value="{{ order }}"
-            class="sort_by-select js-sort_by js-styled"
+    <select id="order"
+            name="order"
+            value="{{ order }}"
+            class="sort_by-select
+                  js-sort_by
+                  js-styled"
     >
       {{ ""                 | select_option: order, "Сортировать по" }}
       {{ "price"            | select_option: order, "По возрастанию цены" }}
@@ -31,8 +35,11 @@
     <label  for="page_size" class="sort_by-label">
       Показывать
     </label>
-    <select id="page_size" name="page_size" value="{{ page_size }}"
-            class="sort_by-select js-sort_by"
+    <select id="page_size"
+            name="page_size"
+            value="{{ page_size }}"
+            class="sort_by-select
+                  js-sort_by"
     >
       {{ "15"   | select_option: page_size, "15" }}
       {{ "24"   | select_option: page_size, "24" }}

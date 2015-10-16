@@ -2,7 +2,7 @@
 //                                          COMPARE
 // =====================================================================================
 
-// TODO: дождаться когда придет номарльный ответ от вервака и привести  в порядок
+// TODO: дождаться когда придет номарльный ответ от сервака и привести  в порядок
 InSales.Compare = function( options ){
   var
     self = this,
@@ -18,7 +18,7 @@ InSales.Compare = function( options ){
       self.compare = $.parseJSON( $.cookie( 'compare' ) );
     }catch( e ){
       self.compare = null;
-    };
+    }
 
     // дропаем все, если список пустой
     if( !self.compare ){
@@ -26,20 +26,20 @@ InSales.Compare = function( options ){
       self.products = [];
 
       return;
-    };
+    }
 
     // сохраняем кол-во товаров
     productsCounter = self.compare.length;
 
     $.getJSON( '/compares.json' )
       .done( function( response ){
-        self.products = response.products
+        self.products = response.products;
 
         $data = makeData( self );
 
         if( callback ){
           callback( $data );
-        };
+        }
 
         Events( 'onCompare_Update' ).publish( $data );
       });
@@ -52,7 +52,7 @@ InSales.Compare = function( options ){
       $data = makeData( self );
 
     // меняем счетчики
-    productsCounter = productsCounter +1
+    productsCounter = productsCounter +1;
 
     // проверка на повтор
     showPreloader();
@@ -78,7 +78,7 @@ InSales.Compare = function( options ){
                 $link
                   .parent()
                     .toggleClass( self.triggerClass );
-              };
+              }
 
               Events( 'onCompare_Add' ).publish( $data );
             });
@@ -90,8 +90,8 @@ InSales.Compare = function( options ){
             hidePreloader();
           });
       }
-    };
-  }
+    }
+  };
 
   // вешаем триггер добавления в сравнение
   addItemTrigger = function(){
@@ -116,7 +116,7 @@ InSales.Compare = function( options ){
     showPreloader();
 
     $.post( path, fields )
-      .done( function( response) {
+      .done( function( response ){
         // обновляем
 
         self.reload( function( $data ){
@@ -125,7 +125,7 @@ InSales.Compare = function( options ){
           if( $link ){
             $link
               .toggleClass( self.triggerClass );
-          };
+          }
 
           Events( 'onCompare_Remove' ).publish( $data );
         });
@@ -144,7 +144,7 @@ InSales.Compare = function( options ){
       // блокируем обработку повторного нажатия
       if( $(this).attr( 'processed' ) ){
         return;
-      };
+      }
 
       var
         product_id = $(this).data( 'product_id' );
@@ -168,9 +168,9 @@ InSales.Compare = function( options ){
         if( product.id == product_id ) {
           result = true;
           return false;
-        };
+        }
       });
-    };
+    }
 
     return result;
   };
@@ -186,7 +186,7 @@ InSales.Compare = function( options ){
         $(this)
           .parent()
             .addClass( self.triggerClass );
-      };
+      }
     });
   };
 
@@ -199,7 +199,7 @@ InSales.Compare = function( options ){
     self.text.addItem    = self.text.addItem    || 'Товар добавлен к сравнению';
     self.text.removeItem = self.text.removeItem || 'Товар удален из сравнения';
     self.text.repeatItem = self.text.repeatItem || 'Этот товар уже добавлен';
-    self.text.maxItem    = self.text.maxItem    || 'Достигнут максимум товаров. Удалите несколкько.';
+    self.text.maxItem    = self.text.maxItem    || 'Достигнут максимум товаров. Удалите несколько товаров.';
 
     // тянем опорные классы
     self.addSelector    = options.addSelector    || '.js-compare-add';
@@ -223,4 +223,4 @@ InSales.Compare = function( options ){
   };
 
   self.init( options );
-}
+};

@@ -233,4 +233,6 @@ form{
   box-sizing: border-box;
 }
 
-p{ margin: 0px; }
+p{
+  margin: 0;
+}

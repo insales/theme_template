@@ -1,8 +1,5 @@
 {
   "test": {
-    "style.css.scss": [
-      "_accordion.scss"
-    ]
   },
 
   "dist": {},
@@ -10,6 +7,10 @@
   "core": {
     "core.css": [
       "accordion.less"
+    ],
+
+    "style.css.scss": [
+      "_accordion.scss"
     ]
   }
 }

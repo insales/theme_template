@@ -1,7 +1,7 @@
-<div class="lg-grid-5 md-grid-5 sm-grid-5 xs-grid-12
+<div class="lg-grid-5xs-grid-12
             padded-top
-            padded-inner-bottom
-            lg-padded-inner-right md-padded-inner-right sm-padded-inner-right"
+            padded-bottom
+            lg-padded-right"
 >
   {% include "product_gallery" %}
 </div>
@@ -10,8 +10,8 @@
   информация о товаре
 {% endcomment %}
 <div class="product-info
-            lg-grid-7 md-grid-7 sm-grid-7 xs-grid-12
-            lg-padded-inner-left md-padded-inner-left padded-inner-bottom"
+            lg-grid-7 xs-grid-12
+            lg-padded-left padded-bottom"
 >
 
   <h1 class="product-title content-title">{{ product.title | editable }}</h1>
@@ -92,7 +92,7 @@
         кол-во товара
       {% endcomment %}
       <div class="product_quantity">
-        {% include "quiantity" with "product" %}
+        {% include "quantity" with "product" %}
       </div>
 
       {% comment %}
@@ -161,26 +161,26 @@
 <div class="tubs grid-12">
   <ul class="tubs-controls tubs-controls--horizontal">
     {% if product.description %}
-      <li class="tubs-node tubs-node--active" data-params="target: '#tub1'">
+      <li class="tubs-node tubs-node--active" data-params="target: '#description'">
         Описание
       </li>
     {% endif %}
 
     {% if product.properties.size > 0 %}
-      <li class="tubs-node" data-params="target: '#tub2'">
+      <li class="tubs-node" data-params="target: '#characteristics'">
         Характеристики
       </li>
     {% endif %}
 
     {% if account.reviews_enabled? %}
-      <li class="tubs-node js-tub-review" data-params="target: '#tub3'">
+      <li class="tubs-node js-tub-review" data-params="target: '#reviews'">
         Отзывы ({{ product.reviews.size }})
       </li>
     {% endif %}
   </ul>
 
   {% if product.description %}
-    <div id="tub1" class="tubs-content tubs-content--active">
+    <div id="description" class="tubs-content tubs-content--active">
       {% comment %}
         описание
       {% endcomment %}
@@ -191,10 +191,10 @@
   {% endif %}
 
   {% if product.properties.size > 0 %}
-    <div id="tub2" class="tubs-content row">
+    <div id="characteristics" class="tubs-content row">
       <!-- <p>Параметры:</p>-->
       <table class="product-properties
-                    lg-grid-6 md-grid-8 sm-grid-12 xs-grid-12"
+                    lg-grid-6 md-grid-8 sm-grid-12"
       >
         {% for property in product.properties %}
           <tr>
@@ -212,7 +212,7 @@
   {% endif %}
 
   {% if account.reviews_enabled? %}
-    <div id="tub3" class="tubs-content">
+    <div id="reviews" class="tubs-content">
       {% comment %}
         вывод отзывов
       {% endcomment %}
@@ -221,7 +221,7 @@
   {% endif %}
 </div>
 
-<div class="grid-12">
+<div class="lg-grid-12">
   {% comment %}
     вывод сопутка
   {% endcomment %}

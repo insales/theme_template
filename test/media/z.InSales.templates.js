@@ -62,7 +62,7 @@ InSales.Template = function( handle ){
 // здесь втыкаем общие хелперы
 // например, форматирование валюты в нужный вид, согласно настройкам БО
 InSales.Render = function( $data, class_name, view ){
-  $data[ 'formatMoney' ] = function( price ){
+  $data.formatMoney = function( price ){
     return InSales.formatMoney( price );
   };
 

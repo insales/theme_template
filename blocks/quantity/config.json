@@ -5,7 +5,7 @@
 
   "core": {
     "snippets": [
-      "quiantity.liquid"
+      "quantity.liquid"
     ],
 
     "core.css": [

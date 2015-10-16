@@ -11,13 +11,12 @@
   <meta name="robots" content="index,follow" />
 
   {% comment %}
-    подключаем все объявления в <head>
     head.liquid - обявления, подключение ресурсов
   {% endcomment %}
   {% include "head" %}
 </head>
 
-<body>
+<body class="adaptive">
   {% include "header" %}
 
   {% unless template == 'index' %}
@@ -53,7 +52,11 @@
       {% endif %}
 
       <div class="{{ template }} row
-                  {% if is_sided %}lg-grid-9 md-grid-9 sm-grid-12 xs-grid-12{% else %}grid-12{% endif %}
+                  {% if is_sided %}
+                    lg-grid-9 md-grid-9 sm-grid-12 xs-grid-12
+                  {% else %}
+                    grid-12
+                  {% endif %}
                   padded-inner"
       >
         {{ content_for_layout }}

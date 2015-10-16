@@ -21,68 +21,98 @@
   margin-right: auto;
 }
 
+// default styles for *-grid- classes
+.grid-1,
+.grid-2,
+.grid-3,
+.grid-4,
+.grid-5,
+.grid-6,
+.grid-7,
+.grid-8,
+.grid-9,
+.grid-10,
+.grid-11,
+.grid-12,
+[class*="-grid-"]{
+  .default-grid();
+}
+
 // @media all - небольшой хак, для отделения стилей для каждого шага сетки
 // default grid
 @media all{
-  .grid-1{
-    .default-grid();
-  }
   .generate-grid( {} );
   .generate-utils( {} );
 }
 
 // lg-grid
 @media all{
-  .lg-grid-1{
-    .default-grid();
-  }
   .generate-grid( lg- );
-  @media ( min-width: 1101px ){
-    .generate-utils( lg- );
+  .generate-utils( lg- );
+}
+
+/*
+@media ( min-width: 1101px ){
+  .generate-utils( lg- );
+}
+*/
+
+// адаптивность у нас будет работать при условии, что мы четко сказали, что тема у нас адаптивная
+// нужно для быстрого и безгеморного переключения адаптивного дизайна на неадаптивный
+.adaptive{
+  // md-grid
+  @media ( max-width: 1100px ){
+    .generate-grid( md- );
+  }
+
+  // sm-gride
+  @media ( max-width: 800px ){
+    .generate-grid( sm- );
+  }
+
+  // xs-grid
+  @media ( max-width: 640px ){
+    .generate-grid( xs- );
+  }
+
+  // mc-grid
+  @media ( max-width: 480px ){
+    .adaptive [class*="-grid-"]{
+      .default-grid();
+    }
+    .generate-grid( mc- );
+  }
+
+  // utils
+  @media ( min-width: 801px ) and ( max-width: 1100px ){
+    .generate-utils( md- );
+  }
+
+  @media ( min-width: 641px ) and ( max-width: 800px ){
+    .generate-utils( sm- );
+  }
+
+  @media ( max-width: 640px ){
+    .generate-utils( xs- );
+  }
+
+  @media ( max-width: 480px ){
+    .generate-utils( mc- );
   }
 }
 
-// md-grid
-@media ( max-width: 1100px ){
-  .md-grid-1{
-    .default-grid();
-  }
-  .generate-grid( md- );
-}
-@media ( min-width: 801px ) and ( max-width: 1100px ){
-  .generate-utils( md- );
-}
+/* universal helpers */
+/* данный класс меняет поведение вложенных элементов */
+.grid-list{
+  .row;
+  letter-spacing: -0.32em;
 
-// sm-gride
-@media ( max-width: 800px ){
-  .sm-grid-1{
-    .default-grid();
-  }
-  .generate-grid( sm- );
-}
-@media ( min-width: 641px ) and ( max-width: 800px ){
-  .generate-utils( sm- );
-}
+  > [class*="grid"]{
+    display: inline-block;
+    float: none;
 
-// xs-grid
-@media ( max-width: 640px ){
-  .xs-grid-1{
-    .default-grid();
+    letter-spacing: 0;
+    vertical-align: top;
   }
-  .generate-grid( xs- );
-}
-@media ( max-width: 640px ){
-  .generate-utils( xs- );
-}
-
-// mc-grid
-@media ( max-width: 480px ){
-  .mc-grid-1{
-    .default-grid();
-  }
-  .generate-grid( mc- );
-}
-@media ( max-width: 480px ){
-  .generate-utils( mc- );
 }
 /**/

@@ -4,7 +4,7 @@
 
 $(function(){
   // прикручиваем переключение маркеров
-  $(document).on( 'click', '.js-menu-toggler', function( e ){
+  $(document).on( 'click touchstart', '.js-menu-toggler', function( e ){
     e.preventDefault();
 
     triggerClass( $(this), 'fa-plus', 'fa-minus' );

@@ -1,3 +1,6 @@
+{% comment %}
+  выводим заголов сео-фильтра или самой коллекции
+{% endcomment %}
 <h1 class="collection-title content-title">
   {% if filter.title %}
     {{ filter.title }}
@@ -8,7 +11,13 @@
 
 {% paginate products by 12 %}
 
+  {% comment %}
+    выводим данные только на первой странице пагинации, для СЕО
+  {% endcomment %}
   {% if paginate.current_page == 1 %}
+    {% comment %}
+      выводим описание сео-фильтра или коллекции.
+    {% endcomment %}
     {% if filter.description %}
       <div class="collection-description">
         {{ filter.description | editable }}
@@ -24,42 +33,33 @@
 
   {% if collection.products.size > 0 %}
 
-      <div class="row">
-        {% include "pagination" %}
-      </div>
+    <div class="row">
+      {% include "pagination" %}
+      {% include "collection_sort" %}
+    </div>
 
-      <div class="collection-panel row
-                  padded-inner"
-      >
-        {% include "collection_sort" %}
-      </div>
+    <div class="collection-products_list
+                products_list
+                grid-row"
+    >
+      {% for product in products %}
+        <div class="lg-grid-4 md-grid-6 sm-grid-4 xs-grid-6 mc-grid-12
+                    padded"
+        >
+          {% include 'product_preview' with 'collection' %}
+        </div>
+    </div>
 
-      <div class="collection-products_list grid-row-inner">
-        {% for product in products %}
-          <div class="product_preview
-                      lg-grid-4 md-grid-6 sm-grid-4 xs-grid-6 mc-grid-12
-                      padded-inner"
-          >
-            {% include 'product_preview' %}
-          </div>
-
-          {% cycle 'l-grid': '', '', '<div class="lg-grid-12 sm-grid-12 md-hidden xs-hidden"><div class="collection-seporator"></div></div>' %}
-          {% cycle  'm-grid': '', '<div class="md-grid-12 xs-grid-12 lg-hidden sm-hidden mc-hidden"><div class="collection-seporator"></div></div>' %}
-        {% endfor %}
-      </div>
-
-      <div class="collection-panel row
-                  padded-inner"
-      >
-        {% include "collection_sort" %}
-      </div>
-
-      <div class="row">
-        {% include "pagination" %}
-      </div>
+    <div class="row">
+      {% include "collection_sort" %}
+      {% include "pagination" %}
+    </div>
 
   {% else %}
 
+    {% comment %}
+      при выводе пустого списка учитываем, что у нас может быть применен фильтр
+    {% endcomment %}
     <div class="padded-vertical">
       {% if collection.current_characteristics.size > 0 or price_min %}
         <div class="notice notice--warning">

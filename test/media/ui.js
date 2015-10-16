@@ -4,7 +4,7 @@
 
 $(function(){
   // прикручиваем переключение маркеров
-  $(document).on( 'click', '.js-menu-toggler', function( e ){
+  $(document).on( 'click touchstart', '.js-menu-toggler', function( e ){
     e.preventDefault();
 
     triggerClass( $(this), 'fa-plus', 'fa-minus' );
@@ -15,11 +15,11 @@ $(function(){
     wrapper: '.footer_block',
   });
 });
+
 // ===================================================================================
 //                                  COLLECTION
 // ===================================================================================
 $(function(){
-
   // переключалка блока, нужно выкинуть на мороз в блок
   $('.js-filter_section-toggler').click(function(){
     triggerClass( $(this), 'fa-plus', 'fa-minus' );
@@ -29,6 +29,7 @@ $(function(){
   $( '.js-section-range' )
     .rangeFilter();
 });
+
 $(function(){
   var ajaxSearch = new InSales.Search();
 

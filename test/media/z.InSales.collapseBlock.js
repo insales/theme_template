@@ -42,7 +42,7 @@ InSales.CollapseBlock = function( options ){
         $target[ animation ]( speed );
       }else{
         $target[ animation ]();
-      };
+      }
     });
   };
 
@@ -90,14 +90,14 @@ InSales.CollapseBlock = function( options ){
                   self.collapseEnabled = true;
                   self.collapseDisabled = false;
                   self.changeState();
-                };
+                }
               }else{
                 if( !self.collapseDisabled ){
                   self.collapseDisabled = true;
                   self.collapseEnabled = false;
                   self.changeState();
-                };
-              };
+                }
+              }
             })
             .trigger('resize');
         },

@@ -22,7 +22,7 @@
       self.min_input = self.container.find( options.min_inputSelector );
       self.max_input = self.container.find( options.max_inputSelector );
       // тут немного магии - нам нужен конкретно сам DOM узел
-      temp              = self.container.find( options.rangeSelector )
+      temp              = self.container.find( options.rangeSelector );
       self.rangeElement = temp.get( 0 );
 
       // тащим параметры
@@ -34,12 +34,12 @@
         self.submit = false;
       }else{
         self.submit = true;
-      };
+      }
 
       temp = getParams( temp.parents( 'form:first' ) );
       if( temp.submit === false ){
         self.submit = false;
-      };
+      }
 
       self.step   = params.step   || false;
       self.margin = params.margin || 1;
@@ -63,14 +63,14 @@
           'min': Site.collection.price_min,
           'max': Site.collection.price_max
         };
-      };
+      }
 
       // определяем, залочен он у нас или нет
       if( ( self.range.min < self.start[ 0 ] ) || ( self.start[ 1 ] < self.range.max ) ){
         self.disabled = false;
       }else{
         self.disabled = true;
-      };
+      }
 
       self.slider();
       self.binding();
@@ -98,7 +98,7 @@
 
       if( self.step ){
         config.step = self.step;
-      };
+      }
 
       noUiSlider.create( self.rangeElement, config );
     },
@@ -125,7 +125,7 @@
               self.min_text
                 .val( value )
                 .text( value );
-            };
+            }
           });
 
       self.rangeElement
@@ -141,8 +141,8 @@
               if( self.submit ){
                 self.container
                   .parents( 'form:first' ).submit();
-              };
-            };
+              }
+            }
           });
 
       if( self.min_text.is( 'input' ) ){
@@ -152,7 +152,7 @@
               .noUiSlider
                 .set( [ $(this).val(), null ] );
           });
-      };
+      }
 
       if( self.max_text.is( 'input' ) ){
         self.max_text
@@ -161,7 +161,7 @@
               .noUiSlider
                 .set( [ null, $(this).val() ] );
           });
-      };
+      }
 
       self.min_input
         .attr('disabled', self.disabled );
@@ -183,7 +183,7 @@
 
         rangeFilter.init( options, this );
         $.data( this, "rangeFilter", rangeFilter );
-      };
+      }
     });
 
     return this;

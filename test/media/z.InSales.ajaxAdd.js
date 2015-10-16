@@ -20,6 +20,6 @@ ajaxBuyButton = function( buttonSelector ){
       Cart.addItem( $(this).parents( 'form:first') );
     }else{
       Events( 'onBuyButton_Inactive' ).publish( $data );
-    };
+    }
   });
 };

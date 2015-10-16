@@ -3,5 +3,7 @@
 // =======================================================================
 
   $('.js-sort_by').change( function(){
-    $(this).parents( 'form:first' ).submit();
+    $(this)
+      .parents( 'form:first' )
+        .submit();
   });

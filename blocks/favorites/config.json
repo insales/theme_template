@@ -1,13 +1,5 @@
 {
   "test": {
-    "template.js": [
-      "z.InSales.favorites.js",
-      "favorites.js"
-    ],
-
-    "style.css.scss": [
-      "_favorites.scss"
-    ]
   },
 
   "dist": {},
@@ -15,6 +7,15 @@
   "core": {
     "core.css": [
       "favorites.less"
+    ],
+
+    "template.js": [
+      "z.InSales.favorites.js",
+      "favorites.js"
+    ],
+
+    "style.css.scss": [
+      "_favorites.scss"
     ]
   }
 }
