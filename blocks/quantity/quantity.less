@@ -6,6 +6,7 @@
   &-button{
     text-align: center;
     cursor: pointer;
+    padding: 0;
 
     &--minus{
     }
@@ -38,6 +39,15 @@
   &--side{
     .quantity-button{
       .abs;
+      right: 0;
+
+      &--minus{
+        bottom: 0;
+      }
+
+      &--plus{
+        top: 0;
+      }
     }
 
     .quantity-input{
