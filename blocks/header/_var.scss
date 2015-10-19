@@ -1,10 +1,10 @@
 // header
-$header_bg-color: #{'{{ settings.header_bg-color }}'};
+$header-bg-color: #{'{{ settings.header-bg-color }}'};
 
-{% if settings.header_bg-use == 'image' %}
-  $header_bg-image: #{'{{ settings.header_bg-image }}'};
+{% if settings.header-bg-use == 'image' %}
+  $header-bg-image: #{'{{ settings.header-bg-image }}'};
 {% else %}
-  $header_bg-image: #{''};
+  $header-bg-image: #{''};
 {% endif %}
 
-$header_font:     #{'{{ settings.header_font }}'};
+$header-font-color:     #{'{{ settings.header-font-color }}'};
