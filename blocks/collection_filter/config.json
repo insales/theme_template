@@ -9,7 +9,8 @@
     ],
 
     "core.css": [
-      "collection_filter.less"
+      "collection_filter.less",
+      "noUi.less"
     ],
 
     "style.css.scss": [
