@@ -2,13 +2,17 @@
   hide_after - после какой секции фильтра прятать их под кнопку "показать больше"?
   is_collapse - сворачиваются ли отдельные секции фильтра?
   collapse_range - сворачиваются ли при этом диапазоны цен и числовых параметров?
+  autosubmit - автоматически применять форму, если поменялись значения? так же влияет на появление кнопки "применить"
 {% endcomment %}
 
 {% assign hide_after = 100 %}
 {% assign is_collapse = false %}
 {% assign collapse_range = false %}
 
+{% assign autosubmit = false %}
+
 {% assign hide_after = hide_after | plus: 1 %}
+
 
 <form action="{{ collection.url }}"
       method="get"
@@ -21,7 +25,7 @@
         тут мы можем указать, что данная копия сниппета
         будет автоматически отправляться при изменении параметров или нет
       {% endcomment %}
-      data-params="submit: false"
+      data-params="submit: {{ autosubmit }}"
 >
 
   {% comment %}
@@ -30,27 +34,39 @@
   <div class="filter-section
               js-filter_section-wrapper"
   >
+    {% comment %}
+      проверяем, свернут блок или нет
+    {% endcomment %}
+    {% assign collapsible = false %}
+    {% if is_collapse and collapse_range %}
+      {% assign collapsible = true %}
+    {% endif %}
     <label id="filter_section-price"
             class="filter_section-title
-
-                  {% if is_collapse %}js-filter_section-toggler{% endif %}"
+                  {% if collapsible %}js-filter_section-toggler{% endif %}"
     >
       <span>
         Цена
       </span>
 
-      <span class="button-marker
-                  button
-                  filter_section-toggler"
-      >
-        <i class="fa fa-minus"></i>
-      </span>
+      {% if collapsible %}
+        <span class="button-marker
+                    button
+                    filter_section-toggler"
+        >
+          <i class="fa fa-minus"></i>
+        </span>
+      {% endif %}
     </label>
 
     <div class="filter_section-values filter_section-values--range
                 js-section-range
-                js-filter_section-values"
+                js-filter_section-values
+                "
     >
+      {% comment %}
+        определяем начальные параметры дял ползунка
+      {% endcomment %}
       {% assign coll_handler = collection.handle %}
       {% assign coll_min = collections[coll_handler].products_price_min | round: 0 %}
       {% assign coll_max = collections[coll_handler].products_price_max | round: 0 %}
@@ -105,6 +121,19 @@
   {% endcomment %}
 
   {% for property in collection.properties %}
+    {% comment %}
+      проверяем, свернут блок или нет
+    {% endcomment %}
+    {% assign collapsible = false %}
+    {% if property.is_numeric? %}
+      {% if is_collapse and collapse_range %}
+        {% assign collapsible = true %}
+      {% endif %}
+    {% else %}
+      {% if is_collapse %}
+        {% assign collapsible = true %}
+      {% endif %}
+    {% endif %}
 
     {% comment %}
       проверяем, будем мы выводить эту секцию фильтра или нет
@@ -137,8 +166,7 @@
       >
         <label id="filter_section-{{ property.id }}"
                 class="filter_section-title
-                      
-                      {% if is_collapse %}js-filter_section-toggler{% endif %}"
+                      {% if collapsible %}js-filter_section-toggler{% endif %}"
         >
           {% if is_selected %}
             <span class="fa fa-thumb-tack">
@@ -148,17 +176,20 @@
             {{ property.name }}
           </span>
 
-          <span class="button-marker
-                      button
-                      filter_section-toggler"
-          >
-          <i class="fa fa-plus"></i>
-        </span>
+          {% if collapsible %}
+            <span class="button-marker
+                        button
+                        filter_section-toggler"
+            >
+              <i class="fa fa-plus"></i>
+            </span>
+          {% endif %}
+
         </label>
 
         {% unless property.is_numeric? %}
           <ul class="filter_section-values
-                    {% if is_collapse %}filter_section-values--collapse{% endif %}
+                    {% if collapsible %}filter_section-values--collapse{% endif %}
                     js-filter_section-values
                     padded"
           >
@@ -204,7 +235,10 @@
         {% else %}
 
           {% comment %}
-            делаем верстку для слайдера по параметрам
+            делаем верстку для ползунка по параметрам
+          {% endcomment %}
+          {% comment %}
+            определяем начальные параметры дял ползунка
           {% endcomment %}
           {% assign min_val = property.characteristics.first.name | round: 0 %}
           {% assign max_val = property.characteristics.first.name | round: 0 %}
@@ -232,7 +266,7 @@
             {% assign end = max_val %}
           {% endif %}
           <div class="filter_section-values filter_section-values--range
-                      {% if is_collapse %}filter_section-values--collapse{% endif %}
+                      {% if collapsible %}filter_section-values--collapse{% endif %}
                       js-section-range
                       js-filter_section-values"
           >
@@ -277,25 +311,30 @@
   {% if hide_after < collection.properties.size %}
     </div>
     <div class="filter-sections_toggler button
-                js-filter-sections_toggler"
+                js-filter-sections_toggler
+                lg-grid-12"
     >
       Развернуть
+      <i></i>
     </div>
   {% endif %}
 
   {% comment %}
     случай, когда нам нужна кнопка
   {% endcomment %}
-  <button class="filter-submit
-                button button--action
-                grid-12"
-  >
-    <i></i>
-    Применить
-  </button>
+  {% if autosubmit %}
+    <button class="filter-submit
+                  button button--action
+                  lg-grid-12"
+    >
+      <i></i>
+      Применить
+    </button>
+  {% endif %}
+
 
   <button class="filter-clear_all button
-                grid-12
+                lg-grid-12
                 js-filter-clear_all"
   >
     <i></i>
