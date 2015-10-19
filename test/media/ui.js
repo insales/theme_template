@@ -20,7 +20,7 @@ $(function(){
 //                                  COLLECTION
 // ===================================================================================
 $(function(){
-  // переключалка блока, нужно выкинуть на мороз в блок
+  // переключалка блока
   $('.js-filter_section-toggler').click(function(){
     triggerClass( $(this), 'fa-plus', 'fa-minus' );
   });

@@ -38,6 +38,22 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+/* universal helpers */
+/* данный класс меняет поведение вложенных элементов */
+.grid-inline {
+  letter-spacing: -0.32em;
+}
+.grid-inline:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.grid-inline > [class*="grid"] {
+  display: inline-block;
+  float: none;
+  letter-spacing: 0;
+  vertical-align: top;
+}
 @media all {
   .grid-1 {
     width: 8.33333333%;
@@ -209,6 +225,24 @@
   }
   .right {
     text-align: right;
+  }
+  .grid-inline-top > [class*="-grid-"] {
+    vertical-align: top;
+  }
+  .grid-inline-middle > [class*="-grid-"] {
+    vertical-align: middle;
+  }
+  .grid-inline-bottom > [class*="-grid-"] {
+    vertical-align: bottom;
+  }
+  .top {
+    vertical-align: top;
+  }
+  .middle {
+    vertical-align: middle;
+  }
+  .bottom {
+    vertical-align: bottom;
   }
   .hidden {
     display: none !important;
@@ -389,6 +423,24 @@
   .lg-right {
     text-align: right;
   }
+  .lg-grid-inline-top > [class*="-grid-"] {
+    vertical-align: top;
+  }
+  .lg-grid-inline-middle > [class*="-grid-"] {
+    vertical-align: middle;
+  }
+  .lg-grid-inline-bottom > [class*="-grid-"] {
+    vertical-align: bottom;
+  }
+  .lg-top {
+    vertical-align: top;
+  }
+  .lg-middle {
+    vertical-align: middle;
+  }
+  .lg-bottom {
+    vertical-align: bottom;
+  }
   .lg-hidden {
     display: none !important;
   }
@@ -396,11 +448,6 @@
     display: block !important;
   }
 }
-/*
-@media ( min-width: 1101px ){
-  .generate-utils( lg- );
-}
-*/
 @media (max-width: 1100px) {
   .adaptive .md-grid-1 {
     width: 8.33333333%;
@@ -572,6 +619,24 @@
   }
   .adaptive .md-right {
     text-align: right;
+  }
+  .adaptive .md-grid-inline-top > [class*="-grid-"] {
+    vertical-align: top;
+  }
+  .adaptive .md-grid-inline-middle > [class*="-grid-"] {
+    vertical-align: middle;
+  }
+  .adaptive .md-grid-inline-bottom > [class*="-grid-"] {
+    vertical-align: bottom;
+  }
+  .adaptive .md-top {
+    vertical-align: top;
+  }
+  .adaptive .md-middle {
+    vertical-align: middle;
+  }
+  .adaptive .md-bottom {
+    vertical-align: bottom;
   }
 }
 @media (max-width: 800px) {
@@ -746,6 +811,24 @@
   .adaptive .sm-right {
     text-align: right;
   }
+  .adaptive .sm-grid-inline-top > [class*="-grid-"] {
+    vertical-align: top;
+  }
+  .adaptive .sm-grid-inline-middle > [class*="-grid-"] {
+    vertical-align: middle;
+  }
+  .adaptive .sm-grid-inline-bottom > [class*="-grid-"] {
+    vertical-align: bottom;
+  }
+  .adaptive .sm-top {
+    vertical-align: top;
+  }
+  .adaptive .sm-middle {
+    vertical-align: middle;
+  }
+  .adaptive .sm-bottom {
+    vertical-align: bottom;
+  }
 }
 @media (max-width: 640px) {
   .adaptive .xs-grid-1 {
@@ -918,6 +1001,24 @@
   }
   .adaptive .xs-right {
     text-align: right;
+  }
+  .adaptive .xs-grid-inline-top > [class*="-grid-"] {
+    vertical-align: top;
+  }
+  .adaptive .xs-grid-inline-middle > [class*="-grid-"] {
+    vertical-align: middle;
+  }
+  .adaptive .xs-grid-inline-bottom > [class*="-grid-"] {
+    vertical-align: bottom;
+  }
+  .adaptive .xs-top {
+    vertical-align: top;
+  }
+  .adaptive .xs-middle {
+    vertical-align: middle;
+  }
+  .adaptive .xs-bottom {
+    vertical-align: bottom;
   }
 }
 @media (max-width: 480px) {
@@ -1100,6 +1201,24 @@
   .adaptive .mc-right {
     text-align: right;
   }
+  .adaptive .mc-grid-inline-top > [class*="-grid-"] {
+    vertical-align: top;
+  }
+  .adaptive .mc-grid-inline-middle > [class*="-grid-"] {
+    vertical-align: middle;
+  }
+  .adaptive .mc-grid-inline-bottom > [class*="-grid-"] {
+    vertical-align: bottom;
+  }
+  .adaptive .mc-top {
+    vertical-align: top;
+  }
+  .adaptive .mc-middle {
+    vertical-align: middle;
+  }
+  .adaptive .mc-bottom {
+    vertical-align: bottom;
+  }
 }
 @media (min-width: 801px) and (max-width: 1100px) {
   .adaptive .md-hidden {
@@ -1132,22 +1251,6 @@
   .adaptive .mc-visible {
     display: block !important;
   }
-}
-/* universal helpers */
-/* данный класс меняет поведение вложенных элементов */
-.grid-inline {
-  letter-spacing: -0.32em;
-}
-.grid-inline:after {
-  clear: both;
-  content: "";
-  display: block;
-}
-.grid-inline > [class*="grid"] {
-  display: inline-block;
-  float: none;
-  letter-spacing: 0;
-  vertical-align: top;
 }
 /**/
 img {
@@ -1705,7 +1808,7 @@ body.lock_scroll {
 .filter-section_toggler {
   cursor: pointer;
 }
-.filter--hidden_sections {
+.filter-hidden_sections {
   display: none;
 }
 .filter-submit {
@@ -1951,6 +2054,9 @@ body.lock_scroll {
   clear: both;
   content: "";
   display: block;
+}
+.cart-empty_notice {
+  display: none;
 }
 .cart_item:after {
   clear: both;
