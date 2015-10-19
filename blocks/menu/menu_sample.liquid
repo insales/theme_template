@@ -1,0 +1,15 @@
+{% assign menu = linklists.menu.links %}
+<ul class="menu">
+  {% for link in menu %}
+    <li class="menu-node
+              {% if link.current? %}menu-node--current{% endif %}"
+    >
+      <a href="{{ link.url }}"
+          class="menu-link
+                {% if link.current? %}menu-link--current{% endif %}"
+      >
+        {{ link.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

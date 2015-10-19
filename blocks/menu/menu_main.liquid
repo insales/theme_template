@@ -10,10 +10,16 @@
   <ul class="menu menu--main menu--horizontal">
     {% assign menu_lvl_1 = collections.all.subcollections %}
     {% for link_lvl_1 in menu_lvl_1 %}
-      <li class="menu-node menu-node--main_lvl_1">
+      <li class="menu-node menu-node--main_lvl_1
+                {% if link_lvl_1.current? }menu-node--current{% endif %}
+                js-menu-wraooer"
+      >
         {% assign menu_lvl_2 = link_lvl_1.subcollections %}
-        
-        <a href="{{ link_lvl_1.url }}" class="menu-link">
+
+        <a href="{{ link_lvl_1.url }}"
+            class="menu-link
+                  {% if link_lvl_1.current? %}menu-link--current{% endif %}"
+        >
           {{ link_lvl_1.title }}
 
           {% if menu_lvl_2.size > 0 %}
@@ -26,8 +32,14 @@
         {% if menu_lvl_2.size > 0 %}
           <ul class="menu menu--vertical menu--dropdown">
             {% for link_lvl_2 in menu_lvl_2 %}
-              <li class="menu-node menu-node--main_lvl_2">
-                <a href="{{ link_lvl_2.url }}" class="menu-link">
+              <li class="menu-node menu-node--main_lvl_2
+                        {% if link_lvl_2.current? %}menu-node--current{% endif %}
+                        js-menu-wrapper"
+              >
+                <a href="{{ link_lvl_2.url }}"
+                    class="menu-link
+                          {% if link_lvl_2.current? %}menu-link--current{% endif %}"
+                >
                   {{ link_lvl_2.title }}
                 </a>
 
@@ -36,10 +48,16 @@
                   <span class="menu-marker menu-marker--parent">
                     <i class="fa fa-angle-right"></i>
                   </span>
+
                   <ul class="menu menu--side menu--vertical">
                     {% for link_lvl_3 in menu_lvl_3 %}
-                      <li class="menu-node menu-node--main_lvl_3">
-                        <a href="{{ link_lvl_3.url }}" class="menu-link">
+                      <li class="menu-node menu-node--main_lvl_3
+                                {% if link_lvl_3.current? %}menu-node--current{% endif %}"
+                      >
+                        <a href="{{ link_lvl_3.url }}"
+                            class="menu-link
+                                  {% if link_lvl_3.current? %}menu-link--current{% endif %}"
+                        >
                           {{ link_lvl_3.title }}
                         </a>
                       </li>
