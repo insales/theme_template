@@ -18,16 +18,17 @@
     </div>
   {% endif %}
 
+  {% comment %}
   {% if template == 'blog' %}
     <div class="sidebar_block">
       <div class="sidebar_block-title">
       </div>
     </div>
   {% endif %}
+  {% endcomment %}
 
-  {% assign sidebar = block_lists.news.blocks %}
-  {% if sidebar.size > 0 %}
-    {% for block in sidebar %}
+  {% if  block_lists.news.blocks.size > 0 %}
+    {% for block in  block_lists.blocks.news %}
       <div class="sidebar_block">
         <div class="sidebar_block-title">{{ block.title }}</div>
         <div class="sidebar_block-content">
