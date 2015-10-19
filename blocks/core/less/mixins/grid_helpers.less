@@ -131,6 +131,41 @@
   }
 }
 
+// управление grid-inline
+.generate-grid-inline( @prefix ){
+  .@{prefix}grid-inline-top{
+    > [class*="-grid-"]{
+      vertical-align: top;
+    }
+  }
+
+  .@{prefix}grid-inline-middle{
+    > [class*="-grid-"]{
+      vertical-align: middle;
+    }
+  }
+
+  .@{prefix}grid-inline-bottom{
+    > [class*="-grid-"]{
+      vertical-align: bottom;
+    }
+  }
+}
+
+.generate-vertical_align( @prefix ){
+  .@{prefix}top{
+    vertical-align: top;
+  }
+
+  .@{prefix}middle{
+    vertical-align: middle;
+  }
+
+  .@{prefix}bottom{
+    vertical-align: bottom;
+  }
+}
+
 // вспомогательное управлдение тектом
 .generate-text( @prefix ){
   .@{prefix}center{
@@ -161,4 +196,7 @@
   .generate-padded( @prefix );
   .generate-flow( @prefix );
   .generate-text( @prefix );
+
+  .generate-grid-inline( @prefix );
+  .generate-vertical_align( @prefix );
 }

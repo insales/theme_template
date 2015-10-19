@@ -38,6 +38,22 @@
   .default-grid();
 }
 
+/* universal helpers */
+/* данный класс меняет поведение вложенных элементов */
+.grid-inline{
+  .row;
+  letter-spacing: -0.32em;
+  float: none;
+
+  > [class*="grid"]{
+    display: inline-block;
+    float: none;
+
+    letter-spacing: 0;
+    vertical-align: top;
+  }
+}
+
 // @media all - небольшой хак, для отделения стилей для каждого шага сетки
 // default grid
 @media all{
@@ -50,12 +66,6 @@
   .generate-grid( lg- );
   .generate-utils( lg- );
 }
-
-/*
-@media ( min-width: 1101px ){
-  .generate-utils( lg- );
-}
-*/
 
 // адаптивность у нас будет работать при условии, что мы четко сказали, что тема у нас адаптивная
 // нужно для быстрого и безгеморного переключения адаптивного дизайна на неадаптивный
@@ -101,18 +111,5 @@
   }
 }
 
-/* universal helpers */
-/* данный класс меняет поведение вложенных элементов */
-.grid-inline{
-  .row;
-  letter-spacing: -0.32em;
 
-  > [class*="grid"]{
-    display: inline-block;
-    float: none;
-
-    letter-spacing: 0;
-    vertical-align: top;
-  }
-}
 /**/
