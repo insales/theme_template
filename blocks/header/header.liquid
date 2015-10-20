@@ -20,22 +20,24 @@
           {{ account.phone }}
         </div>
 
-        {% comment %}
-          форма поиска
-        {% endcomment %}
-        <span class="mc-grid-12
-                    sm-padded-vertical xs-padded-vertical mc-padded-vertical"
-        >
-          {% include "search_widget" with "header" %}
-        </span>
+        <div class="grid-inline grid-inline-middle">
+          {% comment %}
+            форма поиска
+          {% endcomment %}
+          <span class="mc-grid-12
+                      sm-padded-vertical xs-padded-vertical mc-padded-vertical"
+          >
+            {% include "search_widget" with "header" %}
+          </span>
 
-        {% comment %}
-          вcтавляем блок с версткой виджета корзины
-        {% endcomment %}
-        <span class="mc-grid-12
-                    sm-padded-vertical xs-padded-vertical">
-          {% include "cart_widget" %}
-        </span>
+          {% comment %}
+            вcтавляем блок с версткой виджета корзины
+          {% endcomment %}
+          <span class="mc-grid-12
+                      sm-padded-vertical xs-padded-vertical">
+            {% include "cart_widget" %}
+          </span>
+        </div>
       </div>
     </div>
   </div>
