@@ -27,7 +27,7 @@ InSales.CollapseBlock = function( options ){
 
   // биндим события стандартного блока
   self.binding = function(){
-    $( document ).on( 'click', '.'+ self.togglerClass, function( e ){
+    $( document ).on( 'click touchstart', '.'+ self.togglerClass, function( e ){
       e.preventDefault();
 
       var
