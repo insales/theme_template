@@ -42,6 +42,7 @@
 /* данный класс меняет поведение вложенных элементов */
 .grid-inline {
   letter-spacing: -0.32em;
+  float: none;
 }
 .grid-inline:after {
   clear: both;
@@ -1326,10 +1327,7 @@ img {
   display: block;
   width: 100%;
   border: 1px solid;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
 }
 .input-notice {
@@ -1464,10 +1462,11 @@ img {
   width: 100%;
 }
 .menu-marker {
-  position: absolute;
   display: block;
-  top: 0;
   box-sizing: border-box;
+}
+.menu-marker--parent {
+  float: right;
 }
 .menu-toggler {
   cursor: pointer;
@@ -1592,6 +1591,7 @@ img {
 .quantity-button {
   text-align: center;
   cursor: pointer;
+  padding: 0;
 }
 .quantity-input {
   padding-top: 0;
@@ -1610,6 +1610,13 @@ img {
 }
 .quantity--side .quantity-button {
   position: absolute;
+  right: 0;
+}
+.quantity--side .quantity-button--minus {
+  bottom: 0;
+}
+.quantity--side .quantity-button--plus {
+  top: 0;
 }
 .quantity--side .quantity-input {
   display: block;

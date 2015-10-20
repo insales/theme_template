@@ -10,20 +10,20 @@ InSales.initMoney = function( params ) {
 
   temp = $.parseJSON( params );
 
-  moneyParams[ 'format' ]   = temp.format;
-  moneyParams[ 'unit' ]     = temp.unit;
-  moneyParams[ 'separator'] = temp.separator;
+  moneyParams.format   = temp.format;
+  moneyParams.unit     = temp.unit;
+  moneyParams.separator = temp.separator;
 
   if( temp.delimiter ){
-    moneyParams[ 'delimiter' ] = temp.delimiter ;
+    moneyParams.delimiter = temp.delimiter ;
   }else{
-    moneyParams[ 'delimiter' ] = '';
+    moneyParams.delimiter = '';
   }
 
-  if( temp[ 'show_price_without_cents' ] == 1 ){
-    moneyParams[ 'show_price_without_cents' ] = false;
+  if( temp.show_price_without_cents == 1 ){
+    moneyParams.show_price_without_cents = false;
   }else{
-    moneyParams[ 'show_price_without_cents' ] = true;
+    moneyParams.show_price_without_cents= true;
   }
 
   return moneyParams;

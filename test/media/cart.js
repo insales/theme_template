@@ -22,9 +22,9 @@ $(function(){
       .html( InSales.Render( $data, 'cart', 'dropdown' ) );
 
     // пересчет кол-ва товаров в $data
-    $('.js-basket-items_count')
+    $('.js-cart_widget-items_count')
       .html( $data.items_count );
-    $('.js-basket-total_price')
+    $('.js-cart_widget-total_price')
       .html( InSales.formatMoney( $data.total_price ) );
   });
 

@@ -98,10 +98,11 @@ InSales.Cart = function( options ){
     // так что в переменную мы загоняем json либо с сервака, либо из куки
     // после проверки работы мусор будет удален
     if ( $.cookie('cart') != 'json' ) {
+      var order;
       try {
-        var order = $.parseJSON( $.cookie('cart') );
+        order = $.parseJSON( $.cookie('cart') );
       } catch( e ) {
-        var order = null;
+        order = null;
       }
 
       self.setCart( order );
