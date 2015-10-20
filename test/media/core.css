@@ -442,12 +442,6 @@
   .lg-bottom {
     vertical-align: bottom;
   }
-  .lg-hidden {
-    display: none !important;
-  }
-  .lg-visible {
-    display: block !important;
-  }
 }
 @media (max-width: 1100px) {
   .adaptive .md-grid-1 {
@@ -1219,6 +1213,14 @@
   }
   .adaptive .mc-bottom {
     vertical-align: bottom;
+  }
+}
+@media (min-width: 1101px) {
+  .adaptive .lg-hidden {
+    display: none !important;
+  }
+  .adaptive .lg-visible {
+    display: block !important;
   }
 }
 @media (min-width: 801px) and (max-width: 1100px) {
