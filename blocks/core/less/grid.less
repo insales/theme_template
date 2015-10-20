@@ -64,7 +64,6 @@
 // lg-grid
 @media all{
   .generate-grid( lg- );
-  .generate-utils( lg- );
 }
 
 // адаптивность у нас будет работать при условии, что мы четко сказали, что тема у нас адаптивная
@@ -94,6 +93,10 @@
   }
 
   // utils
+  @media ( min-width: 1101px ){
+    .generate-utils( lg- );
+  }
+
   @media ( min-width: 801px ) and ( max-width: 1100px ){
     .generate-utils( md- );
   }
