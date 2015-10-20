@@ -96,6 +96,23 @@
   table{
     display: block;
     overflow-x: auto;
+
+    th{
+      border-bottom: 2px solid;
+    }
+
+    tr{
+      &:nth-child(odd) {
+        background-color: #eee;
+      }
+    }
+
+    td{
+      border-bottom: 1px solid;
+    }
+
+    tf{
+    }
   }
 
   // хак для /page/feedbak

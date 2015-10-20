@@ -15,6 +15,7 @@
 #= require z.InSales.modal
 #= require modal
 #= require reviews
+#= require checkout
 #= require z.InSales.rangeFilter
 #= require z.InSales.optionSelectors
 #= require product
