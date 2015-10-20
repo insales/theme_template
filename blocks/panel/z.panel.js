@@ -9,8 +9,7 @@ $( function(){
     params.panel = true;
 
     $( 'body' )
-      //.css( 'overflow', 'hidden' )
-      .addClass( 'lock_scroll' )
+      .addClass( 'body--lock_scroll' )
       .append( '<div class="overlay" />');
 
     $( params.target ).show();
@@ -32,8 +31,7 @@ $( function(){
       $( params.target ).hide();
       $( '.overlay' ).remove();
       $( 'body' )
-        .removeClass( 'lock_scroll' );
-        //.css( 'overflow', 'initial' );
+        .removeClass( 'body--lock_scroll' );
 
       $( '.js-panel-link' )
         .removeClass( 'js-panel-close' );
