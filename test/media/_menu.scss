@@ -3,29 +3,25 @@
 .menu{
 
   // node
-  &-node{}
+  &-node{
+
+    &--current{}
+  }
 
   // link
   &-link{
     &:hover{}
+
+    &--current{}
   }
 
   // marker
 
   &-marker{
     &:hover{}
-
-    &--top{}
   }
 
   &-toggler{}
 
   // modificator
-  &--main{}
-
-  &--mobile{}
-
-  &--top{}
-
-  &--top_dropdown{}
 }

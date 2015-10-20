@@ -25,7 +25,7 @@
 
         <a href="{{ link_lvl_1.url }}"
             class="menu-link
-                  % if link_lvl_1.current? %}menu-link--current{% endif %}"
+                  {% if link_lvl_1.current? %}menu-link--current{% endif %}"
         >
           {{ link_lvl_1.title }}
         </a>

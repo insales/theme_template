@@ -11,7 +11,7 @@
     {% assign menu_lvl_1 = collections.all.subcollections %}
     {% for link_lvl_1 in menu_lvl_1 %}
       <li class="menu-node menu-node--main_lvl_1
-                {% if link_lvl_1.current? }menu-node--current{% endif %}
+                {% if link_lvl_1.current? %}menu-node--current{% endif %}
                 js-menu-wraooer"
       >
         {% assign menu_lvl_2 = link_lvl_1.subcollections %}
