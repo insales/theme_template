@@ -11,13 +11,15 @@
   {{ 'checkout' | global_stylesheet_tag }}
   {% endcomment %}
 
+  {% comment %}
   {% assign customer_checkout_css = 'custom_checkout.css' | asset_url %}
   {% if customer_checkout_css %}
     <link href='{{ customer_checkout_css }}' rel='stylesheet'>
   {% endif %}
+  {% endcomment %}
 
 </head>
-<body>
+<body class="adaptive">
 
   {% include "header" with 'checkout' %}
 
@@ -25,9 +27,9 @@
     <div class="wrap row">
       {% if client %}
         <div class="personal_cabinet
-                    sm-grid-10 xs-grid-10
-                    sm-offset-1 xs-offset-1
-                    padded-inner-vertical"
+                    sm-grid-10
+                    sm-offset-1
+                    padded-vertical"
         >
           <div class="button
                       menu-toggler--personal_cabinet
@@ -85,16 +87,14 @@
   </section>
 
   <section class="section--content">
-    <div class="wrap row padded-inner">
+    <div class="wrap row padded">
 
-      <div class='body fc'>
-        
-
+      <div class="body">
         <div class='content-title page-title'>{% yield 'title' %}</div>
         {% yield 'flash_messages' %}
         <div id='top_info'>{% yield 'top_info' %}</div>
 
-        <div class="grid-row-inner">
+        <div class="grid-row">
           {% yield %}
           {% yield 'sidebar' %}
         </div>
