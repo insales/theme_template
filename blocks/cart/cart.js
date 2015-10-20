@@ -107,6 +107,7 @@ $(function(){
   $( '.js-discounts-submit' ).on( 'click', function( e ){
     e.preventDefault();
 
+    // блочим маркер "делаем оформление заказа"
     $( 'name="make_order"' )
       .attr( 'disabled', true );
 
