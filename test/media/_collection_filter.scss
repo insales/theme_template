@@ -75,7 +75,6 @@
 
   &-connect{
     background: $gray-dark;
-    @include transition-duration();
   }
 
   &-origin{
