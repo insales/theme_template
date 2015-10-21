@@ -23,13 +23,13 @@
 
   {% include "header" with 'checkout' %}
 
-  <section class="section--breadcrumbs">
+  <section class="section--content">
     <div class="wrap row">
       {% if client %}
         <div class="personal_cabinet
                     sm-grid-10
                     sm-offset-1
-                    padded-vertical"
+                    padded"
         >
           <div class="button
                       menu-toggler--personal_cabinet
@@ -84,11 +84,8 @@
         </div>
       {% endif %}
     </div>
-  </section>
 
-  <section class="section--content">
     <div class="wrap row padded">
-
       <div class="body">
         <div class='content-title page-title'>{% yield 'title' %}</div>
         {% yield 'flash_messages' %}
