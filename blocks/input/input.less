@@ -17,6 +17,7 @@
     border: 1px solid;
     padding: 0.5rem;
     box-sizing: border-box;
+    margin-bottom: 0.5rem;
   }
 
   &-notice{
@@ -107,6 +108,9 @@
   vertical-align: middle;
   z-index: 0;
 
+  border: 1px solid;
+  padding: 0.5rem;
+
   &:after{
     .abs;
     top: 0;
@@ -122,13 +126,19 @@
     -moz-osx-font-smoothing: grayscale;
     transform: translate(0, 0);
     content: "\f078";
+
+    padding: inherit;
+  }
+
+  .checkout &{
+    width: 100%;
   }
 
   select{
     .rel;
 
     display: inline-block;
-    width: 160%;
+    width: ~"calc( 100% + 30px )";
     border: none;
     background-color: transparent;
 
