@@ -86,12 +86,16 @@ $(function(){
 });
 
 // принимает jQuery-объект формы
-sendForm = function( $form, from, subject ){
+sendForm = function( options ){
+  //$form, from, subject
   var
+    $form    = options.form,
+    from     = options.from,
+    subject  = options.subject,
     errors   = checkForm( $form ),
     content  = '',
     $message = {},
-    $inputs  = $form.find( '.input-fields' );
+    $inputs  = $form.find( '.input-field' );
 
   // проверяем на ошибки
   if( errors.length > 0 ){
@@ -115,16 +119,22 @@ sendForm = function( $form, from, subject ){
     $message[ 'feedback[subject]' ] = subject;
   }
 
+  showPreloader();
+
   // возвращаем Deferred объект
-  return InSales.sendMessage( $message );
-  /*
+  InSales.sendMessage( $message )
     .done( function( response ){
       console.log( response );
       if( response.status == 'ok' ){
 
-        modal.close();
+        if( options.callback ){
+          options.callback();
+        }
+
         showMessage( response.notice );
       }
+    })
+    .always( function(){
+      hidePreloader();
     });
-    */
 };
