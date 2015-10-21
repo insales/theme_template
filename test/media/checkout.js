@@ -11,7 +11,7 @@ $(function(){
   }
 
   var
-    is_checkout = !Site.template || Site.template == 'account.orders' || Site.template == 'order';
+    is_checkout = !Site.template || Site.template == 'account.orders' || Site.template == 'order' || Site.template == 'checkout';
 
   // если мы не в пошаговом офрмлении
   if( !is_step_checkout ){
@@ -22,7 +22,7 @@ $(function(){
       .addClass( 'lg-grid-8 sm-grid-12 padded-sides padded-bottom' );
 
       // перелопачиваем верстку для шагов оформления заказа
-      $('.step_title').each(function(){
+      $('.step-title').each(function(){
       var cN = this.childNodes;
       for (var i=0, l=cN&&cN.length||0; i<l; i++) {
         if (cN[i].nodeType == 3 && String(cN[i].nodeValue).split(/\s/).join('')) {
@@ -35,6 +35,9 @@ $(function(){
       $(this).prepend( '<span class="step-name">'+ str + '</span>' );
     });
   }
+
+  $( '.body' )
+    .addClass( 'checkout' );
 
   // если блок полноразмерный - ставим нужный класс
   $( '.wide_set .set-block' )
@@ -126,7 +129,9 @@ $(function(){
   });
 
   // украшаем наш селект
-  styleSelect( 'select' );
+  if( is_checkout ){
+    styleSelect( 'select' );
+  }
 
   // инитим то, что появляется позже
   window.setTimeout( function(){

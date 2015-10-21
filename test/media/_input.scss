@@ -3,7 +3,9 @@
 .input{
   &-label{}
 
-  &-field{}
+  &-field{
+    border-color: $border-color;
+  }
 
   &-notice{}
 
@@ -30,7 +32,9 @@ select{}
 }
 
 .styled_select-wrapper{
+  border-color: $border-color;
   &:after{}
 
-  select{}
+  select{
+  }
 }

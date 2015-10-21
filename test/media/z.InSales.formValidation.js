@@ -105,7 +105,7 @@ sendForm = function( options ){
   // собираем наше сообщение из формы в вид, которым оперирует платформа
   $inputs.each( function( index, field ){
     content +=
-      $(this).title +': '+ $(this).val() +'\n';
+      $(this).attr( 'title' ) +': '+ $(this).val() +'\n';
   });
 
   // собираем сообщение для платформы с правильными полями

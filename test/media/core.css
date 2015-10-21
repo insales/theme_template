@@ -1331,6 +1331,7 @@ img {
   border: 1px solid;
   padding: 0.5rem;
   box-sizing: border-box;
+  margin-bottom: 0.5rem;
 }
 .input-notice {
   display: none;
@@ -1384,6 +1385,8 @@ img {
   overflow: hidden;
   vertical-align: middle;
   z-index: 0;
+  border: 1px solid;
+  padding: 0.5rem;
 }
 .styled_select-wrapper:after {
   position: absolute;
@@ -1398,11 +1401,15 @@ img {
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
   content: "\f078";
+  padding: inherit;
+}
+.checkout .styled_select-wrapper {
+  width: 100%;
 }
 .styled_select-wrapper select {
   position: relative;
   display: inline-block;
-  width: 160%;
+  width: calc( 100% + 30px );
   border: none;
   background-color: transparent;
   z-index: 1;
