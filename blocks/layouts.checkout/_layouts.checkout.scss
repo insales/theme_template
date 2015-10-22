@@ -113,9 +113,10 @@
   }
 
   .step-title{
-    line-height: 40px;
+    line-height: 30px;
     border-bottom: 1px solid $border-color;
     margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
 
     &:last-child{
       margin-bottom: 0;
