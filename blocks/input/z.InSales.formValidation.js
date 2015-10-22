@@ -67,7 +67,7 @@ checkForm = function( $form ){
 
 markFormErrors = function( $errors ){
   $.each( $errors, function( index, error ){
-    console.log( error.title );
+    //console.log( error.title );
     error.jqObj
       .parent()
         .addClass('input--error');
@@ -124,7 +124,6 @@ sendForm = function( options ){
   // возвращаем Deferred объект
   InSales.sendMessage( $message )
     .done( function( response ){
-      console.log( response );
       if( response.status == 'ok' ){
 
         if( options.callback ){
