@@ -9,7 +9,10 @@
 
   &-notice{}
 
-  &--inline{}
+  &--inline{
+    height: 30px;
+    line-height: 30px;
+  }
 
   &--error{
     > .input-label{}

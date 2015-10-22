@@ -25,14 +25,14 @@
 
     {% paginate results by 15 %}
 
-      <div class="row padded-inner">
+      <div class="row padded">
         {% include "pagination" %}
       </div>
 
-      <div class="search-products_list grid-row-inner">
+      <div class="search-products_list grid-row">
         {% for product in results %}
           <div class="product_preview
-                      lg-grid-4 md-grid-4 sm-grid-6 xs-grid-12 padded-inner"
+                      lg-grid-4 md-grid-4 sm-grid-6 xs-grid-12 padded"
           >
             {% include 'product_preview' %}
           </div>
@@ -42,7 +42,7 @@
         {% endfor %}
       </div>
 
-      <div class="row padded-inner">
+      <div class="row padded">
         {% include "pagination" %}
       </div>
 

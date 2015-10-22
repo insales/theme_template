@@ -29,8 +29,7 @@
 .grid-9,
 .grid-10,
 .grid-11,
-.grid-12,
-[class*="-grid-"] {
+.grid-12 {
   margin: 0;
   clear: none;
   float: left;
@@ -51,7 +50,7 @@
 }
 .grid-inline > [class*="grid"] {
   display: inline-block;
-  float: none;
+  float: none !important;
   letter-spacing: 0;
   vertical-align: top;
 }
@@ -236,13 +235,13 @@
   .grid-inline-bottom > [class*="-grid-"] {
     vertical-align: bottom;
   }
-  .top {
+  .grid-inline > .inline-top {
     vertical-align: top;
   }
-  .middle {
+  .grid-inline > .inline-middle {
     vertical-align: middle;
   }
-  .bottom {
+  .grid-inline > .inline-bottom {
     vertical-align: bottom;
   }
   .hidden {
@@ -253,6 +252,14 @@
   }
 }
 @media all {
+  [class*="lg-grid-"] {
+    margin: 0;
+    clear: none;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   .lg-grid-1 {
     width: 8.33333333%;
   }
@@ -433,17 +440,25 @@
   .lg-grid-inline-bottom > [class*="-grid-"] {
     vertical-align: bottom;
   }
-  .lg-top {
+  .grid-inline > .lg-inline-top {
     vertical-align: top;
   }
-  .lg-middle {
+  .grid-inline > .lg-inline-middle {
     vertical-align: middle;
   }
-  .lg-bottom {
+  .grid-inline > .lg-inline-bottom {
     vertical-align: bottom;
   }
 }
 @media (max-width: 1100px) {
+  .adaptive [class*="md-grid-"] {
+    margin: 0;
+    clear: none;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   .adaptive .md-grid-1 {
     width: 8.33333333%;
   }
@@ -624,17 +639,25 @@
   .adaptive .md-grid-inline-bottom > [class*="-grid-"] {
     vertical-align: bottom;
   }
-  .adaptive .md-top {
+  .adaptive .grid-inline > .md-inline-top {
     vertical-align: top;
   }
-  .adaptive .md-middle {
+  .adaptive .grid-inline > .md-inline-middle {
     vertical-align: middle;
   }
-  .adaptive .md-bottom {
+  .adaptive .grid-inline > .md-inline-bottom {
     vertical-align: bottom;
   }
 }
 @media (max-width: 800px) {
+  .adaptive [class*="sm-grid-"] {
+    margin: 0;
+    clear: none;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   .adaptive .sm-grid-1 {
     width: 8.33333333%;
   }
@@ -815,17 +838,25 @@
   .adaptive .sm-grid-inline-bottom > [class*="-grid-"] {
     vertical-align: bottom;
   }
-  .adaptive .sm-top {
+  .adaptive .grid-inline > .sm-inline-top {
     vertical-align: top;
   }
-  .adaptive .sm-middle {
+  .adaptive .grid-inline > .sm-inline-middle {
     vertical-align: middle;
   }
-  .adaptive .sm-bottom {
+  .adaptive .grid-inline > .sm-inline-bottom {
     vertical-align: bottom;
   }
 }
 @media (max-width: 640px) {
+  .adaptive [class*="xs-grid-"] {
+    margin: 0;
+    clear: none;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   .adaptive .xs-grid-1 {
     width: 8.33333333%;
   }
@@ -1006,18 +1037,18 @@
   .adaptive .xs-grid-inline-bottom > [class*="-grid-"] {
     vertical-align: bottom;
   }
-  .adaptive .xs-top {
+  .adaptive .grid-inline > .xs-inline-top {
     vertical-align: top;
   }
-  .adaptive .xs-middle {
+  .adaptive .grid-inline > .xs-inline-middle {
     vertical-align: middle;
   }
-  .adaptive .xs-bottom {
+  .adaptive .grid-inline > .xs-inline-bottom {
     vertical-align: bottom;
   }
 }
 @media (max-width: 480px) {
-  .adaptive .adaptive [class*="-grid-"] {
+  .adaptive .adaptive [class*="mc-grid-"] {
     margin: 0;
     clear: none;
     float: left;
@@ -1205,13 +1236,13 @@
   .adaptive .mc-grid-inline-bottom > [class*="-grid-"] {
     vertical-align: bottom;
   }
-  .adaptive .mc-top {
+  .adaptive .grid-inline > .mc-inline-top {
     vertical-align: top;
   }
-  .adaptive .mc-middle {
+  .adaptive .grid-inline > .mc-inline-middle {
     vertical-align: middle;
   }
-  .adaptive .mc-bottom {
+  .adaptive .grid-inline > .mc-inline-bottom {
     vertical-align: bottom;
   }
 }
@@ -1341,12 +1372,15 @@ img {
 }
 .input--inline > .input-label {
   display: inline-block;
+  line-height: inherit;
+  height: inherit;
   border: 1px solid initial;
   vertical-align: middle;
   margin-bottom: 0;
 }
 .input--inline > .input-field {
   display: inline-block;
+  height: inherit;
   padding-top: 0;
   padding-bottom: 0;
   vertical-align: middle;
@@ -1356,6 +1390,8 @@ img {
 }
 .input--inline > .input-button {
   display: inline-block;
+  height: inherit;
+  line-height: inherit;
   border: 1px solid transparent;
   vertical-align: middle;
 }
@@ -2165,15 +2201,11 @@ body.body--lock_scroll {
 }
 .search_widget {
   display: inline-block;
-  height: 30px;
 }
 .search_widget-field {
   display: inline-block;
   height: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
   line-height: inherit;
   vertical-align: middle;
   border-width: 1px;
