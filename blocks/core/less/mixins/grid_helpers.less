@@ -153,16 +153,18 @@
 }
 
 .generate-vertical_align( @prefix ){
-  .@{prefix}top{
-    vertical-align: top;
-  }
+  .grid-inline{
+    > .@{prefix}inline-top{
+      vertical-align: top;
+    }
 
-  .@{prefix}middle{
-    vertical-align: middle;
-  }
+    >  .@{prefix}inline-middle{
+      vertical-align: middle;
+    }
 
-  .@{prefix}bottom{
-    vertical-align: bottom;
+    >  .@{prefix}inline-bottom{
+      vertical-align: bottom;
+    }
   }
 }
 

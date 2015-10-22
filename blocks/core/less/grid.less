@@ -33,8 +33,7 @@
 .grid-9,
 .grid-10,
 .grid-11,
-.grid-12,
-[class*="-grid-"]{
+.grid-12{
   .default-grid();
 }
 
@@ -47,7 +46,7 @@
 
   > [class*="grid"]{
     display: inline-block;
-    float: none;
+    float: none !important;
 
     letter-spacing: 0;
     vertical-align: top;
@@ -63,6 +62,10 @@
 
 // lg-grid
 @media all{
+  [class*="lg-grid-"]{
+    .default-grid();
+  }
+
   .generate-grid( lg- );
 }
 
@@ -71,24 +74,37 @@
 .adaptive{
   // md-grid
   @media ( max-width: 1100px ){
+    [class*="md-grid-"]{
+      .default-grid();
+    }
+
     .generate-grid( md- );
   }
 
   // sm-gride
   @media ( max-width: 800px ){
+    [class*="sm-grid-"]{
+      .default-grid();
+    }
+
     .generate-grid( sm- );
   }
 
   // xs-grid
   @media ( max-width: 640px ){
+    [class*="xs-grid-"]{
+      .default-grid();
+    }
+
     .generate-grid( xs- );
   }
 
   // mc-grid
   @media ( max-width: 480px ){
-    .adaptive [class*="-grid-"]{
+    .adaptive [class*="mc-grid-"]{
       .default-grid();
     }
+
     .generate-grid( mc- );
   }
 
