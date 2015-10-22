@@ -5,6 +5,8 @@ var
   less     = require( 'gulp-less' ),
   sequence = require( 'gulp-run-sequence' ),
   es       = require( 'event-stream' ),
+  clean    = require( 'gulp-clean' ),
+  zip      = require( 'gulp-zip' ),
 
   path     = require( 'path' ),
   colors   = require( 'colors' ),
@@ -14,6 +16,8 @@ var
   // папки
   test_dir = 'test/',
   dist_dir = 'min_template/',
+  temp_full_config = 'max_template/',
+  temp_min_config  = 'min_template/',
 
   // списки блоков
   List = {
@@ -31,98 +35,70 @@ blocks_set = file.blocks;
 
 //=============================================
 // собираем чистый тестовый шаблон
-gulp.task( 'build:test', function(){
+gulp.task( 'build:test', [ 'clean:test' ], function(cb){
   makeList( 'core' );
   makeList( 'test' );
 
   for( task in List ){
     job( task, test_dir );
   }
+
+  setTimeout( function(){
+    cb();
+  }, 3000 );
 });
 
 // собираем чистый релизный шаблон
-gulp.task( 'build:min_dist', function(){
+gulp.task( 'build:min_config', function(cb){
   makeList( 'core' );
   makeList( 'dist' );
 
   for( task in List ){
-    job( task, 'min_template/' );
+    job( task, temp_min_config );
   }
+
+  setTimeout( function(){
+    cb();
+  }, 3000 );
 });
 
-gulp.task( 'build:max_dist', function(){
+gulp.task( 'build:full_config', function(){
   makeList( 'core' );
   makeList( 'test' );
 
   for( task in List ){
-    job( task, 'max_template/' );
+    job( task, temp_full_config );
   }
-})
 
-// таск для наблюдения за базовыми задачами
-gulp.task( 'watch:test', function(){
-  makeList( 'core' );
-  makeList( 'test' );
-
-  sequence( [ 'watch:less', 'watch:js' ] );
+  setTimeout( function(){
+    cb();
+  }, 3000 );
 });
 
-// таск для правки базовых стилей
-gulp.task( 'watch:less', function(){
-  gulp.watch( 'blocks/**/*.less', function( event ){
-    console.log(
-      'File ' + event.path + ' was ' + event.type + ', running tasks...'
-    );
-
-    job( 'core.css', test_dir );
-  });
+gulp.task( 'clean:test', function(){
+  return gulp.src( 'test', { read: false })
+          .pipe( clean() );
 });
 
-// таск для правки базовых скриптов
-gulp.task( 'watch:js',  function() {
-  gulp.watch( 'blocks/**/*.js', function( event ) {
-    console.log(
-      'File ' + event.path + ' was ' + event.type + ', running tasks...'
-    );
+gulp.task( 'clean:full_config', function(){
+  return gulp.src( 'test', { read: false })
+          .pipe( clean() );
+});
 
-    var
-      path   = event.path.split( '/' ),
-      length = path.length,
-      block  = blocks[ path[ length - 2 ] ],
-      file   = path[ length - 1 ],
-      task   = '';
+gulp.task( 'clean:min_config', function(){
+  return gulp.src( 'test', { read: false })
+          .pipe( clean() );
+});
 
-    for( i = 0; i < length; i++ ){
-      if( path[ i ] == 'blocks' ){
-        block = blocks[ path[ i +1 ] ];
-      }
-    }
-
-    for( task_name in block.core ) {
-      var
-        i = 0,
-        list   = block.core[ task_name ],
-        length = task_name.length;
-
-      for( i; i < length; i++ ){
-        if( list[ i ] ){
-          var
-            file_path = list[ i ];
-
-          //console.log( file_path );
-          file_path = file_path.split( '/' );
-
-          if( file_path[ file_path.length - 1 ] == file ){
-            task = task_name;
-          }
-        }
-      }
-    }
-
-    if( task !== '' ){
-      job( task, test_dir );
-    }
-  });
+gulp.task( 'zip:test', [ 'build:test' ], function(){
+  return gulp.src([
+    'test/config/*',
+    'test/media/*',
+    'test/snippets/*',
+    'test/templates/*'
+  ], { base: '.' })
+    .pipe( zip( 'test.zip' ) )
+    .pipe( gulp.dest( 'test/' ) );
 });
 
 //=============================================
