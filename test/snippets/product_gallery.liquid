@@ -61,6 +61,10 @@
               rel="zoom-id: MagicZoom"
               rev="{{ image.large_url }}"
           >
+            {% comment %}
+              делаем финт - маленькая картинка для больших разрешений
+              и адаптивная - для sm- и ниже
+            {% endcomment %}
             <img src="{{ image.compact_url }}"
 
                   class="sm-hidden xs-hidden"
