@@ -26,6 +26,10 @@
     "snippets": [
       "slider_index.liquid",
       "slider_product.liquid"
+    ],
+
+    "z.InSales.ui.js": [
+      "z.slider.ui.js"
     ]
   }
 }
