@@ -29,22 +29,15 @@ $( document ).on( 'click touchstart', targets, function(e){
 $( document ).on( 'click touchstart', '.js-filter-clear_all', function( e ){
   e.preventDefault();
 
-  $( '.js-filter_section-value_input:checked' ).each( function(){
-    $(this)
-      .trigger( 'click' );
-  });
+  var
+    $form = $(this).parents( 'form:first' );
 
-  $( '.filter_section-value--range' ).each( function(){
-    var
-      params = getParams( $(this) );
+  $form
+    .find( 'input[type="hidden"]' )
+      .prop( 'disabled', true );
 
-    $(this).get( 0 )
-      .noUiSlider.set([ params.min, params.max ]);
-  });
-
-  $(this)
-    .parents( 'form:first' )
-      .submit();
+  $form
+    .submit();
 });
 
 // ловим изменение значения в скрытых полях фильтра
