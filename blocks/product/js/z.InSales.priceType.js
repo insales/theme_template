@@ -7,7 +7,7 @@
   $.fn.update = function( options ){
     if( this.data( 'priceType') ){
       return this.data( 'priceType' ).update( options );
-    };
+    }
   };
 }( jQuery ));
 
@@ -32,7 +32,7 @@
       self.group = false;
       if( options.group || Site.client_group.id ){
         self.group = options.group || Site.client_group.id;
-      };
+      }
 
       // пересобираем варианты для быстрой работы
       $.each( $product.variants, function( index, $variant ) {
@@ -50,6 +50,8 @@
 
       // привязываем опции
       self.options = $.extend( {}, self.elem.data(), options );
+
+      this.update( options );
     },
 
     // вытаскиваем типы цен
@@ -85,7 +87,7 @@
       $.each( self.prices, function( index, price_variant ){
         if( price_variant.price && self.items_count >= price_variant.value ){
           price = price_variant.price;
-        };
+        }
       });
 
       return price;
@@ -113,11 +115,11 @@
 
       if( $options.variant_id ){
         self.setPrices( $options.variant_id );
-      };
+      }
 
       if( $options.quantity ){
         price = self.getPrice( $options.quantity );
-      };
+      }
 
       $data.price    = price;
       $data.quantity = self.items_count;
