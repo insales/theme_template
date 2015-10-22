@@ -24,25 +24,23 @@
     {% comment %}
       итогова стоимость
     {% endcomment %}
-    <div class="row">
-      <div class="cart_total">
-        <div class="lg-grid-4 sm-grid-6 xs-12
-                    lg-fr md-fr sm-fr"
+    <div class="cart_total">
+      <div class="lg-grid-4 sm-grid-6 xs-12
+                  lg-fr md-fr sm-fr"
+      >
+        <div class="cart_total-title
+                    lg-grid-6"
         >
-          <div class="cart_total-title
-                      lg-grid-6"
-          >
-            Итого:
-          </div>
+          Итого:
+        </div>
 
-          <div class="lg-grid-6 right">
-            <span class="cart_total-price
-                        prices-current
-                        js-cart-total"
-            >
-              {{ cart.total_price | money }}
-            </span>
-          </div>
+        <div class="lg-grid-6 right">
+          <span class="cart_total-price
+                      prices-current
+                      js-cart-total"
+          >
+            {{ cart.total_price | money }}
+          </span>
         </div>
       </div>
     </div>
