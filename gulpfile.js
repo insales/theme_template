@@ -92,11 +92,11 @@ gulp.task( 'clean:min_config', function(){
 
 gulp.task( 'zip:test', [ 'build:test' ], function(){
   return gulp.src([
-    'test/config/*',
-    'test/media/*',
-    'test/snippets/*',
-    'test/templates/*'
-  ], { base: '.' })
+    'test/**',
+    //'test/media/*',
+    //'test/snippets/*',
+    //'test/templates/*'
+  ], { base: './test' })
     .pipe( zip( 'test.zip' ) )
     .pipe( gulp.dest( 'test/' ) );
 });
