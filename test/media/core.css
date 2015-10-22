@@ -1304,7 +1304,9 @@ img {
   vertical-align: middle;
   cursor: pointer;
   border: none;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
+  height: 30px;
+  line-height: 30px;
 }
 .button--disabled,
 .button[disabled] {
@@ -1476,6 +1478,8 @@ img {
 }
 .menu-marker--parent {
   float: right;
+  position: relative;
+  z-index: 10;
 }
 .menu-toggler {
   cursor: pointer;
@@ -1816,9 +1820,6 @@ body.body--lock_scroll {
   position: relative;
   margin-bottom: 0.5rem;
 }
-.filter-section:last-of-type {
-  margin-bottom: 0;
-}
 .filter-clear_all {
   cursor: pointer;
 }
@@ -1838,6 +1839,7 @@ body.body--lock_scroll {
 .filter_section-title {
   display: block;
   position: relative;
+  margin-bottom: 0.5rem;
 }
 .filter_section-toggler {
   cursor: pointer;
@@ -2165,9 +2167,11 @@ body.body--lock_scroll {
 }
 .search_widget {
   display: inline-block;
+  height: 30px;
 }
 .search_widget-field {
   display: inline-block;
+  height: inherit;
   padding-top: 0;
   padding-bottom: 0;
   padding-left: 0.5rem;
@@ -2180,6 +2184,7 @@ body.body--lock_scroll {
 .search_widget-submit {
   display: inline-block;
   padding: 0;
+  height: inherit;
   border: 1px solid transparent;
   background-color: transparent;
   line-height: inherit;
