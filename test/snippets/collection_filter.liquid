@@ -322,7 +322,7 @@
   {% comment %}
     случай, когда нам нужна кнопка
   {% endcomment %}
-  {% if autosubmit %}
+  {% unless autosubmit %}
     <button class="filter-submit
                   button button--action
                   lg-grid-12"
@@ -330,7 +330,7 @@
       <i></i>
       Применить
     </button>
-  {% endif %}
+  {% endunless %}
 
 
   <button class="filter-clear_all button
