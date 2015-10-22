@@ -3,6 +3,7 @@
 // =======================================================================================
 
 $(function(){
+  /*
   // gallery
   var
     $large  = $( '.js-image--large img' ),
@@ -35,14 +36,9 @@ $(function(){
 
     MagicZoomPlus.update( 'MagicZoom', original_image, large_image );
   });
+  */
 
-  $( '.js-slider--gallery' ).owlCarousel({
-    itemsCustom: [
-      [0, 4],
-      [400, 3],
-      [800, 3],
-    ],
-  });
+
 
   // обновляем инфу, после смены модификации
   Events( 'onProductOption_Changed' ).subscribe( function( $data ){
@@ -61,10 +57,10 @@ $(function(){
         $js_sku_text.html( variant.sku );
       } else {
         $js_sku.hide();
-      };
-    };
+      }
+    }
 
-    if( variant && variant.available == true ){
+    if( variant && variant.available === true ){
       // selected a valid variant
       $js_price_current
         .removeClass( 'product-presence_field--sell_off' )
@@ -81,7 +77,7 @@ $(function(){
       else if( Site.product.buy_button == 'buy' ){
         $js_buy
           .html( '<i class="fa fa-shopping-cart" /> В корзину' );
-      };
+      }
 
     }else{
       // variant doesn't exist
@@ -94,7 +90,7 @@ $(function(){
       else if( Site.product.buy_button == 'buy' ){
         $js_buy
           .html( '<i class="fa fa-shopping-cart" /> Под заказ' );
-      };
+      }
 
       if( variant ){
         $js_presence
@@ -111,18 +107,20 @@ $(function(){
           .html( 'Модификация отсутсвует' );
         $js_price_old
           .html( '' );
-      };
-    };
+      }
+    }
   });
 
-  $( '.quantity' )
-    .quantity();
+  if( Site.template == 'product' ){
+    $( '.quantity' )
+      .quantity();
 
-  Events( 'onBuyButton_Active' ).subscribe( function( $data ){
-    //console.log( 'onBuyButton_Active: ', $data );
-  });
+    Events( 'onBuyButton_Active' ).subscribe( function( $data ){
+      //console.log( 'onBuyButton_Active: ', $data );
+    });
 
-  Events( 'onBuyButton_Inactive' ).subscribe( function( $data ){
-    //console.log( 'onBuyButton_Inactive: ', $data );
-  });
+    Events( 'onBuyButton_Inactive' ).subscribe( function( $data ){
+      //console.log( 'onBuyButton_Inactive: ', $data );
+    });
+  }
 });

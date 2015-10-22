@@ -32,10 +32,21 @@
     .prices-old{}
   }
 
-  &-quantity{}
+  &-quantity{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
 
   &-buy{
     &:hover{}
+  }
+
+  &-compare{
+    line-height: 30px;
+    height: 30px;
+    vertical-align: middle;
+    display: inline-block;
   }
 }
 

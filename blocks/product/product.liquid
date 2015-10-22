@@ -1,7 +1,5 @@
-<div class="lg-grid-5xs-grid-12
-            padded-top
-            padded-bottom
-            lg-padded-right"
+<div class="lg-grid-5 xs-grid-12
+            padded-bottom lg-padded-right sm-padded-zero-right"
 >
   {% include "product_gallery" %}
 </div>
@@ -11,7 +9,7 @@
 {% endcomment %}
 <div class="product-info
             lg-grid-7 xs-grid-12
-            lg-padded-left padded-bottom"
+            lg-padded-left sm-padded-zero-left padded-bottom"
 >
 
   <h1 class="product-title content-title">{{ product.title | editable }}</h1>
@@ -91,7 +89,7 @@
       {% comment %}
         кол-во товара
       {% endcomment %}
-      <div class="product_quantity">
+      <div class="product-quantity">
         {% include "quantity" with "product" %}
       </div>
 
