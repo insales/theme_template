@@ -1304,9 +1304,6 @@ img {
   vertical-align: middle;
   cursor: pointer;
   border: none;
-  padding: 0 0.5rem;
-  height: 30px;
-  line-height: 30px;
 }
 .button--disabled,
 .button[disabled] {
@@ -1624,6 +1621,7 @@ img {
 .quantity--side .quantity-button {
   position: absolute;
   right: 0;
+  box-sizing: border-box;
 }
 .quantity--side .quantity-button--minus {
   bottom: 0;
@@ -1632,7 +1630,7 @@ img {
   top: 0;
 }
 .quantity--side .quantity-input {
-  display: block;
+  height: inherit;
 }
 .modal {
   position: fixed;

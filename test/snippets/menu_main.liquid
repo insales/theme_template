@@ -8,7 +8,7 @@
 
 <div class="sm-hidden xs-hidden">
   <ul class="menu menu--main menu--horizontal">
-    {% assign menu_lvl_1 = collections.all.subcollections %}
+    {% assign menu_lvl_1 = collections.subcollections %}
     {% for link_lvl_1 in menu_lvl_1 %}
       <li class="menu-node menu-node--main_lvl_1
                 {% if link_lvl_1.current? %}menu-node--current{% endif %}
