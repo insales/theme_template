@@ -23,9 +23,10 @@
     init: function( options, qntty_container ){
       var
         self    = this,
-        options = options || {},
         params  = {},
         mod     = 0;
+
+      options = options || {};
 
       options.plusSelector  = options.plusSelector  || '.js-quantity-plus';
       options.minusSelector = options.minusSelector || '.js-quantity-minus';
@@ -53,34 +54,34 @@
         self.packLogic = true;
       }else{
         self.packLogic = false;
-      };
+      }
 
       // настройки минимума и максимума
       // min & max - из параметров тега
-      // minCheck & maxCheck - параметры для сравнения. приводятся к крастному виду.
+      // minCheck & maxCheck - параметры для сравнения. приводятся к кратному виду.
       self.max = parseInt( params.max ) || 100000000;
       self.min = parseInt( params.min ) || 1;
 
       if( self.min < self.packSize ){
         self.min = self.packSize;
-      };
+      }
       self.minCheck = self.min;
 
       // правим максимум так, чтобы он был кратен,
       self.maxCheck = self.max;
       if( self.packLogic ){
         mod = self.max % self.packSize;
-        if( mod != 0 ){
+        if( mod !== 0 ){
           self.maxCheck = self.maxCheck - mod;
-        };
-      };
+        }
+      }
 
       // выставляем стартовое кол-во
       self.current = parseInt( self.inputElement.val() );
 
       if( self.current < self.minCheck ){
         self.current = self.minCheck;
-      };
+      }
 
       self.countCheck = self.current;
 
@@ -105,7 +106,7 @@
 
       self.inputElement
         .on( 'keyup', function( e ){
-          // 
+          //
           var
             codes = {
               //8:  true, //backspace
@@ -121,30 +122,30 @@
           // если нажали "функциональную клавишу" - забиваем
           if( codes[ e.keyCode ] ){
             return false;
-          };
+          }
 
           // если вводим что-то кроме цифр - забиваем
           if( isNaN( self.countCheck ) ){
             self.inputElement.val( '' );
             return false;
-          };
+          }
 
           // если у нас не указаны упаковки,
           // то проверяем корректность на вводе
           // иначе - при потере фокуса
           if( !self.packLogic ){
             self.check();
-          };
+          }
         })
         .on( 'blur', function( e ){
           self.countCheck = parseInt( self.inputElement.val() );
 
           if( isNaN( self.countCheck ) ){
             self.countCheck = self.packSize;
-          };
+          }
 
           self.check();
-        })
+        });
 
       // прибиваем настройки
       self.options = $.extend( {}, self.container.data(), options );
@@ -160,20 +161,20 @@
       // приводим введеное кол-во к кратному виду
       if( self.packLogic ){
         mod = self.countCheck % self.packSize;
-        if( mod != 0 ){
+        if( mod !== 0 ){
           self.countCheck = self.countCheck - mod + self.packSize;
-        };
-      };
+        }
+      }
 
       if( self.countCheck < self.minCheck ){
         self.countCheck = self.minCheck;
         self.isLess = true;
-      };
+      }
 
       if( self.countCheck >= self.maxCheck ){
         self.countCheck = self.maxCheck;
         self.isMore = true;
-      };
+      }
 
       self.current = self.countCheck;
 
@@ -197,7 +198,7 @@
 
         prices.init( options, this );
         $.data( this, "quantity", prices );
-      };
+      }
     });
 
     return this;
