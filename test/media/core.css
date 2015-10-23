@@ -2229,6 +2229,22 @@ body.body--lock_scroll {
 .search_widget-submit[disabled] {
   cursor: not-allowed;
 }
+.ajax_search-wrapper {
+  position: relative;
+}
+.ajax_search-results {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+}
+.ajax_search-item {
+  display: block;
+  text-align: left;
+}
 .compare-wrapper {
   overflow-x: auto;
 }
