@@ -22,7 +22,7 @@ var
   // списки блоков
   List = {
     'settings.html': [],
-    'settings_form.json': [],
+    //'settings_form.json': [],
   },
 
   blocks   = {},
