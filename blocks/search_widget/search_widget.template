@@ -1,6 +1,6 @@
 <script type="text/template" hidden class="search" id="ajax">
   <% if @suggestions?.length > 0 : %>
-    <ul class="ajax_search-wrapper">
+    <ul class="ajax_search-results">
       <% for product in @suggestions : %>
         <li class="ajax_search-item">
           <a href="<%- product.url %>" class="ajax_search-link">

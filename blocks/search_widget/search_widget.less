@@ -34,3 +34,28 @@
     }
   }
 }
+
+.ajax_search{
+  &-wrapper{
+    position: relative;
+  }
+
+  &-results{
+    .ul-clear();
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+  }
+
+  &-item{
+    display: block;
+    text-align: left;
+  }
+
+  &-link{}
+
+  &-prices{}
+
+  &-marked{}
+}

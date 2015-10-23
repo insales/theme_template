@@ -10,6 +10,7 @@ InSales.Search = function( options ){
   init = function(){
     options             = options || {};
     self.searchSelector = options.searchSelector || '.js-ajax_search-input';
+    self.markerClass    = options.markerClass    || 'ajax_search-marked';
 
     self.path = '/search_suggestions';
 
@@ -19,6 +20,8 @@ InSales.Search = function( options ){
       fields:     [ 'price_min', 'price_min_available' ],
       hide_items_out_of_stock: Site.account.hide_items,
     };
+
+    self.binding();
   };
 
   self.binding = function(){
@@ -26,7 +29,7 @@ InSales.Search = function( options ){
       keyupTimeoutID = '',
       $search = $( self.searchSelector );
 
-    $search.on( 'keyup', function(){
+    $( document ).on( 'keyup', $search, function(){
       var
         $data = {};
 
@@ -34,7 +37,7 @@ InSales.Search = function( options ){
 
       clearTimeout( self.keyupTimeoutID );
 
-      if( self.data.query != '' && self.data.query.length >= 3 ){
+      if( self.data.query !== '' && self.data.query.length >= 3 ){
         keyupTimeoutID = setTimeout( function(){
           $.getJSON( self.path, self.data,
             function( response ){
@@ -45,15 +48,21 @@ InSales.Search = function( options ){
         }, 300 );
       }else{
         // возвращаем пустой объект, чтобы спрятать результат поиска
-        Events( 'onAjaxSearch_Empty' ).publish( $data );
-      };
+        Events( 'onAjaxSearch' ).publish( $data );
+      }
+    });
+
+    $( document ).click( function( e ){
+      if( $( e.target ).closest( $search ).length ) return;
+        Events( 'onAjaxSearch' ).publish( {} );
+      e.stopPropagation();
     });
   };
 
   // приводим в общий порядок список поиска
   self.makeData = function( $data, keyword ){
     var
-      replacment = '<span class="marked">$1</span>';
+      replacment = '<span class="'+ self.markerClass +'">$1</span>';
 
     $.each( $data.suggestions, function( index, product ){
       product.id    = product.data;
