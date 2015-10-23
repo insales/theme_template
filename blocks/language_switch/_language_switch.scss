@@ -1,12 +1,7 @@
 /* language */
 
-.languages{
-  &-list{
-
-    &--dropdown{
-      .languages-node:hover &{}
-    }
-  }
+.language_switch{
+  &-link{}
 
   &-node{
     &:hover{

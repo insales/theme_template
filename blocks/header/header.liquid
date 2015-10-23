@@ -4,6 +4,10 @@
   {% endcomment %}
   <div class="section--header">
     <div class="wrap row">
+      {% include "language_switch" %}
+    </div>
+
+    <div class="wrap row">
 
       <div class="lg-grid-5 sm-grid-12
                   sm-center
@@ -33,10 +37,12 @@
           {% comment %}
             вcтавляем блок с версткой виджета корзины
           {% endcomment %}
-          <span class="mc-grid-12
-                      sm-padded-vertical xs-padded-vertical">
-            {% include "cart_widget" %}
-          </span>
+          {% unless header == 'checkout' %}
+            <span class="mc-grid-12
+                        sm-padded-vertical xs-padded-vertical">
+              {% include "cart_widget" %}
+            </span>
+          {% endunless %}
         </div>
       </div>
     </div>
