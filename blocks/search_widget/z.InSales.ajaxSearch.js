@@ -10,6 +10,7 @@ InSales.Search = function( options ){
   init = function(){
     options             = options || {};
     self.searchSelector = options.searchSelector || '.js-ajax_search-input';
+    self.searchWrapper  = options.searchWrapper  || '.search_widget';
     self.markerClass    = options.markerClass    || 'ajax_search-marked';
 
     self.path = '/search_suggestions';
@@ -29,7 +30,7 @@ InSales.Search = function( options ){
       keyupTimeoutID = '',
       $search = $( self.searchSelector );
 
-    $( document ).on( 'keyup', $search, function(){
+    $search.on( 'keyup', function(){
       var
         $data = {};
 
@@ -38,7 +39,7 @@ InSales.Search = function( options ){
       clearTimeout( self.keyupTimeoutID );
 
       if( self.data.query !== '' && self.data.query.length >= 3 ){
-        keyupTimeoutID = setTimeout( function(){
+        self.keyupTimeoutID = setTimeout( function(){
           $.getJSON( self.path, self.data,
             function( response ){
               $data = self.makeData( response, $search.val() );
@@ -46,17 +47,24 @@ InSales.Search = function( options ){
               Events( 'onAjaxSearch' ).publish( $data );
             });
         }, 300 );
+
+        $( document ).on( 'click', 'body', self.outClick );
       }else{
         // возвращаем пустой объект, чтобы спрятать результат поиска
         Events( 'onAjaxSearch' ).publish( $data );
+
+        $( document ).off( 'click', 'body', self.outClick );
       }
     });
+  };
 
-    $( document ).click( function( e ){
-      if( $( e.target ).closest( $search ).length ) return;
-        Events( 'onAjaxSearch' ).publish( {} );
-      e.stopPropagation();
-    });
+  self.outClick = function( event ){
+    var $search = $( self.searchWrapper );
+
+    if( $( event.target ).closest( $search ).length ) return;
+      Events( 'onAjaxSearch' ).publish( {} );
+    event.stopPropagation();
+    $( document ).off( 'click', 'body', self.outClick );
   };
 
   // приводим в общий порядок список поиска
