@@ -2297,39 +2297,58 @@ body.body--lock_scroll {
   content: "";
   display: block;
 }
-.languages {
+.language_switch {
   list-style-type: none;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-.languages:after {
+.language_switch:after {
   clear: both;
   content: "";
   display: block;
 }
-.languages-node {
+.language_switch-node {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+}
+.language_switch-link {
   position: relative;
   box-sizing: border-box;
   display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
 }
-.languages-link {
-  position: relative;
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-}
-.languages-toggler {
+.language_switch-toggler {
   cursor: pointer;
 }
-.languages--dropdown {
+.language_switch--dropdown {
   position: absolute;
   top: 100%;
   z-index: 1000;
   display: none;
 }
-.languages-node:hover > .languages--dropdown {
+.language_switch-node:hover > .language_switch--dropdown {
   display: block;
+}
+.language_switch--side {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 1000;
+  display: none;
+}
+.language_switch-node:hover > .language_switch--side {
+  display: block;
+}
+.language_switch--vertical > .language_switch-node {
+  float: left;
+}
+.language_switch--horizontal > .language_switch-node {
+  width: 100%;
 }
 .social_links:after {
   clear: both;
