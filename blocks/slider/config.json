@@ -15,11 +15,14 @@
     ],
 
     "template.css": [
-      "owl.carousel.css"
+      "plugins/owl.carousel.css"
+    ],
+
+    "z.InSales.plugins.js": [
+      "plugins/owl.carousel.js"
     ],
 
     "template.js": [
-      "owl.carousel.min.js",
       "slider.js"
     ],
 
@@ -30,6 +33,14 @@
 
     "z.InSales.ui.js": [
       "z.slider.ui.js"
+    ],
+
+    "settings.html": [
+      "configs/slider_index.html"
+    ],
+
+    "settings_form.json": [
+      "configs/slider_index.json"
     ]
   }
 }

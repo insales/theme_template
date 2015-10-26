@@ -8,7 +8,7 @@
         "label": "Показывать слайдер на главной?",
         "help": "Показывать или скрывать слайдер на главной страницу",
         "value": "1"
-      },
+      }
     ]
   },
   {
@@ -141,24 +141,23 @@
       }
     ]
   },
-    {
-      "group_name": "Настройки автоматической смены изображений",
-      "items": [
-        {
-          "name": "main_image_slider_autopla",
-          "type": "checkbox",
-          "label": "Включить?",
-          "help": null,
-          "value": "1"
-        },
-        {
-          "name": "main_image_timeout",
-          "type": "text",
-          "label": "Время показа изображения (в милисекундах)",
-          "help": null,
-          "value": "5000"
-        }
-      ]
-    }
+  {
+    "group_name": "Настройки автоматической смены изображений",
+    "items": [
+      {
+        "name": "main_image_slider_autopla",
+        "type": "checkbox",
+        "label": "Включить?",
+        "help": null,
+        "value": "1"
+      },
+      {
+        "name": "main_image_timeout",
+        "type": "text",
+        "label": "Время показа изображения (в милисекундах)",
+        "help": null,
+        "value": "5000"
+      }
+    ]
   }
 ]

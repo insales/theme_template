@@ -11,13 +11,13 @@
 {% assign total = 0 %}
 {% assign show_index_slider = false %}
 {% for i in (1..slide_count) %}
-  {% capture is_show %}main_image_{{ i }}-show{% endcapture %}
+  {% capture is_show %}index_slider_{{ i }}-show{% endcapture %}
   {% if settings[is_show] == '1' %}
     {% assign show_index_slider = true %}
   {% endif %}
 {% endfor %}
 
-{% if settings.show_index_slider == '1' and show_index_slider %}
+{% if settings.index_slider-show == '1' and show_index_slider %}
 
   <div class="slider slider--index">
     <div class="slider-container
@@ -30,10 +30,10 @@
           генерим поля, которые надо вытащит из settings
         {% endcomment %}
 
-        {% capture is_show %}main_image_{{ i }}-show{% endcapture %}
-        {% capture image %}main_image_{{ i }}-loaded.jpg{% endcapture %}
-        {% capture link %}main_image_{{ i }}-link{% endcapture %}
-        {% capture title %}main_image_{{ i }}-title{% endcapture %}
+        {% capture is_show %}index_slider_{{ i }}-show{% endcapture %}
+        {% capture image %}index_slider_{{ i }}-loaded.jpg{% endcapture %}
+        {% capture link %}index_slider_{{ i }}-link{% endcapture %}
+        {% capture title %}index_slider_{{ i }}-title{% endcapture %}
 
         {% comment %}
           генерим верстку
@@ -50,14 +50,14 @@
   </div>
 
   <script type="text/javascript">
-    {% if settings.main_image_slider_autoplay == '1' %}
+    {% if settings.index_slider-autoplay == '1' %}
       {% assign is_autoplay = true %}
     {% else %}
       {% assign is_autoplay = false %}
     {% endif %}
 
-    {% if settings.main_image_timeout %}
-      {% assign timeout = settings.main_image_timeout %}
+    {% if settings.index_slider-timeout %}
+      {% assign timeout = settings.index_slider-timeout %}
     {% else %}
       {% assign timeout = 5000 %}
     {% endif %}
