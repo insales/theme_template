@@ -162,5 +162,95 @@
     ]
   }
 ]
+,"Группы в соцсетях": [
+  {
+    "group_name": "Ссылки на группы и каналы",
+    "items": [
+      {
+        "name": "social_groups-show",
+        "type": "checkbox",
+        "label": "Показывать блок каналов?",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Вконтакте",
+    "items": [
+      {
+        "name": "social_group-vk-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-vk-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Facebook",
+    "items": [
+      {
+        "name": "social_group-facebook-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-facebook-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Twitter",
+    "items": [
+      {
+        "name": "social_group-twitter-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-twitter-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "YouTube",
+    "items": [
+      {
+        "name": "social_group-youtube-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-youtube-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  }
+]
 
 }

@@ -11,7 +11,7 @@
 {% assign total = 0 %}
 {% assign show_index_slider = false %}
 {% for i in (1..slide_count) %}
-  {% capture is_show %}index_slidere_{{ i }}-show{% endcapture %}
+  {% capture is_show %}index_slider_{{ i }}-show{% endcapture %}
   {% if settings[is_show] == '1' %}
     {% assign show_index_slider = true %}
   {% endif %}
