@@ -1,12 +1,6 @@
 {
   "test": {
-    "snippets": [
-      "social_groups.liquid"
-    ],
 
-    "style.css.scss": [
-      "_social_groups.scss"
-    ]
   },
 
   "dist": {},
@@ -14,6 +8,22 @@
   "core": {
     "core.css": [
       "social_groups.less"
+    ],
+
+    "snippets": [
+      "social_groups.liquid"
+    ],
+
+    "style.css.scss": [
+      "_social_groups.scss"
+    ],
+
+    "settings.html": [
+      "configs/social_groups.html"
+    ],
+
+    "settings_form.json": [
+      "configs/social_groups.json"
     ]
   }
 }
