@@ -18,6 +18,7 @@
     "gulp-sass": "^2.0.4",
     "gulp-zip": "^3.0.2",
     "json-comments": "^0.2.1",
-    "path": "^0.11.14"
+    "path": "^0.11.14",
+    "streamqueue": "^1.1.1"
   }
 }

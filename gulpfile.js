@@ -7,6 +7,7 @@ var
   es       = require( 'event-stream' ),
   clean    = require( 'gulp-clean' ),
   zip      = require( 'gulp-zip' ),
+  streamqueue = require('streamqueue'),
 
   path     = require( 'path' ),
   colors   = require( 'colors' ),
@@ -22,7 +23,7 @@ var
   // списки блоков
   List = {
     'settings.html': [],
-    //'settings_form.json': [],
+    'settings_form.json': [],
   },
 
   blocks   = {},
@@ -150,17 +151,17 @@ job = function( task, path ){
       break;
 
     case 'settings_form.json':
-      source = es.merge(
+      var temp;
+      temp = streamqueue(
+        { objectMode: true },
         strToSrc( 'intro', '{' ),
         source,
         strToSrc( 'outro', '}' )
-      );
-
-      source
+      )
         .pipe( concat( task ) )
-        .on( 'error', log )
-        .pipe( gulp.dest( path +'config/' ) )
-        .on( 'error', log );
+        //.on( 'error', log )
+        .pipe( gulp.dest( path +'config/' ) );
+        //.on( 'error', log );
       break;
 
     // сборка файлов подключения стилей и скриптов
