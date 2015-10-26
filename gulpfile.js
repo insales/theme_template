@@ -155,7 +155,7 @@ job = function( task, path ){
       temp = streamqueue(
         { objectMode: true },
         strToSrc( 'intro', '{' ),
-        source,
+        source.pipe( concat( 'temp.json', { newLine: ',' } ) ),
         strToSrc( 'outro', '}' )
       )
         .pipe( concat( task ) )
