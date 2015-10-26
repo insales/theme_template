@@ -17,7 +17,7 @@
     ],
 
     "template.js": [
-      "z.InSales.quantity.js"
+      "z.InSales.quantity_with_units.js"
     ]
   }
 }
