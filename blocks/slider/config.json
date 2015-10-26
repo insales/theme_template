@@ -14,7 +14,7 @@
       "_slider.scss"
     ],
 
-    "template.css": [
+    "core.css": [
       "plugins/owl.carousel.css"
     ],
 
