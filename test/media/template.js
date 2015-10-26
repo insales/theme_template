@@ -10,7 +10,7 @@
 #= require z.InSales.ajaxAdd
 #= require z.InSales.formValidation
 #= require slider
-#= require z.InSales.quantity
+#= require z.InSales.quantity_with_units
 #= require z.InSales.modal
 #= require modal
 #= require reviews

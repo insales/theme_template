@@ -32,6 +32,18 @@
       options.minusSelector = options.minusSelector || '.js-quantity-minus';
       options.inputSelector = options.inputSelector || '.js-quantity-input';
 
+      if( !options.units ){
+        options.units = {
+          "шт": 0,
+          "кг": 1,
+          "л; дм3": 2,
+          "м": 2,
+          "м2": 2,
+          "г": 0,
+          "т": 3
+        };
+      }
+
       self.container  = $( qntty_container );
 
       self.isLess = false;
@@ -46,7 +58,11 @@
       params = getParams( self.inputElement );
 
       // настройки упаковок товара
-      self.packSize = parseInt( params.pack ) || 1;
+      self.packSize = parseFloat( params.pack ) || 1;
+
+      // настройки единиц измерения
+      self.unit = params.unit || "шт";
+      self.decimal = options.units( self.unit );
 
       // вариант логики.
       // если указаны упаковки, то проверка для поля ввода должна происходить после .blur()
@@ -59,8 +75,8 @@
       // настройки минимума и максимума
       // min & max - из параметров тега
       // minCheck & maxCheck - параметры для сравнения. приводятся к кратному виду.
-      self.max = parseInt( params.max ) || 100000000;
-      self.min = parseInt( params.min ) || 1;
+      self.max = parseFloat( params.max ) || 100000000;
+      self.min = parseFloat( params.min ) || 1;
 
       if( self.min < self.packSize ){
         self.min = self.packSize;
@@ -77,7 +93,7 @@
       }
 
       // выставляем стартовое кол-во
-      self.current = parseInt( self.inputElement.val() );
+      self.current = parseFloat( self.inputElement.val() );
 
       if( self.current < self.minCheck ){
         self.current = self.minCheck;
@@ -85,7 +101,7 @@
 
       self.countCheck = self.current;
 
-      self.inputElement.val( self.current );
+      self.inputElement.val( self.current.toFixed( self.decimal ) );
 
       // вешаем события на элементы
       self.plusElement
@@ -105,6 +121,7 @@
         });
 
       self.inputElement
+        /*
         .on( 'keyup', function( e ){
           //
           var
@@ -117,7 +134,7 @@
               40: true,
             };
 
-          self.countCheck = parseInt( self.inputElement.val() );
+          self.countCheck = parseFloat( self.inputElement.val() );
 
           // если нажали "функциональную клавишу" - забиваем
           if( codes[ e.keyCode ] ){
@@ -137,8 +154,9 @@
             self.check();
           }
         })
+        */
         .on( 'blur', function( e ){
-          self.countCheck = parseInt( self.inputElement.val() );
+          self.countCheck = parseFloat( self.inputElement.val() );
 
           if( isNaN( self.countCheck ) ){
             self.countCheck = self.packSize;
@@ -181,7 +199,7 @@
       $data = makeData( self );
 
       self.inputElement
-        .val( self.current )
+        .val( self.current.toFixed( self.decimal ) )
         .trigger( 'change' );
 
       Events( 'onQuantity_Change' ).publish( $data );

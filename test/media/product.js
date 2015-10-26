@@ -111,16 +111,14 @@ $(function(){
     }
   });
 
-  if( Site.template == 'product' ){
-    $( '.quantity' )
-      .quantity();
+  $( '.quantity' )
+    .quantity();
 
-    Events( 'onBuyButton_Active' ).subscribe( function( $data ){
-      //console.log( 'onBuyButton_Active: ', $data );
-    });
+  Events( 'onBuyButton_Active' ).subscribe( function( $data ){
+    //console.log( 'onBuyButton_Active: ', $data );
+  });
 
-    Events( 'onBuyButton_Inactive' ).subscribe( function( $data ){
-      //console.log( 'onBuyButton_Inactive: ', $data );
-    });
-  }
+  Events( 'onBuyButton_Inactive' ).subscribe( function( $data ){
+    //console.log( 'onBuyButton_Inactive: ', $data );
+  });
 });
