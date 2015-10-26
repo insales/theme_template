@@ -38,7 +38,7 @@ $(function(){
   var ajaxSearch = new InSales.Search();
 
   Events( 'onAjaxSearch' ).subscribe( function( $data ){
-    console.log( $data );
+    //console.log( $data );
 
     $( '.js-ajax_search-wrapper' )
       .html( InSales.Render( $data, 'search', 'ajax' ) );

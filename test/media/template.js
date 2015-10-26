@@ -9,7 +9,6 @@
 #= require ui
 #= require z.InSales.ajaxAdd
 #= require z.InSales.formValidation
-#= require owl.carousel.min
 #= require slider
 #= require z.InSales.quantity
 #= require z.InSales.modal

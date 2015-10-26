@@ -30,21 +30,10 @@
     миниатюрки
   {% endcomment %}
   <div class="slider slider--gallery">
-    <div class="slider-control--gallery">
-      <div class="slider-left slider-left--gallery
-                  js-slider-left"
-      >
-        <i class="fa fa-chevron-left"></i>
-      </div>
-      <div class="slider-right slider-right--gallery
-                  js-slider-right"
-      >
-        <i class="fa fa-chevron-right"></i>
-      </div>
-    </div>
-
     <ul class="gallery-preview_list gallery-preview_list--horizontal
-              slider-container js-slider--gallery"
+              slider-container
+              owl-carousel
+              js-slider--gallery"
     >
       {% for image in product.images %}
 

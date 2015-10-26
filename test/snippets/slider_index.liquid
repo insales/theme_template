@@ -14,14 +14,16 @@
   {% capture is_show %}main_image_{{ i }}-show{% endcapture %}
   {% if settings[is_show] == '1' %}
     {% assign show_index_slider = true %}
-    {% assign total = total | plus: 1 %}
   {% endif %}
 {% endfor %}
 
 {% if settings.show_index_slider == '1' and show_index_slider %}
 
   <div class="slider slider--index">
-    <div class="slider-container js-slider-index">
+    <div class="slider-container
+                owl-carousel
+                js-slider--index"
+    >
       {% for i in (1..slide_count) %}
 
         {% comment %}
@@ -45,32 +47,8 @@
         {% endif %}
       {% endfor %}
     </div>
-
-    {% comment %}
-      учитывая практику, слайдер для главной сильно отличается по верстке
-      от остальных слайдеров. Поэтому желательно все элементы снабдить своими модификациями
-    {% endcomment %}
-    {% if total != 1 %}
-      <div class="slider-control slider-control--index
-                  sm-hidden xs-hidden"
-      >
-        <span class="slider-left slider-left--index
-                    js-slider-left"
-        >
-          <i class="fa fa-chevron-left"></i>
-        </span>
-        <span class="slider-right slider-right--index
-                    js-slider-right"
-        >
-          <i class="fa fa-chevron-right"></i>
-        </span>
-      </div>
-    {% endif %}
   </div>
 
-{% endif %}
-
-{% if total != 1 %}
   <script type="text/javascript">
     {% if settings.main_image_slider_autoplay == '1' %}
       {% assign is_autoplay = true %}
@@ -78,19 +56,19 @@
       {% assign is_autoplay = false %}
     {% endif %}
 
-    {% if settings.main_image_timeout != '' %}
+    {% if settings.main_image_timeout %}
       {% assign timeout = settings.main_image_timeout %}
     {% else %}
       {% assign timeout = 5000 %}
     {% endif %}
 
     $(function(){
-      $( '.js-slider-index' ).owlCarousel({
+      $( '.js-slider--index' ).owlCarousel({
         items: 1,
         loop: true,
         dots: false,
         autoplay: {{ is_autoplay }},
-        //autoplayTimeout: {{ timeout }}
+        autoplayTimeout: {{ timeout }}
       });
     });
   </script>
