@@ -21,21 +21,10 @@
       {% endif %}
     </div>
 
-    <div class="slider-control slider-control--product">
-      <div class="slider-left
-                  js-slider-left"
-      >
-        <i class="fa fa-chevron-left"></i>
-      </div>
-
-      <div class="slider-right
-                  js-slider-right"
-      >
-        <i class="fa fa-chevron-right"></i>
-      </div>
-    </div>
-
-    <div class="slider-container js-slider">
+    <div class="slider-container
+                owl-carousel
+                js-slider--products"
+    >
       {% for product in slider-products %}
         <div class="padded">
           {% include "product_preview" %}
