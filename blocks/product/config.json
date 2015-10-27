@@ -26,12 +26,17 @@
       "js/z.InSales.variantsTree.js"
     ],
 
+
     "template.js": [
       "z.InSales.optionSelectors.js",
       "product.js",
 
       "js/z.InSales.moneyFormat.js",
       "js/z.InSales.priceType.js"
+    ],
+
+    "product.js": [
+      "product_selectors.js"
     ],
 
     "template_selectors.liquid": [
