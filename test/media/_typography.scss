@@ -19,13 +19,13 @@
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
     line-height: $headings-line-height;
-    color: $headings-color;
+    color:       $headings-color;
 
     small,
     .small {
       font-weight: normal;
       line-height: 1;
-      color: $headings-small-color;
+      color:       $headings-small-color;
     }
   }
 
@@ -33,7 +33,7 @@
   h2, .h2,
   h3, .h3 {
     margin-top: 0;
-    margin-bottom: ($line-height-computed / 2);
+    margin-bottom: ($line-height / 2);
 
     small,
     .small {
@@ -44,7 +44,7 @@
   h5, .h5,
   h6, .h6 {
     margin-top: 0;
-    margin-bottom: ($line-height-computed / 2);
+    margin-bottom: ($line-height / 2);
 
     small,
     .small {
@@ -64,7 +64,7 @@
   // -------------------------
 
   p {
-    margin: 0 0 ($line-height-computed / 2);
+    margin: 0 0 ($line-height / 2);
 
     &:last-child{
       margin-bottom: 0;
@@ -78,7 +78,8 @@
   ul,
   ol {
     margin-top: 0;
-    margin-bottom: ($line-height-computed / 2);
+    margin-bottom: ($line-height / 2);
+    padding-left: 1.5rem;
     ul,
     ol {
       margin-bottom: 0;
@@ -87,9 +88,9 @@
 
   // Addresses
   address {
-    margin-bottom: $line-height-computed;
+    margin-bottom: $line-height;
     font-style: normal;
-    line-height: $line-height-base;
+    //line-height: $line-height;
   }
 
   // хкаи для таблиц

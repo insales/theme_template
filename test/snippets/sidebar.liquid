@@ -1,6 +1,6 @@
 <div class="sidebar">
 
-  {% if template == 'collection' and collection.subcollections.size > 0 %}
+  {% if template == 'collection' %}
     <div class="sidebar_block">
       <div class="sidebar_block-title">
         Каталог
@@ -18,15 +18,6 @@
     </div>
   {% endif %}
 
-  {% comment %}
-  {% if template == 'blog' %}
-    <div class="sidebar_block">
-      <div class="sidebar_block-title">
-      </div>
-    </div>
-  {% endif %}
-  {% endcomment %}
-
   {% if  block_lists.news.blocks.size > 0 %}
     {% for block in  block_lists.blocks.news %}
       <div class="sidebar_block">
@@ -38,8 +29,9 @@
     {% endfor %}
   {% endif %}
 
-  <div class="sidebar_block">
-    <div class="sidebar_block-title js-recently_view">
+  <div class="sidebar_block js-recently_view-wrapper">
+    <div class="sidebar_block-title">Вы смотрели:</div>
+    <div class="sidebar_block-content js-recently_view">
     </div>
   </div>
 

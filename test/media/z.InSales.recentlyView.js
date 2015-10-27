@@ -29,21 +29,19 @@ InSales.RecentlyView = function( options ){
       self.recently = $.parseJSON( $.cookie( 'recently' ) );
     }catch( e ){
       self.recently = null;
-    };
+    }
 
     // проверяем на пустоту
     if( !self.recently ){
       self.products = [];
       self.recently = [];
-    };
+    }
 
     InSales.getProductList( self.recently )
       .then( function( response ){
         self.setList( response );
 
-        $data = {
-          obj: self,
-        };
+        $data = makeData( self );
 
         Events( 'onRecently_Update' ).publish( $data );
       });
@@ -58,7 +56,7 @@ InSales.RecentlyView = function( options ){
       // не превысили мы лимит?
       if( self.recently.length == self.maxItems ){
         self.recently.shift();
-      };
+      }
 
       // пинаем товар в список
       self.recently.push( parseInt( product_id ) );
@@ -67,7 +65,7 @@ InSales.RecentlyView = function( options ){
       $.cookie( 'recently', JSON.stringify( self.recently ), {
         path: '/'
       });
-    };
+    }
   };
 
   // проверка, есть ли такой в списке
@@ -80,9 +78,9 @@ InSales.RecentlyView = function( options ){
         if( id == product_id ) {
           result = true;
           return false;
-        };
+        }
       });
-    };
+    }
 
     return result;
   };
@@ -95,14 +93,14 @@ InSales.RecentlyView = function( options ){
     $.each( self.recently, function( index, id ){
       if( id ){
         self.products.push( products[ id ] );
-      };
+      }
     });
 
     $.each( self.products, function( index, product ){
       if( product ){
         product.price = product.variants[ 0 ].price;
         product.old_price = product.variants[ 0 ].old_priceprice;
-      };
+      }
     });
   };
 
