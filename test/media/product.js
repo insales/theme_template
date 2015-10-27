@@ -148,7 +148,7 @@ var mzMobileOptions = {
 };
 
 $(function(){
-  $( '.js-product_gallery-preview_image' ).on( 'click touchstart', function( e ){
+  $( '.js-product_gallery-preview_image' ).on( 'tap', function( e ){
 
     var
    	  $preview = $(this).parents( 'a:first' );
