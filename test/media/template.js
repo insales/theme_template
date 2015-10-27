@@ -20,7 +20,6 @@
 #= require product
 #= require z.InSales.moneyFormat
 #= require z.InSales.priceType
-#= require magiczoomplus
 #= require z.InSales.cart
 #= require cart
 #= require z.InSales.ajaxSearch

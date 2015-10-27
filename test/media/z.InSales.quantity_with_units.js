@@ -62,7 +62,7 @@
 
       // настройки единиц измерения
       self.unit = params.unit || "шт";
-      self.decimal = options.units( self.unit );
+      self.decimal = options.units[ self.unit ];
 
       // вариант логики.
       // если указаны упаковки, то проверка для поля ввода должна происходить после .blur()

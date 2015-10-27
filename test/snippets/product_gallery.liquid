@@ -13,10 +13,8 @@
         title="{{ product.first_image.title }}"
         alt="{{ product.first_image.title }}"
 
-        rel="right-click: true; selectors-effect: fade;"
-
         id="MagicZoom"
-        class="MagicZoomPlus"
+        class="MagicZoom"
     >
       <img  src="{{ product.first_image.large_url }}"
 
@@ -47,8 +45,8 @@
                     {% if forloop.first %} gallery-image--current {% endif %}
                     image-square"
 
-              rel="zoom-id: MagicZoom"
-              rev="{{ image.large_url }}"
+              data-zoom-id="MagicZoom"
+              data-image="{{ image.large_url }}"
           >
             {% comment %}
               делаем финт - маленькая картинка для больших разрешений
@@ -61,6 +59,8 @@
 
             <img src="{{ image.large_url }}"
                   srcset="{{ image.original_url }} 2x"
+                  class="js-product_gallery-preview_image
+                        lg-hidden md-hidden"
             />
           </a>
         </li>
