@@ -1,6 +1,6 @@
 <h1 class="search-title content-title">Поиск</h1>
 
-<div class="row">
+<div class="row padded-bottom">
   <span>
     {% if search.performed? %}
       {% if search.results == empty %}
@@ -29,16 +29,14 @@
         {% include "pagination" %}
       </div>
 
-      <div class="search-products_list grid-row">
+      <div class="search-products_list grid-row grid-inline">
         {% for product in results %}
-          <div class="product_preview
-                      lg-grid-4 md-grid-4 sm-grid-6 xs-grid-12 padded"
+          <div class="lg-grid-3 md-grid-3 sm-grid-6 xs-grid-12
+                      padded"
           >
             {% include 'product_preview' %}
           </div>
 
-          {% cycle 'l-grid': '', '', '<div class="lg-grid-12 md-grid-12 sm-hidden xs-hidden"><div class="collection-separator"></div></div>' %}
-          {% cycle  'm-grid': '', '<div class="sm-grid-12 lg-hidden md-hidden xs-hidden"><div class="collection-separator"></div></div>' %}
         {% endfor %}
       </div>
 
