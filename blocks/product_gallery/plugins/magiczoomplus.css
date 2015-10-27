@@ -923,8 +923,10 @@ button.mz-button.mz-button-next:before { content: "\a003"; }
     box-sizing: border-box;
 }
 .mz-thumb:hover:not(.mz-thumb-selected) img {
+  /*
     -webkit-filter: brightness(70%);
             filter: brightness(70%);
+            */
 }
 .mz-thumb-selected img {
   /*
@@ -933,15 +935,21 @@ button.mz-button.mz-button-next:before { content: "\a003"; }
             */
 }
 .no-cssfilters-magic .mz-thumb {
+  /*
     background: #000;
+    */
 }
 .no-cssfilters-magic .mz-thumb:hover:not(.mz-thumb-selected) img {
+  /*
     opacity: .7;
     filter: alpha(opacity=70);
+    */
 }
 .no-cssfilters-magic .mz-thumb-selected img {
+  /*
     opacity: .5;
     filter: alpha(opacity=50);
+    */
 }
 .ie9-magic .mz-thumb img {
     /*box-shadow: 0 0 4px 0px rgba(0,0,0,0.3);*/

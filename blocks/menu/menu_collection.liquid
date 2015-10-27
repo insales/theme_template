@@ -21,14 +21,15 @@
 
       {% if menu_lvl_2.size >0 %}
         <span class="menu-marker menu-marker--parent menu-toggler
-                    js-menu-toggler"
+                    js-menu-toggler">
           <i class="fa fa-plus "></i>
         </span>
 
         <ul class="menu menu--vertical menu--collapse">
           {% for link_lvl_2 in menu_lvl_2 %}
             <li class="menu-node menu-node--collection_lvl_2
-                      {% if link_lvl_2.current? %}menu-node--current{% endif %}"
+                      {% if link_lvl_2.current? %}menu-node--current{% endif %}
+                      js-menu-wrapper"
             >
 
               {% assign menu_lvl_3 = link_lvl_2.subcollections %}

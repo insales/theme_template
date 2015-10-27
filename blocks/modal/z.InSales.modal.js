@@ -119,7 +119,7 @@ modal = function () {
     modal = new modal();
 
 // показываем модалку по клику
-$( document ).on( 'click', '.js-modal-link', function( e ){
+$( document ).on( 'click touchstart', '.js-modal-link, js-modal-open', function( e ){
   e.preventDefault();
 
   var

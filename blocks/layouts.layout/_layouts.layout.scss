@@ -3,8 +3,9 @@
 html{}
 
 body{
-  font-size: $font-size-base;
-  line-height: $line-height-computed;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-family-sans-serif;
 }
 
 a{

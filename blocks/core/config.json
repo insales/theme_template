@@ -13,7 +13,8 @@
       "plugins/jquery.barrating.min.js",
       "plugins/jquery.maskedinput.min.js",
       "plugins/nouislider.min.js",
-      "plugins/jquery.scrollTo.min.js"
+      "plugins/jquery.scrollTo.min.js",
+      "plugins/jquery.mobile-events.min.js"
     ],
 
     // склейка скриптов для ECT-шаблонов

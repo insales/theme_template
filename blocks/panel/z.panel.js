@@ -1,6 +1,6 @@
 $( function(){
   // ui для панели
-  $( '.js-panel-link' ).on( 'click', function(){
+  $( document ).on( 'click', '.js-panel-link, js-panel-open', function(){
     var
       params = getParams( $(this) ),
       $unit  = $(this);

@@ -4,7 +4,7 @@
 
 /*
   все function name тащим из modalHelper'a
-  
+
   closeCbk: function name   - что делаем при закрытии окна
   confirmCbk: function name - что делаем при подтверждении
   readyCbk: function name   - что делаем после полной отрисовки окна
@@ -53,7 +53,7 @@ modal = function(){
     // дергаем функцию после отрисовки.
     if( $data.readyCbk ){
       $data.readyCbk( $data );
-    };
+    }
   };
 
   // закрытие модалки
@@ -73,20 +73,20 @@ modal = function(){
     // тянем верстку из целевого блока
     if( $data.target ){
       $data.content = $( $data.target ).html();
-    };
+    }
 
     // надо собрать статичтику по задачам и решениям, и найти красивое решение
     if( $data.readyCbk && typeof( $data.readyCbk ) != 'function' ){
       $data.readyCbk = modalHelper[ $data.readyCbk ];
-    };
+    }
 
     if( $data.confirmCbk && typeof( $data.confirmCbk ) != 'function' ){
       $data.confirmCbk = modalHelper[ $data.confirmCbk ];
-    };
+    }
 
     if( $data.closeCbk && typeof( $data.closeCbk ) != 'function' ){
       $data.closeCbk = modalHelper[ $data.closeCbk ];
-    };
+    }
 
     // если требуется показать шаблон формы
     // прикручиваем колбек проверки и отправки
@@ -100,12 +100,12 @@ modal = function(){
 
         if( field.name == 'email' ){
           field.type = 'email';
-          field.error = 'не верно введен e-mail'
-        };
+          field.error = 'Не верно введен e-mail';
+        }
 
-        field.error = field.error || 'поле не заполнено';
+        field.error = field.error || 'Поле не заполнено';
       });
-    };
+    }
 
     return $data;
   };
@@ -232,4 +232,3 @@ var modalHelper = {
     return dfd.promise();
   },
 };
-
