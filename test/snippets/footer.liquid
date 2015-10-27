@@ -57,43 +57,6 @@
     </div>
   </div>
 
-  {% comment %}
-    нижня панель и маленький грязный хак
-  {% endcomment %}
-  <div class="footer-margin hidden lg-hidden"></div>
-  <div class="footer-panel hidden lg-hidden">
-    {% if template == 'collection' %}
-      {% assign classes = 'grid-4' %}
-    {% else %}
-      {% assign classes = 'grid-6' %}
-    {% endif %}
-
-    <a href="{{ cart_url }}" class="{{ classes }} button button--footer_panel">
-      <span class="button-icon">
-        <i class="fa fa-shopping-cart">
-          <span class="basket-items_count js-basket-items_count">0</span>
-        </i>
-
-      </span>
-      Корзина
-    </a>
-
-    {% if template == 'collection' %}
-      <span class="{{ classes }} button button--footer_panel js-panelg-link">
-        <span class="button-icon">
-          <i class="fa fa-chevron-left"></i>
-        </span>
-        Каталог
-      </span>
-    {% endif %}
-
-    <a href="#top" class="{{ classes }} button button--footer_panel js-scroll_to_top">
-      <span class="button-icon">
-        <i class="fa fa-chevron-up"></i>
-      </span>
-      наверх
-    </a>
-  </div>
 </footer>
 
 {% include "init_js" %}

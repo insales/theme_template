@@ -1859,9 +1859,6 @@ img {
 .overlay--opacity {
   background-color: transparent !important;
 }
-.panel {
-  z-index: 1050;
-}
 /* breadcrumbs */
 .pagination {
   list-style-type: none;
@@ -2549,4 +2546,7 @@ body.body--lock_scroll {
 }
 .payments-method {
   display: inline-block;
+}
+.panel {
+  z-index: 1050;
 }

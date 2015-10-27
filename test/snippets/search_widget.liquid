@@ -1,10 +1,20 @@
+{% if search_widget == 'header' %}
+  {% assign is_ajax = true %}
+{% else %}
+  {% assign is_ajax = false %}
+{% endif %}
+
+
+
 <form action="/search"
       method="get"
-      class="search_widget search_widget--{{ search_widget }}"
+      class="search_widget
+            {% if search_widget %}search_widget--{{ search_widget }} {% endif %}"
 >
   <input type="text"
           name="q"
-          class="search_widget-field js-ajax_search-input"
+          class="search_widget-field
+                {% if is_ajax %}js-ajax_search-input{% endif %}"
           value="{{ search.query | escape }}"
           placeholder="Поиск"
   />
@@ -15,9 +25,11 @@
     <i class="fa fa-search"></i>
   </button>
 
-  <div class="ajax_search-wrapper
-              js-ajax_search-wrapper"
-  ></div>
+  {% if is_ajax %}
+    <div class="ajax_search-wrapper
+                js-ajax_search-wrapper"
+    ></div>
+  {% endif %}
 
   {% if language.not_default? %}
     <input type="hidden" name="lang" value="{{ language.locale }}">
