@@ -17,8 +17,8 @@ var
   // папки
   test_dir = 'test/',
   dist_dir = 'min_template/',
-  temp_full_config = 'max_template/',
-  temp_min_config  = 'min_template/',
+  temp_full_config = 'template_full_config/',
+  temp_min_config  = 'template_min_config/',
 
   // списки блоков
   List = {
@@ -44,9 +44,11 @@ gulp.task( 'build:test', [ 'clean:test' ], function(cb){
     job( task, test_dir );
   }
 
-  setTimeout( function(){
-    cb();
-  }, 3000 );
+  if( cb ){
+    setTimeout( function(){
+      cb();
+    }, 3000 );
+  }
 });
 
 // собираем чистый релизный шаблон
@@ -58,12 +60,14 @@ gulp.task( 'build:min_config', function(cb){
     job( task, temp_min_config );
   }
 
-  setTimeout( function(){
-    cb();
-  }, 3000 );
+  if( cb ){
+    setTimeout( function(){
+      cb();
+    }, 3000 );
+  }
 });
 
-gulp.task( 'build:full_config', function(){
+gulp.task( 'build:full_config', function(cb){
   makeList( 'core' );
   makeList( 'test' );
 
@@ -71,9 +75,11 @@ gulp.task( 'build:full_config', function(){
     job( task, temp_full_config );
   }
 
-  setTimeout( function(){
-    cb();
-  }, 3000 );
+  if( cb ){
+    setTimeout( function(){
+      cb();
+    }, 3000 );
+  }
 });
 
 gulp.task( 'clean:test', function(){
