@@ -1,0 +1,86 @@
+{% comment %}
+  выводим заголов сео-фильтра или самой коллекции
+{% endcomment %}
+<h1 class="collection-title content-title">
+  {% if filter.title %}
+    {{ filter.title }}
+  {% else %}
+    {{ collection.title }}
+  {% endif %}
+</h1>
+
+{% paginate products by 12 %}
+
+  {% comment %}
+    выводим данные только на первой странице пагинации, для СЕО
+  {% endcomment %}
+  {% if paginate.current_page == 1 %}
+    {% comment %}
+      выводим описание сео-фильтра или коллекции.
+    {% endcomment %}
+    {% if filter.description %}
+      <div class="collection-description">
+        {{ filter.description | editable }}
+      </div>
+    {% else %}
+      {% if collection.description %}
+        <div class="collection-description">
+          {{ collection.description | editable }}
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+  {% if collection.products.size > 0 %}
+
+    <div class="row">
+      {% include "pagination" %}
+      {% include "collection_sort" %}
+    </div>
+
+    <div class="collection-products_list
+                grid-inline
+                grid-row"
+    >
+      {% for product in products %}
+        <div class="lg-grid-4 md-grid-6 sm-grid-4 xs-grid-6 mc-grid-12
+                    padded"
+        >
+          {% include 'product_preview' with 'collection' %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="row">
+      {% include "collection_sort" %}
+      {% include "pagination" %}
+    </div>
+
+  {% else %}
+
+    {% comment %}
+      при выводе пустого списка учитываем, что у нас может быть применен фильтр
+    {% endcomment %}
+    <div class="padded-vertical">
+      {% if collection.current_characteristics.size > 0 or price_min %}
+        <div class="notice notice--warning">
+          Простите, но по выбранным параметрам мы ничего не нашли. Попробуйте выбрать другие значения.
+        </div>
+      {% else %}
+        <div class="notice notice--info">
+          Простите, в данном разделе пока нет товаров. Мы работаем над этим.
+        </div>
+      {% endif %}
+    </div>
+
+  {% endif %}
+
+  {% unless filter %}
+    {% if collection.seo_description and paginate.current_page == 1 %}
+      <div class="collection-seo_description">
+        {{ collection.seo_description | editable }}
+      </div>
+    {% endif %}
+  {% endunless %}
+
+{% endpaginate %}

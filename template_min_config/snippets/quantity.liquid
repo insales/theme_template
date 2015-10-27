@@ -1,0 +1,33 @@
+{% comment %}
+  кол-во товара
+{% endcomment %}
+{% case quantity %}
+  {% when 'product' %}
+    {% assign name = 'quantity' %}
+    {% assign value = 1 %}
+  {% when 'cart_item' %}
+    {% capture name %}cart[quantity][{{ item.id }}]{% endcapture %}
+    {% assign value = item.quantity %}
+{% endcase %}
+
+<div class="quantity quantity--side">
+
+  <div class="quantity-button quantity-button--minus
+              js-quantity-minus"
+  >
+    <i class="fa fa-minus"></i>
+  </div>
+
+  <input type="text"
+          name="{{ name }}"
+          value="{{ value }}"
+          class="quantity-input js-quantity-input"
+  />
+
+  <div class="quantity-button quantity-button--plus
+              js-quantity-plus"
+  >
+    <i class="fa fa-plus"></i>
+  </div>
+
+</div>

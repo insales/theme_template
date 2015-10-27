@@ -1,0 +1,36 @@
+{% comment %}
+  вариант слайдера по продуктам
+
+  slider-products - список продуктов
+  slider-title - строка заголовка
+  slider-link - url конечной коллекции
+{% endcomment %}
+
+{% if slider-products.size > 0 %}
+  <div class="slider slider--product">
+
+    <div class="slider-title">
+      {% if slider-link %}
+        <a href="{{ slider-link }}">
+          {{ slider-title }}
+        </a>
+      {% else %}
+        <h2>
+          {{ slider-title }}
+        </h2>
+      {% endif %}
+    </div>
+
+    <div class="slider-container
+                owl-carousel
+                js-slider--products"
+    >
+      {% for product in slider-products %}
+        <div class="padded">
+          {% include "product_preview" %}
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+{% endif %}

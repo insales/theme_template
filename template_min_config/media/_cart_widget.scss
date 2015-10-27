@@ -1,0 +1,49 @@
+/* cart_widget */
+
+.cart_widget{
+  &-icon{}
+
+  &-link{}
+
+  &-title{}
+
+  &-total{}
+
+  &-items_count{}
+
+  &-items_price{}
+
+  &-dropdown{}
+}
+
+.basket_list{
+  &-header{}
+
+  &-title{}
+
+  &-items{}
+
+  &-footer{}
+
+  &-total{}
+
+  &-count{}
+
+  &-submit{}
+}
+
+.basket_item{
+  &-image{}
+
+  &-details{}
+
+  &-title{}
+
+  &-delete{
+    &:hover{}
+  }
+
+  &-count{}
+
+  &-price{}
+}

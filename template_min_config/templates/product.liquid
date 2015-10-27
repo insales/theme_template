@@ -1,0 +1,254 @@
+<div class="lg-grid-5 xs-grid-12
+            padded-bottom lg-padded-right sm-padded-zero-right"
+>
+  {% include "product_gallery" %}
+</div>
+
+{% comment %}
+  информация о товаре
+{% endcomment %}
+<div class="product-info
+            lg-grid-7 xs-grid-12
+            lg-padded-left sm-padded-zero-left padded-bottom"
+>
+
+  <h1 class="product-title content-title">{{ product.title | editable }}</h1>
+
+  {% comment %}
+    описание и хар-ки
+  {% endcomment %}
+  {% if product.short_description %}
+    <div class="product-short_description editor">
+      {{ product.short_description | editable }}
+    </div>
+  {% endif %}
+
+  {% comment %}
+    артикул
+  {% endcomment %}
+  <div class="product-sku js-product-sku">
+    Артикул:
+    <span class="product-sku_field js-product-sku_field">
+      {{ product.variants.first.sku }}
+    </span>
+  </div>
+
+  {% comment %}
+    статус
+  {% endcomment %}
+  <div class="product-presence">
+    Наличие:
+    <span class="product-presence_field
+                {% unless product.available %}product-presence_field--sell_off{% endunless %}
+                js-product-presence"
+    >
+      {% if product.available %}
+        Есть в наличии
+      {% else %}
+        Нет в наличии
+      {% endif %}
+    </span>
+  </div>
+
+  {% comment %}
+    форма
+  {% endcomment %}
+  <form action="{{ cart_url }}" method="post" id="order" class="product-order">
+
+    {% comment %}
+      цены
+    {% endcomment %}
+    <div class="product-prices prices">
+      <span class="prices-old js-prices-old">
+        {% if product.old_price %}
+          {{ product.old_price | money }}
+        {% endif %}
+      </span>
+
+      <span class="prices-current js-prices-current">
+        {{ product.price | money }}
+      </span>
+    </div>
+
+    {% comment %}
+      выбор модификаций
+    {% endcomment %}
+    {% if product.show_variants? %}
+      <div class="product-variants">
+        <select name="variant_id" id="variant-select">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% else %}
+      <input type="hidden" name="variant_id" value="{{ product.variants.first.id }}" />
+    {% endif %}
+
+    <div class="row">
+      {% comment %}
+        кол-во товара
+      {% endcomment %}
+      <div class="product-quantity">
+        {% include "quantity" with "product" %}
+      </div>
+
+      {% comment %}
+        положить в корзину
+      {% endcomment %}
+
+      {% if product.variants.first.quantity == 0 %}
+        {% if settings.buy_button-at_zero == "block" %}
+          {% assign disabled = 'disabled="disabled"' %}
+          {% assign disable_class = 'button--disabled' %}
+          {% assign text = '<i class="fa fa-ban"></i> Распродано' %}
+        {% else %}
+          {% assign disabled = '' %}
+          {% assign disable_class = '' %}
+          {% assign text = '<i class="fa fa-shopping-cart"></i> Под заказ' %}
+        {% endif %}
+      {% else %}
+        {% assign disabled = '' %}
+        {% assign disable_class = '' %}
+        {% assign text = '<i class="fa fa-shopping-cart"></i> В корзину' %}
+      {% endif %}
+
+      <button type="submit"
+              class="product-buy
+                    button button--buy
+                    {{ disable_class }}
+                    js-buy"
+              {{ disabled }}
+      >
+        {{ text }}
+      </button>
+
+      {% comment %}
+        сравнение
+      {% endcomment %}
+      <span class="product-compare compare-trigger">
+        <span class="button compare-add js-compare-add" data-product_id="{{ product.id }}">
+          <i class="fa fa-bar-chart"></i>
+          <span class="compare-trigger_text">добавить к сравнению</span>
+        </span>
+        <a href="/compares/{% if language.not_default? %}?lang={{ language.locale }}{% endif %}" class="button compare-added">
+          <i class="fa fa-check"></i>
+          <span class="compare-trigger_text">перейти к сравнению</span>
+        </a>
+      </span>
+    </div>
+
+  </form>
+
+  {% if product.rating %}
+    <div class="rating">
+      <label class="rating-label">Рейтинг товара:</label>
+
+      <select class="js-rating-read_only">
+        {% for i in (1..5) %}
+          <option value="{{ i }}" {% if product.rating == i %}selected="selected" {% endif %}>
+            {{ i }}
+          </option>
+        {% endfor %}
+      </select>
+
+    </div>
+  {% endif %}
+</div>
+
+<div class="tubs grid-12">
+  <ul class="tubs-controls tubs-controls--horizontal">
+    {% if product.description %}
+      <li class="tubs-node tubs-node--active" data-params="target: '#description'">
+        Описание
+      </li>
+    {% endif %}
+
+    {% if product.properties.size > 0 %}
+      <li class="tubs-node" data-params="target: '#characteristics'">
+        Характеристики
+      </li>
+    {% endif %}
+
+    {% if account.reviews_enabled? %}
+      <li class="tubs-node js-tub-review" data-params="target: '#reviews'">
+        Отзывы ({{ product.reviews.size }})
+      </li>
+    {% endif %}
+  </ul>
+
+  {% if product.description %}
+    <div id="description" class="tubs-content tubs-content--active">
+      {% comment %}
+        описание
+      {% endcomment %}
+      <div class="product-description editor">
+        {{ product.description | editable }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if product.properties.size > 0 %}
+    <div id="characteristics" class="tubs-content row">
+      <!-- <p>Параметры:</p>-->
+      <table class="product-properties
+                    lg-grid-6 md-grid-8 sm-grid-12"
+      >
+        {% for property in product.properties %}
+          <tr>
+            <td class="property-title">{{ property.title }}:</td>
+            <td class="property-values">
+              {% for item in property.characteristics %}
+                {{ item.title }}
+                {% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% endif %}
+
+  {% if account.reviews_enabled? %}
+    <div id="reviews" class="tubs-content">
+      {% comment %}
+        вывод отзывов
+      {% endcomment %}
+      {% include "product_reviews" %}
+    </div>
+  {% endif %}
+</div>
+
+<div class="lg-grid-12">
+  {% comment %}
+    вывод сопутка
+  {% endcomment %}
+
+  {% assign slider-products = product.related_products %}
+  {% assign slider-title = "Cопутствующие" %}
+  {% include "slider_product" %}
+
+  {% comment %}
+    вывод аналогичных
+  {% endcomment %}
+  {% assign slider-products = product.similar_products %}
+  {% assign slider-title = "Аналогичные" %}
+  {% include "slider_product" %}
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    var
+      $config = {
+        selector: '#variant-select',
+        product:  {{ product | json }},
+        settings: {
+          params:{
+            'модификация': 'select',
+          },
+        },
+      };
+
+    selectors = new InSales.OptionSelectors( $config );
+  });
+</script>

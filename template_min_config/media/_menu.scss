@@ -1,0 +1,27 @@
+/* menu */
+
+.menu{
+
+  // node
+  &-node{
+
+    &--current{}
+  }
+
+  // link
+  &-link{
+    &:hover{}
+
+    &--current{}
+  }
+
+  // marker
+
+  &-marker{
+    &:hover{}
+  }
+
+  &-toggler{}
+
+  // modificator
+}
