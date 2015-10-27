@@ -1,0 +1,16 @@
+<script type="text/template" hidden class="search" id="ajax">
+  <% if @suggestions?.length > 0 : %>
+    <ul class="ajax_search-results">
+      <% for product in @suggestions : %>
+        <li class="ajax_search-item">
+          <a href="<%- product.url %>" class="ajax_search-link">
+            <%- product.marked_title %>
+            <span class="ajax_search-prices">
+              <%- @formatMoney product.fields.price_min %>
+            </span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</script>

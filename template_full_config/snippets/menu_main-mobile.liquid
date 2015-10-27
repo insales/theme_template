@@ -1,0 +1,80 @@
+{% comment %}
+  расскрывающееся меню для мобильных устройств
+{% endcomment %}
+
+<div class="sm-grid-8 xs-grid-10
+            sm-offset-2 xs-offset-1
+            lg-hidden md-hidden
+            js-menu-wrapper"
+>
+  <div class="menu-toggler menu-toggler--main
+              js-menu-toggler"
+  >
+    <i class="fa fa-bars"></i>
+    Меню
+  </div>
+
+  <ul class="menu menu--main menu--mobile menu--vertical menu--collapse">
+    {% assign menu_lvl_1 = collections %}
+    {% for link_lvl_1 in menu_lvl_1 %}
+      <li class="menu-node menu-node--main_lvl_1 menu-node--mobile
+                {% if link_lvl_1.current? %}menu-node--current{% endif %}
+                js-menu-wrapper"
+      >
+        {% assign menu_lvl_2 = link_lvl_1.subcollections %}
+
+        <a href="{{ link_lvl_1.url }}"
+            class="menu-link
+                  {% if link_lvl_1.current? %}menu-link--current{% endif %}"
+        >
+          {{ link_lvl_1.title }}
+        </a>
+
+        {% if menu_lvl_2.size > 0 %}
+          <span class="menu-marker menu-marker--parent menu-toggler
+                      js-menu-toggler"
+          >
+            <i class="fa fa-plus"></i>
+          </span>
+          <ul class="menu menu--vertical menu--collapse">
+            {% for link_lvl_2 in menu_lvl_2 %}
+              <li class="menu-node menu-node--main_lvl_2 menu-node--mobile
+                        {% if link_lvl_2.current? %}menu-node--current{% endif %}
+                        js-menu-wrapper"
+              >
+                <a href="{{ link_lvl_2.url }}"
+                    class="menu-link {% if link_lvl_2.current? %}menu-link--current{% endif %}"
+                >
+                  {{ link_lvl_2.title }}
+                </a>
+
+                {% assign menu_lvl_3 = link_lvl_2.subcollections %}
+                {% if menu_lvl_3.size > 0 %}
+                  <span class="menu-marker menu-marker--parent menu-toggler
+                              js-menu-toggler"
+                  >
+                    <i class="fa fa-plus"></i>
+                  </span>
+                  <ul class="menu menu--vertical menu--collapse">
+                    {% for link_lvl_3 in menu_lvl_3 %}
+                      <li class="menu-node menu-node--main_lvl_3 menu-node--mobile
+                                {% if link_lvl_3.current? %}menu-node--current{% endif %}"
+                      >
+                        <a href="{{ link_lvl_3.url }}"
+                            class="menu-link
+                                  {% if link_lvl_3.current? %}menu-link--current{% endif %}"
+                        >
+                          {{ link_lvl_3.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>

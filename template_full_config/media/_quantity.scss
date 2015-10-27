@@ -1,0 +1,32 @@
+/* quantity */
+
+.quantity{
+  &-button{
+    &--minus,
+    &--plus{}
+
+    &--minus{}
+
+    &--plus{}
+
+    &:hover{}
+  }
+
+  &-input{}
+
+  &--side{
+    height: 30px;
+    width: 60px;
+
+    .quantity-button{
+      width: 15px;
+      height: 15px;
+      line-height: 15px;
+      padding: 0;
+    }
+
+    .quantity-input{
+      width: calc( 100% - 15px );
+    }
+  }
+}

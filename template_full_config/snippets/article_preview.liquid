@@ -1,0 +1,49 @@
+{% comment %}
+  сниппет предпросмотра статьи.
+
+  далее определяются доп классы для отдельных элементов верстки
+{% endcomment %}
+
+{% assign image_classes   = 'lg-grid-2 md-grid-3 sm-grid-4 padded-right' %}
+{% assign content_classes = 'lg-grid-10 md-grid-9 sm-grid-8 padded-left' %}
+
+<div class="article_preview {% if article_preview %}article_preview--{{ article_preview }}{% endif %}">
+  
+  {% comment %}
+    модифицируем верстку, если картинки для статьи нет
+  {% endcomment %}
+  {% unless article.image.large_url contains "no_image" %}
+    <div class="article_preview-image_wrapper
+                {{ image_classes }}
+                xs-hidden"
+    >
+      <a href="{{ article.url }}" class="article_preview-image">
+        <img src="{{ article.image.medium_url }}" title="{{ article.title }}">
+      </a>
+    </div>
+  {% else %}
+    {% assign content_classes = 'lg-grid-12' %}
+  {% endunless %}
+
+  <div class="{{ content_classes }}">
+    <h2 class="article_preview-title">
+      <a href="{{ article.url }}" title="{{ article.title }}">
+        {{ article.title }}
+      </a>
+    </h2>
+
+    <div class="article_preview-note article-note">
+      Опубликовано: {{ article.created_at | date: "%d.%m.%Y" }}
+    </div>
+
+    <div class="article_preview-content article-content editor">
+      {{ article.preview }}
+    </div>
+
+    <div class="article_preview-details article-details">
+      <a href="{{ article.url }}" class="article_preview-read_more button">
+        Читать далее
+      </a>
+    </div>
+  </div>
+</div>

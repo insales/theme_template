@@ -1,0 +1,29 @@
+/* search module */
+
+.search_widget{
+  height: 30px;
+  line-height: 30px;
+
+  &--header{}
+
+  &-label{}
+
+  &-field{}
+
+  &-submit{
+    .search--active &,
+    &:hover{}
+  }
+}
+
+.ajax_search{
+  &-results{}
+
+  &-item{}
+
+  &-link{}
+
+  &-prices{}
+
+  &-marked{}
+}

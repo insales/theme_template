@@ -1,0 +1,37 @@
+// layouts
+
+html{}
+
+body{
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-family-sans-serif;
+}
+
+a{
+  &:hover{
+  }
+}
+
+// common class
+.wrap{
+  max-width: 1200px;
+}
+
+// данные классы используются для стилизации крупных блоков.
+.section{
+  // modificator
+  &--top_line{}
+}
+
+// sidebar
+.sidebar{}
+
+.sidebar_block{
+  &-title{}
+
+  &-content{}
+}
+
+// content
+.content-title{}
