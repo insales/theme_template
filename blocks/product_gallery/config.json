@@ -17,18 +17,26 @@
     ],
 
     "media": [
-      "buttons1.png",
-      "zoomin.cur",
-      "zoomout.cur",
-      "hint.gif"
+      //"buttons1.png",
+      //"zoomin.cur",
+      //"zoomout.cur",
+      //"hint.gif"
+      "plugins/fonts/magictoolbox-thin.eot",
+      "plugins/fonts/magictoolbox-thin.svg",
+      "plugins/fonts/magictoolbox-thin.ttf",
+      "plugins/fonts/magictoolbox-thin.woff"
     ],
 
-    "template.js": [
-      "magiczoomplus.js"
+    "z.InSales.plugins.js": [
+      "plugins/magiczoomplus.js"
+    ],
+
+    "product.js": [
+      "product_gallery.js"
     ],
 
     "template.css": [
-      "magiczoomplus.css"
+      "plugins/magiczoomplus.css"
     ]
   }
 }
