@@ -11,7 +11,7 @@ $(function(){
       800:  { items: 4 },
       1100: { items: 4 },
     },
-    slideBy: 'page',
+    //slideBy: 'page',
   });
 
   $( '.js-slider--gallery' ).owlCarousel({
@@ -22,7 +22,6 @@ $(function(){
       800:  { items: 3 },
       1100: { items: 3 },
     },
-    loop: true,
-    slideBy: 'page',
+    //slideBy: 'page',
   });
 });
