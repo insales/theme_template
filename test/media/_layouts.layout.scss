@@ -24,6 +24,12 @@ a{
   &--top_line{}
 }
 
+.system_message{
+  background-color: #fff;
+  border: 1px solid $border-color;
+  padding: 0.5rem;
+}
+
 // sidebar
 .sidebar{}
 

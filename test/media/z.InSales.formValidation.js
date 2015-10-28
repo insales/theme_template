@@ -124,6 +124,8 @@ sendForm = function( options ){
   // возвращаем Deferred объект
   InSales.sendMessage( $message )
     .done( function( response ){
+      hidePreloader();
+
       if( response.status == 'ok' ){
 
         if( options.callback ){
@@ -133,7 +135,7 @@ sendForm = function( options ){
         showMessage( response.notice );
       }
     })
-    .always( function(){
+    .fail( function(){
       hidePreloader();
     });
 };
