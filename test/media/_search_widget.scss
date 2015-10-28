@@ -17,7 +17,11 @@
 }
 
 .ajax_search{
-  &-results{}
+  &-results{
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 1px solid $border-color;
+  }
 
   &-item{}
 
@@ -25,5 +29,7 @@
 
   &-prices{}
 
-  &-marked{}
+  &-marked{
+    font-weight: bold;
+  }
 }

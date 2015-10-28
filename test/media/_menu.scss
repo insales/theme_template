@@ -2,6 +2,7 @@
 
 .menu{
 
+
   // node
   &-node{
 
@@ -24,4 +25,14 @@
   &-toggler{}
 
   // modificator
+  &--dropdown{
+    background-color: #fff;
+    padding: 0.5rem 0;
+    border: 1px solid $border-color;
+    width: 200px;
+
+    > .menu-node{
+      padding: 0 0.5rem;
+    }
+  }
 }
