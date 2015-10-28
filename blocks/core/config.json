@@ -90,7 +90,7 @@
     "style.css.scss": [
       "scss/_variables.scss",
       "scss/_variables_default.scss",
-      "scss/_typography.scss"
+      "scss/_editor.scss"
     ],
 
     "snippets": [

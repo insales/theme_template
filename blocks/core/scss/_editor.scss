@@ -90,17 +90,18 @@
   address {
     margin-bottom: $line-height;
     font-style: normal;
-    //line-height: $line-height;
   }
 
   // хкаи для таблиц
   table{
     display: block;
     overflow-x: auto;
+  }
 
-    /*
+  .table{
     th{
       border-bottom: 2px solid;
+      padding: 0.5rem;
     }
 
     tr{
@@ -111,11 +112,12 @@
 
     td{
       border-bottom: 1px solid;
+      padding: 0.5rem;
     }
 
     tf{
+      padding: 0.5rem;
     }
-    */
   }
 
   // хак для /page/feedbak
