@@ -100,9 +100,6 @@ gulp.task( 'clean:min_config', function(){
 gulp.task( 'zip:test', [ 'build:test' ], function(){
   return gulp.src([
     'test/**',
-    //'test/media/*',
-    //'test/snippets/*',
-    //'test/templates/*'
   ], { base: './test' })
     .pipe( zip( 'test.zip' ) )
     .pipe( gulp.dest( 'test/' ) );
@@ -112,7 +109,8 @@ gulp.task( 'zip:test', [ 'build:test' ], function(){
 
 job = function( task, path ){
   var
-    source    = gulp.src( List[ task ] );
+    source    = gulp.src( List[ task ] ),
+    temp;
 
   // если мы склеиваем шаблоны ect, то делаем отдельный таск
   if( task.indexOf( 'template_' ) !== -1 ){
@@ -157,7 +155,6 @@ job = function( task, path ){
       break;
 
     case 'settings_form.json':
-      var temp;
       temp = streamqueue(
         { objectMode: true },
         strToSrc( 'intro', '{' ),
@@ -169,6 +166,21 @@ job = function( task, path ){
         .pipe( gulp.dest( path +'config/' ) );
         //.on( 'error', log );
       break;
+
+    /*
+    case 'settings_data.json':
+      temp = streamqueue(
+        { objectMode: true },
+        strToSrc( 'intro', '{\n"presets": {"custom":{' ),
+        source.pipe( concat( 'temp.json', { newLine: ',' } ) ),
+        strToSrc( 'outro', '}\n},\n"current": "custom",\n"theme_title": "'+ path +'"\n}' )
+      )
+        .pipe( concat( task ) )
+        //.on( 'error', log )
+        .pipe( gulp.dest( path +'config/' ) );
+        //.on( 'error', log );
+      break;
+      */
 
     // сборка файлов подключения стилей и скриптов
     case 'style.css.scss':
