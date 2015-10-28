@@ -45,6 +45,7 @@
       &-field{
         display: inline-block;
         height: inherit;
+        line-height: inherit;
 
         padding-top: 0;
         padding-bottom: 0;
@@ -95,8 +96,8 @@
     .input-field{
       display: inline-block;
 
-      padding-top: 0;
-      padding-bottom: 0;
+      //padding-top: 0;
+      margin-bottom: 0;
       vertical-align: middle;
       width: 125px;
     }
@@ -109,17 +110,17 @@
   display: inline-block;
   min-width: 50px;
   overflow: hidden;
+  box-sizing: border-box;
 
   vertical-align: middle;
   z-index: 0;
 
   border: 1px solid;
-  padding: 0.5rem;
 
   &:after{
     .abs;
-    top: 0;
-    bottom: 0;
+    top: ~"calc( 50% - 8px )";
+    //bottom: 0;
     right: 0;
 
     line-height: inherit;
@@ -132,7 +133,7 @@
     transform: translate(0, 0);
     content: "\f078";
 
-    padding: inherit;
+    padding: 0 0.5rem;
   }
 
   .checkout &{
@@ -144,7 +145,9 @@
 
     display: inline-block;
     width: ~"calc( 100% + 30px )";
+    height: 100%;
     border: none;
+    padding: 0 0.5rem;
     background-color: transparent;
 
     z-index: 1;
