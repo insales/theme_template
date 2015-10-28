@@ -2,7 +2,7 @@
 //                              TABS
 // =======================================================================
 
-$( '.tubs-node' ).on( 'click', function(){
+$( '.tubs-node' ).on( 'click touchstart', function(){
   var
     $unit    = $(this),
     $content = $unit.parents( '.tubs:first' ).find( '.tubs-content' ),
@@ -19,4 +19,10 @@ $( '.tubs-node' ).on( 'click', function(){
     .removeClass( 'tubs-content--active' )
     .siblings( params.target )
       .addClass( 'tubs-content--active' );
+});
+
+// переключаемся на первую доступную вкладку
+$( function(){
+  $( '.tubs-node:first' )
+    .trigger( 'click' );
 });
