@@ -13,7 +13,11 @@
 
   &-items_price{}
 
-  &-dropdown{}
+  &-dropdown{
+    background-color: #fff;
+    border: 1px solid $border-color;
+    width: 250px;
+  }
 }
 
 .basket_list{
@@ -33,7 +37,9 @@
 }
 
 .basket_item{
-  &-image{}
+  &-image{
+    margin: 0 0.5rem 0.5rem 0;
+  }
 
   &-details{}
 
