@@ -42,5 +42,9 @@
     "settings_form.json": [
       "configs/slider_index.json"
     ]
+
+    //"settings_data.json": [
+    //  "settings/slider_index.json"
+    //]
   }
 }
