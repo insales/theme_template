@@ -176,6 +176,14 @@ var modalHelper = {
       content  = '',
       $message = {};
 
+    sendForm({
+      form: $( 'div.modal form' ),
+      from: $data.from,
+      subject: $data.subject,
+      callback: modal.close
+    });
+
+    /*
     // проверяем на ошибки
     if( errors.length > 0 ){
       return;
@@ -211,6 +219,7 @@ var modalHelper = {
           showMessage( response.notice );
         }
       });
+    */
   },
 
   // дергаем плагины после отрисовки модалки
