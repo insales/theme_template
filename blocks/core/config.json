@@ -17,6 +17,11 @@
       "plugins/jquery.mobile-events.min.js"
     ],
 
+    //
+    "ui.js": [
+      "ui/ui.js"
+    ],
+
     // склейка скриптов для ECT-шаблонов
     "z.InSales.templates.js": [
       "ect/z.coffee-script.js",
@@ -73,7 +78,8 @@
       "less/grid_helpers.less",
       "less/grid.less",
       "less/image.less",
-      "less/preloader.less"
+      "less/preloader.less",
+      "libs/animate.css"
     ],
 
     "_variables.scss.liquid": [
