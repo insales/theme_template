@@ -88,12 +88,10 @@
 
       $pricetype
         .priceType({
-          product: {{ item.product | json }}
-        })
-        .update({
+          product: {{ item.product | json }},
           quantity: count,
           variant_id: {{ item.id }}
-        });
+        })
     });
   {% endfor %}
 </script>
