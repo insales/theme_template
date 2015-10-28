@@ -2366,13 +2366,14 @@ body.body--lock_scroll {
   margin-bottom: 0;
 }
 .basket_item-image {
-  margin: 0 0.5rem 0.5rem 0;
   float: left;
 }
 .basket_item-delete {
   cursor: pointer;
-  margin: 0 0 0.5rem 0.5rem;
   float: right;
+}
+.basket_item-price:after {
+  content: none;
 }
 .search-products_list:after {
   clear: both;
