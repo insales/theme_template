@@ -1812,6 +1812,10 @@ img {
   cursor: pointer;
   padding: 0;
   vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .quantity-button > .fa {
   vertical-align: middle;
@@ -2311,6 +2315,9 @@ body.body--lock_scroll {
 }
 .discounts-field {
   width: 130px;
+}
+.discounts-submit {
+  vertical-align: top;
 }
 .discounts-notice {
   display: none;
