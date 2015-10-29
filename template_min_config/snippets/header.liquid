@@ -1,0 +1,58 @@
+<header>
+  {% comment %}
+    основной блок шапки
+  {% endcomment %}
+  <div class="section--header">
+    <div class="wrap row padded">
+      {% include "language_switch" %}
+    </div>
+
+    <div class="wrap row">
+
+      <div class="lg-grid-5 sm-grid-12
+                  sm-center
+                  lg-padded md-padded sm-padded xs-padded"
+      >
+        {% include "logo" %}
+      </div>
+
+      <div class="lg-grid-7 sm-grid-12
+                  lg-right sm-center
+                  lg-padded md-padded"
+      >
+        <div class="contacts padded-vertical">
+          {{ account.phone }}
+        </div>
+
+        <div class="grid-inline grid-inline-middle">
+          {% comment %}
+            форма поиска
+          {% endcomment %}
+          <span class="mc-grid-12
+                      sm-padded-vertical xs-padded-vertical mc-padded-vertical"
+          >
+            {% include "search_widget" with "header" %}
+          </span>
+
+          {% comment %}
+            вcтавляем блок с версткой виджета корзины
+          {% endcomment %}
+          {% unless header == 'checkout' %}
+            <span class="mc-grid-12
+                        sm-padded-vertical xs-padded-vertical">
+              {% include "cart_widget" %}
+            </span>
+          {% endunless %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section--main_menu row">
+    <div class="wrap padded-sides">
+      {% include "menu_main" %}
+
+      {% include "menu_main-mobile" %}
+    </div>
+  </div>
+</header>

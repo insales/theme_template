@@ -1,0 +1,71 @@
+{% comment %}
+  галерея
+{% endcomment %}
+<div class="product-gallery gallery">
+  {% comment %}
+    основное изображение
+  {% endcomment %}
+  <div class="gallery-large_image
+              sm-hidden xs-hidden"
+  >
+    <a  href="{{ product.first_image.original_url }}"
+
+        title="{{ product.first_image.title }}"
+        alt="{{ product.first_image.title }}"
+
+        id="MagicZoom"
+        class="MagicZoom"
+    >
+      <img  src="{{ product.first_image.large_url }}"
+
+            alt="{{ product.first_image.title }}"
+            title="{{ product.first_image.title }}"
+      />
+    </a>
+  </div>
+
+  {% comment %}
+    миниатюрки
+  {% endcomment %}
+  <div class="slider slider--gallery">
+    <ul class="gallery-preview_list gallery-preview_list--horizontal
+              slider-container
+              owl-carousel
+              js-slider--gallery"
+    >
+      {% for image in product.images %}
+
+        <li class="gallery-preview padded-sides">
+          <a  href="{{ image.original_url }}"
+
+              alt="{{ image.title }}"
+              title="{{ image.title }}"
+
+              class="gallery-image
+                    {% if forloop.first %} gallery-image--current {% endif %}
+                    image-square"
+
+              data-zoom-id="MagicZoom"
+              data-image="{{ image.large_url }}"
+          >
+            {% comment %}
+              делаем финт - маленькая картинка для больших разрешений
+              и адаптивная - для sm- и ниже
+            {% endcomment %}
+            <img src="{{ image.compact_url }}"
+
+                  class="sm-hidden xs-hidden"
+            />
+
+            <img src="{{ image.large_url }}"
+                  srcset="{{ image.original_url }} 2x"
+                  class="js-product_gallery-preview_image
+                        lg-hidden md-hidden"
+            />
+          </a>
+        </li>
+
+      {% endfor %}
+    </ul>
+  </div>
+</div>

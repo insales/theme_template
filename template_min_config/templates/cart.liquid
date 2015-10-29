@@ -1,0 +1,97 @@
+<h1 class="cart-title content-title">Корзина</h1>
+
+{% if cart.items.size > 0 %}
+  <div class="cart-empty_notice
+              notice notice--warning
+              js-cart-notice"
+  >
+    В вашей корзине нет товаров
+  </div>
+
+  <form id="cartform"
+        action="{{ cart_url }}"
+        method="post"
+        class="cart-table_container"
+  >
+    <div class="cart-items_list">
+      {% for item in cart.items %}
+        {% include "cart_item" %}
+      {% endfor %}
+    </div>
+
+    {% include "cart_discounts" %}
+
+    {% comment %}
+      итогова стоимость
+    {% endcomment %}
+    <div class="cart_total">
+      <div class="lg-grid-4 sm-grid-6 xs-12
+                  lg-fr md-fr sm-fr"
+      >
+        <div class="cart_total-title
+                    lg-grid-6"
+        >
+          Итого:
+        </div>
+
+        <div class="lg-grid-6 right">
+          <span class="cart_total-price
+                      prices-current
+                      js-cart-total"
+          >
+            {{ cart.total_price | money }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="lg-grid-7">
+        <a href="/{% if language.not_default? %}?lang={{ language.locale }}{% endif %}"
+            class="cart-button
+                  button
+                  js-cart-go_back"
+        >
+          Продолжить покупки
+        </a>
+      </div>
+
+      <div class="lg-grid-5 right">
+        <input  type="submit"
+                class="cart-button
+                      button button--checkout"
+                value="Оформить"
+        />
+      </div>
+    </div>
+
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="make_order" value="">
+  </form>
+
+{% else %}
+
+  <div class="cart-empty_notice
+              notice notice--warning"
+  >
+    В вашей корзине нет товаров
+  </div>
+
+{% endif %}
+
+<script type="text/javascript">
+  {% for item in cart.items %}
+    $(function(){
+      var
+        $pricetype = $( '.js-price_type-{{ item.id }}'),
+        count      = $pricetype.parents( '.cart_item:first' ).find( '.js-quantity-input' ).val();
+
+      $pricetype
+        .priceType({
+          product: {{ item.product | json }},
+          quantity: count,
+          variant_id: {{ item.id }}
+        })
+    });
+  {% endfor %}
+</script>

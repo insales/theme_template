@@ -1,0 +1,57 @@
+<h1 class="search-title content-title">Поиск</h1>
+
+<div class="row padded-bottom">
+  <span>
+    {% if search.performed? %}
+      {% if search.results == empty %}
+        Измените ключевые слова для поиска:
+      {% else %}
+        Вы искали:
+      {% endif %}
+    {% else %}
+      Введите ключевые слова для поиска:
+    {% endif %}
+  </span>
+
+  {% include "search_widget" with "search" %}
+</div>
+
+{% if search.performed? %}
+  {% if search.results == empty %}
+    <div class="search-notice notice notice--warning">
+      По запросу "{{ search.query | escape }}" ничего не найдено.
+    </div>
+  {% else %}
+
+    {% paginate results by 15 %}
+
+      <div class="row padded">
+        {% include "pagination" %}
+      </div>
+
+      <div class="search-products_list grid-row grid-inline">
+        {% for product in results %}
+          <div class="lg-grid-3 md-grid-3 sm-grid-6 xs-grid-12
+                      padded"
+          >
+            {% include 'product_preview' %}
+          </div>
+
+        {% endfor %}
+      </div>
+
+      <div class="row padded">
+        {% include "pagination" %}
+      </div>
+
+    {% endpaginate %}
+
+  {% endif %}
+
+{% else %}
+
+  <div class="search-notice notice notice--info">
+    Введите ключевые слова для поиска.
+  </div>
+
+{% endif %}

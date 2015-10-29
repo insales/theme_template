@@ -1,0 +1,15 @@
+/* prices */
+
+.prices{
+  &-current{}
+
+  &-old{}
+
+  &--inline{
+    > .prices-current{}
+
+    > .prices-old{}
+  }
+
+  &--discount{}
+}
