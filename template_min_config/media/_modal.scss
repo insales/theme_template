@@ -1,8 +1,12 @@
 /* modal */
 
 .modal{
+  background-color: #fff;
+  border: 1px solid $border-color;
 
-  &-wrapper{}
+  &-wrapper{
+    padding: 0.5rem;
+  }
 
   &-header{}
 
@@ -15,4 +19,6 @@
   &--mobile_panel{}
 }
 
-.overlay{}
+.overlay{
+  background: rgba( 0, 0, 0, 0.3 );
+}

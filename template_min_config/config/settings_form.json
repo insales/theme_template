@@ -16,21 +16,21 @@
     "group_name": "Первое изображение",
     "items": [
       {
-        "name": "main_image_1-show",
+        "name": "index_slider_1-show",
         "type": "checkbox",
         "label": "Показывать изображение?",
         "help": null,
         "value": "1"
       },
       {
-        "name": "main_image_1-link",
+        "name": "index_slider_1-link",
         "type": "text",
         "label": "Ссылка с изображения",
         "help": null,
         "value": ""
       },
       {
-        "name": "main_image_1-loaded.jpg",
+        "name": "index_slider_1-loaded.jpg",
         "type": "file",
         "label": "Загрузить своё изображение",
         "help": null,
@@ -42,21 +42,21 @@
     "group_name": "Второе изображение",
     "items": [
       {
-        "name": "main_image_2-show",
+        "name": "index_slider_2-show",
         "type": "checkbox",
         "label": "Показывать изображение?",
         "help": null,
         "value": "1"
       },
       {
-        "name": "main_image_2-link",
+        "name": "index_slider_2-link",
         "type": "text",
         "label": "Ссылка с изображения",
         "help": null,
         "value": ""
       },
       {
-        "name": "main_image_2-loaded.jpg",
+        "name": "index_slider_2-loaded.jpg",
         "type": "file",
         "label": "Загрузить своё изображение",
         "help": null,
@@ -68,21 +68,21 @@
     "group_name": "Третье изображение",
     "items": [
       {
-        "name": "main_image_3-show",
+        "name": "index_slider_3-show",
         "type": "checkbox",
         "label": "Показывать изображение?",
         "help": null,
         "value": "1"
       },
       {
-        "name": "main_image_3-link",
+        "name": "index_slider_3-link",
         "type": "text",
         "label": "Ссылка с изображения",
         "help": null,
         "value": ""
       },
       {
-        "name": "main_image_3-loaded.jpg",
+        "name": "index_slider_3-loaded.jpg",
         "type": "file",
         "label": "Загрузить своё изображение",
         "help": null,
@@ -94,21 +94,21 @@
     "group_name": "Четвертое изображение",
     "items": [
       {
-        "name": "main_image_4-show",
+        "name": "index_slider_4-show",
         "type": "checkbox",
         "label": "Показывать изображение?",
         "help": null,
         "value": "1"
       },
       {
-        "name": "main_image_4-link",
+        "name": "index_slider_4-link",
         "type": "text",
         "label": "Ссылка с изображения",
         "help": null,
         "value": ""
       },
       {
-        "name": "main_image_4-loaded.jpg",
+        "name": "index_slider_4-loaded.jpg",
         "type": "file",
         "label": "Загрузить своё изображение",
         "help": null,
@@ -120,21 +120,21 @@
     "group_name": "Пятое изображение",
     "items": [
       {
-        "name": "main_image_5-show",
+        "name": "index_slider_5-show",
         "type": "checkbox",
         "label": "Показывать изображение?",
         "help": null,
         "value": "1"
       },
       {
-        "name": "main_image_5-link",
+        "name": "index_slider_5-link",
         "type": "text",
         "label": "Ссылка с изображения",
         "help": null,
         "value": ""
       },
       {
-        "name": "main_image_5-loaded.jpg",
+        "name": "index_slider_5-loaded.jpg",
         "type": "file",
         "label": "Загрузить своё изображение",
         "help": null,
@@ -146,14 +146,14 @@
     "group_name": "Настройки автоматической смены изображений",
     "items": [
       {
-        "name": "main_image_slider_autopla",
+        "name": "index_slider-autoplay",
         "type": "checkbox",
         "label": "Включить?",
         "help": null,
         "value": "1"
       },
       {
-        "name": "main_image_timeout",
+        "name": "index_slider-timeout",
         "type": "text",
         "label": "Время показа изображения (в милисекундах)",
         "help": null,

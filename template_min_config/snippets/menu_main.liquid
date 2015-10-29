@@ -36,19 +36,22 @@
                         {% if link_lvl_2.current? %}menu-node--current{% endif %}
                         js-menu-wrapper"
               >
+                {% assign menu_lvl_3 = link_lvl_2.subcollections %}
+
                 <a href="{{ link_lvl_2.url }}"
                     class="menu-link
                           {% if link_lvl_2.current? %}menu-link--current{% endif %}"
                 >
                   {{ link_lvl_2.title }}
+
+                  {% if menu_lvl_3.size > 0 %}
+                    <span class="menu-marker menu-marker--parent">
+                      <i class="fa fa-angle-right"></i>
+                    </span>
+                  {% endif %}
                 </a>
 
-                {% assign menu_lvl_3 = link_lvl_2.subcollections %}
                 {% if menu_lvl_3.size > 0 %}
-                  <span class="menu-marker menu-marker--parent">
-                    <i class="fa fa-angle-right"></i>
-                  </span>
-
                   <ul class="menu menu--side menu--vertical">
                     {% for link_lvl_3 in menu_lvl_3 %}
                       <li class="menu-node menu-node--main_lvl_3

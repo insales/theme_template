@@ -3,9 +3,9 @@
 <head>
   <title>{% yield 'title' %}</title>
   <!-- <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>-->
-  <meta content='noindex, nofollow' name='robots'>
+  <meta name='robots' content='noindex, nofollow'>
 
-  {% include "head" %}
+  {% include "head" with 'checkout' %}
 
   {% comment %}
   {{ 'checkout' | global_stylesheet_tag }}
@@ -17,6 +17,8 @@
     <link href='{{ customer_checkout_css }}' rel='stylesheet'>
   {% endif %}
   {% endcomment %}
+
+  {{ 'checkout' | global_javascript_tag }}
 
 </head>
 <body class="adaptive">
@@ -100,7 +102,6 @@
     </div>
   </section>
 
-  {{ 'checkout' | global_javascript_tag }}
   {% include "footer" %}
 </body>
 </html>

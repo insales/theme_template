@@ -1381,6 +1381,7 @@ img {
 .input--inline > .input-field {
   display: inline-block;
   height: inherit;
+  line-height: inherit;
   padding-top: 0;
   padding-bottom: 0;
   vertical-align: middle;
@@ -1408,8 +1409,7 @@ img {
 }
 .input--captcha .input-field {
   display: inline-block;
-  padding-top: 0;
-  padding-bottom: 0;
+  margin-bottom: 0;
   vertical-align: middle;
   width: 125px;
 }
@@ -1418,15 +1418,14 @@ img {
   display: inline-block;
   min-width: 50px;
   overflow: hidden;
+  box-sizing: border-box;
   vertical-align: middle;
   z-index: 0;
   border: 1px solid;
-  padding: 0.5rem;
 }
 .styled_select-wrapper:after {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: calc( 50% - 8px );
   right: 0;
   line-height: inherit;
   font: normal normal normal 14px/1 FontAwesome;
@@ -1436,7 +1435,7 @@ img {
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
   content: "\f078";
-  padding: inherit;
+  padding: 0 0.5rem;
 }
 .checkout .styled_select-wrapper {
   width: 100%;
@@ -1445,7 +1444,9 @@ img {
   position: relative;
   display: inline-block;
   width: calc( 100% + 30px );
+  height: 100%;
   border: none;
+  padding: 0 0.5rem;
   background-color: transparent;
   z-index: 1;
   line-height: inherit;
@@ -1811,6 +1812,10 @@ img {
   cursor: pointer;
   padding: 0;
   vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .quantity-button > .fa {
   vertical-align: middle;
@@ -1847,6 +1852,9 @@ img {
 .modal {
   position: fixed;
   z-index: 1050;
+  max-width: 95%;
+  max-height: 95%;
+  overflow-y: auto;
 }
 .overlay {
   position: fixed;
@@ -1858,9 +1866,6 @@ img {
 }
 .overlay--opacity {
   background-color: transparent !important;
-}
-.panel {
-  z-index: 1050;
 }
 /* breadcrumbs */
 .pagination {
@@ -2311,6 +2316,9 @@ body.body--lock_scroll {
 .discounts-field {
   width: 130px;
 }
+.discounts-submit {
+  vertical-align: top;
+}
 .discounts-notice {
   display: none;
 }
@@ -2365,13 +2373,14 @@ body.body--lock_scroll {
   margin-bottom: 0;
 }
 .basket_item-image {
-  margin: 0 0.5rem 0.5rem 0;
   float: left;
 }
 .basket_item-delete {
   cursor: pointer;
-  margin: 0 0 0.5rem 0.5rem;
   float: right;
+}
+.basket_item-price:after {
+  content: none;
 }
 .search-products_list:after {
   clear: both;

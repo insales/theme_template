@@ -16,7 +16,7 @@
             value="{{ order }}"
             class="sort_by-select
                   js-sort_by
-                  js-styled"
+                  js-style-select"
     >
       {{ ""                 | select_option: order, "Сортировать по" }}
       {{ "price"            | select_option: order, "По возрастанию цены" }}
@@ -39,7 +39,8 @@
             name="page_size"
             value="{{ page_size }}"
             class="sort_by-select
-                  js-sort_by"
+                  js-sort_by
+                  js-style-select"
     >
       {{ "15"   | select_option: page_size, "15" }}
       {{ "24"   | select_option: page_size, "24" }}
