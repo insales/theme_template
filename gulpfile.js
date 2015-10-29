@@ -15,10 +15,10 @@ var
   sass     = require('gulp-sass'),
 
   // папки
-  test_dir = 'test/',
-  dist_dir = 'min_template/',
-  temp_full_config = 'template_full_config/',
-  temp_min_config  = 'template_min_config/',
+  test_dir = 'test',
+  dist_dir = 'min_template',
+  temp_full_config = 'template_full_config',
+  temp_min_config  = 'template_min_config',
 
   // списки блоков
   List = {
@@ -83,26 +83,26 @@ gulp.task( 'build:full_config', function(cb){
 });
 
 gulp.task( 'clean:test', function(){
-  return gulp.src( 'test', { read: false })
+  return gulp.src( test_dir, { read: false })
           .pipe( clean() );
 });
 
 gulp.task( 'clean:full_config', function(){
-  return gulp.src( 'test', { read: false })
+  return gulp.src( temp_full_config, { read: false })
           .pipe( clean() );
 });
 
 gulp.task( 'clean:min_config', function(){
-  return gulp.src( 'test', { read: false })
+  return gulp.src( temp_min_config, { read: false })
           .pipe( clean() );
 });
 
 gulp.task( 'zip:test', [ 'build:test' ], function(){
   return gulp.src([
-    'test/**',
-  ], { base: './test' })
+    test_dir +'/**',
+  ], { base: './'+ test_dir })
     .pipe( zip( 'test.zip' ) )
-    .pipe( gulp.dest( 'test/' ) );
+    .pipe( gulp.dest( test_dir +'/' ) );
 });
 
 //=============================================
@@ -116,7 +116,7 @@ job = function( task, path ){
   if( task.indexOf( 'template_' ) !== -1 ){
     source
       .pipe( concat( task ) )
-      .pipe( gulp.dest( path + 'snippets/' ) );
+      .pipe( gulp.dest( path + '/snippets/' ) );
     return;
   }
 
@@ -129,7 +129,7 @@ job = function( task, path ){
     // остальной хлам
     case 'media':
       source
-        .pipe( gulp.dest( path + task +'/' ) )
+        .pipe( gulp.dest( path +'/'+ task +'/' ) )
         .on( 'error', log );
       break;
 
@@ -142,7 +142,7 @@ job = function( task, path ){
           paths: [ 'blocks/core/less/mixins' ]
         }) )
         .on( 'error', log )
-        .pipe( gulp.dest( path +'media/' ) );
+        .pipe( gulp.dest( path +'/media/' ) );
       break;
 
     // сборка настроек темы
@@ -150,7 +150,7 @@ job = function( task, path ){
       source
         .pipe( concat( task ) )
         .on( 'error', log )
-        .pipe( gulp.dest( path +'config/' ) )
+        .pipe( gulp.dest( path +'/config/' ) )
         .on( 'error', log );
       break;
 
@@ -163,7 +163,7 @@ job = function( task, path ){
       )
         .pipe( concat( task ) )
         //.on( 'error', log )
-        .pipe( gulp.dest( path +'config/' ) );
+        .pipe( gulp.dest( path +'/config/' ) );
         //.on( 'error', log );
       break;
 
@@ -190,10 +190,10 @@ job = function( task, path ){
         list = combineFile( List[ task ], task );
 
       source
-        .pipe( gulp.dest( path +'media/') );
+        .pipe( gulp.dest( path +'/media/') );
 
       strToSrc( task, list.join( '\n' ) )
-        .pipe( gulp.dest( path +'media/' ) );
+        .pipe( gulp.dest( path +'/media/' ) );
 
       break;
 
@@ -202,7 +202,7 @@ job = function( task, path ){
       source
         .pipe( concat( task ) )
         .on( 'error', log )
-        .pipe( gulp.dest( path +'media/' ) );
+        .pipe( gulp.dest( path +'/media/' ) );
       break;
   }
 };
