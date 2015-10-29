@@ -1,0 +1,86 @@
+<div class="product_preview
+            {% if product_preview %}product_preview--{{ product_preview }}{% endif %}"
+>
+  <div class="product_preview-preview ">
+    {% comment %}
+      маркер
+    {% endcomment %}
+    {% assign tip = product.properties.tip %}
+    {% if tip %}
+      {% for characteristic in tip.characteristics %}
+        <div class="product_preview-tip product_preview-tip--{{ characteristic.handle }}">
+          {{ tip.characteristic.name }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="image-wrapper">
+      {% comment %}
+        изображение
+      {% endcomment %}
+      <a  href="{{ product.url }}"
+          class="product_preview-image image-square"
+          title="{{ product.title }}"
+      >
+        <img  src="{{ product.first_image.medium_url }}"
+              srcset="{{ product.first_image.large_url }}"
+              title="{{ product.title }}"
+        />
+      </a>
+    </div>
+
+    {% comment %}
+    купить/ подробнее
+    {% endcomment %}
+    <form class="product_preview-form" action="{{ cart_url }}" data-params="product_id: {{ product.id }};">
+      {% if product.variants.size == 1 %}
+        <input type="hidden" name="variant_id" value="{{ product.variants.first.id }}">
+
+        <button title="{{ product.title }}"
+                class="product_preview-button button button--buy
+                      js-buy"
+        >
+          <i class="fa fa-shopping-cart"></i>
+          Купить
+        </button>
+      {% else %}
+        <a  href="{{ product.url }}"
+            class="product_preview-button button button--buy"
+            title="{{ product.title }}"
+        >
+          <i class="fa fa-eye"></i>
+          Подробнее
+        </a>
+      {% endif %}
+    </form>
+  </div>
+
+  <div class="padded-vertical">
+    {% comment %}
+      цены
+    {% endcomment %}
+    <div class="product_preview-prices prices">
+      <span class="prices-current">
+        {{ product.price | money }}
+      </span>
+
+      {% if product.old_price %}
+        <span class="prices-old">
+          {{ product.old_price | money }}
+        </span>
+      {% endif %}
+    </div>
+
+    {% comment %}
+      название
+    {% endcomment %}
+    <div class="product_preview-title">
+      <a  href="{{ product.url }}"
+          class="product_preview-link"
+          title="{{ product.title }}"
+      >
+        {{ product.title }}
+      </a>
+    </div>
+  </div>
+</div>

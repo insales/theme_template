@@ -1,0 +1,89 @@
+{% comment %}
+  шаблон для вывода скидок
+{% endcomment %}
+<script type="text/template" hidden class="cart" id="discounts">
+  <% for discount in @discounts : %>
+    <div class="discount">
+      <div class="discount-title
+                  lg-grid-8
+                  lg-right md-right"
+      >
+        <%- discount.description %>
+      </div>
+      <div class="prices prices--discount
+                  lg-grid-4
+                  right"
+      >
+        <span class="prices-current">
+          <%- @formatMoney discount.amount %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</script>
+
+{% comment %}
+  виджет корзины
+{% endcomment %}
+<script type="text/template" hidden id="dropdown" class="cart">
+  <div class="basket_list-header">
+    <span class="basket_list-title">Корзина</span>
+
+    <% if @order_lines?.length == 0 : %>
+      <div class="notice">
+        Корзина пуста. Добавьте интересующий товар в корзину и перейдите к оформлению заказа.
+      </div>
+    <% end %>
+  </div>
+
+  <% if @order_lines?.length : %>
+    <ol class="basket_list-items">
+      <% for order_line in @order_lines : %>
+        <li class="basket_item">
+
+          <a href="<%- order_line.url %>" class="basket_item-image">
+            <img src="<%- order_line.image.small %>" />
+          </a>
+
+          <a href="<%- order_line.url %>" class="basket_item-title">
+            <%- order_line.title %>
+          </a>
+
+          <div class="basket_item-details right">
+
+            <span class="basket_item-count">
+              <%- order_line.quantity %>
+            </span>
+              x
+            <span class="basket_item-price prices">
+              <span class="prices-current">
+                <%- @formatMoney order_line.sale_price %>
+              </span>
+            </span>
+
+            <a class="basket_item-delete js-cart_item-delete"
+                data-item-id="<%- order_line.variant_id %>"
+            >
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ol>
+
+    <div class="basket_list-footer">
+      Товаров в корзине:
+      <span class="basket_list-count">
+        <%- @items_count %>
+      </span>
+      <div class="basket_list-total prices right">
+        <div class="prices-current">
+          <%- @formatMoney @total_price  %>
+        </div>
+      </div>
+      <a href="/cart_items/" class="basket_list-submit button button--buy">
+        Оформить
+      </a>
+    </div>
+  <% end %>
+</script>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='ru' xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <title>{% yield 'title' %}</title>
+  <!-- <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>-->
+  <meta name='robots' content='noindex, nofollow'>
+
+  {% include "head" with 'checkout' %}
+
+  {% comment %}
+  {{ 'checkout' | global_stylesheet_tag }}
+  {% endcomment %}
+
+  {% comment %}
+  {% assign customer_checkout_css = 'custom_checkout.css' | asset_url %}
+  {% if customer_checkout_css %}
+    <link href='{{ customer_checkout_css }}' rel='stylesheet'>
+  {% endif %}
+  {% endcomment %}
+
+  {{ 'checkout' | global_javascript_tag }}
+
+</head>
+<body class="adaptive">
+
+  {% include "header" with 'checkout' %}
+
+  <section class="section--content">
+    <div class="wrap row">
+      {% if client %}
+        <div class="personal_cabinet
+                    sm-grid-10
+                    sm-offset-1
+                    padded"
+        >
+          <div class="button
+                      menu-toggler--personal_cabinet
+                      personal_cabinet-title
+                      lg-hidden md-hidden"
+          >
+            <span class="fa fa-user"></span> Личный кабинет
+          </div>
+          <ul class='links menu menu--personal_cabinet menu--horizontal'>
+            {% if linklists.account-menu %}
+              {% for link in linklists.account-menu.links %}
+                <li class="menu-node menu-node--personal_cabinet">
+                  <a href='{{ link.url }}{% if language.not_default? %}?lang={{ language.locale }}{% endif %}' class="menu-link">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="menu-node menu-node--personal_cabinet">
+                <a href='/{% if language.not_default? %}?lang={{ language.locale }}{% endif %}' class="menu-link">
+                  Вернуться в магазин
+                </a>
+              </li>
+              <li class="menu-node menu-node--personal_cabinet">
+                <a href='/client_account/contacts{% if language.not_default? %}?lang={{ language.locale }}{% endif %}' class="menu-link">
+                  Контактные данные
+                </a>
+              </li>
+              <li class="menu-node menu-node--personal_cabinet">
+                <a href='/client_account/addresses{% if language.not_default? %}?lang={{ language.locale }}{% endif %}' class="menu-link">
+                  Адрес доставки
+                </a>
+              </li>
+              <li class="menu-node menu-node--personal_cabinet">
+                <a href='/client_account/orders{% if language.not_default? %}?lang={{ language.locale }}{% endif %}' class="menu-link">
+                  Заказы и скидки
+                </a>
+              </li>
+              <li class="menu-node menu-node--personal_cabinet">
+                <a href='/client_account/feedback{% if language.not_default? %}?lang={{ language.locale }}{% endif %}' class="menu-link">
+                  Обратная связь
+                </a>
+              </li>
+            {% endif %}
+            <li class="menu-node menu-node--personal_cabinet">
+              <a href="/client_account/exit{% if language.not_default? %}?lang={{ language.locale }}{% endif %}" class="menu-link">
+                {{ client.full_name }}
+                (Выход)
+              </a>
+            </li>
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="wrap row padded">
+      <div class="body">
+        <div class='content-title page-title'>{% yield 'title' %}</div>
+        {% yield 'flash_messages' %}
+        <div id='top_info'>{% yield 'top_info' %}</div>
+
+        <div class="grid-row">
+          {% yield %}
+          {% yield 'sidebar' %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {% include "footer" %}
+</body>
+</html>

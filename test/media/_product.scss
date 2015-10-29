@@ -1,0 +1,75 @@
+/* product */
+
+.product{
+
+  &-title{}
+
+  &-gallery{}
+
+  &-sku{}
+
+  &-sku_field{}
+
+  &-info{}
+
+  &-presence{}
+
+  &-presence_field{}
+
+  &-short_description{}
+
+  &-description{}
+
+  &-properties{}
+
+  &-order{}
+
+  &-variants{}
+
+  &-prices{
+    .prices-current{}
+
+    .prices-old{}
+  }
+
+  &-quantity{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  &-buy{
+    &:hover{}
+  }
+
+  &-compare{
+    line-height: 30px;
+    height: 30px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+
+.property{
+  &-title{}
+
+  &-values{}
+}
+
+.gallery{
+  &-large_image{}
+
+  &-preview_list{
+
+    &--horizontal{
+      > .gallery-preview {}
+    }
+  }
+
+  &-preview{}
+
+  &-image{
+    &:hover,
+    &--current{}
+  }
+}

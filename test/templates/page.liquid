@@ -1,0 +1,14 @@
+<h1 class="page-title content-title">{{ page.title }}</h1>
+
+{% assign page_title = page.title | downcase %}
+{% if page_title != 'избранное' %}
+  <div class="page-content editor">
+    {{ page.content | editable }}
+  </div>
+{% else %}
+  <div class="notice notice--info js-favorite-notice">
+    В избранное не добавлены товары.
+  </div>
+
+  <div class="favorite-product_list js-favorite-product_list"></div>
+{% endif %}

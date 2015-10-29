@@ -1,0 +1,62 @@
+<footer>
+
+  <div class="section--footer_menus">
+    <div class="wrap row grid-inline">
+
+      {% for i in (1..4) %}
+        {% capture handle %}footer-menu-{{ i }}{% endcapture %}
+        {% assign menu = linklists[handle] %}
+        {% if menu.links.size > 0 %}
+          <div class="footer_block
+                      lg-grid-3 sm-grid-6 mc-grid-12
+                      padded"
+          >
+            <div class="footer_block-title">
+              {{ menu.title }}
+              <span class="menu-toggler menu-toggler--footer">
+                <i class="fa fa-plus
+                          lg-hidden md-hidden"
+                ></i>
+              </span>
+            </div>
+            <ul class="footer_block-content menu menu--footer menu--vertical">
+              {% for link in menu.links %}
+                <li class="menu-node menu-node--footer">
+                  <a href="{{ link.url }}" class="menu-link">
+                    <i class="fa fa-angle-double-right"></i>
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <div class="section--footer_copyright">
+    <div class="wrap row">
+
+      <div class="copyright
+                  lg-grid-4 md-grid-5 sm-grid-6 xs-grid-12
+                  xs-center
+                  padded"
+      >
+        Работает на <a href="http://{{ account.insales.domain }}">InSales</a>
+      </div>
+
+      <div class="lg-grid-8 md-grid-7 sm-grid-6 xs-grid-12
+                  lg-right sm-center
+                  padded"
+      >
+        {% include "social_groups" %}
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+
+{% include "init_js" %}
