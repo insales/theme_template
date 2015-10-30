@@ -1,0 +1,23 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "layouts.checkout.liquid"
+    ],
+
+    "style.css.scss": [
+      "_layouts.checkout.scss"
+    ],
+
+    "core.css": [
+      "layouts.checkout.less"
+    ],
+
+    "template.js": [
+      "checkout.js"
+    ]
+  }
+}

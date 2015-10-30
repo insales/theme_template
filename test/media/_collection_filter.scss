@@ -1,0 +1,98 @@
+/* filter */
+
+.filter{
+  &-title{}
+
+  &-section{}
+
+  &-clear_all{}
+
+  &-section_toggler{}
+
+  &-submit{}
+}
+
+.filter_section{
+
+  &-title{}
+
+  &-toggler{}
+
+  &-values{}
+
+  &-value{
+
+    &--range{}
+
+    &--current{}
+  }
+
+  &-value_input{}
+
+  &-value_link{
+    &--active{}
+  }
+
+  &-value_disable{
+    &:hover{}
+  }
+
+  &-clear{}
+
+  &-range_input{}
+
+  /* mod */
+  &--range{}
+}
+
+/* Range slider */
+.noUi{
+  &-horizontal {
+    height: 8px;
+
+    .noUi-handle{
+      width: 18px;
+      height: 18px;
+      left: -9px;
+      top: -6px;
+    }
+  }
+
+  &-vertical {
+    width: 18px;
+
+    .noUi-handle {
+      width: 18px;
+      height: 18px;
+      left: -6px;
+      top: -9px;
+    }
+  }
+
+  &-background{
+    background: $gray-light;
+  }
+
+  &-connect{
+    background: $gray-dark;
+  }
+
+  &-origin{
+    @include border-radius( 2px );
+  }
+
+  &-traget{
+    @include border-radius( 4px );
+    border: 1px solid $border-color;
+
+    .noUi-connect{}
+  }
+
+  &-handle{
+    border: 1px solid $border-color;
+    @include border-radius( 50% );
+    background: $gray-dark;
+  }
+
+  &-active{}
+}

@@ -1,0 +1,23 @@
+"Кнопки": [
+  {
+    "group_name": null,
+    "items": [
+      {
+        "name": "button-bg-color--hover",
+        "label": "Фон кнопок при наведении",
+        "type": "text",
+        "class": "color",
+        "help": "",
+        "value": "#00a161"
+      },
+      {
+        "name": "buy_button-bg-color",
+        "label": "Фон кнопки 'купить'",
+        "type": "text",
+        "class": "color",
+        "help": "",
+        "value": "#00a161"
+      }
+    ]
+  }
+]

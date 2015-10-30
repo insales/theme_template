@@ -1,0 +1,61 @@
+.search_widget{
+  display: inline-block;
+
+  &-field{
+    display: inline-block;
+    height: inherit;
+
+    padding:   0 0.5rem;
+
+    line-height:    inherit;
+    vertical-align: middle;
+
+    border-width:   1px;
+    border-style:   solid;
+  }
+
+  &-submit{
+    display: inline-block;
+    padding: 0;
+    height: inherit;
+
+    border:           1px solid transparent;
+    background-color: transparent;
+
+    line-height:    inherit;
+    text-align:     center;
+    vertical-align: middle;
+
+    cursor: pointer;
+
+    &--disabled,
+    &[disabled]{
+      cursor: @cursor-disabled;
+    }
+  }
+}
+
+.ajax_search{
+  &-wrapper{
+    position: relative;
+  }
+
+  &-results{
+    .ul-clear();
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+  }
+
+  &-item{
+    display: block;
+    text-align: left;
+  }
+
+  &-link{}
+
+  &-prices{}
+
+  &-marked{}
+}

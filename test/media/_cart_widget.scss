@@ -1,0 +1,55 @@
+/* cart_widget */
+
+.cart_widget{
+  &-icon{}
+
+  &-link{}
+
+  &-title{}
+
+  &-total{}
+
+  &-items_count{}
+
+  &-items_price{}
+
+  &-dropdown{
+    background-color: #fff;
+    border: 1px solid $border-color;
+    width: 250px;
+  }
+}
+
+.basket_list{
+  &-header{}
+
+  &-title{}
+
+  &-items{}
+
+  &-footer{}
+
+  &-total{}
+
+  &-count{}
+
+  &-submit{}
+}
+
+.basket_item{
+  &-image{
+    margin: 0 0.5rem 0.5rem 0;
+  }
+
+  &-details{}
+
+  &-title{}
+
+  &-delete{
+    &:hover{}
+  }
+
+  &-count{}
+
+  &-price{}
+}

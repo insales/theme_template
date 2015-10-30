@@ -1,0 +1,33 @@
+{% comment %}
+сниппет виджета корзины
+{% endcomment %}
+
+<div class="cart_widget">
+  <a href="{{ cart_url }}" class="cart_widget-link">
+    <span class="cart_widget-icon">
+      <i class="fa fa-shopping-cart"></i>
+      <span class="cart_widget-title">Корзина</span>
+    </span>
+
+    <span class="cart_widget-total">
+      <span class="cart_widget-items_count
+                  js-cart_widget-items_count"
+      >
+        {{ cart.items_count }}
+      </span>
+      <span class="cart_widget-items_price
+                  js-cart_widget-total_price"
+      >
+        {{ cart.items_price | money }}
+      </span>
+    </span>
+  </a>
+
+  <div class="cart_widget-dropdown
+              basket_list
+              sm-hidden xs-hidden
+              padded
+              js-basket_list"
+  >
+  </div>
+</div>

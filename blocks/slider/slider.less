@@ -1,0 +1,48 @@
+.slider{
+  .rel;
+
+  &-container{
+    .row;
+  }
+  &-link{}
+
+  &-control{
+    .rel;
+  }
+  &-left{
+    left: 0;
+    cursor: pointer;
+  }
+  &-right{
+    right: 0;
+    cursor: pointer;
+  }
+  &-up{
+    .abs;
+
+    top: 0;
+    cursor: pointer;
+  }
+  &-down{
+    .abs;
+
+    bottom: 0;
+    cursor: pointer;
+  }
+
+  &--index{
+    .slider-image{
+      display: block;
+      width: 100%;
+
+      img{
+        width: 100%;
+      }
+
+      // прячем элементы с картинками, до тех пор, пока плагин не прогрузится
+      & + .slider-image{
+        display: none;
+      }
+    }
+  }
+}

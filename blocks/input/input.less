@@ -1,0 +1,158 @@
+.input{
+  .row();
+
+  margin-bottom: 0.5rem;
+  &:last-child{
+    margin-bottom: 0;
+  }
+
+  &-label{
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  &-field{
+    display: block;
+    width: 100%;
+    border: 1px solid;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+  }
+
+  &-notice{
+    display: none;
+    margin-top: 0.5rem;
+  }
+
+  &-captcha{
+    display: inline-block;
+  }
+
+  &--inline{
+    > .input{
+      &-label{
+        display: inline-block;
+        line-height: inherit;
+        height: inherit;
+
+        border: 1px solid initial;
+        vertical-align: middle;
+
+        margin-bottom: 0;
+      }
+
+      &-field{
+        display: inline-block;
+        height: inherit;
+        line-height: inherit;
+
+        padding-top: 0;
+        padding-bottom: 0;
+        vertical-align: middle;
+      }
+
+      &-captcha{
+        display: inline-block;
+      }
+
+      &-button{
+        display: inline-block;
+        height: inherit;
+        line-height: inherit;
+
+        border: 1px solid transparent;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &--error{
+    > .input{
+      &-label{
+      }
+
+      &-field{
+        border-color: @state-danger-border;
+        background-color: @state-danger-bg;
+      }
+
+      &-notice{
+        display: block;
+      }
+    }
+  }
+
+  &--required{
+    .input-label{
+      &:after{
+        content: '*';
+        color: red;
+      }
+    }
+  }
+
+  &--captcha{
+    .input-field{
+      display: inline-block;
+
+      //padding-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+      width: 125px;
+    }
+  }
+}
+
+.styled_select-wrapper{
+  .rel;
+
+  display: inline-block;
+  min-width: 50px;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  vertical-align: middle;
+  z-index: 0;
+
+  border: 1px solid;
+
+  &:after{
+    .abs;
+    top: ~"calc( 50% - 8px )";
+    //bottom: 0;
+    right: 0;
+
+    line-height: inherit;
+
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+    content: "\f078";
+
+    padding: 0 0.5rem;
+  }
+
+  .checkout &{
+    width: 100%;
+  }
+
+  select{
+    .rel;
+
+    display: inline-block;
+    width: ~"calc( 100% + 30px )";
+    height: 100%;
+    border: none;
+    padding: 0 0.5rem;
+    background-color: transparent;
+
+    z-index: 1;
+    line-height: inherit;
+
+    cursor: pointer;
+  }
+}

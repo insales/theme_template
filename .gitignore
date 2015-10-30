@@ -1,5 +1,7 @@
-/theme_template.sublime-project
-/theme_template.sublime-workspace
+<<<<<<< HEAD
 /.insup
 /log/insup.log
-/theme_template.zip
+=======
+/node_modules
+*.zip
+>>>>>>> template_v1

@@ -1,0 +1,28 @@
+// fix js-template hide
+script[type="text/template"]{
+  display: none;
+}
+
+body{
+  min-width: 320px;
+}
+
+// блокируем прокрутку боди
+body.body--lock_scroll{
+  -webkit-overflow-scrolling: touch;
+  left: 0;
+  top: 50%;
+  position: fixed;
+  width: 100%;
+}
+
+// sidebar
+.sidebar_block{
+  &-title{}
+
+  &-content{}
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+}

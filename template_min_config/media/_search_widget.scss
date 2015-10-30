@@ -1,0 +1,35 @@
+/* search module */
+
+.search_widget{
+  height: 30px;
+  line-height: 30px;
+
+  &--header{}
+
+  &-label{}
+
+  &-field{}
+
+  &-submit{
+    .search--active &,
+    &:hover{}
+  }
+}
+
+.ajax_search{
+  &-results{
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 1px solid $border-color;
+  }
+
+  &-item{}
+
+  &-link{}
+
+  &-prices{}
+
+  &-marked{
+    font-weight: bold;
+  }
+}

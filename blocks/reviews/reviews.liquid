@@ -1,0 +1,59 @@
+{% assign is_reviews = false %}
+
+{% case template %}
+  {% when 'product' %}
+    {% if account.reviews_enabled? %}
+      {% assign is_reviews = true %}
+      {% assign reviews_title = 'Отзывы' %}
+      {% assign reviews = product.reviews %}
+    {% endif %}
+
+  {% when 'article' }
+    {% if blog.comments_enabled? %}
+      {% assign is_reviews = true %}
+      {% assign reviews_title = 'Комментарии' %}
+      {% assign reviews = article.comments %}
+    {% endif %}
+{% endcase %}
+
+{% if is_reviews %}
+<div class="reviews">
+  <h2 class="reviews-title">
+    {{ reviews_title }}
+  </h2>
+
+  {% if reviews == 'empty' %}
+    <div class="notice notice--info">
+      Пока нет 
+    </div>
+  {% else %}
+    <ul class="reviews-list">
+      {% for review in reviews %}
+        <li class="review">
+          <div class="review-details">
+            <span class="review-name">{{ review.author }}</span>
+            {{ review.created_at | date: "%d.%m.%Y %H:%M" }}
+          </div>
+
+          <div class="review-content">
+            {{ review.content | newline_to_br }}
+          </div>
+
+          {% if review.rating %}
+            <div class="review-rating rating">
+              Оценка:
+              <select class="js-rating-read_only">
+                {% for i in (1..5) %}
+                  <option value="{{ i }}" {% if review.rating == i %}selected="selected"{% endif %}>
+                    {{ i }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+{% endif %}

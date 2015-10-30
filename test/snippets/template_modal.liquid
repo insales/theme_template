@@ -1,0 +1,101 @@
+{% comment %}
+  шаблоны для вывода модалок
+{% endcomment %}
+
+{% comment %}
+  шаблон для модалки с формой
+{% endcomment %}
+
+<script type="text/template" hidden class="modal" id="form">
+  <div class="modal modal--popup_form">
+    <div class="modal-wrapper">
+      <% if @header : %>
+        <div class="modal-header"><%- @header %></div>
+      <% end %>
+
+      <form action="/feedback">
+        <% for field in @fields : %>
+          <div class="input
+                      <% if field.required : %>input--required<% end %>
+                      <%- field.class %>"
+          >
+            <% if field.label : %>
+              <label class="input-label <%- field.label_class %>">
+                <%- field.label %>
+              </label>
+            <% end %>
+
+            <% if field.type != 'textarea' : %>
+              <input class="input-field <%- field.filed_class %>"
+                     type="<%- field.type %>"
+                     name="<%- field.name %>"
+                     title="<%- field.title %>"
+                     placeholder="<%- field.placeholder %>"
+                     value="<%- field.value %>"
+              >
+            <% else : %>
+              <textarea class="input-field <%- field.filed_class %>"
+                         type="<%- field.type %>"
+                         name="<%- field.name %>"
+                         title="<%- field.title %>"
+                         placeholder="<%- field.placeholder %>"
+              ><%- field.value %></textarea>
+            <% end %>
+
+            <% if field.error : %>
+              <span class="input-notice notice notice--warning">
+                <%- field.error %>
+              </span>
+            <% end %>
+          </div>
+        <% end %>
+      </form>
+
+      <span class="button js-modal-close">Закрыть</span>
+      <span class="button js-modal-confirm">Отправить</span>
+    </div>
+  </div>
+</script>
+
+{% comment %}
+  модалка "товар добавлен в корзину"
+{% endcomment %}
+
+<script type="text/template" hidden class="modal" id="product_added">
+  <div class="modal modal--product_added">
+    <div class="modal-wrapper">
+      <div class="modal-header">Товар добавлен в корзину</div>
+      <span class="button button--buy
+                  js-modal-close"
+      >
+        Продолжить покупки
+      </span>
+
+      <a href="{{ cart_url }}"
+          class="button"
+      >
+        Перейти в корзину
+      </a>
+    </div>
+  </div>
+</script>
+
+{% comment %}
+  форма с логином
+{% endcomment %}
+<script type="text/template" hidden class="modal" id="login">
+  <div class="modal modal--login">
+    <div class="modal-wrapper">
+
+      <div class="modal-header">Регистрация</div>
+
+      <form action="">
+        <input type="text" value="" class="input input--required">
+        <input type="text" value="" class="input input--required">
+
+        <submit class="js-modal-confirm">Зарегистрироваться</submit>
+        <span class="button button--buy js-modal-close">Закрыть</span>
+      </form>
+    </div>
+  </div>
+</script>

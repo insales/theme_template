@@ -1,0 +1,78 @@
+{
+  "blocks": [
+    // ядро стилей и скриптов, инициация всех ништяков
+    "core",
+
+    // базовые блоки и элементы
+    "button",
+    "input",
+    "prices",
+
+    // обязательные блоки
+    "menu",
+    "slider",
+    "tabs",
+    "accordion",
+    "quantity",
+    "modal",
+    "panel",
+
+    "logo",
+    "breadcrumbs",
+    "pagination",
+    "reviews",
+
+    // шапка
+    "head",
+    "header",
+
+    // опорные шаблоны
+    "layouts.layout",
+    "layouts.checkout",
+    "index",
+
+    // коллекция
+    "collection",
+    "collection_filter",
+    "collection_sort",
+
+    // товар
+    "product",
+    "product_gallery",
+    "product_preview",
+
+    // корзина
+    "cart",
+    "cart_widget",
+
+    // поиск
+    "search",
+    "search_widget",
+
+    // сравнение
+    "compare",
+
+    // блог, статьи, страницы
+    "blog",
+    "article",
+    "article_preview",
+    "page",
+
+    // подвал
+    "footer",
+
+    // остальные блоки и сниппеты
+    // также и не обязательные
+
+    // необязательные блоки
+    "language_switch",
+
+    "favorites",
+    "recently_view",
+
+    "social_groups",
+    "social_links",
+
+    "payments"
+  ]
+}

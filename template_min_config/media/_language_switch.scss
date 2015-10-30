@@ -1,0 +1,17 @@
+/* language */
+
+.language_switch{
+  &-link{}
+
+  &-node{
+    &:hover{
+      .languages-link{}
+    }
+
+    &--current{}
+  }
+
+  &-link{}
+
+  &-toggler{}
+}

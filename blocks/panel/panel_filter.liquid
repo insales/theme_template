@@ -1,0 +1,24 @@
+{% comment %}
+мобильная панель.
+повторяет функционал sidebar для мобильных устройств
+{% endcomment %}
+
+<div class="panel panel--filter panel--side
+            grid-4 sm-grid-6 xs-grid-10
+            padded
+            js-panel-filter"
+>
+  <span class="mobile_panel-close js-panel-close">
+    <i class="fa fa-times"></i>
+  </span>
+
+    {% if template == 'collection' and collection.properties.size > 0 %}
+      <div class="sidebar_block">
+        <div class="sidebar-block_title">
+          Фильтр
+        </div>
+
+        {% include "collection_filter" with "mobile" %}
+      </div>
+    {% endif %}
+</div>

@@ -1,0 +1,81 @@
+{% comment %}
+  сниппет сортировки
+{% endcomment %}
+
+<form class="sort_by" action="{{ collection.url }}" method="get">
+  {% comment %}
+    сортировка вывода
+  {% endcomment %}
+  <span class="sort_by-option">
+    <label  for="order" class="sort_by-label">
+      Сортировать
+    </label>
+
+    <select id="order"
+            name="order"
+            value="{{ order }}"
+            class="sort_by-select
+                  js-sort_by
+                  js-style-select"
+    >
+      {{ ""                 | select_option: order, "Сортировать по" }}
+      {{ "price"            | select_option: order, "По возрастанию цены" }}
+      {{ "descending_price" | select_option: order, "По убыванию цены" }}
+      {{ "title"            | select_option: order, "Алфавиту А-Я" }}
+      {{ "descending_title" | select_option: order, "Алфавиту Я-А" }}
+      {{ "descending_age"   | select_option: order, "Новые-Старые" }}
+      {{ "age"              | select_option: order, "Старые-Новые" }}
+    </select>
+  </span>
+
+  {% comment %}
+    изменение кол-ва выводимых товаров
+  {% endcomment %}
+  <span class="sort_by-option">
+    <label  for="page_size" class="sort_by-label">
+      Показывать
+    </label>
+    <select id="page_size"
+            name="page_size"
+            value="{{ page_size }}"
+            class="sort_by-select
+                  js-sort_by
+                  js-style-select"
+    >
+      {{ "15"   | select_option: page_size, "15" }}
+      {{ "24"   | select_option: page_size, "24" }}
+      {{ "33"   | select_option: page_size, "33" }}
+      {{ "90"   | select_option: page_size, "90" }}
+    </select>
+  </span>
+
+  {% comment %}
+    вытаскиваем выбранные параметры, опции товаров и язык
+  {% endcomment %}
+  {% for prop in collection.current_characteristics %}
+    <input type="hidden" name="characteristics[]" value="{{ prop.id }}"/>
+  {% endfor %}
+
+  {% for property in collection.properties %}
+    {% if property.is_numeric? and property.gt_value and property.lt_value %}
+      <input type="hidden" name="properties_gt[{{ property.id }}]" value="{{ property.gt_value }}"/>
+      <input type="hidden" name="properties_lt[{{ property.id }}]" value="{{ property.lt_value }}"/>
+    {% endif %}
+  {% endfor %}
+
+  {% for val in collection.current_option_values %}
+    <input type="hidden" name="options[{{ val.option_name.id }}][]" value="{{ val.id }}"/>
+  {% endfor %}
+
+  {% if search.query != '' %}
+    <input type="hidden" name="q" value="{{ search.query }}" />
+  {% endif %}
+
+  {% if language.not_default? %}
+    <input type="hidden" name="lang" value="{{ language.locale }}" />
+  {% endif %}
+
+  <input type="hidden" name="price_min" value="{{ price_min }}" {% unless price_min %}disabled="disabled"{% endunless %}>
+
+  <input type="hidden" name="price_max" value="{{ price_max }}" {% unless price_max %}disabled="disabled"{% endunless %}>
+</form>

@@ -1,0 +1,20 @@
+{
+  "test": {
+  },
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "language_switch.less"
+    ],
+
+    "snippets": [
+      "language_switch.liquid"
+    ],
+
+    "style.css.scss": [
+      "_language_switch.scss"
+    ]
+  }
+}

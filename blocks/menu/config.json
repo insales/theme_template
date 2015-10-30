@@ -1,0 +1,31 @@
+{
+  "test": {
+    "snippets":  [
+      "menu_main.liquid",
+      "menu_main-mobile.liquid",
+      "menu_collection.liquid"
+    ]
+  },
+
+  "dist": {
+    "snippets":  [
+      "menu_main.liquid",
+      "menu_main-mobile.liquid",
+      "menu_collection.liquid"
+    ]
+  },
+
+  "core": {
+    "core.css": [
+      "menu.less"
+    ],
+
+    "style.css.scss": [
+      "_menu.scss"
+    ],
+
+    "ui.js": [
+      "menu.js"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "modal.less"
+    ],
+
+    "style.css.scss": [
+      "_modal.scss"
+    ],
+
+    "template.js": [
+      "z.InSales.modal.js",
+      "modal.js"
+    ],
+
+    "template_modal.liquid": [
+      "modal.template"
+    ]
+  }
+}

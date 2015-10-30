@@ -1,0 +1,32 @@
+{
+  "test": {
+  },
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "search_widget.liquid"
+    ],
+
+    "core.css": [
+      "search_widget.less"
+    ],
+
+    "style.css.scss": [
+      "_search_widget.scss"
+    ],
+
+    "ui.js": [
+      "ui.ajax_search.js"
+    ],
+
+    "template_search.liquid": [
+      "search_widget.template"
+    ],
+
+    "template.js": [
+      "z.InSales.ajaxSearch.js"
+    ]
+  }
+}

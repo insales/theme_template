@@ -1,0 +1,204 @@
+// вспомогательные классы для сетки
+.default-grid(){
+  margin: 0;
+  clear:  none;
+  float:  left;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+// генерация колонок
+.generate-columns( @prefix ){
+
+  .loop(@n, @i: 1) when (@i =< @n) {
+
+    .@{prefix}grid-@{i} {
+      width: percentage(@i / @n);
+    }
+    .@{prefix}offset-@{i} {
+      margin-left: percentage(@i / @n);
+    }
+    .loop(@n, (@i + 1));
+  }
+
+  .loop( 12 );
+}
+
+// генерация отступов
+.generate-padded( @prefix ){
+  // простой
+  .@{prefix}padded{
+    padding: .5rem;
+  }
+  .@{prefix}padded-left{
+    padding-left: .5rem;
+  }
+  .@{prefix}padded-right{
+    padding-right: .5rem;
+  }
+  .@{prefix}padded-top{
+    padding-top: .5rem;
+  }
+  .@{prefix}padded-bottom{
+    padding-bottom: .5rem;
+  }
+  .@{prefix}padded-sides{
+    padding-left:  .5rem;
+    padding-right: .5rem;
+  }
+  .@{prefix}padded-vertical{
+    padding-top:    .5rem;
+    padding-bottom: .5rem;
+  }
+
+  // больший
+  .@{prefix}padded-inner{
+    padding: 1rem;
+  }
+  .@{prefix}padded-inner-left{
+    padding-left: 1rem;
+  }
+  .@{prefix}padded-inner-right{
+    padding-right: 1rem;
+  }
+  .@{prefix}padded-inner-top{
+    padding-top: 1rem;
+  }
+  .@{prefix}padded-inner-bottom{
+    padding-bottom: 1rem;
+  }
+  .@{prefix}padded-inner-sides{
+    padding-left:  1rem;
+    padding-right: 1rem;
+  }
+  .@{prefix}padded-inner-vertical{
+    padding-top:    1rem;
+    padding-bottom: 1rem;
+  }
+
+  // нулевой, ваш КО
+  .@{prefix}padded-zero{
+    padding: 0;
+  }
+  .@{prefix}padded-zero-left{
+    padding-left: 0;
+  }
+  .@{prefix}padded-zero-right{
+    padding-right: 0;
+  }
+  .@{prefix}padded-zero-top{
+    padding-top: 0;
+  }
+  .@{prefix}padded-zero-bottom{
+    padding-bottom: 0;
+  }
+  .@{prefix}padded-zero-sides{
+    padding-left:  0;
+    padding-right: 0;
+  }
+  .@{prefix}padded-zero-vertical{
+    padding-top:    0;
+    padding-bottom: 0;
+  }
+
+  // странная штука, надо подумать нужна она вообще или нет
+  .@{prefix}padded-reverse{
+    margin-left:  -.5rem;
+    margin-right: -.5rem;
+    width:        auto;
+    box-sizing:   content-box;
+    float:        none;
+  }
+  .@{prefix}padded-reverse-all{
+    margin:     -.5rem;
+    width:      auto;
+    box-sizing: content-box;
+    float:      none;
+  }
+}
+
+// управление потоком
+.generate-flow( @prefix ){
+  .@{prefix}fl,
+  .@{prefix}flow{
+    float: left;
+  }
+  .@{prefix}fr,
+  .@{prefix}flow-opposite{
+    float: right;
+  }
+}
+
+// управление grid-inline
+.generate-grid-inline( @prefix ){
+  .@{prefix}grid-inline-top{
+    > [class*="-grid-"]{
+      vertical-align: top;
+    }
+  }
+
+  .@{prefix}grid-inline-middle{
+    > [class*="-grid-"]{
+      vertical-align: middle;
+    }
+  }
+
+  .@{prefix}grid-inline-bottom{
+    > [class*="-grid-"]{
+      vertical-align: bottom;
+    }
+  }
+}
+
+.generate-vertical_align( @prefix ){
+  .grid-inline{
+    > .@{prefix}inline-top{
+      vertical-align: top;
+    }
+
+    >  .@{prefix}inline-middle{
+      vertical-align: middle;
+    }
+
+    >  .@{prefix}inline-bottom{
+      vertical-align: bottom;
+    }
+  }
+}
+
+// вспомогательное управлдение тектом
+.generate-text( @prefix ){
+  .@{prefix}center{
+    text-align: center;
+  }
+  .@{prefix}left{
+    text-align: left;
+  }
+  .@{prefix}right{
+    text-align: right;
+  }
+}
+
+// утилитки
+.generate-utils( @prefix ){
+  .@{prefix}hidden{
+    display: none !important;
+  }
+
+  .@{prefix}visible{
+    display: block !important;
+  }
+}
+
+// генератор классов для определенного шага сетки
+.generate-grid( @prefix ){
+  .generate-columns( @prefix );
+  .generate-padded( @prefix );
+  .generate-flow( @prefix );
+  .generate-text( @prefix );
+
+  .generate-grid-inline( @prefix );
+  .generate-vertical_align( @prefix );
+}

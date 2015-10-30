@@ -1,0 +1,25 @@
+.modal{
+  .fix;
+  z-index: 1050;
+
+  max-width: 95%;
+  max-height: 95%;
+  overflow-y: auto;
+
+  &-header{}
+  &-close{}
+  &-content{}
+}
+
+.overlay{
+  .fix;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1040;
+
+  &--opacity{
+    background-color: transparent !important;
+  }
+}

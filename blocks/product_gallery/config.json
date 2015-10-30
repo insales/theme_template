@@ -1,0 +1,38 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "product_gallery.liquid"
+    ],
+
+    "core.css": [
+      "product_gallery.less"
+    ],
+
+    "style.css.scss": [
+      "_product_gallery.scss"
+    ],
+
+    "media": [
+      "plugins/fonts/magictoolbox-thin.eot",
+      "plugins/fonts/magictoolbox-thin.svg",
+      "plugins/fonts/magictoolbox-thin.ttf",
+      "plugins/fonts/magictoolbox-thin.woff"
+    ],
+
+    "z.InSales.plugins.js": [
+      "plugins/magiczoomplus.js"
+    ],
+
+    "product.js": [
+      "product_gallery.js"
+    ],
+
+    "template.css": [
+      "plugins/magiczoomplus.css"
+    ]
+  }
+}

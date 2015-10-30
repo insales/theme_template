@@ -1,0 +1,165 @@
+{% comment %}
+  комментарии к статьям
+{% endcomment %}
+
+{% if blog.comments_enabled? %}
+<div id="comments" class="reviews">
+  {% comment %}
+    <a  id="link"
+        class="reviews-link js-reviews-togle"
+        name="comments"
+    >
+      Комментарии:
+      <span class="reviews-total_count">
+        {{ article.comments_count }}
+      </span>
+    </a>
+  {% endcomment %}
+
+{% comment %}
+  список комментариев
+{% endcomment %}
+
+  <h2 class="reviews-title">
+    Комментарии
+  </h2>
+    
+  {% if article.comments == empty %}
+    <div class="notice notice--info">
+      Пока нет комментариев
+    </div>
+  {% else %}
+
+    <ul class="reviews-list">
+    {% for comment in article.comments %}
+
+      <li class="review">
+        <div class="review-details">
+          <span class="review-name">{{ comment.author }}</span> {{ comment.created_at | date: "%d.%m.%Y %H:%M" }}
+        </div>
+
+        <div class="review-content">
+          {{ comment.content | newline_to_br }}
+        </div>
+      </li>
+
+    {% endfor %}
+    </ul>
+
+  {% endif %}
+</div>
+
+{% comment %}
+  форма комментария
+{% endcomment %}
+<div id="comment_form" class="review_form">
+  {% form comment %}
+    <h3>Оставить комментарий</h3>
+
+    {% if form.posted_successfully? %}
+      {% if blog.moderated? %}
+        <div class="review_form-notice notice notice--success">
+          Комментарий успешно отправлен.<br />
+          Он будет промодерирован владельцем блога перед публикацией.
+        </div>
+      {% else %}
+        <div class="review_form-notice notice notice--success">Комментарий добавлен.</div>
+      {% endif %}
+    {% endif %}
+
+    {% if comment.errors.size > 0 %}
+      <div class="notice notice--warning">
+        Не все поля заполнены правильно!
+      </div>
+    {% endif %}
+
+    <div class="notice notice--info">
+      Все поля обязательны к заполнению
+    </div>
+
+    <div class="review_form-input input input--required
+                {% if comment.errors contains 'author' %} input--error{% endif %}"
+    >
+      <label for="comment_author" class="input-label">Имя</label>
+
+      <input  type="text"
+              name="comment[author]"
+              value="{{ comment.author }}"
+              class="input-field"
+      />
+
+      <span class="input-notice notice notice--warning">
+        вы не представились
+      </span>
+    </div>
+
+    <div class="review_form-input input input--required
+                {% if comment.errors contains 'email' %} input--error{% endif %}"
+    >
+      <label for="comment_email" class="input-label">E-mail</label>
+
+      <input  type="email"
+              name="comment[email]"
+              value="{{ comment.email }}"
+              class="input-field"
+      />
+
+      <span class="input-notice notice notice--warning">
+        не правильно введен e-mail
+      </span>
+    </div>
+
+    <div class="review_form-input input input--required
+                {% if comment.errors contains 'content' %} input--error{% endif %}"
+    >
+      <label for="comment_body" class="input-label">Комментарий</label>
+
+      <textarea name="comment[content]"
+                rows="4"
+                class="input-field"
+      >{{ comment.content }}</textarea>
+
+      <span class="input-notice notice notice--warning">
+        нам интересно Ваше мнение
+      </span>
+    </div>
+
+    {% if comment.captcha_enabled? %}
+      <div id="captcha"
+            class="review_form-input input input--captcha input--required
+                  {% if comment.errors contains 'captcha_solution' %} input--error{% endif %}"
+      >
+        <label class="input-label">
+          Наберите текст, изображённый на картинке
+        </label>
+
+        <div id="captcha_challenge" class="input-captcha">
+          {{ comment | captcha_challenge }}
+        </div>
+
+        <input type="text"
+                name="comment[captcha_solution]"
+                class="input-field"
+        />
+
+        <span class="input-notice notice notice--warning">
+          Вы неправильно ввели текст с картинки
+        </span>
+      </div>
+    {% endif %}
+
+    {% if blog.moderated? %}
+      <div class="notice notice--info">
+        Перед публикацией комментарии проходят модерацию
+      </div>
+    {% endif %}
+
+    <input type="submit"
+            class="review_form-submit button js-review-submit"
+            value="Отправить комментарий"
+    />
+
+  {% endform %}
+</div>
+
+{% endif %}

@@ -1,0 +1,43 @@
+{% comment %}
+  шаблоны различных выводов товара
+{% endcomment %}
+
+{% comment %}
+  шаблон для вывода превьюшки товара
+{% endcomment %}
+<script type="text/template" hidden class="product" id="list">
+  <% if @products?.length > 0 : %>
+    <% for product in @products : %>
+      <% if product : %>
+        <div class="product_preview-preview">
+          <a  href="<%- product.url %>"
+              class="product_preview-image image-square"
+              title="<%- product.title %>"
+          >
+            <img  src="<%- product.first_image.medium_url %>"
+                  class=""
+                  title="<%- product.title %>"
+            />
+          </a>
+        </div>
+
+        <div class="padded-vertical">
+          <div class="product_preview-prices prices">
+            <span class="prices-current">
+              <%- @formatMoney product.price %>
+            </span>
+          </div>
+
+          <div class="product_preview-title">
+            <a  href="<%- product.url %>"
+                class="product_preview-link"
+                title="<%- product.title %>"
+            >
+              <%- product.title %>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</script>

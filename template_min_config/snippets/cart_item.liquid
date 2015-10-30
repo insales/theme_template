@@ -1,0 +1,94 @@
+<div id="cart_order_line_{{ item.id }}"
+      class="cart_item"
+      data-item-id="{{ item.id }}"
+      data-params="item_id: {{ item.id }}"
+>
+  {% comment %}
+    картинка
+  {% endcomment %}
+  <div class="cart_item-image
+              lg-grid-1 sm-grid-3 mc-grid-12
+              padded-right xs-padded-bottom"
+  >
+    <a href="{{ item.product.url }}" class="image-square">
+      <img src="{{ item.product.first_image.medium_url }}" />
+    </a>
+  </div>
+
+  {% comment %}
+    название
+  {% endcomment %}
+  <div class="cart_item-title
+              lg-grid-5 md-grid-4 xs-grid-9"
+  >
+    <a href="{{ item.product.url }}"
+        class="cart_item-link"
+    >
+      {{ item.title }}
+    </a>
+    {% if item.sku %}
+      <div class="cart_item-sku">арт. {{ item.sku }}</div>
+    {% endif %}
+  </div>
+
+  {% comment %}
+    кол-во
+  {% endcomment %}
+  <div class="cart_item-quantity
+              lg-grid-1 md-grid-2 mc-grid-3"
+  >
+    {% include "quantity" with "cart_item" %}
+  </div>
+
+  {% comment %}
+    цена
+    {% endcomment %}
+    <div class="cart_item-prices cart_item-prices--stock
+                prices-current
+                lg-grid-2 mc-grid-3
+                mc-hidden
+                center"
+    >
+      <span class="cart_item-time">
+        <i class="fa fa-times"></i>
+      </span>
+
+      <span class="js-price_type-{{ item.id }}">
+        {{ item.sale_price | money }}
+      </span>
+
+      <span class="cart_item-eql">
+        =
+      </span>
+    </div>
+
+    {% comment %}
+      суммарно
+    {% endcomment %}
+    <div class="cart_item-prices cart_item-prices--total
+                prices-current
+                lg-grid-2 sm-grid-4 xs-grid-6 mc-grid-8
+                js-cart_item-total
+                js-price_type-{{ item.id }}
+                center"
+    >
+      {{ item.total_price | money }}
+    </div>
+
+    {% comment %}
+      удаление
+    {% endcomment %}
+    <div class="cart_item-delete
+                lg-grid-1
+                right"
+    >
+      <a  href="{{ item.url }}"
+          class="button
+                js-cart_item-delete"
+          data-item-id="{{ item.id }}"
+          data-params="item_id: {{ item.id }}"
+      >
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+</div>

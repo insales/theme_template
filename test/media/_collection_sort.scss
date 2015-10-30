@@ -1,0 +1,14 @@
+/* collection_sort */
+
+.sort_by{
+  &-label{}
+
+  &-select{}
+
+  &-submit{}
+
+  &-option{
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+}

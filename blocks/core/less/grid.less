@@ -1,0 +1,134 @@
+// сборка сетки
+.row:after,
+.grid-row:after,
+.grid-row-inner:after{
+  content: '';
+  display: block;
+  width:   100%;
+  clear:   both;
+}
+.grid-row{
+  margin-left:  -.5rem;
+  margin-right: -.5rem;
+}
+.grid-row-inner{
+  margin-left:  -1rem;
+  margin-right: -1rem;
+}
+
+.wrap{
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+// default styles for *-grid- classes
+.grid-1,
+.grid-2,
+.grid-3,
+.grid-4,
+.grid-5,
+.grid-6,
+.grid-7,
+.grid-8,
+.grid-9,
+.grid-10,
+.grid-11,
+.grid-12{
+  .default-grid();
+}
+
+/* universal helpers */
+/* данный класс меняет поведение вложенных элементов */
+.grid-inline{
+  .row;
+  letter-spacing: -0.32em;
+  float: none;
+
+  > [class*="grid"]{
+    display: inline-block;
+    float: none !important;
+
+    letter-spacing: 0;
+    vertical-align: top;
+  }
+}
+
+// @media all - небольшой хак, для отделения стилей для каждого шага сетки
+// default grid
+@media all{
+  .generate-grid( {} );
+  .generate-utils( {} );
+}
+
+// lg-grid
+@media all{
+  [class*="lg-grid-"]{
+    .default-grid();
+  }
+
+  .generate-grid( lg- );
+}
+
+// адаптивность у нас будет работать при условии, что мы четко сказали, что тема у нас адаптивная
+// нужно для быстрого и безгеморного переключения адаптивного дизайна на неадаптивный
+.adaptive{
+  // md-grid
+  @media ( max-width: 1100px ){
+    [class*="md-grid-"]{
+      .default-grid();
+    }
+
+    .generate-grid( md- );
+  }
+
+  // sm-gride
+  @media ( max-width: 800px ){
+    [class*="sm-grid-"]{
+      .default-grid();
+    }
+
+    .generate-grid( sm- );
+  }
+
+  // xs-grid
+  @media ( max-width: 640px ){
+    [class*="xs-grid-"]{
+      .default-grid();
+    }
+
+    .generate-grid( xs- );
+  }
+
+  // mc-grid
+  @media ( max-width: 480px ){
+    .adaptive [class*="mc-grid-"]{
+      .default-grid();
+    }
+
+    .generate-grid( mc- );
+  }
+
+  // utils
+  @media ( min-width: 1101px ){
+    .generate-utils( lg- );
+  }
+
+  @media ( min-width: 801px ) and ( max-width: 1100px ){
+    .generate-utils( md- );
+  }
+
+  @media ( min-width: 641px ) and ( max-width: 800px ){
+    .generate-utils( sm- );
+  }
+
+  @media ( max-width: 640px ){
+    .generate-utils( xs- );
+  }
+
+  @media ( max-width: 480px ){
+    .generate-utils( mc- );
+  }
+}
+
+
+/**/

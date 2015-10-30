@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "search.liquid"
+    ],
+
+    "core.css": [
+      "search.less"
+    ],
+
+    "style.css.scss": [
+      "_search.scss"
+    ]
+  }
+}

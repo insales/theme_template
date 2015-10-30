@@ -1,0 +1,23 @@
+{% comment %}
+  шаблон для вывода скидок
+{% endcomment %}
+<script type="text/template" hidden class="cart" id="discounts">
+  <% for discount in @discounts : %>
+    <div class="discount">
+      <div class="discount-title
+                  lg-grid-8
+                  lg-right md-right"
+      >
+        <%- discount.description %>
+      </div>
+      <div class="prices prices--discount
+                  lg-grid-4
+                  right"
+      >
+        <span class="prices-current">
+          <%- @formatMoney discount.amount %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</script>

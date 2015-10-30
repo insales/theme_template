@@ -1,0 +1,69 @@
+{% comment %}
+  вывод скидок
+{% endcomment %}
+{% if cart.enable_coupon? or cart.discounts.size > 0 %}
+  <div class="discounts">
+    <div class="discounts-kupon
+                lg-grid-6 xs-grid-12"
+    >
+      {% if cart.enable_coupon? %}
+        <div class="discounts-input
+                    input input--inline {% if cart.invalid_coupon? %} input--error{% endif %}"
+        >
+          <label for="kupon-number"
+                  class="input-label
+                        lg-grid-2"
+          >
+            Купон
+          </label>
+
+          <input  type="text"
+                  id="kupon-number"
+                  class="discounts-field input-field"
+                  name="cart[coupon]"
+                  value="{{ cart.coupon }}"
+          />
+
+          <input type="button"
+                  class="discounts-submit
+                        input-button button
+                        js-discounts-submit"
+                  value="Применить"
+          />
+
+          {% if cart.invalid_coupon? %}
+            <div class="discounts-notice input-notice notice--danger">
+              {{ cart.coupon_error }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="discounts-list
+                lg-grid-6 xs-grid-12
+                js-discounts-list"
+    >
+      {% if cart.discounts.size > 0 %}
+        {% for discount in cart.discounts %}
+          <div class="discount">
+            <div class="discount-title
+                        lg-grid-8
+                        lg-right md-right"
+            >
+              {{ discount.description }}
+            </div>
+            <div class="discount-prices prices
+                        lg-grid-4
+                        right"
+            >
+              <span class="prices-current">
+                {{ discount.amount | money }}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

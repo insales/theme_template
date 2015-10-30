@@ -1,0 +1,50 @@
+{
+  "test": {
+  },
+
+  "dist": {
+  },
+
+  "core": {
+    "core.css": [
+      "slider.less"
+    ],
+
+    "style.css.scss": [
+      "_slider.scss"
+    ],
+
+    "core.css": [
+      "plugins/owl.carousel.css"
+    ],
+
+    "z.InSales.plugins.js": [
+      "plugins/owl.carousel.js"
+    ],
+
+    "template.js": [
+      "slider.js"
+    ],
+
+    "snippets": [
+      "slider_index.liquid",
+      "slider_product.liquid"
+    ],
+
+    "z.InSales.ui.js": [
+      "z.slider.ui.js"
+    ],
+
+    "settings.html": [
+      "configs/slider_index.html"
+    ],
+
+    "settings_form.json": [
+      "configs/slider_index.json"
+    ]
+
+    //"settings_data.json": [
+    //  "settings/slider_index.json"
+    //]
+  }
+}

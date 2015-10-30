@@ -1,0 +1,73 @@
+// Variables
+// --------------------------------------------------
+// НЕ ИЗМЕНЯТЬ!!!!ЗДЕСЬ НАХОДЯТСЯ УМОЛЧАНИЯ, КОТОРЫЕ ПРИМЕНЯЮТСЯ
+// ЕСЛИ НУЖНЫЕ ДЛЯ ШАБЛОНА ПЕРЕМЕННЫЕ НЕ ЗАДАНЫ В ФАЙЛЕ
+// _variables
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base:        $font-family-sans-serif !default;
+
+$font-size:               14px !default;
+$font-size-large:         ceil(($font-size * 1.25)) !default; // ~18px
+$font-size-medium:        ceil(($font-size * 1.10)) !default; // ~16px
+$font-size-small:         ceil(($font-size * 0.85)) !default; // ~12px
+
+$font-size-h1:            floor(($font-size * 2.15)) !default; // ~30px
+$font-size-h2:            ceil(($font-size * 1.70)) !default; // ~24px
+$font-size-h3:            ceil(($font-size * 1.40)) !default; // ~20px
+$font-size-h4:            ceil(($font-size * 1.25)) !default; // ~18px
+$font-size-h5:            $font-size !default;
+$font-size-h6:            ceil(($font-size * 0.85)) !default; // ~12px
+
+$line-height:             floor(($font-size * 1.642857143)) !default; // ~23px
+
+//** By default, this inherits from the `<body>`.
+$headings-font-family:    inherit !default;
+$headings-font-weight:    500 !default;
+$headings-line-height:    1.3 !default;
+$headings-color:          inherit !default;
+
+$headings-small-color:    $gray-light !default;
+
+//-- Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+//
+// Note: These variables are not generated into the Customizer.
+
+$zindex-navbar:            1000 !default;
+$zindex-dropdown:          1000 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
+$zindex-navbar-fixed:      1030 !default;
+$zindex-modal-background:  1040 !default;
+$zindex-modal:             1050 !default;
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+$state-success-text:             #3c763d !default;
+$state-success-bg:               #dff0d8 !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text:                #31708f !default;
+$state-info-bg:                  #d9edf7 !default;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text:             #8a6d3b !default;
+$state-warning-bg:               #fcf8e3 !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text:              #a94442 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;

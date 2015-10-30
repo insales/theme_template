@@ -1,0 +1,256 @@
+{
+"Слайдер": [
+  {
+    "group_name": "Отображение",
+    "items": [
+      {
+        "name": "index_slider-show",
+        "type": "checkbox",
+        "label": "Показывать слайдер на главной?",
+        "help": "Показывать или скрывать слайдер на главной страницу",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "group_name": "Первое изображение",
+    "items": [
+      {
+        "name": "index_slider_1-show",
+        "type": "checkbox",
+        "label": "Показывать изображение?",
+        "help": null,
+        "value": "1"
+      },
+      {
+        "name": "index_slider_1-link",
+        "type": "text",
+        "label": "Ссылка с изображения",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "index_slider_1-loaded.jpg",
+        "type": "file",
+        "label": "Загрузить своё изображение",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Второе изображение",
+    "items": [
+      {
+        "name": "index_slider_2-show",
+        "type": "checkbox",
+        "label": "Показывать изображение?",
+        "help": null,
+        "value": "1"
+      },
+      {
+        "name": "index_slider_2-link",
+        "type": "text",
+        "label": "Ссылка с изображения",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "index_slider_2-loaded.jpg",
+        "type": "file",
+        "label": "Загрузить своё изображение",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Третье изображение",
+    "items": [
+      {
+        "name": "index_slider_3-show",
+        "type": "checkbox",
+        "label": "Показывать изображение?",
+        "help": null,
+        "value": "1"
+      },
+      {
+        "name": "index_slider_3-link",
+        "type": "text",
+        "label": "Ссылка с изображения",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "index_slider_3-loaded.jpg",
+        "type": "file",
+        "label": "Загрузить своё изображение",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Четвертое изображение",
+    "items": [
+      {
+        "name": "index_slider_4-show",
+        "type": "checkbox",
+        "label": "Показывать изображение?",
+        "help": null,
+        "value": "1"
+      },
+      {
+        "name": "index_slider_4-link",
+        "type": "text",
+        "label": "Ссылка с изображения",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "index_slider_4-loaded.jpg",
+        "type": "file",
+        "label": "Загрузить своё изображение",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Пятое изображение",
+    "items": [
+      {
+        "name": "index_slider_5-show",
+        "type": "checkbox",
+        "label": "Показывать изображение?",
+        "help": null,
+        "value": "1"
+      },
+      {
+        "name": "index_slider_5-link",
+        "type": "text",
+        "label": "Ссылка с изображения",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "index_slider_5-loaded.jpg",
+        "type": "file",
+        "label": "Загрузить своё изображение",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Настройки автоматической смены изображений",
+    "items": [
+      {
+        "name": "index_slider-autoplay",
+        "type": "checkbox",
+        "label": "Включить?",
+        "help": null,
+        "value": "1"
+      },
+      {
+        "name": "index_slider-timeout",
+        "type": "text",
+        "label": "Время показа изображения (в милисекундах)",
+        "help": null,
+        "value": "5000"
+      }
+    ]
+  }
+]
+,"Группы в соцсетях": [
+  {
+    "group_name": "Ссылки на группы и каналы",
+    "items": [
+      {
+        "name": "social_groups-show",
+        "type": "checkbox",
+        "label": "Показывать блок каналов?",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Вконтакте",
+    "items": [
+      {
+        "name": "social_group-vk-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-vk-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Facebook",
+    "items": [
+      {
+        "name": "social_group-facebook-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-facebook-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "Twitter",
+    "items": [
+      {
+        "name": "social_group-twitter-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-twitter-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "group_name": "YouTube",
+    "items": [
+      {
+        "name": "social_group-youtube-show",
+        "type": "checkbox",
+        "label": "Показывать ссылку?",
+        "help": null,
+        "value": ""
+      },
+      {
+        "name": "social_group-youtube-link",
+        "type": "text",
+        "label": "Ссылка",
+        "help": null,
+        "value": ""
+      }
+    ]
+  }
+]
+
+}

@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "core.css": [
+      "buttons.less"
+    ],
+
+    "template.js": [
+      "z.InSales.ajaxAdd.js"
+    ],
+
+    "style.css.scss": [
+      "_buttons.scss"
+    ]
+  }
+}

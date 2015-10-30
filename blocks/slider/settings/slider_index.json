@@ -1,0 +1,16 @@
+"index_slider-show": "1",
+
+"index_slider_1-show": "1",
+"index_slider_1-link": "",
+"index_slider_1-loaded.jpg": "index_slider_1-loaded.jpg",
+
+"index_slider_2-show": "1",
+"index_slider_2-link": "/",
+"index_slider_2-loaded.jpg": "index_slider_2-loaded.jpg",
+
+"index_slider_3-show": "1",
+"index_slider_3-link": "/",
+"index_slider_3-loaded.jpg": "index_slider_3-loaded.jpg",
+
+"index_slider-autoplay": "1",
+"index_slider-timeout": "5000"

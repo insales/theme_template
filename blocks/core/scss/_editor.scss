@@ -1,0 +1,139 @@
+//
+// Typography
+// --------------------------------------------------
+// эти базовые стили типографики применяются для текстов в page, article, blog или блоке с классом .editor
+
+.editor{
+  text-align: justify;
+
+  a{
+    &:hover{
+    }
+  }
+
+  // Headings
+  // -------------------------
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+    color:       $headings-color;
+
+    small,
+    .small {
+      font-weight: normal;
+      line-height: 1;
+      color:       $headings-small-color;
+    }
+  }
+
+  h1, .h1,
+  h2, .h2,
+  h3, .h3 {
+    margin-top: 0;
+    margin-bottom: ($line-height / 2);
+
+    small,
+    .small {
+      font-size: 65%;
+    }
+  }
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    margin-top: 0;
+    margin-bottom: ($line-height / 2);
+
+    small,
+    .small {
+      font-size: 75%;
+    }
+  }
+
+  h1, .h1 { font-size: $font-size-h1; }
+  h2, .h2 { font-size: $font-size-h2; }
+  h3, .h3 { font-size: $font-size-h3; }
+  h4, .h4 { font-size: $font-size-h4; }
+  h5, .h5 { font-size: $font-size-h5; }
+  h6, .h6 { font-size: $font-size-h6; }
+
+
+  // Body text
+  // -------------------------
+
+  p {
+    margin: 0 0 ($line-height / 2);
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  // Lists
+  // -------------------------
+
+  // Unordered and Ordered lists
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: ($line-height / 2);
+    padding-left: 1.5rem;
+    ul,
+    ol {
+      margin-bottom: 0;
+    }
+  }
+
+  // Addresses
+  address {
+    margin-bottom: $line-height;
+    font-style: normal;
+  }
+
+  // хкаи для таблиц
+  table{
+    display: block;
+    overflow-x: auto;
+  }
+
+  .table{
+    th{
+      border-bottom: 2px solid;
+      padding: 0.5rem;
+    }
+
+    tr{
+      &:nth-child(odd) {
+        background-color: #eee;
+      }
+    }
+
+    td{
+      border-bottom: 1px solid;
+      padding: 0.5rem;
+    }
+
+    tf{
+      padding: 0.5rem;
+    }
+  }
+
+  // хак для /page/feedbak
+  #feedback_form table{
+    display: table;
+    text-align: left;
+    width: 100%;
+
+    p:last-child{
+      text-align: center;
+    }
+  }
+
+  // ломаем картники в текстах для правильного адаптива
+  // обычно при вставке картинки, реадктор выставляет ей родные линейные размеры.
+  img{
+    height: auto;
+  }
+}

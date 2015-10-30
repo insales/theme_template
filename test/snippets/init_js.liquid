@@ -1,0 +1,57 @@
+{% comment %}
+  этот сниппет собирает всю необходимую для js информацию о сайте и складывает в объекты и переменные
+{% endcomment %}
+
+<script type="text/javascript" src="{{ 'template.js' | asset_url }}"></script>
+
+{% include "template_cart" %}
+{% include "template_modal" %}
+{% include "template_product" %}
+{% include "template_selectors" %}
+{% include "template_search" %}
+
+<script type="text/javascript">
+
+  {% comment %}
+    подключаем шаблоны к системе
+  {% endcomment %}
+  InSales.Template( 'cart' );
+  InSales.Template( 'modal' );
+  InSales.Template( 'selectors' );
+  InSales.Template( 'search' );
+  InSales.Template( 'product' );
+
+  if( !Site ){
+    var
+      Site = {};
+  };
+
+  cv_currency_format = '{{ money_with_currency_format }}';
+
+  // цепляем необходимые переменные из liquid, которые другим образом не перебрасываются в js
+  Site.template = '{{ template }}';
+  Site.locale   = '{{ language.locale }}';
+
+  Site.language = {
+    locale: '{{ language.locale }}',
+    not_default: {{ language.not_default? }},
+  };
+
+  Site.account = {
+    id: '{{ account.id }}',
+    hide_items: '{{ account.hide_items_out_of_stock }}',
+    email: '{{ account.email }}',
+  };
+
+  Site.product = {
+    id: '{{ product.id }}',
+    buy_button: '{{ settings.buy_button-at_zero }}',
+  };
+
+  Site.client_group = {
+    id:                   '{{ client_group.id }}',
+    title:                '{{ client_group.title }}',
+    discount:             '{{ client_group.discount }}',
+    discount_description: '{{ client_group.discount_description }}',
+  };
+</script>

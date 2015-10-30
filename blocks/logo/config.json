@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "logo.liquid"
+    ],
+
+    "core.css": [
+      "logo.less"
+    ],
+
+    "style.css.scss": [
+      "_logo.scss"
+    ]
+  }
+}

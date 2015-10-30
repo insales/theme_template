@@ -1,0 +1,23 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "product_preview.liquid"
+    ],
+
+    "core.css": [
+      "product_preview.less"
+    ],
+
+    "style.css.scss": [
+      "_product_preview.scss"
+    ],
+
+    "template_product.liquid": [
+      "product_list.template"
+    ]
+  }
+}

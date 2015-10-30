@@ -1,0 +1,187 @@
+{% assign title = "Сравнение" %}
+
+<h1 class="compare-title content-title">Сравнение</h1>
+
+<div class="row">
+  {% include "breadcrumbs" %}
+</div>
+
+{% if products.size == 0 %}
+  <div class="notice notice--info">Товары для сравнение не выбраны.</div>
+{% else %}
+  <div class="compare-notice notice notice--info">Товары для сравнение не выбраны.</div>
+
+  <div class="js-comapre-hide">
+    <div class="lg-hidden md-hidden
+                padded
+                center"
+    >
+      {% if products.size > 1 %}
+        <span class="compare-toggle_same button
+                    js-compare-toggle_same"
+        >
+          Скрыть похожие
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="compare-wrapper">
+      <div class="compare-table">
+        {% comment %}шапка{% endcomment %}
+        <div class="compare_row compare_row--header">
+
+          <div class="compare_row-title sm-hidden xs-hidden">
+            {% if products.size > 1 %}
+              <span class="compare-toggle_same
+                          button
+                          js-compare-toggle_same"
+              >
+                Скрыть похожие
+              </span>
+            {% endif %}
+          </div>
+
+          {% for product in products %}
+            <div class="compare_row-item compare_row-item--title
+                        js-compare_item-{{ product.id }}"
+            >
+              <a href="{{ product.url }}" class="image-square">
+                <img src="{{ product.first_image.compact_url }}">
+              </a>
+
+              <a href="{{ product.url }}">{{ product.title }}</a>
+
+              <span class="compare-remove js-compare-remove"
+                    data-product_id="{{ product.id }}"
+                    data-params='product_id: {{ product.id }}'
+              >
+                <i class="fa fa-times"></i>
+              </span>
+            </div>
+          {% endfor %}
+
+        </div>
+
+        {% comment %}шапка{% endcomment %}
+
+        {% for property in properties %}
+          <div class="compare_row compare_row--body
+                      {% unless property.differ? %}compare_row--same js-compare_row--same{% endunless %}"
+          >
+
+            <div class="compare_row-title sm-hidden xs-hidden">
+              {{ property.title }}
+            </div>
+
+            {% for product in products %}
+              <div class="compare_row-item
+                          js-compare_item-{{ product.id }}"
+              >
+                <div class="compare_row-item_title
+                            lg-hidden md-hidden"
+                >
+                  {{ property.title }}
+                </div>
+                {% for characteristic in product.properties[property.handle].characteristics %}
+                  {{ characteristic.name }}
+                  {% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              </div>
+            {% endfor %}
+
+          </div>
+        {% endfor %}
+
+        {% comment %}шапка{% endcomment %}
+        <div class="compare_row compare_row--footer">
+          <div class="compare_row-title sm-hidden xs-hidden">
+            {% if products.size > 1 %}
+              <span class="compare-toggle_same
+                          button
+                          js-compare-toggle_same
+                          hidden"
+              >
+                Скрыть похожие
+              </span>
+            {% endif %}
+          </div>
+          {% for product in products %}
+            <div class="compare_row-item compare_row-item--footer
+                        js-compare_item-{{ product.id }}"
+            >
+              <div class="prices">
+                <span class="prices-current">
+                  {% if product.price_varies? %}
+                    {{ product.price_min | money }} - {{ product.price_max | money }}
+                  {% else %}
+                    {{ product.sale_price | money }}
+                  {% endif %}
+                </span>
+              </div>
+
+              <form action="{{ cart_url }}"
+                    method="post"
+                    class="compare_row-form"
+              >
+                <input type="hidden" name="variant_id" value="{{ product.variants.first.id }}">
+                {% if product.variants.size == 1 %}
+                  {% if product.variants.first.quantity == 0 %}
+                    {% if settings.buy_button-at_zero == "block" %}
+                      {% assign disabled = 'disabled="disabled"' %}
+                      {% assign disable_class = 'button--disabled' %}
+                      {% assign text = '<i class="fa fa-ban"></i> Распродано' %}
+                    {% else %}
+                      {% assign disabled = '' %}
+                      {% assign disable_class = '' %}
+                      {% assign text = '<i class="fa fa-shopping-cart"></i> Под заказ' %}
+                    {% endif %}
+                  {% else %}
+                    {% assign disabled = '' %}
+                    {% assign disable_class = '' %}
+                    {% assign text = '<i class="fa fa-shopping-cart"></i> В корзину' %}
+                  {% endif %}
+
+                  <button type="submit"
+                          class="button button--buy
+                                {{ disable_class }}
+                                js-buy"
+                          {{ disabled }}
+                  >
+                    {{ text }}
+                  </button>
+                {% else %}
+                  <a class="button button--buy" href="{{ product.url }}">
+                    Подробнее
+                  </a>
+                {% endif %}
+              </form>
+
+              <span class="compare-remove
+                          js-compare-remove
+                          hidden"
+                    data-product_id="{{ product.id }}"
+                    data-params='product_id: {{ product.id }}'
+              >
+                <i class="fa fa-times"></i>
+              </span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lg-hidden md-hidden
+                padded-inner
+                center"
+    >
+      {% if products.size > 1 %}
+        <span class="compare-toggle_same button
+                    js-compare-toggle_same"
+        >
+          Скрыть похожие
+        </span>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

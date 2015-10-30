@@ -1,0 +1,23 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "quantity.liquid"
+    ],
+
+    "core.css": [
+      "quantity.less"
+    ],
+
+    "style.css.scss": [
+      "_quantity.scss"
+    ],
+
+    "template.js": [
+      "z.InSales.quantity_with_units.js"
+    ]
+  }
+}

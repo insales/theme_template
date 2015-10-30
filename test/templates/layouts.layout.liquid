@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if gt IE 8]-->
+  <html class="ie-9">
+<!--[endif]-->
+<!--[if !IE]>-->
+  <html >
+<!--<![endif]-->
+
+<head>
+  <title>{{ title }}</title>
+  <meta name="robots" content="index,follow" />
+
+  {% comment %}
+    head.liquid - обявления, подключение ресурсов
+  {% endcomment %}
+  {% include "head" %}
+</head>
+
+<body class="adaptive">
+  {% include "header" %}
+
+  {% unless template == 'index' %}
+    <section class="row section--breadcrumbs">
+      <div class="wrap padded">
+        {% include "breadcrumbs" %}
+      </div>
+    </section>
+  {% endunless %}
+
+  {% if template == 'index' %}
+    <section class="row">
+      {% include "slider_index" %}
+    </section>
+  {% endif %}
+
+  <section class="section--content">
+    <div class="wrap row">
+
+      {% if template == 'collection' %}
+        {% assign is_sided = true %}
+      {% else %}
+        {% assign is_sided = false %}
+      {% endif %}
+
+      {% if is_sided %}
+        <div class="lg-grid-3 md-grid-3
+                    sm-hidden xs-hidden
+                    padded"
+        >
+          {% include "sidebar" %}
+        </div>
+      {% endif %}
+
+      <div class="{{ template }} row
+                  {% if is_sided %}
+                    lg-grid-9 md-grid-9 sm-grid-12 xs-grid-12
+                  {% else %}
+                    grid-12
+                  {% endif %}
+                  padded"
+      >
+        {{ content_for_layout }}
+      </div>
+
+    </div>
+  </section>
+
+  {% include "footer" %}
+</body>
+</html>

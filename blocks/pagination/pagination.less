@@ -1,0 +1,30 @@
+.pagination{
+  .row;
+  .ul-clear();
+  display: inline-block;
+
+  &-page{
+    display: block;
+  }
+
+  &-node{
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+
+    &--link{
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    &--block{}
+    &--current{}
+  }
+
+  &--horizontal{
+    
+    & > .pagination-page{
+      .fl;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "templates": [
+      "compare.liquid"
+    ],
+
+    "core.css": [
+      "compare.less"
+    ],
+
+    "style.css.scss": [
+      "_compare.scss"
+    ],
+
+    "template.js": [
+      "z.InSales.compare.js",
+      "compare.js"
+    ],
+
+    "z.InSales.ui.js": [
+      "z.compare.js"
+    ]
+  }
+}

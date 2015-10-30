@@ -1,0 +1,19 @@
+{
+  "test": {},
+
+  "dist": {},
+
+  "core": {
+    "snippets": [
+      "pagination.liquid"
+    ],
+
+    "core.css": [
+      "pagination.less"
+    ],
+
+    "style.css.scss": [
+      "_pagination.scss"
+    ]
+  }
+}
