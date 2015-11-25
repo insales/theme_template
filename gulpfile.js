@@ -52,7 +52,7 @@ gulp.task( 'build:test', [ 'clean:test' ], function(cb){
 });
 
 // собираем чистый релизный шаблон
-gulp.task( 'build:min_config', function(cb){
+gulp.task( 'build:min_config', [ 'clean:min_config' ], function(cb){
   makeList( 'core' );
   makeList( 'dist' );
 
@@ -67,7 +67,7 @@ gulp.task( 'build:min_config', function(cb){
   }
 });
 
-gulp.task( 'build:full_config', function(cb){
+gulp.task( 'build:full_config', [ 'clean:full_config' ], function(cb){
   makeList( 'core' );
   makeList( 'test' );
 
