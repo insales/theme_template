@@ -62,9 +62,9 @@
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-{% if head == 'checkout' %}
+{% unless head == 'checkout' %}
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-{% endif %}
+{% endunless %}
 
 {% comment %}
   http://jsconsole.com/ - "удаленная консоль браузера", скрипт перехватывает все выводы в
