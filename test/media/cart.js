@@ -108,7 +108,7 @@ $(function(){
     e.preventDefault();
 
     // блочим маркер "делаем оформление заказа"
-    $( 'name="make_order"' )
+    $( '[name="make_order"]' )
       .attr( 'disabled', true );
 
     $(this)
