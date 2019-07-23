@@ -13,7 +13,7 @@ InSales.selectorSettings = function( $config, Base ){
     self.firstOption  = $config.settings.firstOption  || false;
 
     // кусок магии на случай нежданчика
-    if( Base.url_variant_id != '' ){
+    if( typeof Base.url_variant_id != 'undefined' && Base.url_variant_id != '' ){
       self.firstOption = false;
     };
 
