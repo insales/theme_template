@@ -177,6 +177,10 @@ InSales.variantsTree = function( $product, Base ){
         };
       };
     });
+    
+    if( Object.keys(temp).length > 0 && Object.keys($first).length == 0 ) {
+      $first = temp[Object.keys(temp)[0]]
+    }
 
     return $first;
   };
