@@ -40,7 +40,7 @@ InSales.singleOption = function( Base ){
     };
 
     //console.log( 'firstAvailable: end: option_id: ', option_id );
-    if( temp_id != option_id ){
+    if( temp_id != option_id && option_id != 0 ){
       Base.optionsHelpers.set( option_index, option_id );
     };
 
