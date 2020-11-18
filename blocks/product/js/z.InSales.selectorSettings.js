@@ -55,10 +55,10 @@ InSales.selectorSettings = function( $config, Base ){
     // добавляем настройки вывода из шаблона?
     if( $config.settings.template ){
       var
-        span  = $config.settings.template.span  .replace( /\s+/g, '' ).split( ',' ),
-        radio = $config.settings.template.radio .replace( /\s+/g, '' ).split( ',' ),
-        color = $config.settings.template.color .replace( /\s+/g, '' ).split( ',' ),
-        image = $config.settings.template.image .replace( /\s+/g, '' ).split( ',' );
+        span  = $config.settings.template.span.trim().split( ',' ),
+        radio = $config.settings.template.radio.trim().split( ',' ),
+        color = $config.settings.template.color.trim().split( ',' ),
+        image = $config.settings.template.image.trim().split( ',' );
 
       $.each( span, function( index, value ){
         if( value != '' ){
